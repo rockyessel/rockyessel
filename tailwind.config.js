@@ -5,7 +5,15 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        max_screen: { max: '674px' },
+      },
+      fontFamily: {
+        noe: ['Noe Display'],
+        pink: ['Pink Yellow Black'],
+      },
+    },
   },
-  plugins: [  require('@tailwindcss/typography'),require('daisyui')],
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
 };

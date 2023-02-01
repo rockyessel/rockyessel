@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '@/components';
+import { Form, Layout } from '@/components';
 
 const Contact = () => {
   return (
@@ -15,7 +15,13 @@ const Contact = () => {
       MIME={''}
       author_name={''}
     >
-j
+      <main className='w-full h-full flex flex-col gap-10 px-4 lg:px-14 xl:px-20 2xl:px-40 lg:container md:mx-auto pb-5'>
+        <p className='font-extrabold font-noe text-7xl capitalize'>
+          Reach out to me
+        </p>
+
+        <Form />
+      </main>
     </Layout>
   );
 };

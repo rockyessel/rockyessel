@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@font-face {
+  font-family: 'Noe Display';
+  src: url('/public/Noe_Display.ttf');
+}
+
+@font-face {
+  font-family: 'Pink Yellow Black';
+  src: url('/public/Pink_Yellow_Black.ttf');
+}
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', 'Noe Display', 'Pink Yellow Black';
+}
+
+table {
+  border: 1px solid #ff5277;
+}
+
+th,
+td {
+  border: 1px solid #ff5277;
+  padding: 2px 0;
+  text-align: center;
+}
+
+.li {
+  text-decoration: none;
+  position: relative;
+  color: inherit;
+}
+
+.li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: #ff5277;
+}
+
+.re_li {
+  text-decoration: none;
+  position: relative;
+  color: inherit;
+}
+
+.re_li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: #000000;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 250ms ease-in;
+  -webkit-transition: transform 250ms ease-in;
+  -moz-transition: transform 250ms ease-in;
+  -ms-transition: transform 250ms ease-in;
+  -o-transition: transform 250ms ease-in;
+}
+.re_li:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}

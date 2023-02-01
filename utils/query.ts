@@ -1,9 +1,9 @@
 import { Client } from '.';
 
-export const ProjectDetailsData = async (note: string = '') => {
+export const NoteDetailsData = async (thought: string = '') => {
   const query = `
-    *[_type=="note" && slug.current =="${note}"][0]{
-      _createdAt,
+    *[_type=="thought" && slug.current =="${thought}"][0]{
+    _createdAt,
     _id,
     _updatedAt,
     alt{
@@ -16,7 +16,20 @@ export const ProjectDetailsData = async (note: string = '') => {
         current,
       }
     },
-    body,
+    body[]{
+    ...,
+    _type == "image" => {
+    "image": asset->{
+      url,
+      metadata{
+      dimensions{
+        height,
+          width,
+      }
+      }
+      },
+    },
+    },
     caption,
     categories[]->{
       title,
@@ -28,7 +41,7 @@ export const ProjectDetailsData = async (note: string = '') => {
     description,
     featured,
     keywords,
-    "more_note":*[_type == "note"][]{
+    "more_note":*[_type == "thought"][]{
         _id,
       "image": mainImage.asset->url,
        title,
@@ -40,7 +53,8 @@ export const ProjectDetailsData = async (note: string = '') => {
       slug{
       current,
       },
-      "comment": *[_type == "comment" && note._ref == ^._id][]{
+      "comment": *[_type == "comment" && thought._ref == ^._id][]{
+        profile,
       name,
       comment,
       _createdAt,
@@ -68,7 +82,8 @@ export const ProjectDetailsData = async (note: string = '') => {
       },
       description,
     viewCount,
-    "comment": *[_type == "comment" && note._ref == ^._id][]{
+    "comment": *[_type == "comment" && thought._ref == ^._id][]{
+      profile,
       name,
       comment,
       _createdAt,
@@ -77,20 +92,103 @@ export const ProjectDetailsData = async (note: string = '') => {
 }
     `;
 
-  const result = await Client.fetch(query, { note });
+  const result = await Client.fetch(query, { thought });
 
   return result;
 };
 
-export const ProjectDetailsDataPath = async () => {
+export const CommonPathProps = async (path: string = '') => {
   const query = `
-  *[_type=="note"]{
+  *[_type=="${path}"]{
     slug{
         current,
     }
 }`;
 
+  const result = await Client.fetch(query, { path });
+
+  return result;
+};
+
+export const PortfolioData = async () => {
+  const query = `*[_type == "portfolio"]{
+    tags,
+    type,
+    _createdAt,
+    _id,
+    _type,
+    _updatedAt,
+    body,
+    description,
+    github_project_url,
+    "image":image[].asset->url,
+    live_website,
+    slug,
+    title,
+    }
+`;
+
   const result = await Client.fetch(query);
+
+  return result;
+};
+
+export const NoteData = async () => {
+  const query = `*[_type=="thought"]{
+title,
+viewCount,
+featured,  
+"image":mainImage.asset->url,
+description,
+tags,
+"estimated_reading_time":round(length(pt::text(body)) / 5 / 130 ),
+recommended,
+slug{
+current,
+},
+"comment": *[_type == "comment" && thought._ref == ^._id][]{_id},
+}
+`;
+
+  const result = await Client.fetch(query);
+
+  return result;
+};
+
+export const ProjectDataProps = async (project: string = '') => {
+  const query = `*[_type == "portfolio" && slug.current == "${project}"][0]{
+  tags,
+  type,
+  _createdAt,
+  _id,
+  _type,
+  _updatedAt,
+  body,
+  description,
+  github_project_url,
+  "image": image[].asset->url,
+  live_website,
+  slug,
+  title,
+}
+`;
+
+  const result = await Client.fetch(query, { project });
+
+  return result;
+};
+
+export const UpdateDatedViewCount = async (thought: string = '') => {
+  const query = `*[_type == "thought" && slug.current == "${thought}"][0]{
+    _id,
+    viewCount,
+    publishedAt,
+    "comment": *[_type == "comment" && thought._ref == ^._id][]{
+      _id,
+      },
+  }`;
+
+  const result = await Client.fetch(query, { thought });
 
   return result;
 };

@@ -9,24 +9,24 @@ import moment from 'moment';
 
 const ViewsCommentCount = ({ data }: any) => {
   return (
-    <div className={`flex gap-2 font-medium`}>
+    <div className={`flex gap-2 font-medium max_screen:text-sm text-[1.3rem]`}>
       <Link
         passHref
         className={`inline-flex items-center rounded-md gap-2`}
         href={`#comment`}
       >
-        <AiOutlineComment className={`text-[1.3rem]`} /> {data?.comment?.length}
+        <AiOutlineComment className={``} /> {data?.comment?.length}
       </Link>
 
-      <span className={`inline-flex items-center rounded-md gap-2`}>
+      <div className={`inline-flex items-center rounded-md gap-2`}>
         <AiOutlineEye className={`text-[1.3rem]`} /> {data?.viewCount}
-      </span>
+      </div>
 
-      <span className={`inline-flex items-center rounded-md gap-2`}>
+      <div className={`inline-flex items-center rounded-md gap-2`}>
         <AiOutlineFieldTime className={`text-[1.3rem]`} />
         <span>•</span>
         {moment(data?.publishedAt).format('LT')}
-      </span>
+      </div>
     </div>
   );
 };

@@ -1,24 +1,35 @@
+import { Layout } from '@/components';
+import OtherCard from '@/components/other-card';
+import { HomeProps } from '@/interface';
+import { PortfolioData } from '@/utils/query';
+import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 import React from 'react';
-import { Layout, ProjectCard, SkillsCard } from '@/components';
 
-const Projects = () => {
+const Projects = (
+  props: InferGetServerSidePropsType<typeof getStaticProps>
+) => {
   return (
     <Layout
-      description={''}
-      title={''}
+      description={`Here, all projects on this section include tools, side projects,
+            professional works,and other stuff that I created. So check tags for
+            the specific project you want to open. And some of my projects have
+            been archived.`}
+      title={'All Showcase - @rockyessel'}
       image={''}
-      type={''}
-      alt={''}
-      keywords={''}
+      type={'Projects'}
+      alt={'All Showcase - @rockyessel'}
+      keywords={'professional project, side projects, react.js, next.js'}
       publishedAt={''}
       updatedAt={''}
-      MIME={''}
-      author_name={''}
+      MIME={'png'}
+      author_name={'Rocky Essel'}
     >
-      <section className='px-6  flex flex-col gap-10'>
+      <main className='w-full h-full flex flex-col gap-10 px-4 lg:px-14 xl:px-20 2xl:px-40 lg:container md:mx-auto pb-5'>
         <div>
-          <p className='font-extrabold text-3xl capitalize'>short note</p>
-          <p>
+          <p className='font-extrabold font-noe text-7xl capitalize'>
+            short note
+          </p>
+          <p className=' text-lg md:text-2xl font-light'>
             Here, all projects on this section include tools, side projects,
             professional works,and other stuff that I created. So check tags for
             the specific project you want to open. And some of my projects have
@@ -26,30 +37,24 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className='flex flex-col gap-5'>
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+        <div className={`grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2`}>
+          {props?.project_data?.map((data, index) => (
+            <OtherCard key={index} data={data} />
+          ))}
         </div>
-      </section>
+      </main>
     </Layout>
   );
 };
 
 export default Projects;
+
+export const getStaticProps: GetStaticProps<{
+  project_data: HomeProps[];
+}> = async () => {
+  const project_data: HomeProps[] = await PortfolioData();
+
+  return {
+    props: JSON.parse(JSON.stringify({ project_data })),
+  };
+};

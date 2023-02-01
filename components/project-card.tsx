@@ -1,93 +1,83 @@
 import React from 'react';
-import { BsGithub, BsTwitter, BsLinkedin } from 'react-icons/bs';
-import {
-  SiFeedly,
-  SiMicrosoftoutlook,
-  SiPython,
-  SiTypescript,
-  SiJavascript,
-  SiHtml5,
-  SiCss3,
-  SiTailwindcss,
-  SiWebmoney,
-} from 'react-icons/si';
-import { FaRust } from 'react-icons/fa';
 import { AiFillFolderOpen } from 'react-icons/ai';
-import { IoLogoNodejs } from 'react-icons/io';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { HomeProps } from '@/interface';
+import { data_list } from '@/utils/services';
+import { BsGithub } from 'react-icons/bs';
+import { SiWebmoney } from 'react-icons/si';
 
-const ProjectCard = () => {
+const ProjectCard = ({ data }: { data: HomeProps }): JSX.Element => {
   const router: string = useRouter().asPath.split('/').slice(-1)[0];
 
   const if_true = router === 'projects';
 
+  const included_tags = data?.tags?.split(',');
+
   return (
-    <div className='bg-orange-400 p-4 rounded-md shadow-md'>
+    <div className='w-[20rem] bg-black p-4 rounded-md shadow-md'>
       <div>
         <p
           className={`font-bold ${
             if_true ? 'w-full inline-flex justify-between items-center' : null
           }`}
         >
-          <span>SARPS Logistics Co.</span>
-          {if_true && (
-            <span className='bg-orange-300 p-1 rounded-md'>
-              Professional Work
-            </span>
-          )}
+          <span style={{ fontFamily: 'Noe Display' }}>{data?.title}</span>
+          {if_true && <span className='p-1 rounded-md'>{data?.type}</span>}
         </p>
 
         <div>
           <ul className='rounded-md py-2 flex flex-wrap gap-2 items-center'>
-            <li
-              title='Python'
-              className='inline-flex items-center gap-1 border border-black p-1 font-medium bg-orange-400'
-            >
-              <SiPython /> Python
-            </li>
-            <li
-              title='Node.js'
-              className='inline-flex items-center gap-1 border border-black p-1 font-medium bg-orange-400'
-            >
-              <IoLogoNodejs /> Node.js
-            </li>
-            <li
-              title='Rust'
-              className='inline-flex items-center gap-1 border border-black p-1 font-medium bg-orange-400'
-            >
-              <FaRust /> Rust
-            </li>
-            <li
-              title='HTML'
-              className='inline-flex items-center gap-1 border border-black p-1 font-medium bg-orange-400'
-            >
-              <SiHtml5 /> HTML
-            </li>
+            {data_list?.map((list, index) =>
+              included_tags?.includes(list.name) ? (
+                <Link
+                  key={index}
+                  href={`/project/${list.name.toLocaleLowerCase()}`}
+                >
+                  <li
+                    className='tooltip cursor-pointer inline-flex items-center gap-1 border border-white p-1 font-medium'
+                    data-tip={list?.name}
+                  >
+                    {list?.icon} {list?.name}
+                  </li>
+                </Link>
+              ) : null
+            )}
           </ul>
         </div>
-        
-        <p>
-          When it comes to Tailwind CSS, it&apos;s hard to ignore the popularity
-          of this famous front-end framework. Over the years, the growth of this
-          ecosystem has seen steady increases, and it was announced that, in
-          July, the download count o...
-        </p>
+
+        <p>{data?.description}</p>
       </div>
 
       <div className='w-full flex justify-between items-center text-[2.6rem]'>
         <div className='flex items-center gap-5'>
-          <span className='tooltip' data-tip='Github'>
-            <BsGithub className='bg-orange-300 p-1 rounded-md' />
-          </span>
-          <span className='tooltip' data-tip='Live Website'>
-            <SiWebmoney className='bg-orange-300 p-1 rounded-md' />
-          </span>
+          <a
+            title='Github'
+            target={`_blank`}
+            href={`${data?.github_project_url}`}
+          >
+            <span className='tooltip' data-tip='Github'>
+              <BsGithub className='p-1 rounded-md' />
+            </span>
+          </a>
+
+          <a
+            title='Live Website'
+            target={`_blank`}
+            href={`${data?.live_website}`}
+          >
+            <span className='tooltip' data-tip='Live Website'>
+              <SiWebmoney className='p-1 rounded-md' />
+            </span>
+          </a>
         </div>
 
         <div className='group flex items-center gap-5'>
-          <span className='tooltip' data-tip='Open For More Details'>
-            <AiFillFolderOpen className='bg-orange-300 p-1 rounded-md' />
-          </span>
+          <Link href={`/projects/${data?.slug?.current}#project`}>
+            <span className='tooltip' data-tip='Open For More Details'>
+              <AiFillFolderOpen className='p-1 rounded-md' />
+            </span>
+          </Link>
         </div>
       </div>
     </div>

@@ -112,10 +112,8 @@ export interface CommonPath {
 }
 
 export interface CodeProps {
-  value: {
-    code: string;
-    language: string;
-  };
+  code: string;
+  language: string;
 }
 
 export interface NoteProps {
@@ -161,7 +159,29 @@ export interface NoteProps {
   title: string;
   viewCount: number;
   comment: Comment[];
-  more_post: any;
+  more_post: {
+    comment: Comment[];
+    description: string;
+    estimated_reading_time: number;
+    image: string;
+    _id: string;
+    recommended: boolean;
+    featured: boolean;
+    slug: {
+      current: string;
+    };
+    title: string;
+    viewCount: number;
+  }[];
+}
+
+export interface CommentUserProps {
+  data: {
+    name: string;
+    profile: string;
+    _createdAt: string;
+    comment: string;
+  }[];
 }
 // -------------------------- //
 
@@ -174,3 +194,56 @@ export interface ModalProps {
 }
 
 // --------------------------------- //
+export interface NoteCardProps {
+  title: string;
+  viewCount: number;
+  featured: boolean;
+  recommended: boolean;
+  image: string;
+  description: string;
+  tags: string;
+  slug: { current: string };
+  estimated_reading_time: number;
+  comment: { _id: string }[];
+}
+
+export interface SanityImageProps {
+  asset: { _ref: string; _type: string };
+  _key: string;
+  _type: string;
+  alt: string;
+  image: {
+    url: string;
+    metadata: {
+      dimensions: {
+        height: number;
+        width: number;
+      };
+    };
+  };
+}
+export interface SanityTableProps {
+  _key: string;
+  _type: string;
+  rows: {
+    _key: string;
+    _type: string;
+    cells: string[];
+  }[];
+}
+
+export interface HomeProps {
+  tags: string;
+  type: string;
+  _createdAt: string;
+  _id: string;
+  _type: string;
+  _updatedAt: string;
+  body: BodyProps;
+  description: string;
+  github_project_url: string;
+  image: string[];
+  live_website: string;
+  slug: { current: string };
+  title: string;
+}

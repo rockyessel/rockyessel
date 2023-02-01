@@ -1,4 +1,4 @@
-import { FormErrorProps } from "@/interface";
+import { FormErrorProps } from '@/interface';
 
 export default function FormValidation(
   formType: string,
@@ -186,7 +186,7 @@ export default function FormValidation(
               msg: 'Message is required',
             };
             setFormErr(formState);
-          } else if (formValue.length < 100) {
+          } else if (formValue.length < 25) {
             const formState = {
               ...formErr,
               state: true,

@@ -1,6 +1,7 @@
 import { createClient } from 'next-sanity';
+import imageUrlBuilder from '@sanity/image-url';
 
-export  const client = createClient({
+const client = createClient({
   projectId: '40to7ztv',
   dataset: 'production',
   apiVersion: `2022-12-25`, // use current UTC date - see "specifying API version"!
@@ -9,3 +10,9 @@ export  const client = createClient({
 });
 
 export default client;
+
+const builder = imageUrlBuilder(client);
+
+export const urlFor = (source: any) => {
+  return builder.image(source);
+};

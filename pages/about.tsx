@@ -1,5 +1,5 @@
-import React from 'react';
 import { Layout, SkillsCard } from '@/components';
+import React from 'react';
 
 const About = () => {
   return (
@@ -15,12 +15,12 @@ const About = () => {
       MIME={''}
       author_name={''}
     >
-      <section className='px-6'>
+      <main className='w-full h-full flex flex-col gap-10 px-4 lg:px-14 xl:px-20 2xl:px-40 lg:container md:mx-auto pb-5'>
         <div>
-          <p className='font-extrabold text-3xl capitalize'>
+          <p className='font-extrabold font-noe text-7xl capitalize'>
             Nice to meet you again!
           </p>
-          <div className='prose'>
+          <div className='prose text-white'>
             <p>
               Hi, I&apos;m Lorre. I live in London 🇬🇧. I&apos;m a Dad who loves
               code and design.
@@ -52,7 +52,7 @@ const About = () => {
             <SkillsCard />
           </div>
         </div>
-      </section>
+      </main>
     </Layout>
   );
 };

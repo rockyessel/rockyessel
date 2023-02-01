@@ -1,6 +1,6 @@
 import React from 'react';
-import { Layout } from '@/components';
 import { useRouter } from 'next/router';
+import { Layout } from '@/components';
 
 const NotFound = () => {
   const router = useRouter().asPath;
