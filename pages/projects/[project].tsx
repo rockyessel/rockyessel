@@ -10,11 +10,16 @@ import {
 } from 'next';
 import { CommonPath, HomeProps, Params } from '@/interface';
 import { CommonPathProps, ProjectDataProps } from '@/utils/query';
+import { useRouter } from 'next/router';
 
 const ProjectDetails = ({
   project_data,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   const mimeType = project_data?.image[0].split('.').slice(-1)[0];
+
+  const router = useRouter();
+
+  if (router.isFallback) return <p>404</p>;
 
   return (
     <Layout
