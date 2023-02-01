@@ -41,8 +41,6 @@ const NoteDetailCard = ({ data }: any) => {
         const rel = !value.href.startsWith('/')
           ? 'noopener'
           : 'noreferrer noopener';
-
-        console.log('rel', rel);
         return (
           <a
             className='text-blue-500 font-bold italic text-lg'

@@ -32,8 +32,6 @@ const NoteDetails = ({
 
   const router = useRouter();
 
-  console.log('body', thought_data?.body);
-
   const note = router.asPath?.split('/')?.slice(-1)[0]?.split('#')[0];
 
   React.useEffect(() => {
