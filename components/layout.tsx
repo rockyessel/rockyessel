@@ -18,22 +18,7 @@ const Layout = (props: LayoutProps) => {
         MIME={props?.MIME}
         author_name={props?.author_name}
       />
-      {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
-        <Script
-          async
-          src='https://www.googletagmanager.com/gtag/js?id=G-JK0DEBR011'
-        />
-        <Script id='google-analytics' strategy='afterInteractive'>
-          {`
-       
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
 
-          gtag('config', 'G-JK0DEBR011');
-
-        `}
-        </Script>
       {props.children}
     </React.Fragment>
   );
