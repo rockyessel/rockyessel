@@ -1,15 +1,7 @@
 import React from 'react';
-import { Head, SubNavbar } from './index';
-import Image from 'next/image';
-import {
-  BsGithub,
-  BsTwitter,
-  BsLinkedin,
-  BsLink45Deg,
-  BsFillFolderSymlinkFill,
-} from 'react-icons/bs';
-import { SiMicrosoftoutlook } from 'react-icons/si';
+import { Head } from './index';
 import { LayoutProps } from '@/interface';
+import Script from 'next/script';
 
 const Layout = (props: LayoutProps) => {
   return (
@@ -26,6 +18,24 @@ const Layout = (props: LayoutProps) => {
         MIME={props?.MIME}
         author_name={props?.author_name}
       />
+
+      <div>
+        <Script
+          async
+          src='https://www.googletagmanager.com/gtag/js?id=G-JK0DEBR011'
+        />
+        <Script id='google-analytics' strategy='afterInteractive'>
+          {`
+       
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-JK0DEBR011');
+
+        `}
+        </Script>
+      </div>
       {props.children}
     </React.Fragment>
   );
