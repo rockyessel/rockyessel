@@ -93,7 +93,7 @@ const NoteCard = ({ data }: { data: NoteCardProps }): JSX.Element => {
           <div className='flex justify-between items-center text-[2.6rem]'>
             <ul className='rounded-md py-2 flex flex-wrap gap-1 items-center'>
               {data_list?.map((list, index) =>
-                included_tags.includes(list.name) ? (
+                included_tags?.includes(list.name) ? (
                   <Link
                     key={index}
                     href={`/project/${list.name.toLocaleLowerCase()}`}

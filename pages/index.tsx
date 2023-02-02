@@ -5,13 +5,19 @@ import { NoteData, PortfolioData } from '@/utils/query';
 import { data_list } from '@/utils/services';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Link from 'next/link';
+import React from 'react';
 import { BsGithub, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import { MdArrowForward } from 'react-icons/md';
 import { SiMicrosoftoutlook } from 'react-icons/si';
 
 export default function Home(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
-) {
+) {  const [theme, setTheme] = React.useState<string>('light');
+
+  React.useEffect(() => {
+    
+  }, [theme]);
+
   const professional_project: HomeProps[] = props?.project_data?.filter(
     (data) => data.type.replace(' ', '_').toLowerCase() === 'professional_work'
   );

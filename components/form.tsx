@@ -1,47 +1,19 @@
+import { FormDataProps, FormErrorProps } from '@/interface';
 import { FormValidation } from '@/utils';
 import { SendContactForm } from '@/utils/api-request';
+import { formDataInitialState } from '@/utils/services';
 import React, { ChangeEvent } from 'react';
 
-interface FormDataProps {
-  name: string;
-  email: string;
-  message: string;
-}
-
-export interface FormErrorProps {
-  state: boolean;
-  msg: string;
-}
 
 const ContactForm = () => {
-  // const [countryArr, setCountryArr] = React.useState([]);
-
-  const formDataInitialState = {
-    name: '',
-    email: '',
-    message: '',
-  };
-
-  const [formData, setFormData] =
-    React.useState<FormDataProps>(formDataInitialState);
+  const [formData, setFormData] = React.useState<FormDataProps>(formDataInitialState);
 
   //Error State & Message
-  const [nameErr, setNameErr] = React.useState<FormErrorProps>({
-    state: false,
-    msg: '',
-  });
-  const [emailErr, setEmailErr] = React.useState<FormErrorProps>({
-    state: false,
-    msg: '',
-  });
-  const [messageErr, setMessageErr] = React.useState<FormErrorProps>({
-    state: false,
-    msg: '',
-  });
+  const [nameErr, setNameErr] = React.useState<FormErrorProps>({ state: false, msg: '' });
+  const [emailErr, setEmailErr] = React.useState<FormErrorProps>({ state: false, msg: '' });
+  const [messageErr, setMessageErr] = React.useState<FormErrorProps>({ state: false, msg: '' });
 
-  const handleUpdates = (
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
-  ) => {
+  const handleUpdates = ( event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
     const formState = {
       ...formData,
       [event.target.name]: event.target.value,
@@ -51,46 +23,24 @@ const ContactForm = () => {
 
   const handleSubmission = (event: React.SyntheticEvent) => {
     event.preventDefault();
-
     const validateObject = handleValidation();
-
     const { name, email, message } = validateObject;
-
     if (!name || !email || !message) return;
-
     SendContactForm(formData);
-
     setFormData(formDataInitialState);
   };
 
   const handleValidation = () => {
-    const name: boolean = FormValidation(
-      'name',
-      formData.name,
-      nameErr,
-      setNameErr
-    );
-    const email: boolean = FormValidation(
-      'email',
-      formData.email,
-      emailErr,
-      setEmailErr
-    );
-    const message: boolean = FormValidation(
-      'message',
-      formData.message,
-      messageErr,
-      setMessageErr
-    );
-    // const f:boolean = FormValidation('password', {password, confirmPassword}, messageErr, setMessageErr)
+    const name: boolean = FormValidation( 'name', formData.name, nameErr, setNameErr );
+    const email: boolean = FormValidation( 'email', formData.email, emailErr, setEmailErr );
+    const message: boolean = FormValidation( 'message', formData.message, messageErr, setMessageErr );
     return { name, email, message };
   };
 
   return (
     <form
       onSubmit={handleSubmission}
-      className={`mb-10 flex flex-col gap-5 justify-around w-full md:w-[40rem]`}
-    >
+      className={`mb-10 flex flex-col gap-5 justify-around w-full md:w-[40rem]`}>
       <div className={`flex flex-col w-full`}>
         <label className={`font-light text-lg`}>Full Name:</label>
         <input
@@ -108,7 +58,6 @@ const ContactForm = () => {
 
       <div className={`flex flex-col w-full`}>
         <label className={`font-light text-lg`}>Email:</label>
-
         <input
           name={'email'}
           value={formData.email}
@@ -124,9 +73,7 @@ const ContactForm = () => {
       </div>
 
       <div className={`flex flex-col w-full`}>
-        <label
-          className={`font-light flex justify-between text-lg`}
-        >
+        <label className={`font-light flex justify-between text-lg`}>
           <span> Message:</span>
           <span>
             Character: ({formData.message.length}) Word: (
@@ -148,16 +95,11 @@ const ContactForm = () => {
         )}
       </div>
 
-      <button
-        type={`submit`}
-        className={`px-4 uppercase font-light  py-3 rounded duration-700`}
-      >
+      <button type={`submit`} className={`px-4 uppercase font-light  py-3 rounded duration-700`}>
         Submit Information
       </button>
     </form>
   );
 };
-
-// 0507247294
 
 export default ContactForm;

@@ -29,9 +29,7 @@ const CommentForm = (props: any) => {
 
   const router = useRouter();
 
-  const handleUpdates = (
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
-  ) => {
+  const handleUpdates = ( event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
     const updatedForm = {
       ...formData,
       [event.target.name]: event.target.value,

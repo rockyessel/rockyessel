@@ -34,7 +34,9 @@ const Navbar = (): JSX.Element => {
   ];
 
   return (
-    <div className='z-[4] w-full bg-[#0e141b] h-auto sticky top-0 px-4 lg:px-14 xl:px-20 2xl:px-40 py-10 lg:container md:mx-auto'>
+    <div
+      className={`z-[4] w-full bg-[#0e141b] h-auto sticky top-0 px-4 lg:px-14 xl:px-20 2xl:px-40 py-10 lg:container md:mx-auto transition-all duration-400`}
+    >
       <nav className='flex items-center justify-between'>
         {/* Logo */}
         <Link href='/'>

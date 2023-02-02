@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import React from 'react';
 import moment from 'moment';
 
 type Props = {
@@ -12,7 +11,6 @@ type Props = {
 };
 
 const CommentUserDisplay = (props: Props) => {
-    
   return (
     <div className={`flex flex-col gap-2.5 my-5`}>
       <div className='flex items-center space-x-4'>
@@ -31,12 +29,8 @@ const CommentUserDisplay = (props: Props) => {
         </div>
       </div>
 
-      <div
-        className={`relative w-full h-full after:content-[''] after:absolute after:left-4 after:-top-[0%] after:-translate-y-[100%] after:border-8 after:border-x-transparent after:border-t-transparent after:border-b-slate-900`}
-      >
-        <p
-          className={`w-[100%] bg-rose-300 border border-black h-auto p-4 rounded-md`}
-        >
+      <div className={`relative w-full h-full after:content-[''] after:absolute after:left-4 after:-top-[0%] after:-translate-y-[100%] after:border-8 after:border-x-transparent after:border-t-transparent after:border-b-slate-900`}>
+        <p className={`w-[100%] shadow-2xl border border-black/70 bg-rose-900 h-auto p-4 rounded-md`}>
           {props?.data?.comment}
         </p>
       </div>

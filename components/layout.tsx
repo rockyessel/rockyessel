@@ -20,7 +20,7 @@ const Layout = (props: LayoutProps) => {
         image={props?.image}
         type={props?.type}
         alt={props?.alt}
-        keywords={'cars,books,shoes,sex,bad,cats'}
+        keywords={'portfolio website,blog,website,projects'}
         publishedAt={props?.publishedAt}
         updatedAt={props?.updatedAt}
         MIME={props?.MIME}
