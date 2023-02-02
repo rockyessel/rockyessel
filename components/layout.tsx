@@ -18,8 +18,7 @@ const Layout = (props: LayoutProps) => {
         MIME={props?.MIME}
         author_name={props?.author_name}
       />
-
-      <div>
+      {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
         <Script
           async
           src='https://www.googletagmanager.com/gtag/js?id=G-JK0DEBR011'
@@ -35,7 +34,6 @@ const Layout = (props: LayoutProps) => {
 
         `}
         </Script>
-      </div>
       {props.children}
     </React.Fragment>
   );
