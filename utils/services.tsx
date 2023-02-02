@@ -20,7 +20,6 @@ import { IoLogoNodejs } from 'react-icons/io';
 import { RiReactjsLine } from 'react-icons/ri';
 import { DefaultMetaDataProps } from '@/interface';
 
-
 export const data_list = [
   {
     name: 'Python',
@@ -96,21 +95,44 @@ export const data_list = [
   },
 ];
 
-  export const formDataInitialState = {
-    name: '',
-    email: '',
-    message: '',
-  };
+export const formDataInitialState = {
+  name: '',
+  email: '',
+  message: '',
+};
 
-    export const defaultMetaData: DefaultMetaDataProps = {
-      description: `I am Rocky Essel, a front-end developer who is passionate about web technologies.`,
-      title: `Home`,
-      image: `/logo.png`,
-      alt: 'Logo',
-      keywords: 'portfolio website,blog,website,projects',
-      type: `website`,
-      publishedAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      author_name: 'Rocky Essel',
-      MIME: 'png',
-    };
+export const defaultMetaData: DefaultMetaDataProps = {
+  description: `I am Rocky Essel, a front-end developer who is passionate about web technologies.`,
+  title: `Home`,
+  image: `/logo.png`,
+  alt: 'Logo',
+  keywords: 'portfolio website,blog,website,projects',
+  type: `website`,
+  publishedAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+  author_name: 'Rocky Essel',
+  MIME: 'png',
+};
+
+export const menuLink = [
+  {
+    name: 'Home',
+    url: '/',
+  },
+  {
+    name: 'Projects',
+    url: '/projects',
+  },
+  {
+    name: 'Thoughts',
+    url: '/thoughts',
+  },
+  {
+    name: 'About',
+    url: '/about',
+  },
+  {
+    name: 'Contact',
+    url: '/contact',
+  },
+];

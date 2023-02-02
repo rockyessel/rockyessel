@@ -33,9 +33,7 @@ const OtherCard = ({ data }: { data: any }) => {
 
       <div className='md:absolute w-full h-auto md:inset-0 flex md:translate-y-[50%] flex-col items-start p-4 transition-all duration-500 md:group-hover:translate-y-0'>
         <div>
-          <h1
-            style={{ fontFamily: 'Noe Display' }}
-            className='font-noe text-lg md:text-3xl font-bold'
+          <h1 className='font-noe text-lg md:text-3xl font-bold'
           >
             {isTitleLonger ? sliceTitle : data?.title}
           </h1>

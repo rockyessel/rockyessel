@@ -17,25 +17,36 @@ const ProfileCard = () => {
 
         <ul className='text-4xl flex gap-2 mb-1'>
           <li>
-            <a href=''>
+            <a
+              rel='noopener'
+              title='Github'
+              href='https://github.com/rockyessel'>
               <BsGithub />
             </a>
           </li>
 
           <li>
-            <a href=''>
+            <a
+              rel='noopener'
+              title='Twitter'
+              href='https://twitter.com/rockyessel'
+            >
               <BsTwitter />
             </a>
           </li>
 
           <li>
-            <a href=''>
+            <a
+              rel='noopener'
+              title='Linkedin'
+              href='https://www.linkedin.com/in/rockyessel/'
+            >
               <BsLinkedin />
             </a>
           </li>
 
           <li>
-            <a href=''>
+            <a rel='noopener' title='Mail' href='mailto:essel_r@outlook.com'>
               <SiMicrosoftoutlook />
             </a>
           </li>

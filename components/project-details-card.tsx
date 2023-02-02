@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Line, ProfileCard, SkillsCard } from './index';
+import {  ProfileCard } from './index';
 import { FiExternalLink } from 'react-icons/fi';
 import Image from 'next/image';
 import {

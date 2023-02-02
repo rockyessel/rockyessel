@@ -12,11 +12,10 @@ import { SiMicrosoftoutlook } from 'react-icons/si';
 
 export default function Home(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
-) {  const [theme, setTheme] = React.useState<string>('light');
+) {
+  const [theme, setTheme] = React.useState<string>('light');
 
-  React.useEffect(() => {
-    
-  }, [theme]);
+  React.useEffect(() => {}, [theme]);
 
   const professional_project: HomeProps[] = props?.project_data?.filter(
     (data) => data.type.replace(' ', '_').toLowerCase() === 'professional_work'
@@ -64,6 +63,7 @@ export default function Home(
           <div className='flex flex-col sm:flex-row sm:items-center gap-3 md:gap-5'>
             <div className='flex text-lg md:text-3xl gap-2'>
               <a
+                rel='noopener'
                 className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
                 target={`_blank`}
                 href='https://github.com/rockyessel'
@@ -71,6 +71,7 @@ export default function Home(
                 <BsGithub />{' '}
               </a>{' '}
               <a
+                rel='noopener'
                 className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
                 target={`_blank`}
                 href='https://twitter.com/rockyessel'
@@ -78,6 +79,7 @@ export default function Home(
                 <BsTwitter />{' '}
               </a>{' '}
               <a
+                rel='noopener'
                 className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
                 target={`_blank`}
                 href='https://www.linkedin.com/in/rockyessel/'

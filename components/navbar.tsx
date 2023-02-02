@@ -2,6 +2,7 @@ import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
+import { menuLink } from '@/utils/services';
 
 const Navbar = (): JSX.Element => {
   const [showMenu, setShowMenu] = React.useState<boolean>(false);
@@ -9,29 +10,6 @@ const Navbar = (): JSX.Element => {
   const handleState = () => {
     setShowMenu((prev) => !prev);
   };
-
-  const menuLink = [
-    {
-      name: 'Home',
-      url: '/',
-    },
-    {
-      name: 'Projects',
-      url: '/projects',
-    },
-    {
-      name: 'Thoughts',
-      url: '/thoughts',
-    },
-    {
-      name: 'About',
-      url: '/about',
-    },
-    {
-      name: 'Contact',
-      url: '/contact',
-    },
-  ];
 
   return (
     <div
