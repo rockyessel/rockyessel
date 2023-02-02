@@ -4,12 +4,11 @@ module.exports = {
   siteUrl,
   generateRobotsTxt: true,
   robotsTxtOptions: {
-    policies: [
-      { userAgent: '*', allow: '/' },
-    ],
+    policies: [{ userAgent: '*', allow: '/' }],
     additionalSitemaps: [
       `${siteUrl}/sitemap.xml`,
-      `${siteUrl}/server-sitemap.xml`,
+      `${siteUrl}/sitemap/thoughts.xml`,
+      `${siteUrl}/sitemap/projects.xml`,
     ],
   },
 };
