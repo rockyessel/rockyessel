@@ -67,6 +67,7 @@ const Header = (props: DefaultMetaDataProps) => {
         <link rel='apple-touch-icon' href='/icon-512x512.png' />
         <link rel='canonical' href={canonicalUrl} />
         {/* Display All Twitter & OpenGraph Meta Tags */}
+        <meta name="google-site-verification" content="rg1eFF95LvARlKlqiee2pZLzbioaQGK2JNqlb2FygbI" />
         <meta name="google-site-verification" content="hSrm_ZRcA3v3GdKYWaPM7_u2Tbwnfo5up-YZyogBces" />
         {metaInfoTags?.map(({name, content},index)=> (
         <meta key={index} name={name} content={content} />
