@@ -9,9 +9,11 @@ export const getServerSideProps = async ({ res }: { res: any }) => {
   const paths_projects: CommonPath[] = await CommonPathProps('portfolio');
   const paths_thoughts: CommonPath[] = await CommonPathProps('thought');
 
+  const baseUrl = `https://esselr.vercel.app`;
+
   //   Static Pages Dir
   const staticPages = fs
-    .readdirSync('pages')
+    .readdirSync('./')
     .filter((staticPage) => {
       return ![
         '_app.tsx',
@@ -26,13 +28,13 @@ export const getServerSideProps = async ({ res }: { res: any }) => {
       ].includes(staticPage);
     })
     .map((staticPagePath) => {
-      return `http://localhost:3000/${staticPagePath}`;
+      return `${baseUrl}/${staticPagePath}`;
     });
 
   const dynamic_thoughts = paths_thoughts?.map((path) => {
     return `
           <url>
-              <loc>http://localhost:3000/thoughts/${path?.slug?.current}</loc>
+              <loc>${baseUrl}/thoughts/${path?.slug?.current}</loc>
               <lastmod>${new Date().toISOString()}</lastmod>
               <changefreq>monthly</changefreq>
               <priority>1.0</priority>
@@ -43,7 +45,7 @@ export const getServerSideProps = async ({ res }: { res: any }) => {
   const dynamic_projects = paths_projects?.map((path) => {
     return `
           <url>
-              <loc>http://localhost:3000/thoughts/${path?.slug?.current}</loc>
+              <loc>${baseUrl}/thoughts/${path?.slug?.current}</loc>
               <lastmod>${new Date().toISOString()}</lastmod>
               <changefreq>monthly</changefreq>
               <priority>1.0</priority>
