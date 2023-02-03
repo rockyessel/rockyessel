@@ -4,16 +4,17 @@ import { Form, Layout } from '@/components';
 const Contact = () => {
   return (
     <Layout
-      description={''}
-      title={''}
+      description={`Send a general message or details of a project you&apos;d like me to be a
+            part of and I&apos;ll get back to you as soon as possible.`}
+      title={'Contact me'}
       image={''}
-      type={''}
-      alt={''}
-      keywords={''}
-      publishedAt={''}
-      updatedAt={''}
-      MIME={''}
-      author_name={''}
+      type={'Website'}
+      alt={'contact-me'}
+      keywords={'me,contact me'}
+      publishedAt={new Date().toISOString()}
+      updatedAt={new Date().toISOString()}
+      MIME={'png'}
+      author_name={'Rocky Essel'}
     >
       <main className='max_screen:w-full max_screen:px-4 w-[40rem] mx-auto'>
         <section className='flex flex-col gap-10'>
@@ -22,8 +23,8 @@ const Contact = () => {
           </p>
 
           <p className='text-lg md:text-2xl font-light'>
-            Send a general message or details of a project you&apos;d like me to be a
-            part of and I&apos;ll get back to you as soon as possible.
+            Send a general message or details of a project you&apos;d like me to
+            be a part of and I&apos;ll get back to you as soon as possible.
           </p>
 
           <Form />

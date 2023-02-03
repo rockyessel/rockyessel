@@ -7,24 +7,24 @@ const NotFound = () => {
 
   return (
     <Layout
-      description={''}
-      title={''}
+      description={'The page you are looking for was not found.'}
+      title={'Page Not Found'}
       image={''}
-      type={''}
-      alt={''}
-      keywords={''}
-      publishedAt={''}
-      updatedAt={''}
-      MIME={''}
-      author_name={''}
+      type={'Website'}
+      alt={'Page Not Found'}
+      keywords={'Page Not Found'}
+      publishedAt={new Date().toISOString()}
+      updatedAt={new Date().toISOString()}
+      MIME={'png'}
+      author_name={'Rocky Essel'}
     >
-      <section className='w-full h-full flex justify-center items-center'>
-        <div>
-          <span>404</span>
-          <span>{router}</span>
-          <span>Wasn&apos;t found</span>
-        </div>
-      </section>
+      <main className='w-full h-full flex justify-center items-center'>
+        <section>
+          <p>404</p>
+          <p>{router}</p>
+          <p>The page you are looking for was not found.</p>
+        </section>
+      </main>
     </Layout>
   );
 };

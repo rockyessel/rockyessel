@@ -85,7 +85,6 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
     },
   };
 
-  console.log(props);
   return (
     <Layout
       description={props?.resume_data[1]?.description}

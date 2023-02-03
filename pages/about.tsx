@@ -4,16 +4,18 @@ import React from 'react';
 const About = () => {
   return (
     <Layout
-      description={''}
-      title={''}
+      description={`I am a front-end developer with experience building
+                web applications. I have a passion for creating a better web,
+                with a focus on speed, ease of use, aesthetic design,`}
+      title={'About Rocky Essel'}
       image={''}
-      type={''}
-      alt={''}
-      keywords={''}
-      publishedAt={''}
-      updatedAt={''}
-      MIME={''}
-      author_name={''}
+      type={'Website'}
+      alt={'about-me-rocky-essel'}
+      keywords={'rocky essel, esselr,essel_r,rocky,essel'}
+      publishedAt={new Date().toISOString()}
+      updatedAt={new Date().toISOString()}
+      MIME={'png'}
+      author_name={'Rocky Essel'}
     >
       <main className='max_screen:w-full max_screen:px-4 w-[40rem] mx-auto'>
         <section className='flex flex-col gap-10'>
@@ -23,27 +25,26 @@ const About = () => {
             </p>
             <div className='prose text-white'>
               <p>
-                I am a front-end developer with one year of experience building
-                web applications. I have a passion for creating a better web,
-                with a focus on speed, ease of use, aesthetic design,
-                accessibility, and user satisfaction. My goal is to develop
-                websites and web applications that meet the needs of businesses
-                while providing a seamless and enjoyable user experience. In
-                addition to my front-end development skills, I have a solid
-                understanding of the backend, which allows me to bring a
-                well-rounded approach to my projects. I believe that the
-                combination of front-end and backend expertise allows me to
-                create web applications that are both functional and visually
-                appealing. I am always seeking to expand my skills and knowledge
-                in the field of web development. I stay up-to-date with the
-                latest technologies and best practices, ensuring that my clients
-                receive the highest quality results. My commitment to excellence
-                is evident in every project I work on, from concept to
-                deployment. Whether working on a small website or a complex web
-                application, I bring my passion for creating the best possible
-                web experience to every project. I am confident in my ability to
-                deliver results that meet or exceed my clients&apos;
-                expectations.
+                I am a front-end developer with experience building web
+                applications. I have a passion for creating a better web, with a
+                focus on speed, ease of use, aesthetic design, accessibility,
+                and user satisfaction. My goal is to develop websites and web
+                applications that meet the needs of businesses while providing a
+                seamless and enjoyable user experience. In addition to my
+                front-end development skills, I have a solid understanding of
+                the backend, which allows me to bring a well-rounded approach to
+                my projects. I believe that the combination of front-end and
+                backend expertise allows me to create web applications that are
+                both functional and visually appealing. I am always seeking to
+                expand my skills and knowledge in the field of web development.
+                I stay up-to-date with the latest technologies and best
+                practices, ensuring that my clients receive the highest quality
+                results. My commitment to excellence is evident in every project
+                I work on, from concept to deployment. Whether working on a
+                small website or a complex web application, I bring my passion
+                for creating the best possible web experience to every project.
+                I am confident in my ability to deliver results that meet or
+                exceed my clients&apos; expectations.
               </p>
             </div>
           </div>
