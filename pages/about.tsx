@@ -15,43 +15,52 @@ const About = () => {
       MIME={''}
       author_name={''}
     >
-      <main className='w-full h-full flex flex-col gap-10 px-4 lg:px-14 xl:px-20 2xl:px-40 lg:container md:mx-auto pb-5'>
-        <div>
-          <p className='font-extrabold font-noe text-7xl capitalize'>
-            Nice to meet you again!
-          </p>
-          <div className='prose text-white'>
-            <p>
-              Hi, I&apos;m Lorre. I live in London 🇬🇧. I&apos;m a Dad who loves
-              code and design.
+      <main className='max_screen:w-full max_screen:px-4 w-[40rem] mx-auto'>
+        <section className='flex flex-col gap-10'>
+          <div className='flex flex-col gap-10'>
+            <p className='font-bold font-noe text-5xl md:text-7xl capitalize'>
+              About Rocky Essel
             </p>
-
-            <p>
-              I am passionate about modern open-source technologies such as
-              JavaScript, Typescript, React, NextJs, Astro, Solid-JS, Tailwind,
-              SASS, Zustand and many more.
-            </p>
-
-            <p>
-              I pride myself on writing scalable, elegant, test-driven code,
-              Creating with tried and tested design principles to create simple
-              solutions to complex problems.
-            </p>
+            <div className='prose text-white'>
+              <p>
+                I am a front-end developer with one year of experience building
+                web applications. I have a passion for creating a better web,
+                with a focus on speed, ease of use, aesthetic design,
+                accessibility, and user satisfaction. My goal is to develop
+                websites and web applications that meet the needs of businesses
+                while providing a seamless and enjoyable user experience. In
+                addition to my front-end development skills, I have a solid
+                understanding of the backend, which allows me to bring a
+                well-rounded approach to my projects. I believe that the
+                combination of front-end and backend expertise allows me to
+                create web applications that are both functional and visually
+                appealing. I am always seeking to expand my skills and knowledge
+                in the field of web development. I stay up-to-date with the
+                latest technologies and best practices, ensuring that my clients
+                receive the highest quality results. My commitment to excellence
+                is evident in every project I work on, from concept to
+                deployment. Whether working on a small website or a complex web
+                application, I bring my passion for creating the best possible
+                web experience to every project. I am confident in my ability to
+                deliver results that meet or exceed my clients&apos;
+                expectations.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className='flex flex-col gap-5'>
-          <div className='flex flex-col gap-1'>
-            <p className='font-extrabold text-3xl capitalize'>Skills</p>
-            <SkillsCard />
+          <div className='flex flex-col gap-10'>
+            <div className='flex flex-col gap-1'>
+              <p className='font-extrabold text-3xl capitalize'>Skills</p>
+              <SkillsCard />
+            </div>
+            <div className='flex flex-col gap-1'>
+              <p className='font-extrabold text-3xl capitalize'>
+                Tools & Platforms
+              </p>
+              <SkillsCard />
+            </div>
           </div>
-          <div className='flex flex-col gap-1'>
-            <p className='font-extrabold text-3xl capitalize'>
-              Tools & Platforms
-            </p>
-            <SkillsCard />
-          </div>
-        </div>
+        </section>
       </main>
     </Layout>
   );

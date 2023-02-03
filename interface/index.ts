@@ -247,3 +247,11 @@ export interface HomeProps {
   slug: { current: string };
   title: string;
 }
+
+export interface ResumeQueryProps {
+  _createdAt: string;
+  _updatedAt: string;
+  title: string;
+  description: string;
+  body: BodyProps;
+}

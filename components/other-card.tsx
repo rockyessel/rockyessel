@@ -7,7 +7,6 @@ import { BsGithub } from 'react-icons/bs';
 import { SiWebmoney } from 'react-icons/si';
 
 const OtherCard = ({ data }: { data: any }) => {
-
   const included_tags = data?.tags?.split(',');
   const MAX_TITLE: number = 70;
   const MAX_DESCRIPTION: number = 200;
@@ -19,7 +18,7 @@ const OtherCard = ({ data }: { data: any }) => {
   const isDesLonger: boolean = data?.description?.length > MAX_DESCRIPTION;
 
   return (
-    <div className='group bg-black md:bg-transparent w-full h-auto relative cursor-pointer rounded-md items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30'>
+    <div className='group bg-[#18202b]  md:bg-transparent w-full h-auto relative cursor-pointer rounded-md items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30'>
       <div className='hidden md:block md:h-[15rem] w-full'>
         <Image
           className='hidden md:block h-full w-full rounded-md object-cover object-center transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125'
@@ -29,12 +28,11 @@ const OtherCard = ({ data }: { data: any }) => {
           height={1000}
         />
       </div>
-      <div className='md:absolute hidden md:block inset-0 bg-gradient-to-b from-transparent via-black/90 to-black group-hover:from-black/[1] group-hover:via-black/80 group-hover:to-black/[1]'></div>
+      <div className='md:absolute hidden md:block inset-0 group-hover:backdrop-blur-[2px] bg-gradient-to-b from-transparent via-[#18202b]/90 to-[#18202b] group-hover:from-[#18202b]/[1] group-hover:via-[#18202b]/80 group-hover:to-[#18202b]/[1]'></div>
 
       <div className='md:absolute w-full h-auto md:inset-0 flex md:translate-y-[50%] flex-col items-start p-4 transition-all duration-500 md:group-hover:translate-y-0'>
         <div>
-          <h1 className='font-noe text-lg md:text-3xl font-bold'
-          >
+          <h1 className='font-noe text-lg md:text-3xl font-bold'>
             {isTitleLonger ? sliceTitle : data?.title}
           </h1>
 

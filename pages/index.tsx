@@ -38,7 +38,7 @@ export default function Home(
       MIME={''}
       author_name={''}
     >
-      <main className='w-full h-full flex flex-col gap-10 px-4 lg:px-14 xl:px-20 2xl:px-40 lg:container md:mx-auto pb-5'>
+      <main className='w-full h-full flex flex-col gap-20 px-4 lg:px-14 xl:px-20 2xl:px-40 lg:container md:mx-auto pb-5'>
         <section className=''>
           <div className='flex flex-col gap-5 mt-10 md:mt-28'>
             <div>
@@ -51,7 +51,7 @@ export default function Home(
               </p>
             </div>
 
-            <p className=' text-lg md:text-2xl font-light'>
+            <p className='text-lg md:text-2xl font-light'>
               I&apos;m a front-end developer and co-founder of Codista, a
               software studio in Vienna. I also write about the web on my blog
               and elsewhere.
@@ -109,13 +109,13 @@ export default function Home(
           </div>
         </section>
 
-        <section className=''>
-          <div className='flex flex-col gap-2.5'>
+        <section className='flex flex-col gap-20'>
+          <div className='flex flex-col gap-5 md:gap-2.5'>
             <p className='font-extrabold text-3xl capitalize'>
               Professional Work
             </p>
             <div
-              className={`grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2`}
+              className={`grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 md:gap-2`}
             >
               {professional_project.slice(0, 4)?.map((data, index) => (
                 <OtherCard key={index} data={data} />
@@ -133,7 +133,7 @@ export default function Home(
             </Link>
           </div>
 
-          <div className='flex flex-col gap-2.5'>
+          <div className='flex flex-col gap-5 md:gap-2.5'>
             <p className='font-extrabold text-3xl capitalize'>Side Projects</p>
 
             {!side_project.length ? (
@@ -141,7 +141,7 @@ export default function Home(
                 No side project yet.
               </p>
             ) : (
-              <ul className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2'>
+              <ul className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 md:gap-2'>
                 {side_project?.slice(0, 2).map((data, index) => (
                   <OtherCard key={index} data={data} />
                 ))}
@@ -159,10 +159,10 @@ export default function Home(
             </Link>
           </div>
 
-          <div className='w-full flex flex-col gap-2.5'>
+          <div className='w-full flex flex-col gap-5 md:gap-2.5'>
             <p className='font-extrabold text-3xl'>Thoughts/Notes</p>
 
-            <ul className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2 overflow-hidden'>
+            <ul className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 md:gap-2 overflow-hidden'>
               {props?.note_data?.slice(0, 4)?.map((data, index) => (
                 <NoteCard key={index} data={data} />
               ))}

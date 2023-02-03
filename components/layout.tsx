@@ -1,7 +1,6 @@
 import React from 'react';
 import { Head } from './index';
 import { LayoutProps } from '@/interface';
-import Script from 'next/script';
 
 const Layout = (props: LayoutProps) => {
   return (

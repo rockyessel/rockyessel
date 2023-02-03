@@ -17,7 +17,7 @@ const NoteDetailCard = ({ data }: any) => {
         <Image
           className='m-0 p-0'
           src={value?.image.url}
-          alt={data?.alt}
+          alt={value?.alt}
           width={value?.image?.metadata?.dimensions?.width}
           height={value?.image?.metadata?.dimensions?.height}
         />

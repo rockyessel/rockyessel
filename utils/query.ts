@@ -192,3 +192,19 @@ export const UpdateDatedViewCount = async (thought: string = '') => {
 
   return result;
 };
+
+
+
+export const ResumeQuery = async () => {
+  const query = `*[_type=="resume"]{
+  _createdAt,
+  description,
+  _updatedAt,
+  title,
+  body,
+}`;
+
+  const result = await Client.fetch(query);
+
+  return result;
+};

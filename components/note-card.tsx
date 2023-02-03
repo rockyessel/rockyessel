@@ -26,7 +26,7 @@ const NoteCard = ({ data }: { data: NoteCardProps }): JSX.Element => {
   const isDesLonger: boolean = data?.description?.length > MAX_DESCRIPTION;
 
   return (
-    <li className='group bg-black md:bg-transparent w-full h-auto relative cursor-pointer rounded-md items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30'>
+    <li className='group bg-[#18202b] md:bg-transparent w-full h-auto relative cursor-pointer rounded-md items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-[#18202b]/30'>
       <div className='hidden md:block md:h-[15rem] w-full'>
         <Image
           className='hidden md:block h-full w-full rounded-md object-cover object-center transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125'
@@ -37,7 +37,7 @@ const NoteCard = ({ data }: { data: NoteCardProps }): JSX.Element => {
         />
       </div>
 
-      <div className='md:absolute hidden md:block inset-0 bg-gradient-to-b from-transparent via-black/90 to-black group-hover:from-black/[1] group-hover:via-black/80 group-hover:to-black/[1]'></div>
+      <div className='md:absolute hidden md:block inset-0 group-hover:backdrop-blur-[2px] bg-gradient-to-b from-transparent via-[#18202b]/90 to-[#18202b] group-hover:from-[#18202b]/[1] group-hover:via-[#18202b]/80 group-hover:to-[#18202b]/[1]'></div>
 
       <div className='md:absolute w-full h-auto md:inset-0 flex md:translate-y-[40%] flex-col items-start p-4 transition-all duration-500 md:group-hover:translate-y-0'>
         <div className='flex gap-2 items-center'>
@@ -124,4 +124,3 @@ const NoteCard = ({ data }: { data: NoteCardProps }): JSX.Element => {
 };
 
 export default NoteCard;
-

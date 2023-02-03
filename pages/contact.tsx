@@ -15,12 +15,19 @@ const Contact = () => {
       MIME={''}
       author_name={''}
     >
-      <main className='w-full h-full flex flex-col gap-10 px-4 lg:px-14 xl:px-20 2xl:px-40 lg:container md:mx-auto pb-5'>
-        <p className='font-extrabold font-noe text-7xl capitalize'>
-          Reach out to me
-        </p>
+      <main className='max_screen:w-full max_screen:px-4 w-[40rem] mx-auto'>
+        <section className='flex flex-col gap-10'>
+          <p className='font-bold font-noe text-5xl md:text-7xl capitalize'>
+            Reach out to me
+          </p>
 
-        <Form />
+          <p className='text-lg md:text-2xl font-light'>
+            Send a general message or details of a project you&apos;d like me to be a
+            part of and I&apos;ll get back to you as soon as possible.
+          </p>
+
+          <Form />
+        </section>
       </main>
     </Layout>
   );
