@@ -10,6 +10,8 @@ import { BsGithub, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import { MdArrowForward } from 'react-icons/md';
 import { SiMicrosoftoutlook } from 'react-icons/si';
 
+
+
 export default function Home(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
@@ -24,6 +26,7 @@ export default function Home(
   const side_project: HomeProps[] = props?.project_data?.filter(
     (data) => data.type.replace(' ', '_').toLowerCase() === 'side_project'
   );
+
 
   return (
     <Layout

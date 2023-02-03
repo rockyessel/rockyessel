@@ -7,5 +7,3 @@ Host: https://esselr.vercel.app
 
 # Sitemaps
 Sitemap: https://esselr.vercel.app/sitemap.xml
-Sitemap: https://esselr.vercel.app/sitemap/projects.xml
-Sitemap: https://esselr.vercel.app/sitemap/thoughts.xml
