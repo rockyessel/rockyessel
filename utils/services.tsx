@@ -103,9 +103,9 @@ export const formDataInitialState = {
 
 export const defaultMetaData: DefaultMetaDataProps = {
   description: `I am Rocky Essel, a front-end developer who is passionate about web technologies.`,
-  title: `Home`,
-  image: `/logo.png`,
-  alt: 'Logo',
+  title: `Homepage`,
+  image: `https://esselr.vercel.app/homepage.png`,
+  alt: 'Homepage',
   keywords: 'portfolio website,blog,website,projects',
   type: `website`,
   publishedAt: new Date().toISOString(),
