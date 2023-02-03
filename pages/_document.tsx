@@ -21,6 +21,12 @@ export default function Document() {
 
         `}
         </Script>
+
+        <script
+          async
+          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8465998295989177'
+          crossOrigin='anonymous'
+        ></script>
       </Head>
       <body className='bg-[#0e141b] text-white'>
         <Main />
