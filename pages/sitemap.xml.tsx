@@ -17,7 +17,12 @@ export const getServerSideProps = async ({ res }: { res: any }) => {
     .filter((staticPage) => {
       return ![
         '_app.tsx',
+        '___vc',
+        'node_modules',
         '404.tsx',
+        '.next',
+        '___next_launcher.cjs',
+        'package.json',
         'index.tsx',
         'api.tsx',
         'projects',
@@ -45,7 +50,7 @@ export const getServerSideProps = async ({ res }: { res: any }) => {
   const dynamic_projects = paths_projects?.map((path) => {
     return `
           <url>
-              <loc>${baseUrl}/thoughts/${path?.slug?.current}</loc>
+              <loc>${baseUrl}/projects/${path?.slug?.current}</loc>
               <lastmod>${new Date().toISOString()}</lastmod>
               <changefreq>monthly</changefreq>
               <priority>1.0</priority>
