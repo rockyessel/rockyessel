@@ -3,6 +3,7 @@ import { FaTimes } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
 import { menuLink } from '@/utils/services';
+import { BsGithub, BsLinkedin, BsTwitter } from 'react-icons/bs';
 
 const Navbar = (): JSX.Element => {
   const [showMenu, setShowMenu] = React.useState<boolean>(false);
@@ -18,7 +19,7 @@ const Navbar = (): JSX.Element => {
       <nav className='flex items-center justify-between'>
         {/* Logo */}
         <Link href='/'>
-          <div className='group flex items-center gap-1'>
+          <div className='group flex items-center gap-1 z-[10]'>
             <span className='bg-white rounded-full'>
               <Image
                 src='/logo.svg'
@@ -76,33 +77,46 @@ const Navbar = (): JSX.Element => {
 
         {/* Mobile Menu */}
         {showMenu && (
-          <div className='transition-all duration-400 md:hidden bg-rose-900 bg-opacity-[0.7] flex justify-end items-center absolute top-0 left-0 w-full h-screen overflow-hidden'>
-            <div className='flex flex-col pt-20 pl-5 items-start gap-8 bg-rose-800 w-[280px] h-screen'>
-              <ul className='flex flex-col uppercase divide-gray-800 items-start gap-8 bg-rose-800 w-full h-full'>
+          <div className='transition-all duration-400 md:hidden bg-[#18202b] bg-opacity-[0.7] flex justify-end items-center absolute top-0 left-0 w-full h-screen overflow-hidden'>
+            <div className='flex flex-col pt-20 pl-5 items-start gap-8 bg-[#0e141b] w-[280px] h-screen'>
+              <ul className='flex flex-col uppercase divide-gray-800 items-start gap-8 bg-[#0e141b] w-full h-full'>
                 {menuLink.map((link, index) => (
                   <Link key={index} href={link?.url}>
-                    <li
-                      onClick={handleState}
-                      className='inline-flex justify-start items-center gap-2  hover:text-gray-500  duration-700 cursor-pointer w-full text-center hover:border-none'
-                    >
-                      <div>
-                        <span className='font-extrabold text-gray-200'>
-                          0{index + 1}
-                        </span>
-                        .
-                      </div>
+                    <li className='inline-flex justify-start items-center gap-2  hover:text-gray-500  duration-700 cursor-pointer w-full text-center hover:border-none'>
+                      <span className='font-extrabold text-[#ff5277]'>
+                        0{index + 1}.
+                      </span>
                       {link?.name}
                     </li>
                   </Link>
                 ))}
               </ul>
 
-              <div>
-                <ul className='flex flex-wrap justify-center text-gray-500 px-2 py-5  gap-2'>
-                  <li className='hover:text-gray-300'>Facebook</li>
-                  <li className='hover:text-gray-300'>Twitter</li>
-                  <li className='hover:text-gray-300'>Instagram</li>
-                </ul>
+              <div className='w-full flex justify-center text-4xl gap-2 pb-10'>
+                <a
+                  rel='noopener'
+                  className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
+                  target={`_blank`}
+                  href='https://github.com/rockyessel'
+                >
+                  <BsGithub />{' '}
+                </a>{' '}
+                <a
+                  rel='noopener'
+                  className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
+                  target={`_blank`}
+                  href='https://twitter.com/rockyessel'
+                >
+                  <BsTwitter />{' '}
+                </a>{' '}
+                <a
+                  rel='noopener'
+                  className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
+                  target={`_blank`}
+                  href='https://www.linkedin.com/in/rockyessel/'
+                >
+                  <BsLinkedin />{' '}
+                </a>
               </div>
             </div>
           </div>

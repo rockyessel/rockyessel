@@ -124,11 +124,11 @@ export default function Home(
 
             <Link href='/projects'>
               <span className='float-right text-2xl font-bold font-noe inline-flex items-center group'>
-                <span className='group-hover:text-black'>
+                <span className='group-hover:text-rose-600'>
                   {' '}
                   View all projects
                 </span>
-                <MdArrowForward className='group-hover:ml-2 transition-all duration-500 group-hover:text-black' />
+                <MdArrowForward className='group-hover:ml-2 transition-all duration-500 group-hover:text-rose-600' />
               </span>
             </Link>
           </div>
@@ -150,17 +150,17 @@ export default function Home(
 
             <Link href='/projects'>
               <span className='float-right text-2xl font-bold font-noe inline-flex items-center group'>
-                <span className='group-hover:text-black'>
+                <span className='group-hover:text-rose-600'>
                   {' '}
                   View all projects
                 </span>
-                <MdArrowForward className='group-hover:ml-2 transition-all duration-500 group-hover:text-black' />
+                <MdArrowForward className='group-hover:ml-2 transition-all duration-500 group-hover:text-rose-600' />
               </span>
             </Link>
           </div>
 
           <div className='w-full flex flex-col gap-5 md:gap-2.5'>
-            <p className='font-extrabold text-3xl'>Thoughts/Notes</p>
+            <p className='font-extrabold text-3xl'>Thoughts</p>
 
             <ul className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 md:gap-2 overflow-hidden'>
               {props?.note_data?.slice(0, 4)?.map((data, index) => (
@@ -168,10 +168,12 @@ export default function Home(
               ))}
             </ul>
 
-            <Link href='/notes'>
+            <Link href='/thoughts'>
               <span className='float-right text-2xl font-bold font-noe inline-flex items-center group'>
-                <span className='group-hover:text-black'> View all notes</span>
-                <MdArrowForward className='group-hover:ml-2 transition-all duration-500 group-hover:text-black' />
+                <span className='group-hover:text-rose-600'>
+                  View all Thoughts
+                </span>
+                <MdArrowForward className='group-hover:ml-2 transition-all duration-500 group-hover:text-rose-600' />
               </span>
             </Link>
           </div>
@@ -221,3 +223,5 @@ export const getServerSideProps: GetServerSideProps<{
     props: JSON.parse(JSON.stringify({ project_data, note_data })),
   };
 };
+
+// vitals.vercel-insights.com
