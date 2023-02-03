@@ -18,7 +18,7 @@ const nextConfig = {
           value: 'index',
         },
       ],
-      source: '*',
+      source: '/',
     });
     return headers;
   },
