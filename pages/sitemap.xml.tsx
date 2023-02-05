@@ -45,7 +45,7 @@ export const getServerSideProps = async ({ res }: { res: any }) => {
     'about',
     'resume',
     'contact',
-    'project',
+    'projects',
     'thoughts',
     'privacy-policy',
     '',
