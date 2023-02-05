@@ -30,18 +30,45 @@ export const getServerSideProps = async ({ res }: { res: any }) => {
         '_document.tsx',
         '_error.tsx',
         'sitemap.xml.tsx',
+        'tsconfig.json',
+        'utils',
+        'styles',
+        'README.md',
+        'tailwind.config.js',
       ].includes(staticPage);
     })
     .map((staticPagePath) => {
       return `${baseUrl}/${staticPagePath}`;
     });
 
+  const manually_listed_static_path = [
+    'about',
+    'resume',
+    'contact',
+    'project',
+    'thoughts',
+    'privacy-policy',
+    '',
+  ];
+
+  const static_paths = manually_listed_static_path?.map(
+    (path) =>
+      `<url>
+      <loc>
+        ${baseUrl}/${path}
+      </loc>
+      <lastmod>${new Date().toISOString()}</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>`
+  );
+
   const dynamic_thoughts = paths_thoughts?.map((path) => {
     return `
           <url>
               <loc>${baseUrl}/thoughts/${path?.slug?.current}</loc>
               <lastmod>${new Date().toISOString()}</lastmod>
-              <changefreq>monthly</changefreq>
+              <changefreq>daily</changefreq>
               <priority>1.0</priority>
             </url>
         `;
@@ -52,13 +79,12 @@ export const getServerSideProps = async ({ res }: { res: any }) => {
           <url>
               <loc>${baseUrl}/projects/${path?.slug?.current}</loc>
               <lastmod>${new Date().toISOString()}</lastmod>
-              <changefreq>monthly</changefreq>
+              <changefreq>daily</changefreq>
               <priority>1.0</priority>
             </url>
         `;
   });
 
-  console.log('sitemap', staticPages);
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -68,7 +94,7 @@ export const getServerSideProps = async ({ res }: { res: any }) => {
             <url>
               <loc>${url}</loc>
               <lastmod>${new Date().toISOString()}</lastmod>
-              <changefreq>monthly</changefreq>
+              <changefreq>daily</changefreq>
               <priority>1.0</priority>
             </url>
           `;
@@ -76,6 +102,7 @@ export const getServerSideProps = async ({ res }: { res: any }) => {
         .join('')}
         ${dynamic_thoughts}
         ${dynamic_projects}
+        ${static_paths}
     </urlset>
   `;
 

@@ -4,7 +4,9 @@ import { NoteData } from '@/utils/query';
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 import React from 'react';
 
-const Thoughts = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
+const Thoughts = (
+  props: InferGetServerSidePropsType<typeof getStaticProps>
+) => {
   return (
     <Layout
       description={`Whenever I&apos;m while building project, and find a break-through,
@@ -36,7 +38,7 @@ const Thoughts = (props: InferGetServerSidePropsType<typeof getStaticProps>) => 
           </p>
         </div>
         <ul className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-2.5 overflow-hidden'>
-          {props?.thoughts_data?.slice(0, 4)?.map((data, index) => (
+          {props?.thoughts_data?.map((data, index) => (
             <NoteCard key={index} data={data} />
           ))}
         </ul>
