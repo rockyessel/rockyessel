@@ -62,12 +62,13 @@ const Header = (props: DefaultMetaDataProps) => {
         <meta itemProp='description' content={props?.description || defaultMetaData.description} />
         <meta itemProp='image' content={props?.image || defaultMetaData.image} />
         <meta name='theme-color' content='#fff' />
+        <meta name="yandex-verification" content="a7ad8e351e0f2b7b" />
+        <meta name="google-site-verification" content="rg1eFF95LvARlKlqiee2pZLzbioaQGK2JNqlb2FygbI" />
         {/* Head Links */}
         <link rel='manifest' href='/manifest.json' />
         <link rel='apple-touch-icon' href='/icon-512x512.png' />
         <link rel='canonical' href={canonicalUrl} />
         {/* Display All Twitter & OpenGraph Meta Tags */}
-        <meta name="google-site-verification" content="rg1eFF95LvARlKlqiee2pZLzbioaQGK2JNqlb2FygbI" />
         {metaInfoTags?.map(({name, content},index)=> (
         <meta key={index} name={name} content={content} />
         ))}
