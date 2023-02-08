@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/next-script-for-ga */
 import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
@@ -21,6 +22,7 @@ export default function Document() {
         `}
         </script>
 
+        {/* Google Adsense */}
         <script
           async
           src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8465998295989177'

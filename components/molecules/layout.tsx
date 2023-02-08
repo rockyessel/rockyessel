@@ -1,5 +1,5 @@
 import React from 'react';
-import { Head } from './index';
+import { Head } from '../index';
 import { LayoutProps } from '@/interface';
 
 const Layout = (props: LayoutProps) => {

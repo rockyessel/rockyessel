@@ -1,4 +1,4 @@
-import { CommentUserDisplay } from '.';
+import { CommentUserDisplay } from '..';
 import { CommentUserProps } from '@/interface';
 
 const CommentDisplay = ({ data }: CommentUserProps) => {

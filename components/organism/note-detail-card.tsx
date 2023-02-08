@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { ProfileCard, ShareButton } from './index';
+import { ProfileCard, ShareButton } from '../index';
 import { CodeProps, SanityImageProps, SanityTableProps } from '@/interface';
 import { PortableText } from '@portabletext/react';
 import moment from 'moment';

@@ -13,7 +13,7 @@ interface ShareButtonProps {
 const ShareButton: React.FC<ShareButtonProps> = (props) => {
   const router = useRouter();
 
-  const URL = `http://localhost:300${router.asPath}`;
+  const URL = `https://esselr.vercel.app/${router.asPath}`;
 
   return (
     <div className='flex gap-1 flex-wrap text-[2rem]'>

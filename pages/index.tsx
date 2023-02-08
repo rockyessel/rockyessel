@@ -1,5 +1,5 @@
 import { NoteCard, Layout } from '@/components';
-import OtherCard from '@/components/other-card';
+import OtherCard from '@/components/molecules/other-card';
 import { HomeProps, NoteCardProps } from '@/interface';
 import { NoteData, PortfolioData } from '@/utils/query';
 import { data_list } from '@/utils/services';

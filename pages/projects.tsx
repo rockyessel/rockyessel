@@ -1,5 +1,5 @@
 import { Layout } from '@/components';
-import OtherCard from '@/components/other-card';
+import OtherCard from '@/components/molecules/other-card';
 import { HomeProps } from '@/interface';
 import { PortfolioData } from '@/utils/query';
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
