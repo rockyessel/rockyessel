@@ -80,7 +80,6 @@ const NoteCard = ({ data }: { data: NoteCardProps }): JSX.Element => {
         <div className='flex flex-col gap-0'>
           <div className='m-0 p-0'>
             <h1
-              style={{ fontFamily: 'Noe Display' }}
               className='font-noe text-lg font-bold'
             >
               {isTitleLonger ? sliceTitle : data?.title}

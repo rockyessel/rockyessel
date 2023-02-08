@@ -18,7 +18,7 @@ const ProjectCard = ({ data }: { data: HomeProps }): JSX.Element => {
     <div className='w-[20rem] bg-black p-4 rounded-md shadow-md'>
       <div>
         <p className={`font-bold ${ if_true ? 'w-full inline-flex justify-between items-center' : null }`}>
-          <span style={{ fontFamily: 'Noe Display' }}>{data?.title}</span>
+          <span className='font-noe'>{data?.title}</span>
           {if_true && <span className='p-1 rounded-md'>{data?.type}</span>}
         </p>
 

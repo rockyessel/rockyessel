@@ -10,8 +10,6 @@ import { BsGithub, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import { MdArrowForward } from 'react-icons/md';
 import { SiMicrosoftoutlook } from 'react-icons/si';
 
-
-
 export default function Home(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
@@ -26,7 +24,6 @@ export default function Home(
   const side_project: HomeProps[] = props?.project_data?.filter(
     (data) => data.type.replace(' ', '_').toLowerCase() === 'side_project'
   );
-
 
   return (
     <Layout
@@ -55,9 +52,10 @@ export default function Home(
             </div>
 
             <p className='text-lg md:text-2xl font-light'>
-              I&apos;m a front-end developer and co-founder of Codista, a
-              software studio in Vienna. I also write about the web on my blog
-              and elsewhere.
+              I am a front-end developer with experience building web
+              applications. I have a passion for creating a better web, with a
+              focus on speed, ease of use, aesthetic design, accessibility, and
+              user satisfaction.
             </p>
             <div>
               <p className=' text-lg md:text-2xl font-light'>
@@ -195,6 +193,8 @@ export default function Home(
           <div className='flex items-center gap-2'>
             <div>
               <a
+                target={`_blank`}
+                title='Mail'
                 className=' text-5xl hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
                 href='mailto:essel_r@outlook.com'
               >
