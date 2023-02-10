@@ -106,7 +106,7 @@ export const defaultMetaData: DefaultMetaDataProps = {
   title: `Homepage`,
   image: `https://esselr.vercel.app/homepage.png`,
   alt: 'Homepage',
-  keywords: '',
+  keywords: 'portfolio website,blog,website,projects',
   type: `website`,
   publishedAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
