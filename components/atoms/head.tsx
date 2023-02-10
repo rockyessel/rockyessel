@@ -17,22 +17,23 @@ const Header = (props: DefaultMetaDataProps) => {
     const metaInfoTags: MetaInfoTagsProps[] = [
       // Default Meta Tags
       
-    {name: 'description', content: props?.description || defaultMetaData.description },
-    { name: 'keywords', content:  `${props?.keywords}` || defaultMetaData?.keywords},
     { name: 'author', content: `${props?.author_name}` },
+    { name: 'keywords', content:  `${props?.keywords}` || defaultMetaData?.keywords},
+    {name: 'description', content: props?.description || defaultMetaData.description },
       // OpenGraph Meta Tags
     { name: 'og:title', content: props?.title || defaultMetaData.title },
     { name: 'og:type',content: props?.type || defaultMetaData.type},
     { name: 'og:url', content: canonicalUrl || `https://esselr.vercel.app` },
-    { name: 'og:image', content: props?.image || defaultMetaData.image },
     { name: 'og:description',content: props?.description || defaultMetaData.description},
     { name: 'og:site_name', content: 'Rocky Essel' },
     { name: 'og:published_time',content: props?.publishedAt || new Date().toISOString(),},
     { name: 'og:modified_time', content: props?.updatedAt || new Date().toISOString(),},
-    { name: 'og:image:width', content: '1280' },
-    { name: 'og:image:alt', content: props?.alt },
-    { name: 'og:image:height', content: '640' },
+    // OG Images
+    { name: 'og:image', content: props?.image || defaultMetaData.image },
     { name: 'og:image:type', content: `image/${props?.MIME}` },
+    { name: 'og:image:alt', content: props?.alt },
+    { name: 'og:image:width', content: '1280' },
+    { name: 'og:image:height', content: '640' },
     // Twitter Meta Tags
     { name: 'twitter:card', content: `summary_large_image` },
     { name: 'twitter:title', content: props?.title || defaultMetaData.title },
