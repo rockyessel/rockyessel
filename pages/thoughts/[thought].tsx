@@ -51,6 +51,8 @@ const NoteDetails = ({
 
   const mimeType = thought_data?.image?.split('.')?.slice(-1)[0];
 
+  console.log(thought_data.keywords);
+
   if (router.isFallback) return <p>404</p>;
 
   return (
@@ -60,7 +62,7 @@ const NoteDetails = ({
       image={thought_data?.image}
       type={`Article`}
       alt={thought_data?.alt?.current}
-      keywords={thought_data?.keywords}
+      keywords={`${thought_data?.keywords}`}
       publishedAt={thought_data?.publishedAt}
       updatedAt={thought_data?._updatedAt}
       MIME={mimeType}

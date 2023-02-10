@@ -11,7 +11,7 @@ const Layout = (props: LayoutProps) => {
         image={props?.image}
         type={props?.type}
         alt={props?.alt}
-        keywords={'portfolio website,blog,website,projects'}
+        keywords={props?.keywords}
         publishedAt={props?.publishedAt}
         updatedAt={props?.updatedAt}
         MIME={props?.MIME}

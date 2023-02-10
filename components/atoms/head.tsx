@@ -18,7 +18,7 @@ const Header = (props: DefaultMetaDataProps) => {
       // Default Meta Tags
       
     {name: 'description', content: props?.description || defaultMetaData.description },
-    { name: 'keywords', content: `${props?.keywords}` },
+    { name: 'keywords', content:  `${props?.keywords}` || defaultMetaData?.keywords},
     { name: 'author', content: `${props?.author_name}` },
       // OpenGraph Meta Tags
     { name: 'og:title', content: props?.title || defaultMetaData.title },

@@ -39,8 +39,8 @@ export default function Home(
       author_name={''}
     >
       <main className='w-full h-full flex flex-col gap-20 px-4 lg:px-14 xl:px-20 2xl:px-40 lg:container md:mx-auto pb-5'>
-        <section className=''>
-          <div className='flex flex-col gap-5 mt-10 md:mt-28'>
+        <section className=' mt-5 md:mt-28'>
+          <div className='flex flex-col gap-5'>
             <div>
               <span className='uppercase text-xl font-bold text-[#ff5277]'>
                 Hello, my name is rocky
@@ -57,9 +57,13 @@ export default function Home(
               focus on speed, ease of use, aesthetic design, accessibility, and
               user satisfaction.
             </p>
-            <div>
+            <p className='text-lg md:text-2xl font-light'>
+              My goal is to work in a company where I can deliver business value
+              while also growing as a web developer.
+            </p>
+            <div className='flex flex-col gap-5'>
               <p className=' text-lg md:text-2xl font-light'>
-                Here are my tools:
+                Here are my tools🧰:
               </p>
               <ul className='flex flex-wrap gap-2'>
                 {data_list?.map((list, index) => (
@@ -73,8 +77,8 @@ export default function Home(
               </ul>
             </div>
 
-            <div className='flex flex-col sm:flex-row sm:items-center gap-3 md:gap-5'>
-              <div className='flex text-lg md:text-3xl gap-2'>
+            <div className='flex items-center gap-3 md:gap-5md:text-3xl text-2xl'>
+              <div className='flex gap-2'>
                 <a
                   rel='noopener'
                   className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
@@ -102,7 +106,7 @@ export default function Home(
               </div>
 
               <Link href='/contact'>
-                <button className='font-noe hover:scale-125 ml-6 origin-center hover:origin-top transition-all duration-500 text-3xl after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-[#ff5277]'>
+                <button className='font-noe hover:scale-125 md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-[#ff5277]'>
                   Contact me
                 </button>
               </Link>
