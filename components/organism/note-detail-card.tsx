@@ -38,13 +38,13 @@ const NoteDetailCard = ({ data }: any) => {
 
     marks: {
       link: ({ children, value }: any) => {
-        const rel = !value.href.startsWith('/')
+        const rel = !value?.href.startsWith('/')
           ? 'noopener'
           : 'noreferrer noopener';
         return (
           <a
             className='text-blue-500 font-bold italic text-lg'
-            href={value.href}
+            href={value?.href}
             rel={rel}
           >
             {children}
@@ -89,7 +89,7 @@ const NoteDetailCard = ({ data }: any) => {
 
           <ShareButton text={data?.title} />
           <p className='font-medium inline-flex items-center gap-5 max_screen:text-xs'>
-            <span>{moment(data.publishedAt).format('MMM Do YY')}</span>
+            <span>{moment(data?.publishedAt).format('MMM Do YY')}</span>
             <span>{data?.estimated_reading_time} Minutes</span>
           </p>
         </div>
