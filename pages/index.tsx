@@ -51,7 +51,7 @@ export default function Home(
               </p>
             </div>
 
-            <p className='text-lg md:text-2xl font-light'>
+            <p className='text-lg md:text-2xl md font-light'>
               I am a front-end developer with experience building web
               applications. I have a passion for creating a better web, with a
               focus on speed, ease of use, aesthetic design, accessibility, and
