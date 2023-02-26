@@ -14,26 +14,15 @@ const Navbar = (): JSX.Element => {
 
   return (
     <div
-      className={`z-[4] w-full bg-[#0e141b] h-auto sticky top-0 px-4 lg:px-14 xl:px-20 2xl:px-40 py-10 lg:container md:mx-auto transition-all duration-400`}
+      className={`z-[4] w-full bg-[#0e141b] h-auto sticky top-0 px-4 lg:px-14 xl:px-20 2xl:px-40 py-2  md:mx-auto transition-all duration-400`}
     >
       <nav className='flex items-center justify-between'>
         {/* Logo */}
         <Link href='/'>
-          <div className='group flex items-center gap-1 z-[10]'>
-            {/* <span className='bg-white rounded-full'>
-              <Image
-                src='/logo.svg'
-                width={50}
-                height={50}
-                alt='rockyessel logo'
-              />
-            </span> */}
-            <span className='font-astroz text-5xl p-2 rounded-full bg-rose-900'>
+          <div className='flex items-center gap-1 z-[10]'>
+            <span className='font-astroz text-5xl p-2 transition-all duration-500 rounded-full bg-rose-900 hover:text-rose-900 hover:bg-white'>
               RE
             </span>
-            {/* <span className='hidden sm:block font-bold font-astroz group-hover:text-[#ff5277] transition-all duration-400'>
-              @rockyessel
-            </span> */}
           </div>
         </Link>
 
@@ -42,7 +31,7 @@ const Navbar = (): JSX.Element => {
           {menuLink.map((link, index) => (
             <Link key={index} href={link?.url}>
               <li className='inline-flex justify-start items-center gap-2  hover:text-gray-500  duration-700 cursor-pointer w-full text-center hover:border-none'>
-                <span className='font-extrabold text-[#ff5277]'>
+                <span className='font-extrabold text-rose-500'>
                   0{index + 1}.
                 </span>
                 {link?.name}
@@ -86,7 +75,7 @@ const Navbar = (): JSX.Element => {
                 {menuLink.map((link, index) => (
                   <Link key={index} href={link?.url}>
                     <li className='inline-flex justify-start items-center gap-2  hover:text-gray-500  duration-700 cursor-pointer w-full text-center hover:border-none'>
-                      <span className='font-extrabold text-[#ff5277]'>
+                      <span className='font-extrabold text-rose-500'>
                         0{index + 1}.
                       </span>
                       {link?.name}
@@ -98,7 +87,7 @@ const Navbar = (): JSX.Element => {
               <div className='w-full flex justify-center text-4xl gap-2 pb-10'>
                 <a
                   rel='noopener'
-                  className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
+                  className='hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
                   target={`_blank`}
                   href='https://github.com/rockyessel'
                 >
@@ -106,7 +95,7 @@ const Navbar = (): JSX.Element => {
                 </a>{' '}
                 <a
                   rel='noopener'
-                  className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
+                  className='hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
                   target={`_blank`}
                   href='https://twitter.com/rockyessel'
                 >
@@ -114,7 +103,7 @@ const Navbar = (): JSX.Element => {
                 </a>{' '}
                 <a
                   rel='noopener'
-                  className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
+                  className='hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
                   target={`_blank`}
                   href='https://www.linkedin.com/in/rockyessel/'
                 >

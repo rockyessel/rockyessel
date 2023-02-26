@@ -12,7 +12,7 @@ const SkillsCard: React.FC = (): JSX.Element => {
       {data_list?.map((list, index) => (
         <li
           key={index}
-          className='inline-flex text-[#ff5277] items-center gap-1 border border-white p-1 font-medium'
+          className='inline-flex text-rose-500 items-center gap-1 border border-white p-1 font-medium'
         >
           {list?.icon} {list?.name}
         </li>

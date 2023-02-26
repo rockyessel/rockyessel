@@ -34,7 +34,7 @@ const ProjectDetails = ({
       MIME={mimeType}
       author_name={'Rocky Essel'}
     >
-      <main className='max_screen:w-full max_screen:px-4 w-[40rem] mx-auto'>
+      <main className='max_screen:w-full max_screen:px-4 px-4 xl:w-[70rem] mx-auto'>
         <section>
           <ProjectDetailsCard data={project_data} />
         </section>

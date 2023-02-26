@@ -2,13 +2,19 @@ import Link from 'next/link';
 import React from 'react';
 
 const Footer = () => {
+  const date = new Date();
+  const year = date.getFullYear();
+
   return (
-    <footer className='w-full h-auto px-4 lg:px-14 xl:px-20 2xl:px-40 py-10 md:container md:mx-auto'>
+    <footer className='w-full h-auto px-4 lg:px-14 xl:px-20 2xl:px-40 py-10 md:mx-auto'>
       <section className='w-full flex flex-col md:flex-row items-center md:flex md:items-center justify-center md:justify-between'>
-        <span className='text-sm flex flex-wrap justify-center gap-1 sm:text-center'>
-          © 2023{'  '}
-          <Link href='/' className='hover:underline font-pink'>
-            ROCKYESSEL™.
+        <span className='text-sm flex flex-wrap items-center justify-center gap-1 sm:text-center'>
+          © {year}
+          <Link href='/' className='hover:underline'>
+            <span className='font-astroz text-xl p-2 rounded-full bg-rose-900 hover:text-rose-900 hover:bg-white'>
+              RE
+            </span>
+            ™.
           </Link>
           All Rights Reserved.
         </span>

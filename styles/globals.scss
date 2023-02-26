@@ -6,17 +6,36 @@
 
 @font-face {
   font-family: 'Noe Display';
-  src: url('/Noe_Display.ttf');
+  src: url('/fonts/Noe_Display.ttf');
 }
 
 @font-face {
   font-family: 'Pink Yellow Black';
-  src: url('/Pink_Yellow_Black.ttf');
+  src: url('/fonts/Pink_Yellow_Black.ttf');
 }
 
 @font-face {
   font-family: 'Astroz Trial';
-  src: url('/Astroz_Trial.ttf');
+  src: url('/fonts/Astroz_Trial.ttf');
+}
+
+@font-face {
+  font-family: 'Moldyen';
+  src: url('/fonts/Moldyen.ttf');
+}
+
+.rainbow-box {
+  border: 0.1px solid transparent;
+  border-image: linear-gradient(
+    to bottom right,
+    #b827fc 0%,
+    #2c90fc 25%,
+    #b8fd33 50%,
+    #fec837 75%,
+    #fd1892 100%
+  );
+  border-image-slice: 1;
+  margin: 20px auto;
 }
 
 *,

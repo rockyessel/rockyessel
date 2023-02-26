@@ -79,9 +79,7 @@ const NoteCard = ({ data }: { data: NoteCardProps }): JSX.Element => {
 
         <div className='flex flex-col gap-0'>
           <div className='m-0 p-0'>
-            <h1
-              className='font-noe text-lg font-bold'
-            >
+            <h1 className='font-noe text-lg font-bold'>
               {isTitleLonger ? sliceTitle : data?.title}
             </h1>
             <p className='md:opacity-0 transition-opacity duration-300 md:group-hover:opacity-100'>
@@ -98,7 +96,7 @@ const NoteCard = ({ data }: { data: NoteCardProps }): JSX.Element => {
                     href={`/project/${list.name.toLocaleLowerCase()}`}
                   >
                     <li
-                      className='tooltip text-xs text-[#ff5277] cursor-pointer inline-flex items-center gap-1 border border-white p-1 font-medium'
+                      className='tooltip text-xs text-rose-500 cursor-pointer inline-flex items-center gap-1 border border-white p-1 font-medium'
                       data-tip={list?.name}
                     >
                       {list?.icon} {list?.name}

@@ -67,7 +67,7 @@ const NoteDetails = ({
       author_name={thought_data?.author?.name}
     >
       <main
-        className='max_screen:w-full max_screen:px-4 w-[ ] mx-auto'
+        className='max_screen:w-full max_screen:px-4 px-4 xl:w-[70rem] mx-auto'
         id='note'
       >
         <section>

@@ -26,7 +26,7 @@ const Thoughts = (
     >
       <main className='w-full h-full flex flex-col gap-10 px-4 lg:px-14 xl:px-20 2xl:px-40 lg:container md:mx-auto pb-5'>
         <div>
-          <p className='font-bold font-noe text-5xl md:text-7xl capitalize'>
+          <p className='font-bold text-5xl md:text-7xl capitalize'>
             short note
           </p>
           <p>

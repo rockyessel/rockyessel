@@ -29,7 +29,7 @@ export default function Document() {
           crossOrigin='anonymous'
         ></script>
       </Head>
-      <body className='bg-[#0e141b] text-white'>
+      <body className='bg-[#0e141b] text-white font-moldyen'>
         <Main />
         <NextScript />
       </body>

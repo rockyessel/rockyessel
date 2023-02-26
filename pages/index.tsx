@@ -42,9 +42,9 @@ export default function Home(
         <section className=' mt-5 md:mt-28'>
           <div className='flex flex-col gap-5'>
             <div>
-              <span className='uppercase text-xl font-bold text-[#ff5277]'>
-                Hello, my name is rocky
-              </span>
+              <div className='flex flex-col text-3xl'>
+                <span className='text-white'>Hello, my name is Rocky</span>
+              </div>
 
               <p className='font-bold font-noe text-5xl md:text-7xl'>
                 Am a web developer
@@ -68,7 +68,7 @@ export default function Home(
               <ul className='flex flex-wrap gap-2'>
                 {data_list?.map((list, index) => (
                   <li
-                    className='inline-flex items-center gap-1 border border-[#ff5277] p-2'
+                    className='inline-flex items-center gap-1 border border-rose-500 p-2'
                     key={index}
                   >
                     {list.icon} {list.name}
@@ -81,7 +81,7 @@ export default function Home(
               <div className='flex gap-2'>
                 <a
                   rel='noopener'
-                  className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
+                  className='hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
                   target={`_blank`}
                   href='https://github.com/rockyessel'
                 >
@@ -89,7 +89,7 @@ export default function Home(
                 </a>{' '}
                 <a
                   rel='noopener'
-                  className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
+                  className='hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
                   target={`_blank`}
                   href='https://twitter.com/rockyessel'
                 >
@@ -97,7 +97,7 @@ export default function Home(
                 </a>{' '}
                 <a
                   rel='noopener'
-                  className='hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
+                  className='hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
                   target={`_blank`}
                   href='https://www.linkedin.com/in/rockyessel/'
                 >
@@ -106,7 +106,7 @@ export default function Home(
               </div>
 
               <Link href='/contact'>
-                <button className='font-noe hover:scale-125 md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-[#ff5277]'>
+                <button className='font-noe hover:scale-125 md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'>
                   Contact me
                 </button>
               </Link>
@@ -199,7 +199,7 @@ export default function Home(
               <a
                 target={`_blank`}
                 title='Mail'
-                className=' text-5xl hover:scale-125 hover:text-[#ff5277] origin-center hover:origin-top transition-all duration-500'
+                className=' text-5xl hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
                 href='mailto:essel_r@outlook.com'
               >
                 <SiMicrosoftoutlook />
@@ -207,7 +207,7 @@ export default function Home(
             </div>
 
             <Link href='/contact'>
-              <button className='font-noe hover:scale-125 ml-6 origin-center hover:origin-top transition-all duration-500 text-3xl after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-[#ff5277]'>
+              <button className='font-noe hover:scale-125 ml-6 origin-center hover:origin-top transition-all duration-500 text-3xl after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'>
                 Contact me
               </button>
             </Link>

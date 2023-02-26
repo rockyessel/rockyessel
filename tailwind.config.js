@@ -14,6 +14,7 @@ module.exports = {
         noe: ['Noe Display'],
         pink: ['Pink Yellow Black'],
         astroz: ['Astroz Trial'],
+        moldyen: ['Moldyen'],
       },
     },
   },

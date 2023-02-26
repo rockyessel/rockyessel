@@ -44,7 +44,7 @@ const OtherCard = ({ data }: { data: any }) => {
                   href={`/project/${list.name.toLocaleLowerCase()}`}
                 >
                   <li
-                    className='tooltip text-xs text-[#ff5277] cursor-pointer inline-flex items-center gap-1 border border-white p-1 font-medium'
+                    className='tooltip text-xs text-rose-500 cursor-pointer inline-flex items-center gap-1 border border-white p-1 font-medium'
                     data-tip={list?.name}
                   >
                     {list?.icon} {list?.name}

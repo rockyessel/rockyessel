@@ -53,28 +53,28 @@ const NoteDetailCard = ({ data }: any) => {
       },
 
       strong: ({ children, value }: any) => (
-        <strong className='text-[#ff5277] text-lg'>{children}</strong>
+        <strong className='text-rose-500 text-lg'>{children}</strong>
       ),
     },
 
     block: {
       h1: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[2rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[2rem] mb-0'>{children}</h1>
       ),
       h2: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[1.8rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[1.8rem] mb-0'>{children}</h1>
       ),
       h3: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[1.6rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[1.6rem] mb-0'>{children}</h1>
       ),
       h4: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[1.4rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[1.4rem] mb-0'>{children}</h1>
       ),
       h5: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[1.2rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[1.2rem] mb-0'>{children}</h1>
       ),
       h6: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[1.rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[1.rem] mb-0'>{children}</h1>
       ),
     },
   };
@@ -83,7 +83,7 @@ const NoteDetailCard = ({ data }: any) => {
     <React.Fragment>
       <div className='flex flex-col gap-4'>
         <div className='flex flex-col gap-1'>
-          <h1 className='font-extrabold max_screen:text-4xl text-7xl font-noe capitalize'>
+          <h1 className='font-extrabold max_screen:text-4xl text-7xl capitalize'>
             {data?.title}
           </h1>
 
@@ -109,7 +109,7 @@ const NoteDetailCard = ({ data }: any) => {
           <PortableText value={data?.body} components={CodeBlocks} />
         </article>
         <div className='w-full flex justify-center items-center'>
-          <ProfileCard />
+          {/* <ProfileCard /> */}
         </div>
       </div>
     </React.Fragment>

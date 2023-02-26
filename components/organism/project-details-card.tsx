@@ -1,5 +1,5 @@
 import React from 'react';
-import {  ProfileCard } from '../index';
+import { ProfileCard } from '../index';
 import { FiExternalLink } from 'react-icons/fi';
 import Image from 'next/image';
 import {
@@ -63,28 +63,28 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
       },
 
       strong: ({ children, value }: any) => (
-        <strong className='text-[#ff5277] text-lg'>{children}</strong>
+        <strong className='text-rose-500 text-lg'>{children}</strong>
       ),
     },
 
     block: {
       h1: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[2rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[2rem] mb-0'>{children}</h1>
       ),
       h2: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[1.8rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[1.8rem] mb-0'>{children}</h1>
       ),
       h3: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[1.6rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[1.6rem] mb-0'>{children}</h1>
       ),
       h4: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[1.4rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[1.4rem] mb-0'>{children}</h1>
       ),
       h5: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[1.2rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[1.2rem] mb-0'>{children}</h1>
       ),
       h6: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[1.rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[1.rem] mb-0'>{children}</h1>
       ),
     },
   };
@@ -92,17 +92,17 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
   return (
     <React.Fragment>
       <div className='flex flex-col gap-2'>
-        <h1 className='font-extrabold max_screen:text-4xl text-7xl capitalize font-noe'>
+        <h1 className='font-extrabold max_screen:text-4xl text-7xl capitalize'>
           {data?.title}
         </h1>
         <div className='flex items-center justify-between gap-2 w-full flex-wrap mb-2'>
           <a target={`_blank`} href={data?.live_website}>
-            <span className='inline-flex items-center gap-1 p-2 w-fit border border-[#ff5277] text-[#ff5277] rounded-md'>
+            <span className='inline-flex items-center gap-1 p-2 w-fit border border-rose-500 text-rose-500 rounded-md'>
               See Live <FiExternalLink />
             </span>
           </a>
           <a target={`_blank`} href={data?.github_project_url}>
-            <span className='inline-flex items-center gap-1 p-2 w-fit border border-[#ff5277] text-[#ff5277] rounded-md'>
+            <span className='inline-flex items-center gap-1 p-2 w-fit border border-rose-500 text-rose-500 rounded-md'>
               Github <FiExternalLink />
             </span>
           </a>
@@ -117,7 +117,7 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
                     href={`/project/${list.name.toLocaleLowerCase()}`}
                   >
                     <li
-                      className='tooltip cursor-pointer inline-flex items-center gap-1 border border-white text-[#ff5277] p-1 font-medium'
+                      className='tooltip cursor-pointer inline-flex items-center gap-1 border border-white text-rose-500 p-1 font-medium'
                       data-tip={list?.name}
                     >
                       {list?.icon} {list?.name}

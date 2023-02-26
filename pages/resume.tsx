@@ -59,28 +59,28 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
       },
 
       strong: ({ children, value }: any) => (
-        <strong className='text-[#ff5277] text-lg'>{children}</strong>
+        <strong className='text-rose-500 text-lg'>{children}</strong>
       ),
     },
 
     block: {
       h1: ({ children, value }: any) => (
-        <h1 className='text-[#ff5277] text-[2rem] mb-0'>{children}</h1>
+        <h1 className='text-rose-500 text-[2rem] mb-0'>{children}</h1>
       ),
       h2: ({ children, value }: any) => (
-        <h2 className='text-[#ff5277] text-[1.8rem] mb-0'>{children}</h2>
+        <h2 className='text-rose-500 text-[1.8rem] mb-0'>{children}</h2>
       ),
       h3: ({ children, value }: any) => (
-        <h3 className='text-[#ff5277] text-[1.6rem] mb-0'>{children}</h3>
+        <h3 className='text-rose-500 text-[1.6rem] mb-0'>{children}</h3>
       ),
       h4: ({ children, value }: any) => (
-        <h4 className='text-[#ff5277] text-[1.4rem] mb-0'>{children}</h4>
+        <h4 className='text-rose-500 text-[1.4rem] mb-0'>{children}</h4>
       ),
       h5: ({ children, value }: any) => (
-        <h5 className='text-[#ff5277] text-[1.2rem] mb-0'>{children}</h5>
+        <h5 className='text-rose-500 text-[1.2rem] mb-0'>{children}</h5>
       ),
       h6: ({ children, value }: any) => (
-        <h6 className='text-[#ff5277] text-[1.rem] mb-0'>{children}</h6>
+        <h6 className='text-rose-500 text-[1.rem] mb-0'>{children}</h6>
       ),
     },
   };
@@ -108,12 +108,12 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
 
         <div className='mt-10 flex items-center gap-10'>
           <Link href='/contact'>
-            <button className='font-noe hover:scale-125 origin-center hover:origin-top transition-all duration-500 text-3xl after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-[#ff5277] hover:after:bg-rose-800'>
+            <button className='font-noe hover:scale-125 origin-center hover:origin-top transition-all duration-500 text-3xl after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500 hover:after:bg-rose-800'>
               Contact me
             </button>
           </Link>
 
-          <button className='font-noe hover:scale-125 origin-center hover:origin-top transition-all duration-500 text-3xl after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-[#ff5277] hover:after:bg-rose-800'>
+          <button className='font-noe hover:scale-125 origin-center hover:origin-top transition-all duration-500 text-3xl after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500 hover:after:bg-rose-800'>
             Download Resume
           </button>
         </div>
