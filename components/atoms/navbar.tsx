@@ -20,17 +20,20 @@ const Navbar = (): JSX.Element => {
         {/* Logo */}
         <Link href='/'>
           <div className='group flex items-center gap-1 z-[10]'>
-            <span className='bg-white rounded-full'>
+            {/* <span className='bg-white rounded-full'>
               <Image
                 src='/logo.svg'
                 width={50}
                 height={50}
                 alt='rockyessel logo'
               />
+            </span> */}
+            <span className='font-astroz text-5xl p-2 rounded-full bg-rose-900'>
+              RE
             </span>
-            <span className='hidden sm:block font-bold font-pink group-hover:text-[#ff5277] transition-all duration-400'>
+            {/* <span className='hidden sm:block font-bold font-astroz group-hover:text-[#ff5277] transition-all duration-400'>
               @rockyessel
-            </span>
+            </span> */}
           </div>
         </Link>
 

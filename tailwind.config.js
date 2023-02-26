@@ -13,6 +13,7 @@ module.exports = {
       fontFamily: {
         noe: ['Noe Display'],
         pink: ['Pink Yellow Black'],
+        astroz: ['Astroz Trial'],
       },
     },
   },
