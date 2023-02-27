@@ -98,8 +98,8 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
       MIME={'png'}
       author_name={'Rocky Essel'}
     >
-      <main className='max_screen:w-full max_screen:px-4 w-[40rem] mx-auto'>
-        <article className='prose text-white'>
+      <main className='max_screen:w-full max_screen:px-4 px-4 xl:w-[70rem] mx-auto'>
+        <article className='prose-xl text-white text-xl'>
           <PortableText
             value={props?.resume_data[1]?.body}
             components={CodeBlocks}

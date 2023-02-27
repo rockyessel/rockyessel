@@ -29,7 +29,7 @@ const Thoughts = (
           <p className='font-bold text-5xl md:text-7xl capitalize'>
             short note
           </p>
-          <p>
+          <p className=' text-lg md:text-2xl font-light'>
             Whenever I&apos;m while building project, and find a break-through,
             I share them here, so that no web developer starting out don&apos;t
             have to suffer. Every information write here, has been through a lot

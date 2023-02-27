@@ -105,7 +105,7 @@ const NoteDetailCard = ({ data }: any) => {
         </div>
       </div>
       <div>
-        <article className='prose mb-5 text-white text-lg'>
+        <article className='prose-xl mb-5 text-white text-lg'>
           <PortableText value={data?.body} components={CodeBlocks} />
         </article>
         <div className='w-full flex justify-center items-center'>

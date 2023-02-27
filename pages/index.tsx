@@ -42,10 +42,9 @@ export default function Home(
         <section className=' mt-5 md:mt-28'>
           <div className='flex flex-col gap-5'>
             <div>
-              <div className='flex flex-col text-3xl'>
-                <span className='text-white'>Hello, my name is Rocky</span>
-              </div>
-
+              <span className='text-white text-3xl'>
+                Hello, my name is Rocky
+              </span>
               <p className='font-bold font-noe text-5xl md:text-7xl'>
                 Am a web developer
               </p>
@@ -106,7 +105,7 @@ export default function Home(
               </div>
 
               <Link href='/contact'>
-                <button className='font-noe hover:scale-125 md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'>
+                <button className=' hover:scale-125 md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'>
                   Contact me
                 </button>
               </Link>
@@ -128,7 +127,7 @@ export default function Home(
             </div>
 
             <Link href='/projects'>
-              <span className='float-right text-2xl font-bold font-noe inline-flex items-center group'>
+              <span className='float-right text-2xl font-bold  inline-flex items-center group'>
                 <span className='group-hover:text-rose-600'>
                   {' '}
                   View all projects
@@ -147,14 +146,14 @@ export default function Home(
               </p>
             ) : (
               <ul className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 md:gap-2'>
-                {side_project?.slice(0, 2).map((data, index) => (
+                {side_project?.slice(0, 4).map((data, index) => (
                   <OtherCard key={index} data={data} />
                 ))}
               </ul>
             )}
 
             <Link href='/projects'>
-              <span className='float-right text-2xl font-bold font-noe inline-flex items-center group'>
+              <span className='float-right text-2xl font-bold  inline-flex items-center group'>
                 <span className='group-hover:text-rose-600'>
                   {' '}
                   View all projects
@@ -174,7 +173,7 @@ export default function Home(
             </ul>
 
             <Link href='/thoughts'>
-              <span className='float-right text-2xl font-bold font-noe inline-flex items-center group'>
+              <span className='float-right text-2xl font-bold  inline-flex items-center group'>
                 <span className='group-hover:text-rose-600'>
                   View all Thoughts
                 </span>
@@ -185,9 +184,7 @@ export default function Home(
         </section>
 
         <section className='flex flex-col gap-2'>
-          <p className='font-bold font-noe text-5xl md:text-7xl'>
-            Get In touch
-          </p>
+          <p className='font-bold text-5xl md:text-7xl'>Get In touch</p>
           <p className=' text-lg md:text-2xl font-light'>
             Although I&apos;m currently looking for any new opportunities, my
             inbox is always open. Whether you have a question or just want to
@@ -207,7 +204,7 @@ export default function Home(
             </div>
 
             <Link href='/contact'>
-              <button className='font-noe hover:scale-125 ml-6 origin-center hover:origin-top transition-all duration-500 text-3xl after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'>
+              <button className='hover:scale-125 ml-6 origin-center hover:origin-top transition-all duration-500 text-3xl after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'>
                 Contact me
               </button>
             </Link>

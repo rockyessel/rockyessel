@@ -17,7 +17,11 @@ const ProjectCard = ({ data }: { data: HomeProps }): JSX.Element => {
   return (
     <div className='w-[20rem] bg-black p-4 rounded-md shadow-md'>
       <div>
-        <p className={`font-bold ${ if_true ? 'w-full inline-flex justify-between items-center' : null }`}>
+        <p
+          className={`font-bold ${
+            if_true ? 'w-full inline-flex justify-between items-center' : null
+          }`}
+        >
           <span className='font-noe'>{data?.title}</span>
           {if_true && <span className='p-1 rounded-md'>{data?.type}</span>}
         </p>
@@ -31,7 +35,7 @@ const ProjectCard = ({ data }: { data: HomeProps }): JSX.Element => {
                   href={`/project/${list.name.toLocaleLowerCase()}`}
                 >
                   <li
-                    className='tooltip cursor-pointer inline-flex items-center gap-1 border border-white p-1 font-medium'
+                    className='tooltip cursor-pointer inline-flex items-center gap-1 border border-rose-500 text-white p-1 font-medium'
                     data-tip={list?.name}
                   >
                     {list?.icon} {list?.name}

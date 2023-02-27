@@ -97,12 +97,12 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
         </h1>
         <div className='flex items-center justify-between gap-2 w-full flex-wrap mb-2'>
           <a target={`_blank`} href={data?.live_website}>
-            <span className='inline-flex items-center gap-1 p-2 w-fit border border-rose-500 text-rose-500 rounded-md'>
+            <span className='inline-flex items-center gap-1 p-2 w-fit border border-rose-500 text-white rounded-md'>
               See Live <FiExternalLink />
             </span>
           </a>
           <a target={`_blank`} href={data?.github_project_url}>
-            <span className='inline-flex items-center gap-1 p-2 w-fit border border-rose-500 text-rose-500 rounded-md'>
+            <span className='inline-flex items-center gap-1 p-2 w-fit border border-rose-500 text-white rounded-md'>
               Github <FiExternalLink />
             </span>
           </a>
@@ -117,7 +117,7 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
                     href={`/project/${list.name.toLocaleLowerCase()}`}
                   >
                     <li
-                      className='tooltip cursor-pointer inline-flex items-center gap-1 border border-white text-rose-500 p-1 font-medium'
+                      className='tooltip cursor-pointer inline-flex items-center gap-1 border border-rose-500 text-white p-1 font-medium'
                       data-tip={list?.name}
                     >
                       {list?.icon} {list?.name}
@@ -155,7 +155,7 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
       </div>
 
       <div>
-        <article className='prose mb-5 text-gray-300'>
+        <article className='prose-xl mb-5 text-gray-300'>
           <PortableText value={data?.body} components={CodeBlocks} />
         </article>
         <div>

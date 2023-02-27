@@ -17,13 +17,13 @@ const About = () => {
       MIME={'png'}
       author_name={'Rocky Essel'}
     >
-      <main className='max_screen:w-full max_screen:px-4 w-[40rem] mx-auto'>
+      <main className='max_screen:w-full max_screen:px-4 px-4 xl:w-[70rem] mx-auto mt-20'>
         <section className='flex flex-col gap-10'>
           <div className='flex flex-col gap-10'>
-            <p className='font-bold font-noe text-5xl md:text-7xl capitalize'>
+            <p className='font-bold text-5xl md:text-7xl capitalize'>
               About Rocky Essel
             </p>
-            <div className='prose text-white'>
+            <div className='prose-xl text-white'>
               <p>
                 I am a front-end developer with experience building web
                 applications. I have a passion for creating a better web, with a
