@@ -1,11 +1,87 @@
 import React from 'react';
+import Image from 'next/image';
+import { PortableText } from '@portabletext/react';
+import { CodeProps, SanityImageProps, SanityTableProps } from '@/interface';
 
 const PrivacyPolicy = () => {
-  return (
-    <main className='max_screen:w-full max_screen:px-4 w-[40rem] mx-auto flex flex-col gap-10'>
-      <p className='font-bold font-noe text-5xl md:text-7xl'>Privacy Policy</p>
+  const CodeBlocks = {
+    types: {
+      code: ({ value }: { value: CodeProps }) => (
+        <pre>
+          <code>{value?.code}</code>
+        </pre>
+      ),
+      image: ({ value }: { value: SanityImageProps }) => (
+        <Image
+          className='m-0 p-0'
+          src={value?.image.url}
+          alt={value?.alt}
+          width={value?.image?.metadata?.dimensions?.width}
+          height={value?.image?.metadata?.dimensions?.height}
+        />
+      ),
+      table: ({ value }: { value: SanityTableProps }) => (
+        <table>
+          {value?.rows?.map((row, index) => (
+            <tr key={index}>
+              <th>{row?.cells[0]}</th>
+              {row?.cells?.slice(1, row?.cells?.length)?.map((cell, index) => (
+                <td key={index}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </table>
+      ),
+    },
 
-      <article className='prose text-white'>
+    marks: {
+      link: ({ children, value }: any) => {
+        const rel = !value.href.startsWith('/')
+          ? 'noopener'
+          : 'noreferrer noopener';
+        return (
+          <a
+            className='text-blue-500 font-bold italic text-lg'
+            href={value.href}
+            rel={rel}
+          >
+            {children}
+          </a>
+        );
+      },
+
+      strong: ({ children, value }: any) => (
+        <strong className='text-rose-500 text-lg'>{children}</strong>
+      ),
+    },
+
+    block: {
+      h1: ({ children, value }: any) => (
+        <h1 className='text-rose-500 text-[2rem] mb-0'>{children}</h1>
+      ),
+      h2: ({ children, value }: any) => (
+        <h2 className='text-rose-500 text-[1.8rem] mb-0'>{children}</h2>
+      ),
+      h3: ({ children, value }: any) => (
+        <h3 className='text-rose-500 text-[1.6rem] mb-0'>{children}</h3>
+      ),
+      h4: ({ children, value }: any) => (
+        <h4 className='text-rose-500 text-[1.4rem] mb-0'>{children}</h4>
+      ),
+      h5: ({ children, value }: any) => (
+        <h5 className='text-rose-500 text-[1.2rem] mb-0'>{children}</h5>
+      ),
+      h6: ({ children, value }: any) => (
+        <h6 className='text-rose-500 text-[1.rem] mb-0'>{children}</h6>
+      ),
+    },
+  };
+
+
+
+  return (
+    <main className='max_screen:w-full max_screen:px-4 px-4 xl:w-[70rem] mx-auto'>
+      <article className='prose-xl text-white'>
         <h1>Privacy Policy</h1>
         <p>Last updated: February 03, 2023</p>
         <p>

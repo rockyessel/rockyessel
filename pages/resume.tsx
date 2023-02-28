@@ -41,7 +41,7 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
         </table>
       ),
     },
-
+ 
     marks: {
       link: ({ children, value }: any) => {
         const rel = !value.href.startsWith('/')
@@ -98,7 +98,7 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
       MIME={'png'}
       author_name={'Rocky Essel'}
     >
-      <main className='max_screen:w-full max_screen:px-4 px-4 xl:w-[70rem] mx-auto'>
+      <main className='max_screen:w-full max_screen:px-4 px-4 xl:w-[70rem] mx-auto mt-5 md:mt-28'>
         <article className='prose-xl text-white text-xl'>
           <PortableText
             value={props?.resume_data[1]?.body}

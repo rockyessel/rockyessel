@@ -18,7 +18,7 @@ const Contact = () => {
     >
       <main className='max_screen:w-full max_screen:px-4 px-4 xl:w-[70rem] mx-auto'>
         <section className='flex flex-col gap-10'>
-          <p className='font-bold font-noe text-5xl md:text-7xl capitalize'>
+          <p className='font-bold text-5xl md:text-7xl capitalize'>
             Reach out to me
           </p>
 

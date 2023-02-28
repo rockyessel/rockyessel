@@ -24,9 +24,11 @@ const Projects = (
       MIME={'png'}
       author_name={'Rocky Essel'}
     >
-      <main className='w-full h-full flex flex-col gap-10 px-4 lg:px-14 xl:px-20 2xl:px-40 lg:container md:mx-auto pb-5'>
+      <main className='w-full h-full flex flex-col gap-10 px-4 lg:px-14 xl:px-20 2xl:px-40 lg:container md:mx-auto pb-5 mt-5 md:mt-28'>
         <div>
-          <p className='font-bold text-5xl md:text-7xl capitalize'>short note</p>
+          <p className='font-bold text-5xl md:text-7xl capitalize'>
+            short note
+          </p>
           <p className=' text-lg md:text-2xl font-light'>
             Here, all projects on this section include tools, side projects,
             professional works,and other stuff that I created. So check tags for
@@ -35,7 +37,9 @@ const Projects = (
           </p>
         </div>
 
-        <div className={`grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-2.5`}>
+        <div
+          className={`grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-2.5`}
+        >
           {props?.project_data?.map((data, index) => (
             <OtherCard key={index} data={data} />
           ))}

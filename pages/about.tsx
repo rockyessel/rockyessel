@@ -17,7 +17,7 @@ const About = () => {
       MIME={'png'}
       author_name={'Rocky Essel'}
     >
-      <main className='max_screen:w-full max_screen:px-4 px-4 xl:w-[70rem] mx-auto mt-20'>
+      <main className='max_screen:w-full max_screen:px-4 px-4 xl:w-[70rem] mx-auto mt-5 md:mt-28'>
         <section className='flex flex-col gap-10'>
           <div className='flex flex-col gap-10'>
             <p className='font-bold text-5xl md:text-7xl capitalize'>
