@@ -16,4 +16,4 @@ export { default as Head } from './atoms/head';
 export { default as Layout } from './molecules/layout';
 export { default as CommentForm } from './molecules/comment-form';
 export { default as ProjectCard } from './molecules/project-card';
-export { default as NoteCard } from './molecules/note-card';
+export { default as NoteCard } from './molecules/note-card'
