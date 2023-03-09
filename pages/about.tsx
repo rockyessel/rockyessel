@@ -1,6 +1,8 @@
 import { Layout, SkillsCard } from '@/components';
 import React from 'react';
-
+import { FiFigma } from 'react-icons/fi';
+import { SiAdobephotoshop } from 'react-icons/si';
+import { TbBrandDiscord } from 'react-icons/tb';
 const About = () => {
   return (
     <Layout
@@ -59,18 +61,11 @@ const About = () => {
             </div>
           </div>
 
-          <div className='flex flex-col gap-10'>
+         
             <div className='flex flex-col gap-1'>
               <p className='font-extrabold text-3xl capitalize'>Skills</p>
               <SkillsCard />
             </div>
-            <div className='flex flex-col gap-1'>
-              <p className='font-extrabold text-3xl capitalize'>
-                Tools & Platforms
-              </p>
-              <SkillsCard />
-            </div>
-          </div>
         </section>
       </main>
     </Layout>

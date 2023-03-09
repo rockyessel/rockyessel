@@ -9,7 +9,7 @@ const NoteDetailCard = ({ data }: any) => {
   const CodeBlocks = {
     types: {
       code: ({ value }: { value: CodeProps }) => (
-        <pre>
+        <pre className='bg-black rounded-lg border-[1px] border-white/10 overflow-x-auto'>
           <code>{value?.code}</code>
         </pre>
       ),

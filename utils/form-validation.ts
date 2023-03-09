@@ -1,11 +1,6 @@
 import { FormErrorProps } from '@/interface';
 
-export default function FormValidation(
-  formType: string,
-  formData: string,
-  formErr: FormErrorProps,
-  setFormErr: React.Dispatch<React.SetStateAction<FormErrorProps>>
-): boolean {
+export default function FormValidation( formType: string, formData: string, formErr: FormErrorProps, setFormErr: React.Dispatch<React.SetStateAction<FormErrorProps>>): boolean {
   let currentState: boolean = true;
 
   switch (formType) {

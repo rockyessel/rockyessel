@@ -79,6 +79,7 @@ export default function Home(
             <div className='flex items-center gap-3 md:gap-5md:text-3xl text-2xl'>
               <div className='flex gap-2'>
                 <a
+                  title='Github'
                   rel='noopener'
                   className='hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
                   target={`_blank`}
@@ -87,6 +88,7 @@ export default function Home(
                   <BsGithub />{' '}
                 </a>{' '}
                 <a
+                  title='Twitter'
                   rel='noopener'
                   className='hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
                   target={`_blank`}
@@ -95,6 +97,7 @@ export default function Home(
                   <BsTwitter />{' '}
                 </a>{' '}
                 <a
+                  title='Linkedin'
                   rel='noopener'
                   className='hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
                   target={`_blank`}
@@ -105,7 +108,11 @@ export default function Home(
               </div>
 
               <Link href='/contact'>
-                <button className=' hover:scale-125 md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'>
+                <button
+                  title='Contact me'
+                  type='button'
+                  className=' hover:scale-[1.1] md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'
+                >
                   Contact me
                 </button>
               </Link>
@@ -114,7 +121,7 @@ export default function Home(
         </section>
 
         <section className='flex flex-col gap-20'>
-          <div className='flex flex-col gap-5 md:gap-2.5'>
+          {/* <div className='flex flex-col gap-5 md:gap-2.5'>
             <p className='font-extrabold text-3xl capitalize'>
               Professional Work
             </p>
@@ -135,7 +142,7 @@ export default function Home(
                 <MdArrowForward className='group-hover:ml-2 transition-all duration-500 group-hover:text-rose-600' />
               </span>
             </Link>
-          </div>
+          </div> */}
 
           <div className='flex flex-col gap-5 md:gap-2.5'>
             <p className='font-extrabold text-3xl capitalize'>Side Projects</p>
@@ -184,27 +191,50 @@ export default function Home(
         </section>
 
         <section className='flex flex-col gap-2'>
-          <p className='font-bold text-5xl md:text-7xl'>Get In touch</p>
+          <p className='font-extrabold text-3xl capitalize'>Get In touch</p>
           <p className=' text-lg md:text-2xl font-light'>
             Although I&apos;m currently looking for any new opportunities, my
             inbox is always open. Whether you have a question or just want to
             say hi, I&apos;ll try my best to get back to you!
           </p>
 
-          <div className='flex items-center gap-2'>
-            <div>
+          <div className='flex items-center gap-3 md:gap-5md:text-3xl text-2xl'>
+            <div className='flex gap-2'>
               <a
+                title='Github'
+                rel='noopener'
+                className='hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
                 target={`_blank`}
-                title='Mail'
-                className=' text-5xl hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
-                href='mailto:essel_r@outlook.com'
+                href='https://github.com/rockyessel'
               >
-                <SiMicrosoftoutlook />
+                <BsGithub />
+              </a>
+              <a
+                title='Twitter'
+                rel='noopener'
+                className='hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
+                target={`_blank`}
+                href='https://twitter.com/rockyessel'
+              >
+                <BsTwitter />
+              </a>
+              <a
+                title='Linkedin'
+                rel='noopener'
+                className='hover:scale-125 hover:text-rose-500 origin-center hover:origin-top transition-all duration-500'
+                target={`_blank`}
+                href='https://www.linkedin.com/in/rockyessel/'
+              >
+                <BsLinkedin />
               </a>
             </div>
 
             <Link href='/contact'>
-              <button className='hover:scale-125 ml-6 origin-center hover:origin-top transition-all duration-500 text-3xl after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'>
+              <button
+                title='Contact me'
+                type='button'
+                className=' hover:scale-[1.1] md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'
+              >
                 Contact me
               </button>
             </Link>

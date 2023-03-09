@@ -106,14 +106,22 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
           />
         </article>
 
-        <div className='mt-10 flex items-center gap-10'>
+        <div className='mt-10 flex items-center gap-2'>
           <Link href='/contact'>
-            <button className='font-noe hover:scale-125 origin-center hover:origin-top transition-all duration-500 text-3xl after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500 hover:after:bg-rose-800'>
-              Contact me
-            </button>
+            <button
+                  title='Contact me'
+                  type='button'
+                  className=' hover:scale-[1.1] md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'
+                >
+                  Contact me
+                </button>
           </Link>
 
-          <button className='font-noe hover:scale-125 origin-center hover:origin-top transition-all duration-500 text-3xl after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500 hover:after:bg-rose-800'>
+          <button
+                  title='Download'
+                  type='button'
+                  className=' hover:scale-[1.1] md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'
+                >
             Download Resume
           </button>
         </div>
