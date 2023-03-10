@@ -255,6 +255,7 @@ export const getServerSideProps: GetServerSideProps<{
 
   return {
     props: JSON.parse(JSON.stringify({ project_data, note_data })),
+    revalidate: 10,
   };
 };
 

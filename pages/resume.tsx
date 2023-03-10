@@ -141,5 +141,6 @@ export const getStaticProps: GetStaticProps<{
 
   return {
     props: { resume_data: JSON.parse(JSON.stringify(resume_data)) },
+    revalidate: 10,
   };
 };

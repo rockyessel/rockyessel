@@ -126,6 +126,7 @@ export const getStaticProps: GetStaticProps<{
 
   return {
     props: { thought_data: JSON.parse(JSON.stringify(thought_data)) },
+    revalidate: 10,
   };
 };
 

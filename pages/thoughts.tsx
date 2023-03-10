@@ -56,5 +56,6 @@ export const getStaticProps: GetStaticProps<{
 
   return {
     props: JSON.parse(JSON.stringify({ thoughts_data })),
+    revalidate: 10,
   };
 };

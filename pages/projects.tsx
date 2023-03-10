@@ -58,5 +58,6 @@ export const getStaticProps: GetStaticProps<{
 
   return {
     props: JSON.parse(JSON.stringify({ project_data })),
+    revalidate: 10,
   };
 };
