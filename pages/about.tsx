@@ -10,7 +10,7 @@ const About = () => {
                 web applications. I have a passion for creating a better web,
                 with a focus on speed, ease of use, aesthetic design,`}
       title={'About Rocky Essel'}
-      image={''}
+      image={'images/aboutpage.PNG'}
       type={'Website'}
       alt={'about-me-rocky-essel'}
       keywords={'rocky essel, esselr,essel_r,rocky,essel'}
@@ -61,11 +61,10 @@ const About = () => {
             </div>
           </div>
 
-         
-            <div className='flex flex-col gap-1'>
-              <p className='font-extrabold text-3xl capitalize'>Skills</p>
-              <SkillsCard />
-            </div>
+          <div className='flex flex-col gap-1'>
+            <p className='font-extrabold text-3xl capitalize'>Skills</p>
+            <SkillsCard />
+          </div>
         </section>
       </main>
     </Layout>

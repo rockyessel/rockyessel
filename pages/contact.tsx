@@ -7,7 +7,7 @@ const Contact = () => {
       description={`Send a general message or details of a project you&apos;d like me to be a
             part of and I&apos;ll get back to you as soon as possible.`}
       title={'Contact me'}
-      image={''}
+      image={'images/contactpage.PNG'}
       type={'Website'}
       alt={'contact-me'}
       keywords={'me,contact me'}

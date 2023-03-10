@@ -19,11 +19,7 @@ const NotFound = () => {
       author_name={'Rocky Essel'}
     >
       <main className='w-full h-full flex justify-center items-center'>
-        <section>
-          <p>404</p>
-          <p>{router}</p>
-          <p>The page you are looking for was not found.</p>
-        </section>
+        <p className='text-7xl '>404</p>
       </main>
     </Layout>
   );

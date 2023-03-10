@@ -89,7 +89,7 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
     <Layout
       description={props?.resume_data[1]?.description}
       title={props?.resume_data[1]?.title}
-      image={''}
+      image={'images/resumepage.PNG'}
       type={'Resume'}
       alt={'my-resume'}
       keywords={'my resume, portfolio,seeking job'}
@@ -109,19 +109,19 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
         <div className='mt-10 flex items-center gap-2'>
           <Link href='/contact'>
             <button
-                  title='Contact me'
-                  type='button'
-                  className=' hover:scale-[1.1] md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'
-                >
-                  Contact me
-                </button>
+              title='Contact me'
+              type='button'
+              className=' hover:scale-[1.1] md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'
+            >
+              Contact me
+            </button>
           </Link>
 
           <button
-                  title='Download'
-                  type='button'
-                  className=' hover:scale-[1.1] md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'
-                >
+            title='Download'
+            type='button'
+            className=' hover:scale-[1.1] md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'
+          >
             Download Resume
           </button>
         </div>
