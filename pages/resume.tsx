@@ -41,7 +41,7 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
         </table>
       ),
     },
- 
+
     marks: {
       link: ({ children, value }: any) => {
         const rel = !value.href.startsWith('/')
@@ -122,7 +122,9 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
             type='button'
             className=' hover:scale-[1.1] md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'
           >
-            Download Resume
+            <a href='/RockyEssel.pdf' download>
+              Download Resume
+            </a>
           </button>
         </div>
       </main>
