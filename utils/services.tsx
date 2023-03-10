@@ -104,7 +104,7 @@ export const formDataInitialState = {
 export const defaultMetaData: DefaultMetaDataProps = {
   description: `I am a front-end developer with experience building web applications. I have a passion for creating a better web, with a focus on speed, ease of use, aesthetic design, accessibility, and user satisfaction. My goal is to work in a company where I can deliver business value while also growing as a web developer.`,
   title: `Portfolio Homepage`,
-  image: `images/homepage.PNG`,
+  image: `https://esselr.vercel.app/images/homepage.PNG`,
   alt: 'Homepage',
   keywords: 'portfolio website,blog,website,projects',
   type: `website`,

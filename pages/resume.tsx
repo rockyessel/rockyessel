@@ -89,7 +89,7 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
     <Layout
       description={props?.resume_data[1]?.description}
       title={props?.resume_data[1]?.title}
-      image={'images/resumepage.PNG'}
+      image={'https://esselr.vercel.app/images/resumepage.PNG'}
       type={'Resume'}
       alt={'my-resume'}
       keywords={'my resume, portfolio,seeking job'}

@@ -10,7 +10,7 @@ const About = () => {
                 web applications. I have a passion for creating a better web,
                 with a focus on speed, ease of use, aesthetic design,`}
       title={'About Rocky Essel'}
-      image={'images/aboutpage.PNG'}
+      image={'https://esselr.vercel.app/images/aboutpage.PNG'}
       type={'Website'}
       alt={'about-me-rocky-essel'}
       keywords={'rocky essel, esselr,essel_r,rocky,essel'}

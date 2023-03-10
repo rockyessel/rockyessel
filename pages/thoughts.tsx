@@ -15,7 +15,7 @@ const Thoughts = (
             of research, so reference are made available if you want to check
             them out.`}
       title={'All Thought'}
-      image={''}
+      image={'https://esselr.vercel.app/images/thoughtspage.PNG'}
       type={'Article'}
       alt={'all-thought'}
       keywords={'rust,TailwindCSS,html,css,python,js,ts,rs,yew'}

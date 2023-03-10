@@ -10,7 +10,7 @@ const NotFound = () => {
     <Layout
       description={'The page you are looking for was not found.'}
       title={'Page Not Found'}
-      image={'images/notfoundpage.PNG'}
+      image={'https://esselr.vercel.app/images/notfoundpage.PNG'}
       type={'Website'}
       alt={'Page Not Found'}
       keywords={'Page Not Found'}

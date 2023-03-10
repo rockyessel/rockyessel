@@ -15,7 +15,7 @@ const Projects = (
             the specific project you want to open. And some of my projects have
             been archived.`}
       title={'All Showcase - @rockyessel'}
-      image={'images/projectpage.PNG'}
+      image={'https://esselr.vercel.app/images/projectpage.PNG'}
       type={'Projects'}
       alt={'All Showcase - @rockyessel'}
       keywords={'professional project, side projects, react.js, next.js'}

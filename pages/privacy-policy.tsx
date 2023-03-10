@@ -85,7 +85,7 @@ const PrivacyPolicy = () => {
             Service and tells You about Your privacy rights and how the law
             protects You.`}
       title={'Privacy Policy'}
-      image={'images/policypage.PNG'}
+      image={'https://esselr.vercel.app/images/policypage.PNG'}
       type={'Portfolio'}
       alt={'Privacy Policy'}
       keywords={'Privacy Policy'}
