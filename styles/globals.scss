@@ -92,13 +92,34 @@ td {
   background: #000000;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 250ms ease-in;
   -webkit-transition: transform 250ms ease-in;
   -moz-transition: transform 250ms ease-in;
   -ms-transition: transform 250ms ease-in;
   -o-transition: transform 250ms ease-in;
+  transition: transform 250ms ease-in;
 }
 .re_li:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #881338;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
