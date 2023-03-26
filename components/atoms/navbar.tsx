@@ -1,19 +1,25 @@
 import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 import Link from 'next/link';
-import Image from 'next/image';
 import { menuLink } from '@/utils/services';
-import { BsGithub, BsLinkedin, BsTwitter } from 'react-icons/bs';
+import {
+  BsGithub,
+  BsLinkedin,
+  BsTwitter,
+  BsFillMoonStarsFill,
+  BsFillSunFill,
+} from 'react-icons/bs';
+import { useTheme } from 'next-themes';
 
 const Navbar = (): JSX.Element => {
   const [showMenu, setShowMenu] = React.useState<boolean>(false);
-
+  const { theme, setTheme } = useTheme();
   const handleState = () => {
     setShowMenu((prev) => !prev);
   };
 
   return (
-    <div
+    <header
       className={`z-[4] w-full bg-[#0e141b] h-auto sticky top-0 px-4 lg:px-14 xl:px-20 2xl:px-40 py-2  md:mx-auto transition-all duration-400`}
     >
       <nav className='flex items-center justify-between'>
@@ -30,8 +36,8 @@ const Navbar = (): JSX.Element => {
         <ul className='hidden md:flex gap-2 items-center'>
           {menuLink.map((link, index) => (
             <Link key={index} href={link?.url}>
-              <li className='inline-flex justify-start items-center gap-2  hover:text-gray-500  duration-700 cursor-pointer w-full text-center hover:border-none'>
-                <span className='font-extrabold text-rose-500'>
+              <li className='inline-flex justify-start items-center gap-2  hover:text-gray-300  duration-700 cursor-pointer w-full text-center hover:border-none'>
+                <span className='font-extrabold text-rose-800'>
                   0{index + 1}.
                 </span>
                 {link?.name}
@@ -52,19 +58,27 @@ const Navbar = (): JSX.Element => {
             <span className='hidden md:block'>Close</span>
           </button>
         ) : (
-          <button
-            type='button'
-            title=''
-            onClick={handleState}
-            className=' md:hidden inline-flex flex-col justify-center items-center'
-          >
-            <div className='space-y-2 group'>
-              <span className='block w-5 h-0.5 bg-gray-200 group-hover:bg-opacity-[0.4]'></span>
-              <span className='block w-8 h-0.5 bg-gray-200 group-hover:bg-opacity-[0.4]'></span>
-              <span className='block w-8 h-0.5 bg-gray-200 group-hover:bg-opacity-[0.4]'></span>
-            </div>
-            <span className='hidden md:block'>Menu</span>
-          </button>
+          <ul>
+            <li className='hover:text-gray-500 duration-700 cursor-pointer text-center hover:border-none bg-rose-800 rounded-full w-12 h-12 inline-flex items-center justify-center text-sm'>
+              <label className='swap swap-rotate'>
+                <input title='Mode' type='checkbox' />
+                <BsFillMoonStarsFill onClick={()=> setTheme('dark')} className='swap-on fill-current w-10 h-10' />
+                <BsFillSunFill onClick={()=> setTheme('light')}  className='swap-off fill-current w-10 h-10' />
+              </label>
+            </li>
+            <li
+              title='Menu bar'
+              onClick={handleState}
+              className=' md:hidden inline-flex flex-col justify-center items-center'
+            >
+              <div className='space-y-2 group'>
+                <span className='block w-5 h-0.5 bg-gray-200 group-hover:bg-opacity-[0.4]'></span>
+                <span className='block w-8 h-0.5 bg-gray-200 group-hover:bg-opacity-[0.4]'></span>
+                <span className='block w-8 h-0.5 bg-gray-200 group-hover:bg-opacity-[0.4]'></span>
+              </div>
+              <span className='hidden md:block'>Menu</span>
+            </li>
+          </ul>
         )}
 
         {/* Mobile Menu */}
@@ -74,7 +88,10 @@ const Navbar = (): JSX.Element => {
               <ul className='flex flex-col uppercase divide-gray-800 items-start gap-8 bg-[#0e141b] w-full h-full'>
                 {menuLink.map((link, index) => (
                   <Link key={index} href={link?.url}>
-                    <li className='inline-flex justify-start items-center gap-2  hover:text-gray-500  duration-700 cursor-pointer w-full text-center hover:border-none'>
+                    <li
+                      onClick={handleState}
+                      className='inline-flex justify-start items-center gap-2  hover:text-gray-500  duration-700 cursor-pointer w-full text-center hover:border-none'
+                    >
                       <span className='font-extrabold text-rose-500'>
                         0{index + 1}.
                       </span>
@@ -114,7 +131,7 @@ const Navbar = (): JSX.Element => {
           </div>
         )}
       </nav>
-    </div>
+    </header>
   );
 };
 

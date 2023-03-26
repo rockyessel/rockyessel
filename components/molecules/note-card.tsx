@@ -1,10 +1,5 @@
-import React from 'react';
 import { AiOutlineComment, AiOutlineEye } from 'react-icons/ai';
-import {
-  MdOutlineReadMore,
-  MdOutlineRecommend,
-  MdFeaturedPlayList,
-} from 'react-icons/md';
+import { MdOutlineReadMore, MdOutlineRecommend, MdFeaturedPlayList } from 'react-icons/md';
 import Link from 'next/link';
 import { data_list } from '@/utils/services';
 import { NoteCardProps } from '@/interface';
@@ -18,10 +13,8 @@ const NoteCard = ({ data }: { data: NoteCardProps }): JSX.Element => {
 
   const MAX_TITLE: number = 70;
   const MAX_DESCRIPTION: number = 157;
-
   const sliceDes: string = `${data?.description?.slice(0, MAX_DESCRIPTION)}...`;
   const sliceTitle: string = `${data?.title?.slice(0, MAX_TITLE)}...`;
-
   const isTitleLonger: boolean = data?.title?.length > MAX_TITLE;
   const isDesLonger: boolean = data?.description?.length > MAX_DESCRIPTION;
 

@@ -10,12 +10,6 @@ interface FormDataProps {
   _id: string;
 }
 
-interface THOUGHT_ID_PROPS {
-  url: string;
-  _id: string;
-  close: () => void;
-}
-
 const CommentForm = (props: any) => {
   const initialData = {
     name: '',

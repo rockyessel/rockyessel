@@ -1,20 +1,10 @@
-import React from 'react';
 import { Layout, ProjectDetailsCard } from '@/components';
-import { FiExternalLink } from 'react-icons/fi';
-import Image from 'next/image';
-import { BiAddToQueue } from 'react-icons/bi';
-import {
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetServerSidePropsType,
-} from 'next';
+import { GetStaticPaths, GetStaticProps, InferGetServerSidePropsType } from 'next';
 import { CommonPath, HomeProps, Params } from '@/interface';
 import { CommonPathProps, ProjectDataProps } from '@/utils/query';
 import { useRouter } from 'next/router';
 
-const ProjectDetails = ({
-  project_data,
-}: InferGetServerSidePropsType<typeof getStaticProps>) => {
+const ProjectDetails = ({ project_data }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   const mimeType = project_data?.image[0].split('.').slice(-1)[0];
 
   const router = useRouter();
@@ -60,9 +50,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<{
-  project_data: HomeProps;
-}> = async (context) => {
+export const getStaticProps: GetStaticProps<{ project_data: HomeProps }> = async (context) => {
   const { project }: any = context.params as Params;
 
   const project_data: HomeProps = await ProjectDataProps(project);

@@ -1,7 +1,6 @@
 import React from 'react';
 import { ParsedUrlQuery } from 'querystring';
 
-// -------Head---------- //
 export interface DefaultMetaDataProps {
   description: string;
   title: string;
@@ -23,9 +22,7 @@ export interface MetaInfoTagsProps {
   name: string;
   content: string;
 }
-// -------------------------- //
 
-// -------Layout---------- //
 export interface LayoutProps {
   children: React.ReactNode;
   description: string;
@@ -39,9 +36,7 @@ export interface LayoutProps {
   MIME: string;
   author_name: string;
 }
-// -------------------------- //
 
-// -------Form/Form-Validation---------- //
 export interface FormDataProps {
   name: string;
   email: string;
@@ -66,9 +61,7 @@ interface THOUGHT_ID_PROPS {
   _id: string;
   close: () => void;
 }
-// -------------------------- //
 
-// -------[project]/[note]---------- //
 export interface Params extends ParsedUrlQuery {
   note: string;
 }
@@ -183,9 +176,7 @@ export interface CommentUserProps {
     comment: string;
   }[];
 }
-// -------------------------- //
 
-// -------Modal---------- //
 export interface ModalProps {
   isShown: boolean;
   close: () => void;
@@ -193,7 +184,6 @@ export interface ModalProps {
   modalHeader: string;
 }
 
-// --------------------------------- //
 export interface NoteCardProps {
   title: string;
   viewCount: number;
@@ -205,6 +195,7 @@ export interface NoteCardProps {
   slug: { current: string };
   estimated_reading_time: number;
   comment: { _id: string }[];
+  _createdAt:string;
 }
 
 export interface SanityImageProps {
@@ -222,6 +213,7 @@ export interface SanityImageProps {
     };
   };
 }
+
 export interface SanityTableProps {
   _key: string;
   _type: string;

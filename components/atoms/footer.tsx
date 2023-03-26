@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 
 const Footer = () => {
   const date = new Date();
@@ -10,7 +9,7 @@ const Footer = () => {
       <section className='w-full flex flex-col md:flex-row items-center md:flex md:items-center justify-center md:justify-between'>
         <span className='text-sm flex flex-wrap items-center justify-center gap-1 sm:text-center'>
           © {year}
-          <Link href='/' className='hover:underline'>
+          <Link href='/' className=''>
             <span className='font-astroz text-xl p-2 rounded-full bg-rose-900 hover:text-rose-900 hover:bg-white'>
               RE
             </span>

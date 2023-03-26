@@ -1,31 +1,12 @@
 import React from 'react';
-import {
-  GetStaticProps,
-  GetStaticPaths,
-  InferGetServerSidePropsType,
-} from 'next';
+import { GetStaticProps, GetStaticPaths, InferGetServerSidePropsType } from 'next';
 import { CommonPath, NoteProps, Params } from '@/interface';
-import {
-  CommonPathProps,
-  NoteDetailsData,
-  UpdateDatedViewCount,
-} from '@/utils/query';
+import { CommonPathProps, NoteDetailsData, UpdateDatedViewCount } from '@/utils/query';
 import { useRouter } from 'next/router';
 import { AddViewCount } from '@/utils/api-request';
-import {
-  CommentDisplay,
-  CommentForm,
-  CommentStatus,
-  Layout,
-  NoteDetailCard,
-  ReferenceCard,
-  SkillsCard,
-  ViewsCommentCount,
-} from '@/components';
+import { CommentDisplay, CommentForm, CommentStatus, FollowButton, Layout, NoteDetailCard, ResourceCard, ViewsCommentCount } from '@/components';
 
-const NoteDetails = ({
-  thought_data,
-}: InferGetServerSidePropsType<typeof getStaticProps>) => {
+const NoteDetails = ({ thought_data }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   const [hide, setHide] = React.useState<boolean>(false);
   const [hasIncremented, setHasIncremented] = React.useState<boolean>(false);
   const [thoughtData, setThoughtData] = React.useState(thought_data);
@@ -66,22 +47,19 @@ const NoteDetails = ({
       MIME={mimeType}
       author_name={thought_data?.author?.name}
     >
-      <main
-        className='max_screen:w-full max_screen:px-4 px-4 xl:w-[70rem] mx-auto mt-5 md:mt-28'
-        id='note'
-      >
+      <main className='max_screen:w-full max_screen:px-4 px-4 xl:w-[70rem] mx-auto mt-5 md:mt-28' id='note'>
         <section>
           <ViewsCommentCount data={thoughtData} />
           <NoteDetailCard data={thought_data} />
 
           <div className='my-16 flex flex-col gap-10'>
-            <div>
-              <p className='text-2xl font-bold'>Categories</p>
-              <SkillsCard />
+            <div className='text-3xl'>
+              <p className='text-2xl font-bold'>Reach out</p>
+              <FollowButton />
             </div>
             <div>
               <p className='text-2xl font-bold'>Resource</p>
-              <ReferenceCard data={thought_data?.reference_post} />
+              <ResourceCard data={thought_data?.reference_post} />
             </div>
           </div>
 
@@ -115,9 +93,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<{
-  thought_data: NoteProps;
-}> = async (context) => {
+export const getStaticProps: GetStaticProps<{ thought_data: NoteProps }> = async (context) => {
   const { thought }: any = context.params as Params;
 
   const thought_data: NoteProps = await NoteDetailsData(thought);

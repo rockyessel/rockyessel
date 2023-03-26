@@ -1,13 +1,10 @@
 import { Layout } from '@/components';
-import OtherCard from '@/components/molecules/other-card';
+import ProjectCard from '@/components/molecules/project-card';
 import { HomeProps } from '@/interface';
 import { PortfolioData } from '@/utils/query';
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
-import React from 'react';
 
-const Projects = (
-  props: InferGetServerSidePropsType<typeof getStaticProps>
-) => {
+const Projects = ( props: InferGetServerSidePropsType<typeof getStaticProps> ) => {
   return (
     <Layout
       description={`Here, all projects on this section include tools, side projects,
@@ -38,9 +35,15 @@ const Projects = (
         <div
           className={`grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-2.5`}
         >
-          {props?.project_data?.map((data, index) => (
-            <OtherCard key={index} data={data} />
-          ))}
+          {props?.project_data
+            ?.sort(
+              (a, b) =>
+                new Date(b?._createdAt).getTime() -
+                new Date(a?._createdAt).getTime()
+            )
+            ?.map((data, index) => (
+              <ProjectCard key={index} data={data} />
+            ))}
         </div>
       </main>
     </Layout>
@@ -49,9 +52,7 @@ const Projects = (
 
 export default Projects;
 
-export const getStaticProps: GetStaticProps<{
-  project_data: HomeProps[];
-}> = async () => {
+export const getStaticProps: GetStaticProps<{ project_data: HomeProps[] }> = async () => {
   const project_data: HomeProps[] = await PortfolioData();
 
   return {

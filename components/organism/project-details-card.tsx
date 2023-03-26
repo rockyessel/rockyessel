@@ -2,12 +2,7 @@ import React from 'react';
 import { ProfileCard } from '../index';
 import { FiExternalLink } from 'react-icons/fi';
 import Image from 'next/image';
-import {
-  CodeProps,
-  HomeProps,
-  SanityImageProps,
-  SanityTableProps,
-} from '@/interface';
+import { CodeProps, HomeProps, SanityImageProps, SanityTableProps } from '@/interface';
 import { PortableText } from '@portabletext/react';
 import Link from 'next/link';
 import { data_list } from '@/utils/services';
@@ -132,7 +127,7 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
 
       <div>
         <Image
-          className='rounded-md mb-4 shadow-md'
+          className='w-full rounded-md mb-4 shadow-md'
           src={data?.image[image]}
           width={1000}
           height={1000}
@@ -144,7 +139,7 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
         {data?.image?.map((img, index) => (
           <Image
             key={index}
-            className='rounded-md mb-4 w-20 shadow-md'
+            className='rounded-sm mb-4 w-24 h-20 object-cover object-center shadow-md'
             src={img}
             width={1000}
             height={1000}

@@ -96,22 +96,17 @@ const NoteDetailCard = ({ data }: any) => {
 
         <div>
           <Image
-            className='rounded-md mb-4 shadow-md'
+            className='w-full rounded-md mb-4 shadow-md'
             src={data?.image}
             width={1000}
             height={1000}
-            alt={data?.alt}
+            alt={data?.title}
           />
         </div>
       </div>
-      <div>
-        <article className='prose-xl mb-5 text-white text-lg'>
-          <PortableText value={data?.body} components={CodeBlocks} />
-        </article>
-        <div className='w-full flex justify-center items-center'>
-          {/* <ProfileCard /> */}
-        </div>
-      </div>
+      <article className='prose-xl mb-5 text-white text-lg'>
+        <PortableText value={data?.body} components={CodeBlocks} />
+      </article>
     </React.Fragment>
   );
 };

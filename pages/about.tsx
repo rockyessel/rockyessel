@@ -1,8 +1,6 @@
 import { Layout, SkillsCard } from '@/components';
-import React from 'react';
-import { FiFigma } from 'react-icons/fi';
-import { SiAdobephotoshop } from 'react-icons/si';
-import { TbBrandDiscord } from 'react-icons/tb';
+import { adding_skills } from '@/utils/services';
+
 const About = () => {
   return (
     <Layout
@@ -63,7 +61,8 @@ const About = () => {
 
           <div className='flex flex-col gap-1'>
             <p className='font-extrabold text-3xl capitalize'>Skills</p>
-            <SkillsCard />
+
+            <SkillsCard arr_data={adding_skills} />
           </div>
         </section>
       </main>

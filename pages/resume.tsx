@@ -1,12 +1,7 @@
 import { Layout } from '@/components';
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 import { ResumeQuery } from '@/utils/query';
-import {
-  ResumeQueryProps,
-  SanityTableProps,
-  SanityImageProps,
-  CodeProps,
-} from '@/interface';
+import { ResumeQueryProps, SanityTableProps, SanityImageProps, CodeProps } from '@/interface';
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
 import Link from 'next/link';
@@ -117,15 +112,15 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
             </button>
           </Link>
 
-          <button
-            title='Download'
-            type='button'
-            className=' hover:scale-[1.1] md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'
-          >
-            <a href='/RockyEssel.pdf' download>
+          <a href='/RockyEssel.pdf' download>
+            <button
+              title='Download'
+              type='button'
+              className=' hover:scale-[1.1] md:ml-6 origin-center hover:origin-top transition-all duration-500 after:hover:re_li w-fit font-bold relative text-decoration-none after:content-[""] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-2 after:bg-rose-500'
+            >
               Download Resume
-            </a>
-          </button>
+            </button>
+          </a>
         </div>
       </main>
     </Layout>
@@ -134,9 +129,7 @@ const Resume = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
 
 export default Resume;
 
-export const getStaticProps: GetStaticProps<{
-  resume_data: ResumeQueryProps[];
-}> = async () => {
+export const getStaticProps: GetStaticProps<{ resume_data: ResumeQueryProps[] }> = async () => {
   const resume_data: ResumeQueryProps[] = await ResumeQuery();
 
   if (!resume_data) return { notFound: true };

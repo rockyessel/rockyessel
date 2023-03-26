@@ -37,9 +37,15 @@ const Thoughts = (
           </p>
         </div>
         <ul className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-2.5 overflow-hidden'>
-          {props?.thoughts_data?.map((data, index) => (
-            <NoteCard key={index} data={data} />
-          ))}
+          {props?.thoughts_data
+            ?.sort(
+              (a, b) =>
+                new Date(b?._createdAt).getTime() -
+                new Date(a?._createdAt).getTime()
+            )
+            ?.map((data, index) => (
+              <NoteCard key={index} data={data} />
+            ))}
         </ul>
       </main>
     </Layout>

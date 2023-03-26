@@ -1,4 +1,4 @@
-import { ModalProps } from '@/interface';
+import {ModalProps}  from '../../interface';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { FaTimes } from 'react-icons/fa';
@@ -7,7 +7,7 @@ import { FaTimes } from 'react-icons/fa';
 const Modal: React.FC<ModalProps> = (props) => {
 
   const CommentModal = (
-    <div className='py-12 text-slate-900 bg-slate-900 transition duration-150 bg-opacity-[0.5] overflow-hidden ease-in-out fixed top-1/2 -translate-x-1/2 w-[100%] h-[100%] -translate-y-1/2 left-1/2'>
+    <section className='py-12 text-slate-900 bg-slate-900 transition duration-150 bg-opacity-[0.5] overflow-hidden ease-in-out fixed top-1/2 -translate-x-1/2 w-[100%] h-[100%] -translate-y-1/2 left-1/2'>
       <div className='container mx-auto w-11/12 md:w-2/3 max-w-xl'>
         <div className='relative py-8 px-5 md:px-10 bg-white shadow-md rounded border border-gray-400 flex flex-col gap-5'>
           <p className={`flex justify-between items-center`}>
@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = (props) => {
           <div>{props.modalContent}</div>
         </div>
       </div>
-    </div>
+    </section>
   );
 
   return props.isShown

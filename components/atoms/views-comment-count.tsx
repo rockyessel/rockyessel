@@ -1,10 +1,5 @@
-import React from 'react';
 import Link from 'next/link';
-import {
-  AiOutlineComment,
-  AiOutlineEye,
-  AiOutlineFieldTime,
-} from 'react-icons/ai';
+import { AiOutlineComment, AiOutlineEye, AiOutlineFieldTime } from 'react-icons/ai';
 import moment from 'moment';
 
 const ViewsCommentCount = ({ data }: any) => {

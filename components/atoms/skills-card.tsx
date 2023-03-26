@@ -1,22 +1,24 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import { data_list } from '@/utils/services';
 
-const SkillsCard: React.FC = (): JSX.Element => {
-  const router = useRouter().asPath.split('/').slice(-1)[0];
+interface Props {
+  arr_data: string[];
+}
 
-  const if_not_equal: boolean = '/' !== router;
-
+const SkillsCard: React.FC<Props> = (props): JSX.Element => {
   return (
-    <ul className='rounded-md py-2 flex flex-wrap gap-2 items-center'>
-      {data_list?.map((list, index) => (
-        <li
-          key={index}
-          className='inline-flex text-rose-500 items-center gap-1 border border-white p-1 font-medium'
-        >
-          {list?.icon} {list?.name}
-        </li>
-      ))}
+    <ul className='rounded-md py-2 text-xl flex flex-wrap gap-2 items-center'>
+      {data_list?.map((list, index) =>
+        props?.arr_data?.includes(list.name) ? (
+          <li
+            key={index}
+            className='cursor-pointer inline-flex items-center gap-1 border border-rose-500 text-white p-1 font-medium'
+            title={list?.name}
+          >
+            {list?.icon} {list?.name}
+          </li>
+        ) : null
+      )}
     </ul>
   );
 };

@@ -20,6 +20,7 @@
     "moment": "^2.29.4",
     "next": "13.1.2",
     "next-sanity": "^4.1.0",
+    "next-themes": "^0.2.1",
     "next-ym": "^2.3.5",
     "nextjs-progressbar": "^0.0.16",
     "nodemailer": "^6.9.0",

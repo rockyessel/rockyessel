@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
-    <Html lang='en'>
+    <Html data-theme='dark' lang='en'>
       <Head>
         {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
         <script

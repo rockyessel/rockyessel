@@ -1,18 +1,5 @@
 import { BsGithub } from 'react-icons/bs';
-import {
-  SiPython,
-  SiTypescript,
-  SiJavascript,
-  SiHtml5,
-  SiCss3,
-  SiTailwindcss,
-  SiExpress,
-  SiAdobephotoshop,
-  SiFigma,
-  SiMongodb,
-  SiCodefactor,
-  SiCodecov,
-} from 'react-icons/si';
+import { SiPython, SiTypescript, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiExpress, SiAdobephotoshop, SiFigma, SiMongodb, SiCodefactor, SiCodecov } from 'react-icons/si';
 import { TbBrandNextjs } from 'react-icons/tb';
 import { FaRust } from 'react-icons/fa';
 import { AiTwotoneApi } from 'react-icons/ai';
@@ -55,6 +42,10 @@ export const data_list = [
   },
   {
     name: 'React.js',
+    icon: <RiReactjsLine />,
+  },
+  {
+    name: 'React Native',
     icon: <RiReactjsLine />,
   },
   {
@@ -135,4 +126,18 @@ export const menuLink = [
     name: 'Contact',
     url: '/contact',
   },
+];
+
+export const adding_skills = [
+  'ES6 JavaScript',
+  'TypeScript',
+  'React.js',
+  'Next.js',
+  'Node.js',
+  'MongoDB',
+  'CMS',
+  'CSS',
+  'HTML',
+  'TailwindCSS',
+  // 'React Native',
 ];

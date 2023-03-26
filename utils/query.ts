@@ -137,6 +137,7 @@ export const NoteData = async () => {
   const query = `*[_type=="thought"]{
 title,
 viewCount,
+_createdAt,
 featured,  
 "image":mainImage.asset->url,
 description,

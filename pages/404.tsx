@@ -1,10 +1,7 @@
-import React from 'react';
-import { useRouter } from 'next/router';
 import { Layout } from '@/components';
 import Link from 'next/link';
 
 const NotFound = () => {
-  const router = useRouter().asPath;
 
   return (
     <Layout
