@@ -9,7 +9,6 @@ import { data_list } from '@/utils/services';
 
 const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
   const [image, setImage] = React.useState<number>(0);
-  console.log(data);
 
   const included_tags = data?.tags?.split(',');
   const CodeBlocks = {
@@ -19,9 +18,7 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
           <code>{value?.code}</code>
         </pre>
       ),
-      image: ({ value }: { value: SanityImageProps }) => {
-        console.log('value', value);
-        return (
+      image: ({ value }: { value: SanityImageProps }) =>  (
         <Image
           className='m-0 p-0'
           src={value?.image?.url}
@@ -29,7 +26,7 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
           width={value?.image?.metadata?.dimensions?.width}
           height={value?.image?.metadata?.dimensions?.height}
         />
-      )},
+      ),
       table: ({ value }: { value: SanityTableProps }) => (
         <table>
           {value?.rows?.map((row, index) => (
