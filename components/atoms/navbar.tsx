@@ -58,14 +58,7 @@ const Navbar = (): JSX.Element => {
             <span className='hidden md:block'>Close</span>
           </button>
         ) : (
-          <ul>
-            <li className='hover:text-gray-500 duration-700 cursor-pointer text-center hover:border-none bg-rose-800 rounded-full w-12 h-12 inline-flex items-center justify-center text-sm'>
-              <label className='swap swap-rotate'>
-                <input title='Mode' type='checkbox' />
-                <BsFillMoonStarsFill onClick={()=> setTheme('dark')} className='swap-on fill-current w-10 h-10' />
-                <BsFillSunFill onClick={()=> setTheme('light')}  className='swap-off fill-current w-10 h-10' />
-              </label>
-            </li>
+          <ul className=' md:hidden inline-flex flex-col justify-center items-center'>
             <li
               title='Menu bar'
               onClick={handleState}

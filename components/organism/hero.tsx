@@ -11,12 +11,12 @@ const Hero = () => {
         <div>
           <span className='text-white text-3xl'>Hello, my name is Rocky</span>
           <p className='font-bold font-noe text-5xl md:text-7xl'>
-            Am a web developer
+            Am a frontend developer
           </p>
         </div>
 
         <p className='text-lg md:text-2xl md font-light'>
-          I am a front-end developer with experience building web applications.
+          With experience building web applications.
           I have a passion for creating a better web, with a focus on speed,
           ease of use, aesthetic design, accessibility, and user satisfaction.
         </p>

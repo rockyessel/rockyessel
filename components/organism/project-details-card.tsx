@@ -9,6 +9,7 @@ import { data_list } from '@/utils/services';
 
 const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
   const [image, setImage] = React.useState<number>(0);
+  console.log(data);
 
   const included_tags = data?.tags?.split(',');
   const CodeBlocks = {
@@ -18,15 +19,17 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
           <code>{value?.code}</code>
         </pre>
       ),
-      image: ({ value }: { value: SanityImageProps }) => (
+      image: ({ value }: { value: SanityImageProps }) => {
+        console.log('value', value);
+        return (
         <Image
           className='m-0 p-0'
-          src={value?.image.url}
+          src={value?.image?.url}
           alt={value?.alt}
           width={value?.image?.metadata?.dimensions?.width}
           height={value?.image?.metadata?.dimensions?.height}
         />
-      ),
+      )},
       table: ({ value }: { value: SanityTableProps }) => (
         <table>
           {value?.rows?.map((row, index) => (
@@ -135,11 +138,11 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
         />
       </div>
 
-      <div className='flex items-center gap-2'>
+      <div className='flex flex-wrap items-center gap-2'>
         {data?.image?.map((img, index) => (
           <Image
             key={index}
-            className='rounded-sm mb-4 w-24 h-20 object-cover object-center shadow-md'
+            className='rounded-sm mb-4 w-10 sm:w-16 md:w-24 md:h-20 object-cover object-center shadow-md'
             src={img}
             width={1000}
             height={1000}

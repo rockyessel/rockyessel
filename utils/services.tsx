@@ -1,5 +1,5 @@
 import { BsGithub } from 'react-icons/bs';
-import { SiPython, SiTypescript, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiExpress, SiAdobephotoshop, SiFigma, SiMongodb, SiCodefactor, SiCodecov } from 'react-icons/si';
+import { SiPython, SiRedux, SiTypescript, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiExpress, SiAdobephotoshop, SiFigma, SiMongodb, SiCodefactor, SiCodecov } from 'react-icons/si';
 import { TbBrandNextjs } from 'react-icons/tb';
 import { FaRust } from 'react-icons/fa';
 import { AiTwotoneApi } from 'react-icons/ai';
@@ -84,6 +84,10 @@ export const data_list = [
     name: 'MongoDB',
     icon: <SiMongodb />,
   },
+  {
+    name: 'Redux',
+    icon: <SiRedux />,
+  },
 ];
 
 export const formDataInitialState = {
@@ -139,5 +143,6 @@ export const adding_skills = [
   'CSS',
   'HTML',
   'TailwindCSS',
+  'Redux'
   // 'React Native',
 ];

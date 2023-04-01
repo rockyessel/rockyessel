@@ -118,7 +118,20 @@ export const PortfolioData = async () => {
     _id,
     _type,
     _updatedAt,
-    body,
+    body[]{
+    ...,
+    _type == "image" => {
+    "image": asset->{
+      url,
+      metadata{
+      dimensions{
+        height,
+          width,
+      }
+      }
+      },
+    },
+    },
     description,
     github_project_url,
     "image":image[].asset->url,
@@ -164,7 +177,20 @@ export const ProjectDataProps = async (project: string = '') => {
   _id,
   _type,
   _updatedAt,
-  body,
+ body[]{
+    ...,
+    _type == "image" => {
+    "image": asset->{
+      url,
+      metadata{
+      dimensions{
+        height,
+          width,
+      }
+      }
+      },
+    },
+    },
   description,
   github_project_url,
   "image": image[].asset->url,
@@ -193,8 +219,6 @@ export const UpdateDatedViewCount = async (thought: string = '') => {
 
   return result;
 };
-
-
 
 export const ResumeQuery = async () => {
   const query = `*[_type=="resume"]{
