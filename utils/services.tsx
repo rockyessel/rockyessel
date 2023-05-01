@@ -1,5 +1,5 @@
 import { BsGithub } from 'react-icons/bs';
-import { SiPython, SiRedux, SiTypescript, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiExpress, SiAdobephotoshop, SiFigma, SiMongodb, SiCodefactor, SiCodecov } from 'react-icons/si';
+import { SiPython, SiRedux, SiTypescript, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiExpress, SiAdobephotoshop, SiFigma, SiMongodb, SiCodefactor, SiCodecov, SiPostman, SiGithub } from 'react-icons/si';
 import { TbBrandNextjs } from 'react-icons/tb';
 import { FaRust } from 'react-icons/fa';
 import { AiTwotoneApi } from 'react-icons/ai';
@@ -88,6 +88,14 @@ export const data_list = [
     name: 'Redux',
     icon: <SiRedux />,
   },
+  {
+    name: 'Postman',
+    icon: <SiPostman />,
+  },
+  {
+    name: 'Git',
+    icon: <SiGithub />,
+  },
 ];
 
 export const formDataInitialState = {
@@ -143,6 +151,8 @@ export const adding_skills = [
   'CSS',
   'HTML',
   'TailwindCSS',
-  'Redux'
+  'Redux',
+  'Postman',
+  'Git',
   // 'React Native',
 ];

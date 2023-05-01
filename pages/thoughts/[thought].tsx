@@ -13,11 +13,12 @@ const NoteDetails = ({ thought_data }: InferGetServerSidePropsType<typeof getSta
 
   const router = useRouter();
 
+  // the note slug
   const note = router.asPath?.split('/')?.slice(-1)[0]?.split('#')[0];
 
   React.useEffect(() => {
     if (!hasIncremented) {
-      setTimeout(() => {
+      const time = setTimeout(() => {
         if (thought_data) {
           AddViewCount(thought_data?._id)
             .then(() => {
@@ -27,6 +28,9 @@ const NoteDetails = ({ thought_data }: InferGetServerSidePropsType<typeof getSta
             .catch((error) => console.error(error));
         }
       }, 5000);
+
+
+      return () => clearTimeout(time)
     }
   }, [thought_data?._id, hasIncremented, note, thought_data]);
 
