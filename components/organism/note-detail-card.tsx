@@ -1,83 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { ProfileCard, ShareButton } from '../index';
-import { CodeProps, SanityImageProps, SanityTableProps } from '@/interface';
 import { PortableText } from '@portabletext/react';
 import moment from 'moment';
+import { CodeBlocks } from '@/utils/services';
 
 const NoteDetailCard = ({ data }: any) => {
-  const CodeBlocks = {
-    types: {
-      code: ({ value }: { value: CodeProps }) => (
-        <pre className='bg-black rounded-lg border-[1px] border-white/10 overflow-x-auto'>
-          <code>{value?.code}</code>
-        </pre>
-      ),
-      image: ({ value }: { value: SanityImageProps }) => (
-        <Image
-          className='m-0 p-0'
-          src={value?.image.url}
-          alt={value?.alt}
-          width={value?.image?.metadata?.dimensions?.width}
-          height={value?.image?.metadata?.dimensions?.height}
-        />
-      ),
-      table: ({ value }: { value: SanityTableProps }) => (
-        <table>
-          {value?.rows?.map((row, index) => (
-            <tr key={index}>
-              <th>{row?.cells[0]}</th>
-              {row?.cells?.slice(1, row?.cells?.length)?.map((cell, index) => (
-                <td key={index}>{cell}</td>
-              ))}
-            </tr>
-          ))}
-        </table>
-      ),
-    },
-
-    marks: {
-      link: ({ children, value }: any) => {
-        const rel = !value?.href.startsWith('/')
-          ? 'noopener'
-          : 'noreferrer noopener';
-        return (
-          <a
-            className='text-blue-500 font-bold italic text-lg'
-            href={value?.href}
-            rel={rel}
-          >
-            {children}
-          </a>
-        );
-      },
-
-      strong: ({ children, value }: any) => (
-        <strong className='text-rose-500 text-lg'>{children}</strong>
-      ),
-    },
-
-    block: {
-      h1: ({ children, value }: any) => (
-        <h1 className='text-rose-500 text-[2rem] mb-0'>{children}</h1>
-      ),
-      h2: ({ children, value }: any) => (
-        <h1 className='text-rose-500 text-[1.8rem] mb-0'>{children}</h1>
-      ),
-      h3: ({ children, value }: any) => (
-        <h1 className='text-rose-500 text-[1.6rem] mb-0'>{children}</h1>
-      ),
-      h4: ({ children, value }: any) => (
-        <h1 className='text-rose-500 text-[1.4rem] mb-0'>{children}</h1>
-      ),
-      h5: ({ children, value }: any) => (
-        <h1 className='text-rose-500 text-[1.2rem] mb-0'>{children}</h1>
-      ),
-      h6: ({ children, value }: any) => (
-        <h1 className='text-rose-500 text-[1.rem] mb-0'>{children}</h1>
-      ),
-    },
-  };
 
   return (
     <React.Fragment>

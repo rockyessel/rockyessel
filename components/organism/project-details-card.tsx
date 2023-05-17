@@ -2,87 +2,16 @@ import React from 'react';
 import { ProfileCard } from '../index';
 import { FiExternalLink } from 'react-icons/fi';
 import Image from 'next/image';
-import { CodeProps, HomeProps, SanityImageProps, SanityTableProps } from '@/interface';
+import { HomeProps } from '@/interface';
 import { PortableText } from '@portabletext/react';
 import Link from 'next/link';
-import { data_list } from '@/utils/services';
+import { CodeBlocks, data_list } from '@/utils/services';
 
 const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
   const [image, setImage] = React.useState<number>(0);
 
+
   const included_tags = data?.tags?.split(',');
-  const CodeBlocks = {
-    types: {
-      code: ({ value }: { value: CodeProps }) => (
-        <pre>
-          <code>{value?.code}</code>
-        </pre>
-      ),
-      image: ({ value }: { value: SanityImageProps }) =>  (
-        <Image
-          className='m-0 p-0'
-          src={value?.image?.url}
-          alt={value?.alt}
-          width={value?.image?.metadata?.dimensions?.width}
-          height={value?.image?.metadata?.dimensions?.height}
-        />
-      ),
-      table: ({ value }: { value: SanityTableProps }) => (
-        <table>
-          {value?.rows?.map((row, index) => (
-            <tr key={index}>
-              <th>{row?.cells[0]}</th>
-              {row?.cells?.slice(1, row?.cells?.length)?.map((cell, index) => (
-                <td key={index}>{cell}</td>
-              ))}
-            </tr>
-          ))}
-        </table>
-      ),
-    },
-
-    marks: {
-      link: ({ children, value }: any) => {
-        const rel = !value.href.startsWith('/')
-          ? 'noopener'
-          : 'noreferrer noopener';
-        return (
-          <a
-            className='text-blue-500 font-bold italic text-lg'
-            href={value.href}
-            rel={rel}
-          >
-            {children}
-          </a>
-        );
-      },
-
-      strong: ({ children, value }: any) => (
-        <strong className='text-rose-500 text-lg'>{children}</strong>
-      ),
-    },
-
-    block: {
-      h1: ({ children, value }: any) => (
-        <h1 className='text-rose-500 text-[2rem] mb-0'>{children}</h1>
-      ),
-      h2: ({ children, value }: any) => (
-        <h1 className='text-rose-500 text-[1.8rem] mb-0'>{children}</h1>
-      ),
-      h3: ({ children, value }: any) => (
-        <h1 className='text-rose-500 text-[1.6rem] mb-0'>{children}</h1>
-      ),
-      h4: ({ children, value }: any) => (
-        <h1 className='text-rose-500 text-[1.4rem] mb-0'>{children}</h1>
-      ),
-      h5: ({ children, value }: any) => (
-        <h1 className='text-rose-500 text-[1.2rem] mb-0'>{children}</h1>
-      ),
-      h6: ({ children, value }: any) => (
-        <h1 className='text-rose-500 text-[1.rem] mb-0'>{children}</h1>
-      ),
-    },
-  };
 
   return (
     <React.Fragment>
@@ -140,7 +69,7 @@ const ProjectDetailsCard = ({ data }: { data: HomeProps }) => {
           <Image
             key={index}
             className='rounded-sm mb-4 w-10 sm:w-16 md:w-24 md:h-20 object-cover object-center shadow-md'
-            src={img}
+            src={img !== null ? img : ''}
             width={1000}
             height={1000}
             onClick={() => setImage(index)}

@@ -18,12 +18,12 @@ const ProjectCard = ({ data }: { data: any }) => {
   const isDesLonger: boolean = data?.description?.length > MAX_DESCRIPTION;
 
   return (
-    <Link href={`/projects/${data?.slug?.current}#project`}>
+    <Link href={`/projects/${data?.slug?.current}`}>
       <div className='group bg-[#18202b]  md:bg-transparent w-full h-auto relative cursor-pointer rounded-md items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30'>
         <div className='hidden md:block md:h-[15rem] w-full'>
           <Image
             className='hidden md:block h-full w-full rounded-md object-cover object-center transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125'
-            src={data?.image[0]}
+            src={data?.image[0] !== null ? data?.image[0] : data?.image[1]}
             alt=''
             width={1000}
             height={1000}

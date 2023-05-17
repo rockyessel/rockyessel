@@ -1,11 +1,33 @@
 import { BsGithub } from 'react-icons/bs';
-import { SiPython, SiRedux, SiTypescript, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiExpress, SiAdobephotoshop, SiFigma, SiMongodb, SiCodefactor, SiCodecov, SiPostman, SiGithub } from 'react-icons/si';
+import {
+  SiPython,
+  SiRedux,
+  SiTypescript,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiTailwindcss,
+  SiExpress,
+  SiAdobephotoshop,
+  SiFigma,
+  SiMongodb,
+  SiCodefactor,
+  SiCodecov,
+  SiPostman,
+  SiGithub,
+} from 'react-icons/si';
 import { TbBrandNextjs } from 'react-icons/tb';
 import { FaRust } from 'react-icons/fa';
 import { AiTwotoneApi } from 'react-icons/ai';
 import { IoLogoNodejs } from 'react-icons/io';
 import { RiReactjsLine } from 'react-icons/ri';
-import { DefaultMetaDataProps } from '@/interface';
+import {
+  CodeProps,
+  DefaultMetaDataProps,
+  SanityImageProps,
+  SanityTableProps,
+} from '@/interface';
+import Image from 'next/image';
 
 export const data_list = [
   {
@@ -156,3 +178,83 @@ export const adding_skills = [
   'Git',
   // 'React Native',
 ];
+
+
+  export const CodeBlocks = {
+    types: {
+      code: ({ value }: { value: CodeProps }) => (
+        <pre>
+          <code>{value?.code}</code>
+        </pre>
+      ),
+      image: ({ value }: { value: SanityImageProps }): boolean | any => {
+        if (value?.image?.url !== null) {
+          return (
+            <Image
+              className='m-0 mt-5 p-0'
+              src={value?.image?.url}
+              alt={value?.alt}
+              width={value?.image?.metadata?.dimensions?.width}
+              height={value?.image?.metadata?.dimensions?.height}
+            />
+          );
+        } else {
+          return false;
+        }
+      },
+      table: ({ value }: { value: SanityTableProps }) => (
+        <table>
+          {value?.rows?.map((row, index) => (
+            <tr key={index}>
+              <th>{row?.cells[0]}</th>
+              {row?.cells?.slice(1, row?.cells?.length)?.map((cell, index) => (
+                <td key={index}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </table>
+      ),
+    },
+
+    marks: {
+      link: ({ children, value }: any) => {
+        const rel = !value.href.startsWith('/')
+          ? 'noopener'
+          : 'noreferrer noopener';
+        return (
+          <a
+            className='text-blue-500 font-bold italic text-lg'
+            href={value?.href}
+            rel={rel}
+          >
+            {children}
+          </a>
+        );
+      },
+
+      strong: ({ children, value }: any) => (
+        <strong className='text-rose-500 text-lg'>{children}</strong>
+      ),
+    },
+
+    block: {
+      h1: ({ children, value }: any) => (
+        <h1 className='text-rose-500 text-[2rem] mb-0'>{children}</h1>
+      ),
+      h2: ({ children, value }: any) => (
+        <h1 className='text-rose-500 text-[1.8rem] mb-0'>{children}</h1>
+      ),
+      h3: ({ children, value }: any) => (
+        <h1 className='text-rose-500 text-[1.6rem] mb-0'>{children}</h1>
+      ),
+      h4: ({ children, value }: any) => (
+        <h1 className='text-rose-500 text-[1.4rem] mb-0'>{children}</h1>
+      ),
+      h5: ({ children, value }: any) => (
+        <h1 className='text-rose-500 text-[1.2rem] mb-0'>{children}</h1>
+      ),
+      h6: ({ children, value }: any) => (
+        <h1 className='text-rose-500 text-[1.rem] mb-0'>{children}</h1>
+      ),
+    },
+  };

@@ -195,7 +195,7 @@ export interface NoteCardProps {
   slug: { current: string };
   estimated_reading_time: number;
   comment: { _id: string }[];
-  _createdAt:string;
+  _createdAt: string;
 }
 
 export interface SanityImageProps {
@@ -204,7 +204,7 @@ export interface SanityImageProps {
   _type: string;
   alt: string;
   image: {
-    url: string;
+    url: string | null;
     metadata: {
       dimensions: {
         height: number;
