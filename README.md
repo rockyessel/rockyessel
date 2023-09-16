@@ -2,8 +2,7 @@
 
 ## 🙋‍♂️ About Me
 
-- 🔭 I’m currently working on Front-End development using React ecosystem.
-- 🌱 I’m currently in ALX Programming on the path of becoming a Software Engineer.
+- 🔭 I’m currently working on Front-End development using the React ecosystem.
 - 👯 I’m looking to collaborate on Open Source Projects.
 - 📫 How to reach me: rockyessel76@gmail.com.
 - 😄 Most used line of code `console.log()`
