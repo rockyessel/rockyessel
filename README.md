@@ -1,6 +1,6 @@
 # Hi there, I am [Rocky Essel](https://esselr.versel.app/) 
 
-## 🙋‍♂️ About Me
+## 🙋‍♂️ About Me 
 
 - 🔭 I’m currently working on Front-End development using the React ecosystem.
 - 👯 I’m looking to collaborate on Open Source Projects.
