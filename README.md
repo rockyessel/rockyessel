@@ -1,14 +1,16 @@
-# Hi there, I am [Rocky Essel](https://esselr.versel.app/) 
+# Hi there, I am [Rocky Essel](https://esselr.versel.app/)
 
-## 🙋‍♂️ About Me 
+## 🙋‍♂️ About Me
 
-- 🔭 I’m currently working on Front-End development using the React ecosystem.
-- 👯 I’m looking to collaborate on Open Source Projects.
+👋 Hi, I'm Rocky Essel, a technical writer and web developer with a background in Electrical/Electronics Engineering. I’m passionate about Web3, decentralization, and creating content that bridges these emerging technologies with practical insights.
+
+- 🔭 I’m currently focused on Front-End development using the React ecosystem.
+- 👯 I’m looking to collaborate on Open Source Projects, especially those related to Web3 and decentralization.
+- 🌍 I’m actively learning and working with Rust, JavaScript, and various modern web technologies.
 - 📫 How to reach me: rockyessel76@gmail.com.
-- 😄 Most used line of code `console.log()`
-- 👻 I write articles on [Hackernoon](https://hackernoon.com/u/rockyessel) ,[Medium](https://rockyessel.medium.com/) & [Hashnode](https://hashnode.com/@rockyessel).
-- ⚡ Fun fact: Bug works like caffeine for me.
-
+- 😄 Most used line of code: `console.log()`
+- 👻 I write articles on [Hackernoon](https://hackernoon.com/u/rockyessel), [Medium](https://rockyessel.medium.com/), & [Hashnode](https://hashnode.com/@rockyessel).
+- ⚡ Fun fact: Bugs work like caffeine for me.
 
 <br/>
 <a href="https://github.com/Meghna-DAS/github-profile-views-counter">
@@ -22,7 +24,7 @@
 [![Mail Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:rockyessel76@gmail.com)
 [![Discord Badge](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discordapp.com/users/rockyessel#4763)
 
-## 💻 Languages and Tools:
+## 💻 Languages and Tools
 
 [![HTML Badge](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://github.com/rockyessel)
 [![CSS Badge](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://github.com/rockyessel)
@@ -46,10 +48,15 @@
 [![Yarn Badge](https://img.shields.io/badge/yarn-0078D6?style=for-the-badge&logo=yarn&logoColor=white)](https://github.com/rockyessel)
 [![Vs Code Badge](https://img.shields.io/badge/Visual_Studio_Code-0078D6?style=for-the-badge&logo=visualstudiocode&logoColor=white)](https://github.com/rockyessel)
 
+## 🛠️ Projects
+
+- [**Learn, Build & Deploy Vara Network **]([https://github.com/rockyessel/web3-docs](https://www.freecodecamp.org/news/build-and-deploy-smart-contract-rust-gear-protocol/)) – Comprehensive guides and tutorials on Web3 and blockchain technologies.
 
 
 <br/>
 
-## 📊 My Github Stats
-  
-  [![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=rockyessel&theme=highcontrast)](https://github.com/DenverCoder1/github-readme-streak-stats)
+## 📊 My GitHub Stats
+
+[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=rockyessel&theme=highcontrast)](https://github.com/DenverCoder1/github-readme-streak-stats)
+[![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=rockyessel&theme=highcontrast&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
+[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=rockyessel&show_icons=true&theme=highcontrast)](https://github.com/anuraghazra/github-readme-stats)
