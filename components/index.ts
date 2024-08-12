@@ -20,4 +20,4 @@ export { default as Form } from './organism/form';
 export { default as NoteDetailCard } from './organism/note-detail-card';
 export { default as ProjectDetailsCard } from './organism/project-details-card';
 export { default as Hero } from './organism/hero';
-export { default as Body } from './organism/body';
+export { default as Body } from './organism/body'

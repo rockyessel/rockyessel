@@ -257,4 +257,4 @@ export const adding_skills = [
         <h1 className='text-rose-500 text-[1.rem] mb-0'>{children}</h1>
       ),
     },
-  };
+  }

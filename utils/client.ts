@@ -8,4 +8,4 @@ const client = createClient({
   useCdn: false, // `false` if you want to ensure fresh data
 });
 
-export default client;
+export default client

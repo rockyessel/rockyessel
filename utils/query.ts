@@ -95,7 +95,7 @@ export const NoteDetailsData = async (thought: string = '') => {
   const result = await Client.fetch(query, { thought });
 
   return result;
-};
+}
 
 export const CommonPathProps = async (path: string = '') => {
   const query = `

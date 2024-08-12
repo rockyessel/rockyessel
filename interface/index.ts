@@ -16,7 +16,7 @@ export interface DefaultMetaDataProps {
 
 export interface HeaderProps {
   props: DefaultMetaDataProps;
-}
+};
 
 export interface MetaInfoTagsProps {
   name: string;

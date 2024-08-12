@@ -249,4 +249,4 @@ export default function FormValidation( formType: string, formData: string, form
   }
 
   return currentState;
-}
+};

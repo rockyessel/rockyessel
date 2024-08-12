@@ -15,4 +15,4 @@ export const AbbrevNumber = (value: number): string => {
     }
     return f + suffixes[suffixNum];
   }
-};
+}
