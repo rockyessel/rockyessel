@@ -11,7 +11,7 @@ export const SendContactForm = async (data: any) => {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
 export const AddViewCount = async (_id: string) => {
   try {
