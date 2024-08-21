@@ -58,5 +58,4 @@
 ## 📊 My GitHub Stats
 
 [![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=rockyessel&theme=highcontrast)](https://github.com/DenverCoder1/github-readme-streak-stats)
-[![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=rockyessel&theme=highcontrast&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
 [![GitHub Stats](https://github-readme-stats.vercel.app/api?username=rockyessel&show_icons=true&theme=highcontrast)](https://github.com/anuraghazra/github-readme-stats)
