@@ -3,6 +3,7 @@ import { Outfit } from 'next/font/google';
 import '@/styles/globals.css';
 import Navbar from '@/components/common/navbar';
 import { cn } from '@/lib/utils/helpers';
+import Profile from '@/components/common/profile';
 
 const outFit = Outfit({ subsets: ['latin'] });
 
@@ -39,7 +40,7 @@ export default function RootLayout({
           </filter>
           <rect width='100%' height='100%' filter='url(#noise)' />
         </svg>
-        <main className='max-w-[1000px] mx-auto md:py-10 px-4 min-h-[calc(100vh-50px-100px)] mb-10'>
+        <main className='max-w-[1200px] mx-auto md:py-10 px-4 min-h-[calc(100vh-50px-100px)] mb-10'>
           <Navbar />
           {children}
         </main>

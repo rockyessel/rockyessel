@@ -12,6 +12,6 @@
   },
   "aliases": {
     "components": "@/components",
-    "utils": "@/lib/utils/helpers/index.ts"
+    "utils": "@/lib/utils/helpers"
   }
 }
