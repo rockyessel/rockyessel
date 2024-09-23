@@ -1,21 +1,21 @@
 'use client';
 
 import { ReactNode } from 'react';
-import Profile from '../common/profile';
 import { cn } from '@/lib/utils/helpers';
+import Sidebar from '../common/sidebar';
 
 interface Props {
   children: ReactNode;
   className?: string;
 }
 
-const ProfileLayout = ({ children, className }: Props) => {
+const DashboardSidebarLayout = ({ children, className }: Props) => {
   return (
     <section className={cn(className, 'w-full h-full flex items-start gap-4')}>
-      <Profile />
+      <Sidebar />
       {children}
     </section>
   );
 };
 
-export default ProfileLayout;
+export default DashboardSidebarLayout;

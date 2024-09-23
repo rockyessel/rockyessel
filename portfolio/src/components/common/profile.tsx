@@ -11,7 +11,7 @@ interface Props {
 
 const Profile = ({ className }: Props) => {
   return (
-    <div className={cn(className, 'sticky top-16')}>
+    <div className={cn(className, ' sticky top-16')}>
       <div className='flex flex-col items-start'>
         <Avatar className='w-24 h-24'>
           <AvatarImage src='/97303710.jpg' />
