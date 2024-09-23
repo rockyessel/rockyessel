@@ -1,5 +1,5 @@
-import ProfileLayout from '@/components/layout/profile';
 import Image from 'next/image';
+import ProfileLayout from '@/components/layout/profile';
 
 const Home = () => {
   return (

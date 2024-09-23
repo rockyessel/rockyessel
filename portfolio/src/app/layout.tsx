@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { cn } from '@/lib/utils/helpers';
 import { Outfit } from 'next/font/google';
 import Navbar from '@/components/common/navbar';
-
+import TurbulenceNoise from '@/components/common/turbulence-noise';
 
 const outFit = Outfit({ subsets: ['latin'] });
 
@@ -25,21 +25,7 @@ export default function RootLayout({
           'w-full h-full text-zinc-300 bg-neutral-900'
         )}
       >
-        <svg
-          className='pointer-events-none fixed isolate z-50 opacity-70 mix-blend-soft-light'
-          width='100%'
-          height='100%'
-        >
-          <filter id='noise'>
-            <feTurbulence
-              type='fractalNoise'
-              baseFrequency='0.80'
-              numOctaves='4'
-              stitchTiles='stitch'
-            />
-          </filter>
-          <rect width='100%' height='100%' filter='url(#noise)' />
-        </svg>
+        <TurbulenceNoise />
         <main className='max-w-[1200px] mx-auto md:py-10 px-4 min-h-[calc(100vh-50px-100px)] mb-10'>
           <Navbar />
           {children}
