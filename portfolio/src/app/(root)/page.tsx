@@ -67,7 +67,7 @@ const Home = () => {
               ].map((tool) => (
                 <div
                   key={tool}
-                  className='bg-gray-100 p-4 rounded-lg shadow-md text-center'
+                  className='p-4 rounded-lg border border-zinc-700/40 text-center'
                 >
                   {tool}
                 </div>
@@ -97,7 +97,7 @@ const Home = () => {
               ].map((project) => (
                 <div
                   key={project.title}
-                  className='bg-white p-6 rounded-lg shadow-md'
+                  className='p-6 rounded-lg border border-zinc-700/40'
                 >
                   <h3 className='text-lg font-semibold mb-2'>
                     <a
