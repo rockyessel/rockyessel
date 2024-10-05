@@ -1,3 +1,5 @@
+import { HTMLProps } from "react";
+
 export interface Project {
   title: string;
   description: string;
@@ -30,3 +32,6 @@ export interface IProject {
     documents: { name: string; url: string };
   };
 }
+
+
+export interface HTMLDivProps extends HTMLProps<HTMLDivElement> {}

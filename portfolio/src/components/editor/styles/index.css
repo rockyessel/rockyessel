@@ -1,0 +1,370 @@
+/* Base styles for the editor */
+#symbion-editor {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 5px 0px 20px 0px;
+}
+
+/* Typography */
+#symbion-editor h1,
+#symbion-editor h2,
+#symbion-editor h3,
+#symbion-editor h4,
+#symbion-editor h5,
+#symbion-editor h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+  /* color: #1a202c; */
+}
+
+#symbion-editor h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  padding-bottom: 0.3em;
+}
+
+#symbion-editor h2 {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+#symbion-editor h3 {
+  font-size: 1.75em;
+  font-weight: 600;
+}
+
+#symbion-editor h4 {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+#symbion-editor h5 {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+#symbion-editor h6 {
+  font-size: 1em;
+  font-weight: 600;
+  /* color: #4a5568; */
+}
+
+#symbion-editor p {
+  margin-bottom: 1em;
+}
+
+/* Text formatting */
+#symbion-editor strong,
+#symbion-editor b {
+  font-weight: 700;
+}
+
+#symbion-editor em,
+#symbion-editor i {
+  font-style: italic;
+}
+
+#symbion-editor u {
+  text-decoration: underline;
+}
+
+#symbion-editor del {
+  text-decoration: line-through;
+  /* color: #718096; */
+}
+
+#symbion-editor sub,
+#symbion-editor sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+#symbion-editor sup {
+  top: -0.5em;
+}
+
+#symbion-editor sub {
+  bottom: -0.25em;
+}
+
+/* Code blocks */
+#symbion-editor pre {
+  background-color: #000;
+  border-radius: 6px;
+  padding: 1em;
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+
+#symbion-editor code {
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+  font-size: 0.9em;
+  background-color: #000;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  color: #84cc16;
+}
+
+#symbion-editor pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Blockquotes */
+#symbion-editor blockquote {
+  border-left: 4px solid #73c000;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background-color: #000;
+  color: #84cc16;
+  font-style: italic;
+}
+
+#symbion-editor blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lists */
+#symbion-editor ul,
+#symbion-editor ol {
+  margin: 1em 0;
+  padding-left: 2em;
+}
+
+#symbion-editor ul {
+  list-style-type: disc;
+}
+
+#symbion-editor ol {
+  list-style-type: decimal;
+}
+
+#symbion-editor li {
+  margin-bottom: 0.5em;
+}
+
+#symbion-editor li > ul,
+#symbion-editor li > ol {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+/* Links */
+#symbion-editor a {
+  /* color: #4299e1; */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+#symbion-editor a:hover {
+  /* color: #2b6cb0; */
+  text-decoration: underline;
+}
+
+/* Horizontal rule */
+#symbion-editor hr {
+  border: 0;
+  height: 1px;
+  background-color: #e2e8f0;
+  margin: 2em 0;
+}
+
+/* Tables */
+#symbion-editor table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+#symbion-editor th,
+#symbion-editor td {
+  border: 1px solid #e2e8f0;
+  padding: 0.5em;
+  text-align: left;
+}
+
+#symbion-editor th {
+  background-color: #f7fafc;
+  font-weight: 600;
+}
+
+/* Images */
+#symbion-editor img {
+  max-width: 100%;
+  height: auto;
+  margin: 1em 0;
+}
+
+/* Typewriter effect */
+.slate-typewriter-placeholder {
+  opacity: 1 !important;
+}
+
+.slate-typewriter-animate {
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+  animation: typewriter 4s steps(44) 1s 1 normal both;
+}
+
+.slate-typewriter-animate.focus {
+  animation: none;
+}
+
+.slate-typewriter-animate > span {
+  opacity: 0.33;
+}
+
+.slate-typewriter-placeholder > p::after {
+  content: "";
+  border-right: 2px solid #4a5568;
+  animation: blinkTextCursor 800ms steps(2) infinite normal;
+}
+
+.slate-typewriter-placeholder.focus > p::after {
+  content: none;
+}
+
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: #4a5568;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Custom classes */
+.custom-active {
+  background-color: #3490dc;
+  /*color: #ffffff;
+  */
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  transition: background-color 0.2s ease-in-out;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out;
+}
+
+.custom-inactive {
+  background-color: #e2e8f0;
+  /*color: #4a5568;
+  */
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out;
+}
+
+.custom-focused {
+  outline: 2px solid #4299e1;
+  outline-offset: 2px;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .slate-typewriter-animate,
+  .slate-typewriter-placeholder > p::after {
+    animation: none;
+  }
+}
+
+/* Dark mode support */
+/* @media (prefers-color-scheme: dark) {
+  #symbion-editor {
+  color: #e2e8f0;
+  background-color: #1a202c;
+  }
+
+  #symbion-editor h1,
+  #symbion-editor h2,
+  #symbion-editor h3,
+  #symbion-editor h4,
+  #symbion-editor h5,
+  #symbion-editor h6 {
+    color: #f7fafc;
+  }
+
+  #symbion-editor h1 {
+    border-bottom-color: #2d3748;
+  }
+
+  #symbion-editor code {
+    background-color: #2d3748;
+    color: #e2e8f0;
+  }
+
+  #symbion-editor pre {
+    background-color: #2d3748;
+  }
+
+  #symbion-editor blockquote {
+    border-left-color: #4a5568;
+    background-color: #2d3748;
+    color: #cbd5e0;
+  }
+
+  #symbion-editor a {
+    color: #63b3ed;
+  }
+
+  #symbion-editor a:hover {
+    color: #90cdf4;
+  }
+
+  #symbion-editor hr {
+    background-color: #4a5568;
+  }
+
+  #symbion-editor th,
+  #symbion-editor td {
+    border-color: #4a5568;
+  }
+
+  #symbion-editor th {
+    background-color: #2d3748;
+  }
+
+  .slate-typewriter-placeholder > p::after {
+    border-right-color: #cbd5e0;
+  }
+
+  .custom-active {
+    background-color: #4299e1;
+  }
+
+  .custom-inactive {
+    background-color: #2d3748;
+    color: #cbd5e0;
+  }
+
+  .custom-focused {
+    outline-color: #63b3ed;
+  }
+} */
