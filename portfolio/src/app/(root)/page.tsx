@@ -1,77 +1,154 @@
 import Image from 'next/image';
 import ProfileLayout from '@/components/layout/profile';
+import { Search } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+import {
+  AITools,
+  blockchainNetworks,
+  databases,
+  Frameworks,
+  languages,
+  OtherTools,
+} from '@/lib/utils/constants';
+import DashboardProjectCard from '@/components/common/project-card-dashboard';
 
 const Home = () => {
   return (
     <ProfileLayout>
-      <section>
+      <section className=''>
         <div>
-          <header>
-            <div className='flex items-center justify-between mb-6'>
-              <div>
-                <h1 className='text-3xl font-bold'>Rocky Essel</h1>
-                <h3 className='text-grey-400 text-lg mt-1'>
-                  Owner of{' '}
-                  <a
-                    href='http://symbion.site/?ref=esselr,vercel.app'
-                    className='text-lime-600 hover:underline cursor-pointer'
-                  >
-                    Symbion
-                  </a>
-                </h3>
-              </div>
-              <div className='rounded-full overflow-hidden'>
-                <Image
-                  src='/profile-pic.jpg' // Update with your profile picture
-                  alt='Rocky Essel'
-                  width={50}
-                  height={50}
-                />
+          <div className='flex items-center justify-between mb-6'>
+            {/* <div>
+              <h1 className='text-3xl font-bold'>Rocky Essel</h1>
+              <h3 className='text-grey-400 text-lg mt-1'>
+                Owner of{' '}
+                <a
+                  href='http://symbion.site/?ref=esselr.vercel.app'
+                  className='text-lime-600 hover:underline cursor-pointer'
+                >
+                  Symbion
+                </a>
+              </h3>
+            </div> */}
+            <div className='flex items-center bg-gray-900 rounded-full px-3 py-1.5 w-fit'>
+              <Search size={16} className='text-gray-500 mr-2' />
+              <span className='text-gray-400 mr-2 text-sm'>{`What's Happening`}</span>
+              <div className='flex items-center'>
+                <span className='text-gray-400 mr-1 text-sm'>Launched</span>
+                <span className='text-blue-400 text-sm'>Focus Amplified ↗</span>
               </div>
             </div>
-          </header>
+          </div>
 
           {/* About Section */}
-          <section className='mb-8'>
-            <h2 className='text-xl font-semibold'>About Me</h2>
-            <p className='text-md mt-2'>
-              I am a highly versatile{' '}
-              <strong>full-stack Web2 and Web3 developer</strong> with a passion
-              for building decentralized applications and blockchain
-              technologies. My expertise covers the development of decentralized
-              platforms, smart contracts, and APIs.
-            </p>
-            <p className='text-md mt-2'>
-              I use <strong>Next.js</strong>, <strong>React.js</strong>,{' '}
-              <strong>Node.js</strong>, <strong>Rust</strong>, and more to build
-              full-stack applications. I also develop REST and GraphQL APIs
-              deployed in serverless environments.
+          <section className='mb-8 flex flex-col gap-2'>
+            <h2 className='text-4xl font-semibold'>
+              I am dedicated to learning and growing in the fields of electrical
+              engineering, blockchain technology, robotics and quantum
+              computing.
+            </h2>
+
+            <Separator className='mt-4' />
+            <h2 className='text-xl font-semibold'>Bio Summary</h2>
+            <p className='text-md'>
+              {`As a curious and enthusiastic individual, I'm passionate about exploring the intersection of robotics and quantum computing. I'm fascinated by the potential of these technologies to transform industries and improve lives. My goal is to develop a strong foundation in these fields and contribute to innovative projects that push the boundaries of what's possible. With a strong work ethic and a willingness to learn, I'm excited to take on new challenges and grow as a professional.`}
             </p>
           </section>
-
+          <Separator className='my-4' />
           {/* Tools Section */}
           <section className='mb-8'>
             <h2 className='text-xl font-semibold'>Tools I Work With</h2>
-            <div className='grid grid-cols-3 gap-4 mt-4'>
-              {[
-                'Next.js',
-                'React.js',
-                'Node.js',
-                'Express.js',
-                'TailwindCSS',
-                'Rust',
-                'SQL/NoSQL',
-                'GraphQL',
-                'Vercel',
-                'IPFS',
-              ].map((tool) => (
-                <div
-                  key={tool}
-                  className='p-4 rounded-lg border border-zinc-700/40 text-center'
-                >
-                  {tool}
+
+            <div className='w-full grid grid-cols-3 gap-4 mt-4'>
+              <div className='flex flex-col gap-2'>
+                <p>Languages</p>
+                <div className='inline-flex flex-wrap gap-2'>
+                  {languages.map((language, index) => (
+                    <div
+                      key={index}
+                      className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
+                    >
+                      {language.icon}
+                      {language.name}
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div className='flex flex-col gap-2'>
+                <p>Frameworks</p>
+                <div className='inline-flex flex-wrap gap-2'>
+                  {Frameworks.map((Framework, index) => (
+                    <div
+                      key={index}
+                      className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
+                    >
+                      {Framework.icon}
+                      {Framework.name}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className='flex flex-col gap-2'>
+                <p>Blockchain</p>
+                <div className='inline-flex flex-wrap gap-2'>
+                  {blockchainNetworks.map((blockchainNetwork, index) => (
+                    <div
+                      key={index}
+                      className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
+                    >
+                      {blockchainNetwork.icon}
+                      {blockchainNetwork.name}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className='flex flex-col gap-2'>
+                <p>Databases</p>
+                <div className='inline-flex flex-wrap gap-2'>
+                  {databases.map((database, index) => (
+                    <div
+                      key={index}
+                      className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
+                    >
+                      {database.icon}
+                      {database.name}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className='flex flex-col gap-2'>
+                <p>Others</p>
+                <div className='inline-flex flex-wrap gap-2'>
+                  {OtherTools.map((otherTool, index) => (
+                    <div
+                      key={index}
+                      className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
+                    >
+                      {otherTool.icon}
+                      {otherTool.name}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className='flex flex-col gap-2'>
+                <p>AI Tools</p>
+                <div className='inline-flex flex-wrap gap-2'>
+                  {AITools.map((aiTool, index) => (
+                    <div
+                      key={index}
+                      className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
+                    >
+                      {aiTool.icon}
+                      {aiTool.name}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
 
@@ -79,80 +156,21 @@ const Home = () => {
           <section className='mb-8'>
             <h2 className='text-xl font-semibold'>Pinned Projects</h2>
             <div className='grid grid-cols-2 gap-6 mt-4'>
-              {[
-                {
-                  title: 'Symbion: Decentralized Blog CMS',
-                  description:
-                    'A decentralized platform for blogs and content licensing. Developed with blockchain integration and monetization features.',
-                  siteLink: 'http://symbion.site',
-                  githubLink: 'https://github.com/rockyessel/symbion',
-                },
-                {
-                  title: 'Web3 Storage Integration',
-                  description:
-                    'A Web3 decentralized file storage system integrated with Next.js for seamless file uploads and retrieval.',
-                  siteLink: 'https://web3.storage/',
-                  githubLink: 'https://github.com/rockyessel/web3-storage',
-                },
-              ].map((project) => (
-                <div
-                  key={project.title}
-                  className='p-6 rounded-lg border border-zinc-700/40'
-                >
-                  <h3 className='text-lg font-semibold mb-2'>
-                    <a
-                      href={project.siteLink}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='hover:underline'
-                    >
-                      {project.title}
-                    </a>
-                  </h3>
-                  <p className='text-gray-600'>{project.description}</p>
-                  <div className='mt-4'>
-                    <a
-                      href={project.githubLink}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='text-lime-600 hover:underline mr-4'
-                    >
-                      GitHub
-                    </a>
-                    <a
-                      href={project.siteLink}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='text-lime-600 hover:underline'
-                    >
-                      Live Site
-                    </a>
-                  </div>
-                </div>
+              {Array.from({ length: 2 }).map((_, index) => (
+                <DashboardProjectCard
+                  key={index}
+                  title='RE Portfolio Web App'
+                  description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit temporibus repellendus impedit, non tempora dicta, sequi delectus possimus obcaecati aspernatur praesentium, magnam fuga animi provident dignissimos commodi molestias quam ipsum?'
+                  category='Pinned'
+                  priority='Medium'
+                  assignees={[
+                    { name: 'John Doe', image: '/path/to/image1.jpg' },
+                    { name: 'Jane Smith', image: '/path/to/image2.jpg' },
+                  ]}
+                  comments={23}
+                  attachments={12}
+                />
               ))}
-            </div>
-          </section>
-
-          {/* Experience Section */}
-          <section className='mb-8'>
-            <h2 className='text-xl font-semibold'>Experience</h2>
-            <div className='mt-4'>
-              <p>
-                <strong>Owner - Symbion (2023-Present)</strong>
-              </p>
-              <p className='text-gray-600'>
-                Building a decentralized blogging platform that prioritizes
-                content ownership and blockchain-based monetization.
-              </p>
-            </div>
-            <div className='mt-4'>
-              <p>
-                <strong>Freelance Developer (2020-Present)</strong>
-              </p>
-              <p className='text-gray-600'>
-                Developed various Web2 and Web3 projects, specializing in
-                blockchain integration and full-stack development.
-              </p>
             </div>
           </section>
         </div>
@@ -162,3 +180,30 @@ const Home = () => {
 };
 
 export default Home;
+
+{
+  /* Experience Section */
+}
+{
+  /* <section className='mb-8'>
+    <h2 className='text-xl font-semibold'>Experience</h2>
+    <div className='mt-4'>
+      <p>
+        <strong>Owner - Symbion (2023-Present)</strong>
+      </p>
+      <p className='text-gray-600'>
+        Building a decentralized blogging platform that prioritizes
+        content ownership and blockchain-based monetization.
+      </p>
+    </div>
+    <div className='mt-4'>
+      <p>
+        <strong>Freelance Developer (2020-Present)</strong>
+      </p>
+      <p className='text-gray-600'>
+        Developed various Web2 and Web3 projects, specializing in
+        blockchain integration and full-stack development.
+      </p>
+    </div>
+  </section> */
+}
