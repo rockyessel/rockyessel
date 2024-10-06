@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from '../ui/button';
+import { cn } from '@/lib/utils/helpers';
 
 const navItems = {
   '/': {
@@ -24,9 +25,13 @@ const navItems2 = {
   },
 };
 
-const Navbar = () => {
+interface Props {
+  className?:string
+}
+
+const Navbar = ({ className }: Props) => {
   return (
-    <header className='-ml-[8px] mb-12 mt-10 sticky top-0 tracking-tight bg-neutral-900'>
+    <header className={cn(className, '-ml-[8px] mb-12 mt-10 sticky top-0 tracking-tight bg-neutral-900')}>
       <section className='lg:sticky lg:top-20'>
         <nav className='flex flex-row items-center justify-between relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative'>
           <div className='flex flex-row space-x-0 pr-10'>

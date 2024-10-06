@@ -20,8 +20,10 @@ const WritingSettingsAside = () => {
         </div>
 
         <div className='flex flex-col gap-2'>
-          <p>Article Title</p>
-          <p>
+          <p className='text-lg font-semibold'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+          <p className='text-gray-400'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
             sapiente exercitationem, delectus, ipsa repudiandae minus similique
             velit nam soluta cumque facere provident corporis ab ipsum dicta
@@ -30,10 +32,13 @@ const WritingSettingsAside = () => {
         </div>
       </div>
 
-      <TabsList className='flex flex-col gap-2'>
+      <TabsList className='w-full flex-col items-start gap-2'>
         <TabsTrigger value='general'>General</TabsTrigger>
-        <TabsTrigger value='translation'>Translation</TabsTrigger>
+        <TabsTrigger disabled value='translation'>
+          Translation
+        </TabsTrigger>
         <TabsTrigger value='seo'>SEO</TabsTrigger>
+        <TabsTrigger value='comments'>Comments</TabsTrigger>
       </TabsList>
     </div>
   );
