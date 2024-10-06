@@ -57,6 +57,17 @@ const EditorHtmlElements = (props: RenderElementProps) => {
     case 'separator':
       const separatorProps = { element, children, attributes };
       return <HtmlHrElement {...separatorProps} />;
+    case 'table':
+      return <table {...attributes}><tbody>
+      {children}</tbody></table>;
+    case 'table-row':
+      return <tr {...attributes}>{children}</tr>;
+    case 'table-cell':
+      return <td {...attributes}>{children}</td>;
+    case 'table-header':
+      return <th {...attributes}>{children}</th>;
+    case 'table-body':
+      return <tbody {...attributes}>{children}</tbody>;
     case 'column-item':
       const columnItemProps = { element, children, attributes };
       return <p {...attributes}>{children}</p>;

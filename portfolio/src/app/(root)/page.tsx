@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import ProfileLayout from '@/components/layout/profile';
+import AsideContentLayout from '@/components/layout/aside-content';
 import { Search } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import {
@@ -14,8 +14,8 @@ import DashboardProjectCard from '@/components/common/project-card-dashboard';
 
 const Home = () => {
   return (
-    <ProfileLayout>
-      <section className=''>
+    <AsideContentLayout>
+      <section className='w-full'>
         <div>
           <div className='flex items-center justify-between mb-6'>
             {/* <div>
@@ -175,7 +175,7 @@ const Home = () => {
           </section>
         </div>
       </section>
-    </ProfileLayout>
+    </AsideContentLayout>
   );
 };
 

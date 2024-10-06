@@ -1,8 +1,9 @@
+import DashboardSidebarLayout from "@/components/layout/sidebar-dashbaord"
 
 
 const DashboardPage = () => {
   return (
-    <div>DashboardPage</div>
+    <DashboardSidebarLayout>DashboardPage</DashboardSidebarLayout>
   )
 }
 

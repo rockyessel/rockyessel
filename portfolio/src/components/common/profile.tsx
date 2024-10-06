@@ -37,14 +37,9 @@ const Profile = ({ className }: Props) => {
   };
 
   return (
-    <div
-      className={cn(
-        className,
-        'w-[31rem] max-w-lg sticky top-16'
-      )}
-    >
-      <div className='flex flex-col items-start'>
-        <div className='space-y-2 mt-5'>
+    <div className={cn(className, 'max-w-[16rem] w-full sticky top-16')}>
+      <div className='flex flex-col items-start gap-5'>
+        <div className='space-y-2'>
           <div className='w-full flex items-center justify-center'>
             <Avatar className='w-24 h-24'>
               <AvatarImage src='/97303710.jpg' />
@@ -54,12 +49,12 @@ const Profile = ({ className }: Props) => {
           <h2 className='mt-4 text-xl font-semibold'>Rocky Essel</h2>
           <h2 className='mt-4 text-xl font-semibold'>@rockyessel</h2>
           <p className='text-gray-400'>
-            Blockchain Developer || BSc Electrical/Electronics Engineering ||
+            BSc Electricals/Electronics Engineering || Blockchain Developer ||
             Robotics & Quantum Enthusiast
           </p>
         </div>
 
-        <div className='space-y-2 mt-5'>
+        <div className='space-y-2'>
           <p className='flex items-center text-gray-500 text-sm'>
             <MapPin strokeWidth={2.25} className='h-4 w-4 mr-2' />
             Accra, Ghana
@@ -84,7 +79,7 @@ const Profile = ({ className }: Props) => {
           </p>
         </div>
 
-        <div className='space-y-2 mt-5'>
+        <div className='space-y-2'>
           <p className='flex items-center font-semibold'>
             <Hand strokeWidth={2.25} className='h-4 w-4 mr-2' />
             Say Hello
@@ -112,7 +107,7 @@ const Profile = ({ className }: Props) => {
           </div>
         </div>
 
-        <div className='space-y-2 mt-5 w-full'>
+        <div className='space-y-2 w-full'>
           <p className='flex items-center mb-2'>
             <Mail strokeWidth={2.25} className='h-4 w-4 mr-2' />
             <span className='font-semibold'>Stay up to date</span>

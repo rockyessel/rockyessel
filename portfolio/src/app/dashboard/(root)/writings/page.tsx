@@ -1,10 +1,11 @@
+import DashboardSidebarLayout from "@/components/layout/sidebar-dashbaord"
 
 
 const WritingsPage = () => {
   return (
-    <div>
+    <DashboardSidebarLayout>
       WritingsPage
-    </div>
+    </DashboardSidebarLayout>
   )
 }
 

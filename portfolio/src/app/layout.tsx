@@ -26,10 +26,8 @@ export default function RootLayout({
         )}
       >
         <TurbulenceNoise />
-        <main className='max-w-[1200px] mx-auto md:py-10 px-4 min-h-[calc(100vh-50px-100px)] mb-10'>
-          <Navbar />
           {children}
-        </main>
+       
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-import ProfileLayout from '@/components/layout/profile';
+import AsideContentLayout from '@/components/layout/aside-content';
 import ProjectCard from '@/components/project/card';
 import { Project } from '@/types';
 
@@ -36,7 +36,7 @@ const projects: Project[] = [
 
 const ProjectPage = () => {
   return (
-    <ProfileLayout>
+    <AsideContentLayout>
       <div>
         <h1 className='text-4xl font-bold mb-8 text-center'>Pinned Projects</h1>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
@@ -45,7 +45,7 @@ const ProjectPage = () => {
           ))}
         </div>
       </div>
-    </ProfileLayout>
+    </AsideContentLayout>
   );
 };
 

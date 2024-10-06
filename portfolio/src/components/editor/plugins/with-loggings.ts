@@ -20,7 +20,7 @@ export const withLoggings = (editor: Editor):Editor => {
    */
   editor.apply = (operation) => {
     // Log the operation to the console for debugging purposes.
-    console.log('Logging operation:', operation);
+    // console.log('Logging operation:', operation);
 
     // Call the original apply method with the operation.
     apply(operation);

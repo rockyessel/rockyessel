@@ -1,7 +1,9 @@
 import DashboardProjectCard from '@/components/common/project-card-dashboard';
+import DashboardSidebarLayout from '@/components/layout/sidebar-dashbaord';
 
 const ProjectsPage = () => {
   return (
+    <DashboardSidebarLayout>
     <div className='w-full grid grid-cols-3 gap-4'>
       {Array.from({ length: 40 }).map((_, index) => (
         <DashboardProjectCard
@@ -19,6 +21,7 @@ const ProjectsPage = () => {
         />
       ))}
     </div>
+    </DashboardSidebarLayout>
   );
 };
 

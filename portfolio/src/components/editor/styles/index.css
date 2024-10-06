@@ -1,6 +1,6 @@
 /* Base styles for the editor */
 #symbion-editor {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
@@ -49,7 +49,7 @@
 #symbion-editor h6 {
   font-size: 1em;
   font-weight: 600;
-  /* color: #4a5568; */
+  /* color: #e2e2e2; */
 }
 
 #symbion-editor p {
@@ -102,7 +102,7 @@
 }
 
 #symbion-editor code {
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
   font-size: 0.9em;
   background-color: #000;
@@ -172,7 +172,6 @@
 #symbion-editor hr {
   border: 0;
   height: 1px;
-  background-color: #e2e8f0;
   margin: 2em 0;
 }
 
@@ -183,17 +182,26 @@
   margin-bottom: 1em;
 }
 
+#symbion-editor table tr > td > p {
+  margin: 0;
+  width: fit-content;
+}
+
+#symbion-editor table tr > th > p {
+  margin: 0;
+  width: fit-content;
+}
+
 #symbion-editor th,
 #symbion-editor td {
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgb(63 63 70 / 0.4);
   padding: 0.5em;
   text-align: left;
 }
 
-#symbion-editor th {
-  background-color: #f7fafc;
+/* #symbion-editor th {
   font-weight: 600;
-}
+} */
 
 /* Images */
 #symbion-editor img {
@@ -224,7 +232,7 @@
 }
 
 .slate-typewriter-placeholder > p::after {
-  content: "";
+  content: '';
   border-right: 2px solid #4a5568;
   animation: blinkTextCursor 800ms steps(2) infinite normal;
 }

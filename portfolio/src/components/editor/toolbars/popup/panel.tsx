@@ -1,6 +1,5 @@
 'use client';
 
-import { ClientPortal } from '@/components/common/utilities';
 import { cn } from '@/lib/utils/helpers';
 import React, {
   HTMLProps,
@@ -14,6 +13,7 @@ import React, {
 import {HTMLDivProps} from '@/types'
 import { BaseSelection, Editor } from 'slate';
 import { ReactEditor, useSlate } from 'slate-react';
+import { ClientPortal } from '@/components/common/utilities';
 
 
 interface Props {

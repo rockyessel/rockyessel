@@ -19,6 +19,7 @@ import BlockHeadingsToolbar from "./blocks/headings";
 import { HeadingTypes } from "../types";
 import { cn } from "@/lib/utils/helpers";
 import { HTMLDivProps } from "@/types";
+import BlockTableToolbar from "./blocks/table";
 
 interface Props {
   showLinkModal: boolean;
@@ -55,6 +56,7 @@ const Toolbars = ({ showLinkModal, setShowLinkModal, props }: Props) => {
             showLinkModal={showLinkModal}
             setShowLinkModal={setShowLinkModal}
           />
+          <BlockTableToolbar />
         </div>
 
         <div>

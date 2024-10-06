@@ -1,7 +1,4 @@
-import DashboardSidebarLayout from '@/components/layout/sidebar';
-
-const DashboardRootLayout = ({children}: Readonly<{children: React.ReactNode}>) => {
-  return <DashboardSidebarLayout>{children}</DashboardSidebarLayout>;
-};
+const DashboardRootLayout = ({ children }: { children: React.ReactNode }) =>
+  children;
 
 export default DashboardRootLayout;

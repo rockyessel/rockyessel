@@ -1,11 +1,11 @@
 import Component from '@/components/common/archives-table';
-import ProfileLayout from '@/components/layout/profile';
+import AsideContentLayout from '@/components/layout/aside-content';
 
 const ArchivesPage = () => {
   return (
-    <ProfileLayout>
+    <AsideContentLayout>
       <Component />
-    </ProfileLayout>
+    </AsideContentLayout>
   );
 };
 

@@ -23,13 +23,14 @@ const BlockCodeToolbar = () => {
       onClick={handleInsertCodeBlock}
       className={cn(
         'outline-none border-none',
-        isActive ? 'bg-white text-black' : ''
+        isActive ? 'rounded-md text-lime-600 bg-neutral-800 border border-zinc-700/40' : ''
       )}
     >
+      
       <Braces
         size={37}
         strokeWidth={2.25}
-        className='my-auto hover:bg-slate-800 p-2 rounded-lg cursor-pointer'
+        className='my-auto hover:bg-neutral-800 p-2 rounded-lg cursor-pointer'
       />
     </button>
   );

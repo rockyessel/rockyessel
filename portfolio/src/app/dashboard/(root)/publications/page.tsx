@@ -1,10 +1,11 @@
+import DashboardSidebarLayout from '@/components/layout/sidebar-dashbaord'
 import React from 'react'
 
 const PublicationPage = () => {
   return (
-    <div>
-      
-    </div>
+    <DashboardSidebarLayout>
+      PublicationsPage
+    </DashboardSidebarLayout>
   )
 }
 
