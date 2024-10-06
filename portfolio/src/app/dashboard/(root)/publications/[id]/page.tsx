@@ -1,12 +1,8 @@
-import DashboardSidebarLayout from '@/components/layout/sidebar-dashbaord'
-import React from 'react'
+import DashboardSidebarLayout from '@/components/layout/sidebar-dashboard';
+import React from 'react';
 
 const PublicationIdPage = () => {
-  return (
-    <DashboardSidebarLayout>
-      PublicationIdPage
-    </DashboardSidebarLayout>
-  )
-}
+  return <DashboardSidebarLayout>PublicationIdPage</DashboardSidebarLayout>;
+};
 
-export default PublicationIdPage
+export default PublicationIdPage;

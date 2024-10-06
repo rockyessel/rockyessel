@@ -1,12 +1,7 @@
-import DashboardSidebarLayout from "@/components/layout/sidebar-dashbaord"
-
+import DashboardSidebarLayout from '@/components/layout/sidebar-dashboard';
 
 const WritingsPage = () => {
-  return (
-    <DashboardSidebarLayout>
-      WritingsPage
-    </DashboardSidebarLayout>
-  )
-}
+  return <DashboardSidebarLayout>WritingsPage</DashboardSidebarLayout>;
+};
 
-export default WritingsPage
+export default WritingsPage;

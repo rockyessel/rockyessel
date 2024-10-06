@@ -1,5 +1,5 @@
 import { Tabs, TabsContent } from '@/components/ui/tabs';
-import DashboardSidebarLayout from '@/components/layout/sidebar-dashbaord';
+import DashboardSidebarLayout from '@/components/layout/sidebar-dashboard';
 import WritingSettingsSEO from '@/components/dashboard/writings/settings/seo';
 import WritingSettingsGeneral from '@/components/dashboard/writings/settings/general';
 import WritingSettingsComments from '@/components/dashboard/writings/settings/comments';
