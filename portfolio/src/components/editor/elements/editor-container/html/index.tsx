@@ -20,9 +20,6 @@ const EditorHtmlElements = (props: RenderElementProps) => {
   const { attributes, children, element } = props;
 
   switch (element.type) {
-    case 'paragraph':
-      const pProps = { element, children, attributes };
-      return <HtmlPElement {...pProps} />;
     case 'heading-one':
     case 'heading-two':
     case 'heading-three':
@@ -58,8 +55,7 @@ const EditorHtmlElements = (props: RenderElementProps) => {
       const separatorProps = { element, children, attributes };
       return <HtmlHrElement {...separatorProps} />;
     case 'table':
-      return <table {...attributes}><tbody>
-      {children}</tbody></table>;
+      return <table {...attributes}>{children}</table>;
     case 'table-row':
       return <tr {...attributes}>{children}</tr>;
     case 'table-cell':
@@ -78,7 +74,8 @@ const EditorHtmlElements = (props: RenderElementProps) => {
       const columnLayoutProps = { element, children, attributes };
       return <p {...attributes}>{children}</p>;
     default:
-      return <p {...attributes}>{children}</p>;
+      const pProps = { element, children, attributes };
+      return <HtmlPElement {...pProps} />;
   }
 };
 

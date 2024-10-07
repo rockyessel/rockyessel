@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils/helpers';
 import { Outfit } from 'next/font/google';
 import Navbar from '@/components/common/navbar';
 import TurbulenceNoise from '@/components/common/turbulence-noise';
+import { Toaster } from '@/components/ui/toaster';
 
 const outFit = Outfit({ subsets: ['latin'] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         )}
       >
         <TurbulenceNoise />
+         <Toaster  />
           {children}
        
       </body>

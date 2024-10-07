@@ -6,7 +6,7 @@ const HtmlPElement = (props: RenderProps<ParagraphType>) => {
   const { attributes, children } = props;
 
   return (
-    <p  className='relative' {...attributes}>
+    <p className='relative' {...attributes}>
       {children}
     </p>
   );

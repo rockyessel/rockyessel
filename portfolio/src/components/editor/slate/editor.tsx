@@ -1,16 +1,22 @@
-"use client";
+'use client';
 
-import Toolbars from "../toolbars";
-import { Locale } from "@/i18n.config";
-import { HTMLDivProps } from "@/types";
-import { cn } from "@/lib/utils/helpers";
-import { useLink } from "../hooks/use-link";
-import { useCallback, useState } from "react";
-import { usePlugins } from "../hooks/use-plugins";
-import { emptyParagraph } from "../lib/constants";
-import { EditorProvider } from "../contexts/editor";
-import { Descendant, Editor, NodeEntry, Range } from "slate";
-import { Editable, RenderElementProps, RenderLeafProps, Slate } from "slate-react";
+import Toolbars from '../toolbars';
+import { Locale } from '@/i18n.config';
+import { HTMLDivProps } from '@/types';
+import { cn } from '@/lib/utils/helpers';
+import { useLink } from '../hooks/use-link';
+import { useCallback, useState } from 'react';
+import { usePlugins } from '../hooks/use-plugins';
+import { emptyParagraph } from '../lib/constants';
+import { EditorProvider } from '../contexts/editor';
+import { Descendant, Editor, NodeEntry, Range } from 'slate';
+import {
+  Editable,
+  RenderElementProps,
+  RenderLeafProps,
+  Slate,
+} from 'slate-react';
+import { descendant } from '../lib/helpers';
 
 interface Props {
   eHtml: {
@@ -20,7 +26,7 @@ interface Props {
   locale: Locale;
   className?: string;
   onChange?: (value: Descendant[]) => void;
-  content?: Descendant[];
+  content?: Descendant[]|string;
   toolbar?: {
     className?: string;
   } & HTMLDivProps;
@@ -39,22 +45,20 @@ const SymbionTextEditor = ({ eHtml, className, ...props }: Props) => {
     try {
       const { selection, operations } = editor;
 
-      const isInSelection = operations.some(
-        (op) => "set_selection" === op.type
-      );
+      const isSelection = operations.some((op) => 'set_selection' === op.type);
 
-      if (!isInSelection && onChange) {
+      if (!isSelection && onChange) {
         onChange(value);
       }
 
-      if (isInSelection && selection) {
+      if (isSelection && selection) {
         if (isSelectionLinkBody(editor)) {
           setShowLinkModal(true);
         }
-        console.log("selection: ", selection);
+        console.log('selection: ', selection);
       }
     } catch (err) {
-      console.log("Caught exception within onChange", err);
+      console.log('Caught exception within onChange', err);
     }
   };
 
@@ -73,10 +77,10 @@ const SymbionTextEditor = ({ eHtml, className, ...props }: Props) => {
 
         // Ensure path is valid and not empty
         const isValidPath = path && path[0] !== undefined;
-        const nodeContent = isValidPath ? string(editor, [path[0]]) : "";
+        const nodeContent = isValidPath ? string(editor, [path[0]]) : '';
 
         // Check if the node content is an empty string
-        const isEmptyNode = nodeContent === "";
+        const isEmptyNode = nodeContent === '';
 
         // Check if the current selection includes the node path
         const isSelectionIncludesNode = includes(editor.selection, path);
@@ -110,27 +114,27 @@ const SymbionTextEditor = ({ eHtml, className, ...props }: Props) => {
     <Slate
       editor={editor}
       onValueChange={onValueChange}
-      initialValue={initialValue}
+      initialValue={descendant(initialValue)}
     >
       <EditorProvider>
-        <div className="relative">
+        <div className='relative'>
           <Toolbars
             props={toolbar}
             showLinkModal={showLinkModal}
             setShowLinkModal={setShowLinkModal}
           />
 
-          <div className="p-3">
+          <div className='p-3'>
             <Editable
-              id="symbion-editor"
+              id='symbion-editor'
               autoFocus={true}
-              style={{ wordBreak: "break-word" }}
+              style={{ wordBreak: 'break-word' }}
               readOnly={false}
               decorate={decorate}
               renderLeaf={eHtml.leafs}
               onKeyDown={editor.onKeyDown}
               renderElement={eHtml.elements}
-              className={cn("relative outline-none border-none", className)}
+              className={cn('relative outline-none border-none', className)}
             />
           </div>
         </div>

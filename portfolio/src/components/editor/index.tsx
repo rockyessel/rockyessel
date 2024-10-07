@@ -13,7 +13,7 @@ interface Props {
   readOnly?: boolean;
   onChange?: (value: Descendant[]) => void;
   className?: string;
-  content?: Descendant[];
+  content?: Descendant[] | string;
   toolbar?: {
     className?: string;
   } & HTMLDivProps;

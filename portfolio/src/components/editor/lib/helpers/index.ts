@@ -15,6 +15,7 @@ import {
 import { Element } from 'slate';
 import { Range } from 'slate';
 import { isListType } from '../../plugins/with-lists';
+import { emptyParagraph } from '../constants';
 
 export const markEvents = (editor: Editor) => {
   const isMarkActive = (mark: LeafTypes) => {
@@ -128,4 +129,20 @@ export const isNodeText = (node: Descendant): node is NodeText => {
 
 export const isNodeLink = (node: Text): node is LinkType => {
   return isElementNode(node) && node.type === 'link';
+};
+
+
+export const descendant = (
+  value: string | Descendant[] | undefined
+): Descendant[] => {
+  if (typeof value === 'string') {
+    const parsedDescendant: Descendant[] = JSON.parse(value);
+    return parsedDescendant;
+  }
+
+  if (typeof value === 'undefined') {
+    return emptyParagraph;
+  }
+
+  return value;
 };

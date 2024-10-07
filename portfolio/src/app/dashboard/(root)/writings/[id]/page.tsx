@@ -1,21 +1,17 @@
-import WritingContent from '@/components/dashboard/writings/editor/content';
-import WritingFooterPage from '@/components/dashboard/writings/editor/footer';
-import WritingHeader from '@/components/dashboard/writings/editor/header';
+import WritingEditorEntry from '@/components/dashboard/writings/editor';
+import { getPostById } from '@/lib/actions/convex_/posts';
+import { notFound } from 'next/navigation';
 
 interface Props {
   params: { id: string };
 }
 
 const WritingPage = async ({ params }: Props) => {
-  console.log('params: ', params);
+  const post = await getPostById(params.id);
 
-  return (
-    <section className='w-full mx-auto max-w-5xl'>
-      <WritingHeader article={{ sas: '' }} />
-      <WritingContent article={{ sasas: '' }} />
-      <WritingFooterPage article={{ sasas: '' }} />
-    </section>
-  );
+  if (!post) return notFound();
+
+  return <WritingEditorEntry post={post} />;
 };
 
 export default WritingPage;

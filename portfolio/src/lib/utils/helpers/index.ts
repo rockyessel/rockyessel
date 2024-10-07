@@ -97,7 +97,12 @@ export const fileToBase64 = async (input: File | string): Promise<string> => {
 };
 
 export const urlToBase64 = async (url: string): Promise<string> => {
-  return window.btoa(unescape(encodeURIComponent(url)));
+  if (typeof window !== 'undefined') {
+    return window.btoa(unescape(encodeURIComponent(url)));
+  } else {
+    // Handle the case where 'window' is not defined, if necessary
+    throw new Error("window is not defined");
+  }
 };
 
 

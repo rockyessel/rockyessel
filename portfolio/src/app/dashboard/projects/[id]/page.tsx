@@ -1,10 +1,11 @@
+import DashboardSidebarLayout from '@/components/layout/sidebar-dashboard';
 import ProjectEditorForm from '@/components/project/editor';
 
 const ProjectEditPage = () => {
   return (
-    <div>
+    <DashboardSidebarLayout allowNavbar>
       <ProjectEditorForm />
-    </div>
+    </DashboardSidebarLayout>
   );
 };
 

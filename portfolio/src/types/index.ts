@@ -1,4 +1,5 @@
-import { HTMLProps } from "react";
+import { HTMLProps } from 'react';
+import { Doc } from '../../convex/_generated/dataModel';
 
 export interface Project {
   title: string;
@@ -33,5 +34,27 @@ export interface IProject {
   };
 }
 
-
 export interface HTMLDivProps extends HTMLProps<HTMLDivElement> {}
+
+export interface IPublication {
+  id: string;
+  name: string;
+  url: string;
+  logo: string;
+  description: string;
+  keywords: string[];
+}
+
+export interface IPublicationArticle {
+  id: string;
+  title: string;
+  url: string;
+  description: string;
+  coverImage: string;
+  tags: string[];
+}
+
+// Post Type
+export type PostType = Doc<'posts'>;
+export type PostKeyType = keyof PostType;
+export type PostValueType = PostType[keyof PostType];

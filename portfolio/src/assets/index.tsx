@@ -3,11 +3,37 @@ import { SVGProps } from 'react';
 interface Props extends Partial<SVGProps<SVGSVGElement>> {}
 
 export const RssSVG = ({ ...props }: Props) => (
-
-<svg width="800" height="800" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" { ...props }><path fill="#fff" d="M2.88 16.88a3 3 0 0 0 0 4.24 3 3 0 0 0 4.24 0 3 3 0 0 0-4.24-4.24m2.83 2.83a1 1 0 0 1-1.42-1.42 1 1 0 0 1 1.42 0 1 1 0 0 1 0 1.42M5 12a1 1 0 0 0 0 2 5 5 0 0 1 5 5 1 1 0 0 0 2 0 7 7 0 0 0-7-7m0-4a1 1 0 0 0 0 2 9 9 0 0 1 9 9 1 1 0 0 0 2 0 11.08 11.08 0 0 0-3.22-7.78A11.08 11.08 0 0 0 5 8m10.61.39A15.1 15.1 0 0 0 5 4a1 1 0 0 0 0 2 13 13 0 0 1 13 13 1 1 0 0 0 2 0 15.1 15.1 0 0 0-4.39-10.61"/></svg>
+  <svg
+    width='800'
+    height='800'
+    viewBox='0 0 24 24'
+    xmlns='http://www.w3.org/2000/svg'
+    {...props}
+  >
+    <path
+      fill='#fff'
+      d='M2.88 16.88a3 3 0 0 0 0 4.24 3 3 0 0 0 4.24 0 3 3 0 0 0-4.24-4.24m2.83 2.83a1 1 0 0 1-1.42-1.42 1 1 0 0 1 1.42 0 1 1 0 0 1 0 1.42M5 12a1 1 0 0 0 0 2 5 5 0 0 1 5 5 1 1 0 0 0 2 0 7 7 0 0 0-7-7m0-4a1 1 0 0 0 0 2 9 9 0 0 1 9 9 1 1 0 0 0 2 0 11.08 11.08 0 0 0-3.22-7.78A11.08 11.08 0 0 0 5 8m10.61.39A15.1 15.1 0 0 0 5 4a1 1 0 0 0 0 2 13 13 0 0 1 13 13 1 1 0 0 0 2 0 15.1 15.1 0 0 0-4.39-10.61'
+    />
+  </svg>
 );
 
-export const SitemapSVG = ({ ...props }: Props) => <svg width="800" height="800" viewBox="0 -1 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" { ...props }><path fill-rule="evenodd" clip-rule="evenodd" d="M9 0a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2v3H4a2 2 0 0 0-2 2v3h2v-3h7v3h2v-3h7v3h2v-3a2 2 0 0 0-2-2h-7V6h2a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm1 2v2h4V2zM1 16a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1zm1 2v2h2v-2zm7-1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm2 3v-2h2v2zm7-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm2 3v-2h2v2z" fill="#fff"/></svg>
+export const SitemapSVG = ({ ...props }: Props) => (
+  <svg
+    width='800'
+    height='800'
+    viewBox='0 -1 24 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+    {...props}
+  >
+    <path
+      fillRule='evenodd'
+      clipRule='evenodd'
+      d='M9 0a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2v3H4a2 2 0 0 0-2 2v3h2v-3h7v3h2v-3h7v3h2v-3a2 2 0 0 0-2-2h-7V6h2a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm1 2v2h4V2zM1 16a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1zm1 2v2h2v-2zm7-1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm2 3v-2h2v2zm7-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm2 3v-2h2v2z'
+      fill='#fff'
+    />
+  </svg>
+);
 
 export const SEOSVG = ({ ...props }: Props) => (
   <svg
@@ -25,7 +51,6 @@ export const SEOSVG = ({ ...props }: Props) => (
     />
   </svg>
 );
-
 
 export const RobotsTextSVG = ({ ...props }: Props) => (
   <svg

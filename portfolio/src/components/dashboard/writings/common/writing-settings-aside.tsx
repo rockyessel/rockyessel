@@ -2,10 +2,22 @@
 
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useGenOgImage } from '@/hooks/use-gen-og';
+import { PostType } from '@/types';
 import Image from 'next/image';
 
-const WritingSettingsAside = () => {
-  const { ogImage } = useGenOgImage();
+interface Props {
+  post: PostType;
+}
+
+const WritingSettingsAside = ({ post }: Props) => {
+  const ogObj = {
+    title: post?.title,
+    // TODO: Fix this error.
+    //  @ts-ignore
+    meta: ['rockyessel', ...post?.tags?.slice(0, 3)],
+  };
+
+  const { ogImage } = useGenOgImage({ ...ogObj });
   return (
     <div className='max-w-[20rem] w-full sticky top-16 flex flex-col gap-5'>
       <div>
@@ -20,15 +32,8 @@ const WritingSettingsAside = () => {
         </div>
 
         <div className='flex flex-col gap-2'>
-          <p className='text-lg font-semibold'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-          <p className='text-gray-400'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
-            sapiente exercitationem, delectus, ipsa repudiandae minus similique
-            velit nam soluta cumque facere provident corporis ab ipsum dicta
-            adipisci quod quidem totam!
-          </p>
+          <p className='text-lg font-semibold'>{post?.title}</p>
+          <p className='text-gray-400'>{post?.description}</p>
         </div>
       </div>
 
