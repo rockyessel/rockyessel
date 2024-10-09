@@ -1,5 +1,6 @@
 import { HTMLProps } from 'react';
 import { Doc } from '../../convex/_generated/dataModel';
+import { CATEGORIES } from '@/lib/utils/constants';
 
 export interface Project {
   title: string;
@@ -57,4 +58,12 @@ export interface IPublicationArticle {
 // Post Type
 export type PostType = Doc<'posts'>;
 export type PostKeyType = keyof PostType;
-export type PostValueType = PostType[keyof PostType];
+export type PostValueType = PostType[PostKeyType];
+
+export type PostDraftType = Doc<'posts_draft'>;
+export type PostDraftKeyType = keyof PostDraftType;
+export type PostDraftValueType = PostDraftType[PostDraftKeyType];
+
+
+
+export type CategoryKeysType = keyof typeof CATEGORIES;

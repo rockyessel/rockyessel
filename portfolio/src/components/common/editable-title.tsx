@@ -61,8 +61,9 @@ const EditableTitle = (props: Props) => {
     }
   };
   return (
-    <div className='relative'>
+    <section className='relative'>
       <div
+        
         spellCheck={true}
         ref={titleRef}
         contentEditable={true}
@@ -77,7 +78,8 @@ const EditableTitle = (props: Props) => {
         data-placeholder={placeholder}
       />
       {!content && !isFocused && (
-        <div
+        <div 
+          
           data-placeholder='editablePlaceholder'
           className={cn(
             className,
@@ -87,7 +89,7 @@ const EditableTitle = (props: Props) => {
           {placeholder}
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

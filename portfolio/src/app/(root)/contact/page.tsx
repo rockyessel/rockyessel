@@ -12,6 +12,12 @@ import {
   Dribbble,
 } from 'lucide-react';
 import { Medium } from '@/assets';
+import { getPageSEO } from '@/lib/actions/helpers';
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('contact');
+}
 
 
 const ContactPage = () => {

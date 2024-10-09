@@ -21,26 +21,21 @@ export const getPostBySlug = async (slug: string) => {
 };
 
 export const getPostById = async (postId: string) => {
-  const post = await fetchQuery(postsMethod.getProductById, { postId });
+  const post = await fetchQuery(postsMethod.getPostById, { postId });
   return post;
 };
 
-export const createPost = async () => {
-  const postId: Id<'posts'> = await fetchMutation(postsMethod.createProduct, {
-    title: `Untitled`,
-    slug: createSlug('Untitled'),
-    isFeatured: false,
-    isPublished: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+export const updatePost = async (post: Doc<'posts'>) => {
+  const { _creationTime, ...rest } = post;
+  const postId = await fetchMutation(postsMethod.updatePost, {
+    ...rest,
   });
-
   return postId;
 };
 
-export const updateProduct = async (post: Doc<'posts'>) => {
+export const publishPost = async (post: Doc<'posts'>) => {
   const { _creationTime, ...rest } = post;
-  const postId = await fetchMutation(postsMethod.updateProduct, {
+  const postId = await fetchMutation(postsMethod.publishPost, {
     ...rest,
   });
   return postId;

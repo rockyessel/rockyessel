@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Fragment } from "react";
-import { RenderLeafProps } from "slate-react";
-import { isNodeText } from "@/components/editor/lib/helpers";
+import { Fragment } from 'react';
+import { RenderLeafProps } from 'slate-react';
+import { isNodeText } from '@/components/editor/lib/helpers';
 
 const RenderMarkElements = (props: RenderLeafProps) => {
   let { children, leaf } = props;

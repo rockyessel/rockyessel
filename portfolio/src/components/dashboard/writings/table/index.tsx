@@ -13,20 +13,20 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Search, Edit, Trash2, Eye, ThumbsUp } from 'lucide-react';
-import { Doc } from '../../../../../convex/_generated/dataModel';
+import { PostDraftType } from '@/types';
 
 interface Props {
-  posts: Doc<'posts'>[];
+  drafts: PostDraftType[];
 }
 
-const WritingTable = ({ posts }: Props) => {
+const WritingTable = ({ drafts }: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const filteredPosts = posts.filter(
-    (post) =>
-      post?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post?.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post?.tags?.some((tag: string) =>
+  const filteredPosts = drafts.filter(
+    (draft) =>
+      draft?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      draft?.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      draft?.tags?.some((tag: string) =>
         tag.toLowerCase().includes(searchTerm.toLowerCase())
       )
   );
@@ -36,7 +36,7 @@ const WritingTable = ({ posts }: Props) => {
       <div className='relative mb-6'>
         <Input
           type='text'
-          placeholder='Search posts...'
+          placeholder='Search drafts...'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className='pl-10'
@@ -56,12 +56,12 @@ const WritingTable = ({ posts }: Props) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filteredPosts?.map((post, index) => (
+          {filteredPosts?.map((draft, index) => (
             <TableRow key={index}>
-              <TableCell className='font-medium'>{post?.title}</TableCell>
+              <TableCell className='font-medium'>{draft?.title}</TableCell>
               <TableCell>
                 <div className='flex flex-wrap gap-1'>
-                  {post?.tags?.map((tag, index) => (
+                  {draft?.tags?.map((tag, index) => (
                     <Badge key={index} variant='secondary'>
                       {tag}
                     </Badge>
@@ -80,7 +80,7 @@ const WritingTable = ({ posts }: Props) => {
                   {2302}
                 </div>
               </TableCell>
-              <TableCell>{post?.createdAt}</TableCell>
+              <TableCell>{draft?.createdAt}</TableCell>
               <TableCell>
                 <div className='flex space-x-2'>
                   <Button variant='outline' size='sm'>

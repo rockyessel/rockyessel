@@ -1,58 +1,66 @@
-"use client";
+'use client';
 
-import { format, set, startOfToday } from "date-fns";
-import { cn } from "@/lib/utils/helpers";
-import { Badge } from "@/components/ui/badge";
-import { useState, useCallback } from "react";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { Calendar as CalendarIcon, Clock } from "lucide-react";
+import { format, set, startOfToday } from 'date-fns';
+import { cn } from '@/lib/utils/helpers';
+import { Badge } from '@/components/ui/badge';
+import { useState, useCallback, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
+import { Calendar as CalendarIcon, Clock } from 'lucide-react';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from '@/components/ui/popover';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select';
 
 interface Props {
+  initialDate?: Date;
   disableFutureDates?: boolean;
   disablePastDates?: boolean;
   initialFocus?: boolean;
+  disabled?: boolean;
   onDateTimeChange?: (date: Date | undefined) => void;
 }
 
 const DateTimePicker = (props: Props) => {
   const {
+    initialDate,
     onDateTimeChange,
     disableFutureDates = false,
     disablePastDates = false,
     initialFocus,
+    disabled,
   } = props;
 
   const today = startOfToday();
 
+  console.log('initialDate: ', initialDate);
+
   const disabledDates = (date: Date) => {
-    if (disableFutureDates && (date >= today)) return true;
-    if (disablePastDates && (date < today)) return true;
+    if (disableFutureDates && date >= today) return true;
+    if (disablePastDates && date < today) return true;
     return false;
   };
 
-  const [date, setDate] = useState<Date>();
-  const [time, setTime] = useState({ hours: "00", minutes: "00" });
+  // Initialize date and time based on initialDate or default to current date/time
+  const [date, setDate] = useState<Date | undefined>(initialDate || undefined);
+  const [time, setTime] = useState({hours: initialDate ? initialDate.getUTCHours().toString().padStart(2, '0') : '00', minutes: initialDate ? initialDate.getUTCMinutes().toString().padStart(2, '0') : '00' });
 
   const hours = Array.from({ length: 24 }, (_, i) =>
-    i.toString().padStart(2, "0")
+    i.toString().padStart(2, '0')
   );
   const minutes = Array.from({ length: 60 }, (_, i) =>
-    i.toString().padStart(2, "0")
+    i.toString().padStart(2, '0')
   );
 
+  // Update the date when a new date is selected
   const handleDateSelect = useCallback(
     (selectedDate: Date | undefined) => {
       setDate(selectedDate);
@@ -70,16 +78,17 @@ const DateTimePicker = (props: Props) => {
             newDateTime.getMinutes()
           )
         );
-        onDateTimeChange(utcDate);
+        onDateTimeChange?.(utcDate);
       } else {
-        onDateTimeChange(undefined);
+        onDateTimeChange?.(undefined);
       }
     },
     [time, onDateTimeChange]
   );
 
+  // Update the time (hours or minutes)
   const handleTimeChange = useCallback(
-    (type: "hours" | "minutes", value: string) => {
+    (type: 'hours' | 'minutes', value: string) => {
       setTime((prev) => {
         const newTime = { ...prev, [type]: value };
         if (date) {
@@ -96,7 +105,7 @@ const DateTimePicker = (props: Props) => {
               newDateTime.getMinutes()
             )
           );
-          onDateTimeChange(utcDate);
+          onDateTimeChange?.(utcDate);
         }
         return newTime;
       });
@@ -104,6 +113,7 @@ const DateTimePicker = (props: Props) => {
     [date, onDateTimeChange]
   );
 
+  // Set the date to the current UTC time
   const handleSetToday = useCallback(() => {
     const now = new Date();
     const utcNow = new Date(
@@ -117,60 +127,77 @@ const DateTimePicker = (props: Props) => {
     );
     setDate(utcNow);
     setTime({
-      hours: utcNow.getUTCHours().toString().padStart(2, "0"),
-      minutes: utcNow.getUTCMinutes().toString().padStart(2, "0"),
+      hours: utcNow.getUTCHours().toString().padStart(2, '0'),
+      minutes: utcNow.getUTCMinutes().toString().padStart(2, '0'),
     });
-    onDateTimeChange(utcNow);
+    onDateTimeChange?.(utcNow);
   }, [onDateTimeChange]);
+
+  useEffect(() => {
+    // When the initialDate changes, set the date and time accordingly
+    if (initialDate) {
+      setDate(initialDate);
+      setTime({
+        hours: initialDate.getUTCHours().toString().padStart(2, '0'),
+        minutes: initialDate.getUTCMinutes().toString().padStart(2, '0'),
+      });
+    }
+  }, [initialDate]);
 
   return (
     <Popover>
-      <PopoverTrigger asChild>
+      <PopoverTrigger disabled={disabled} asChild>
         <Button
-          variant={"outline"}
+          disabled={disabled}
+          variant={'outline'}
           className={cn(
-            "w-full justify-start text-left font-normal",
-            !date && "text-muted-foreground"
+            'w-full justify-start text-left font-normal',
+            !date && 'text-muted-foreground'
           )}
         >
-          <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
-          <Clock className="ml-auto h-4 w-4 opacity-50" />
-          <span className="ml-1">
+          <CalendarIcon className='mr-2 h-4 w-4' />
+          {date ? format(date, 'PPP') : <span>Pick a date</span>}
+          <Clock className='ml-auto h-4 w-4 opacity-50' />
+          <span className='ml-1'>
             {time.hours}:{time.minutes}
           </span>
-          <Badge variant="secondary" className="ml-2 text-xs">
+          <Badge variant='secondary' className='ml-2 text-xs'>
             UTC
           </Badge>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full p-0" align="start">
-        <div className="p-3 border-b border-zinc-700/40 flex justify-between items-center">
-          <h2 className="font-semibold text-sm">Select Date & Time (UTC)</h2>
+      <PopoverContent
+        aria-disabled={disabled}
+        className='w-full p-0'
+        align='start'
+      >
+        <div className='p-3 border-b border-zinc-700/40 flex justify-between items-center'>
+          <h2 className='font-semibold text-sm'>Select Date & Time (UTC)</h2>
           <Button
-            disabled={disableFutureDates}
-            variant="outline"
-            size="sm"
+            disabled={disabled || disableFutureDates}
+            variant='outline'
+            size='sm'
             onClick={handleSetToday}
           >
             Today
           </Button>
         </div>
         <Calendar
-          mode="single"
+          mode='single'
           selected={date}
           onSelect={handleDateSelect}
-          disabled={disabledDates}
+          disabled={disabled || disabledDates}
           initialFocus={initialFocus}
         />
-        <div className="border-t border-zinc-700/40 p-3 flex justify-between items-center">
-          <div className="flex space-x-2">
+        <div className='border-t border-zinc-700/40 p-3 flex justify-between items-center'>
+          <div className='flex space-x-2'>
             <Select
+              disabled={disabled}
               value={time.hours}
-              onValueChange={(value) => handleTimeChange("hours", value)}
+              onValueChange={(value) => handleTimeChange('hours', value)}
             >
-              <SelectTrigger className="px-1.5 w-[70px]">
-                <SelectValue placeholder="HH" />
+              <SelectTrigger className='px-1.5 w-[70px]'>
+                <SelectValue placeholder='HH' />
               </SelectTrigger>
               <SelectContent>
                 {hours.map((hour) => (
@@ -181,11 +208,12 @@ const DateTimePicker = (props: Props) => {
               </SelectContent>
             </Select>
             <Select
+              disabled={disabled}
               value={time.minutes}
-              onValueChange={(value) => handleTimeChange("minutes", value)}
+              onValueChange={(value) => handleTimeChange('minutes', value)}
             >
-              <SelectTrigger className="px-1.5 w-[70px]">
-                <SelectValue placeholder="MM" />
+              <SelectTrigger className='px-1.5 w-[70px]'>
+                <SelectValue placeholder='MM' />
               </SelectTrigger>
               <SelectContent>
                 {minutes.map((minute) => (
@@ -196,7 +224,7 @@ const DateTimePicker = (props: Props) => {
               </SelectContent>
             </Select>
           </div>
-          <Badge variant="secondary">UTC</Badge>
+          <Badge variant='secondary'>UTC</Badge>
         </div>
       </PopoverContent>
     </Popover>

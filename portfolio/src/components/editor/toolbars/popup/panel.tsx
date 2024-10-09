@@ -45,7 +45,7 @@ const PopupPanel = forwardRef<HTMLDivElement, Props & HTMLDivProps>(
           : currentSelection;
 
       if (placementSelection) {
-        const domRange = ReactEditor.toDOMRange(editor, placementSelection);
+        const domRange = ReactEditor?.toDOMRange(editor, placementSelection);
         const rect = domRange.getBoundingClientRect();
 
         divElement.style.opacity = '1';

@@ -1,10 +1,10 @@
-import { getPosts } from '@/lib/actions/convex_/posts';
 import CreatePost from '@/components/actions/create-post';
 import WritingTable from '@/components/dashboard/writings/table';
 import DashboardSidebarLayout from '@/components/layout/sidebar-dashboard';
+import { getPostDrafts } from '@/lib/actions/convex_/post-drafts';
 
 const WritingsPage = async () => {
-  const posts = await getPosts();
+  const drafts = await getPostDrafts();
 
   return (
     <DashboardSidebarLayout allowNavbar>
@@ -14,7 +14,7 @@ const WritingsPage = async () => {
           <CreatePost />
         </div>
 
-        <WritingTable posts={posts} />
+        <WritingTable drafts={drafts} />
       </div>
     </DashboardSidebarLayout>
   );

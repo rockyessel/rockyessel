@@ -26,7 +26,7 @@ export const withHtml = (editor: Editor): Editor => {
     if (htmlContent) {
       const html = DOMPurify.sanitize(htmlContent);
       const fragments = htmlToSlate(html);
-      // console.log('fragments => ', fragments);
+      console.log('fragments => ', fragments);
       Transforms.insertFragment(editor, fragments);
 
       return;

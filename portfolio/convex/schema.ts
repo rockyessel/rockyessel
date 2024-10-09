@@ -1,10 +1,11 @@
 import { defineSchema, defineTable } from 'convex/server';
 import { v } from 'convex/values';
-import { PostSchema } from './types';
+import { PostDraftSchema, PostSchema } from './types';
 
 export default defineSchema(
   {
     posts: defineTable({ ...PostSchema }),
+    posts_draft: defineTable({ ...PostDraftSchema }),
   },
   // If you ever get an error about schema mismatch
   // between your data and your schema, and you cannot

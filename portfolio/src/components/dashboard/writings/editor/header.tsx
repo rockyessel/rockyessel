@@ -1,21 +1,50 @@
 'use client';
 
 import Link from 'next/link';
-import { PostType } from '@/types';
-import { cn } from '@/lib/utils/helpers';
+import { TransitionStartFunction, useTransition } from 'react';
+import { PostDraftType } from '@/types';
+import { cn, domainURL } from '@/lib/utils/helpers';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ArrowLeftFromLine } from 'lucide-react';
 import { BookCheck, BookDashed, Settings } from 'lucide-react';
+import { publishDraft } from '@/lib/actions/convex_/post-drafts';
+import { toast } from 'sonner';
+import { getPostById } from '@/lib/actions/convex_/posts';
 
 interface Props {
-  post: PostType;
+  draft: PostDraftType;
   visible: boolean;
+  startPublishing: TransitionStartFunction;
+  isPublishing: boolean;
 }
 
-const WritingHeader = ({ post, visible }: Props) => {
-  const { back } = useRouter();
+const WritingHeader = ({
+  draft,
+  visible,
+  isPublishing,
+  startPublishing,
+}: Props) => {
+  const { back, push } = useRouter();
 
+  const handlePublishDraft = () => {
+    startPublishing(async () => {
+      const publishedPostId = await publishDraft(draft?._id);
+      if (publishedPostId) {
+        const post = await getPostById(publishedPostId);
+        if (!post) {
+          toast.error('Failed to get post. Please publish again.');
+          return;
+        }
+        toast.success(
+          <p>
+            Post is published successfully.{' Visit: '}
+            <a href={domainURL(`/${post?.slug}`)}>{post?.title}</a>
+          </p>
+        );
+      }
+    });
+  };
   return (
     <header
       className={cn(
@@ -25,6 +54,7 @@ const WritingHeader = ({ post, visible }: Props) => {
     >
       <div className='flex items-center gap-3'>
         <Button
+          disabled={isPublishing}
           onClick={back}
           variant='outline'
           size='icon'
@@ -32,32 +62,36 @@ const WritingHeader = ({ post, visible }: Props) => {
         >
           <ArrowLeftFromLine strokeWidth={2.25} className='h-4 w-4' />
         </Button>
-        <button className='rounded-md border border-zinc-700/40 text-sm bg-zinc-800/60 p-1 inline-flex items-center gap-2'>
-          <BookCheck strokeWidth={2.25} className='w-4 h-4' size={20} />
-          Home
-        </button>
       </div>
 
       <div className='flex items-center'>
         <div className='flex items-center gap-3'>
           <div className='flex items-center gap-3'>
-            <button className='rounded-md border border-zinc-700/40 text-sm p-1 inline-flex items-center gap-2'>
+            <button
+              disabled={isPublishing}
+              className='rounded-md border border-zinc-700/40 text-sm p-1 inline-flex items-center gap-2'
+            >
               <BookDashed strokeWidth={2.25} className='w-4 h-4' size={20} />
               Preview
             </button>
 
-            <button className='rounded-md border border-zinc-700/40 text-sm bg-zinc-800/60 p-1 inline-flex items-center gap-2'>
+            <button
+              disabled={isPublishing}
+              onClick={handlePublishDraft}
+              className='rounded-md border border-zinc-700/40 text-sm bg-zinc-800/60 p-1 inline-flex items-center gap-2'
+            >
               <BookCheck strokeWidth={2.25} className='w-4 h-4' size={20} />
               Publish
             </button>
 
-            <Link
-              href={`/dashboard/writings/${post._id}`}
+            <button
+              disabled={isPublishing}
+              onClick={() => push(`/dashboard/writings/${draft._id}/settings`)}
               className='rounded-md border border-zinc-700/40 text-sm p-1 inline-flex items-center gap-2'
             >
               <Settings strokeWidth={2.25} className='w-4 h-4' size={20} />
               Settings
-            </Link>
+            </button>
           </div>
         </div>
       </div>

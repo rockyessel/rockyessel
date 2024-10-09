@@ -2,6 +2,19 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Github, Linkedin, Twitter, Youtube, Facebook, Instagram, Globe, BookOpen } from 'lucide-react';
 
+
+
+
+import { getPageSEO } from '@/lib/actions/helpers';
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('links');
+}
+
+
+
+
 const LinksPage = () => {
   return (
     <div className='flex items-center justify-center p-4'>

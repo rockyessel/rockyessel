@@ -1,6 +1,21 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+// Check if the environment is Vercel production or standard production.
+const isVercelProduction = process.env.VERCEL === '1';
+const isStandardProduction = process.env.NODE_ENV === 'production';
+
+// Determine if the environment is production.
+export const isProduction = isVercelProduction || isStandardProduction;
+
+// Define the development and production domains from environment variables.
+const DEV_ENV = process.env.DEV_DOMAIN || process.env.NEXT_PUBLIC_DEV_DOMAIN;
+const PRO_ENV = process.env.PROD_DOMAIN || process.env.NEXT_PUBLIC_PROD_DOMAIN;
+// const VERCEL_ENV = process.env.DOMAIN_VERCEL || process.env.NEXT_PUBLIC_DOMAIN_VERCEL;
+
+// Determine the domain based on the environment.
+export const DOMAIN = isProduction ? PRO_ENV : DEV_ENV;
+
 export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
@@ -10,8 +25,10 @@ export const cn = (...inputs: ClassValue[]) => {
  * @param {string} input - The input string to create a slug from.
  * @returns {string} - The generated slug.
  */
-export const createSlug = (input: string): string => {
+export const createSlug = (input?: string): string => {
   console.log('input: ', input);
+
+  if (!input) return '';
 
   // Define a set of replacements for specific characters or words
   const replacements: { [key: string]: string } = {
@@ -96,28 +113,22 @@ export const fileToBase64 = async (input: File | string): Promise<string> => {
   }
 };
 
-export const urlToBase64 = async (url: string): Promise<string> => {
-  if (typeof window !== 'undefined') {
-    return window.btoa(unescape(encodeURIComponent(url)));
-  } else {
-    // Handle the case where 'window' is not defined, if necessary
-    throw new Error("window is not defined");
-  }
+export const urlToBase64 = (url: string) => {
+  return toSafeBase64Url(Buffer.from(url).toString('base64'));
 };
-
 
 export const toSafeBase64Url = (base64: string): string => {
   return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
 };
 
+const profile = `https://avatars.githubusercontent.com/u/97303710?s=400&u=bf45658532dceeaa02804dcb458f09189dbe6e77&v=4`;
+
 export const createOgImage = ({
   title,
   meta,
-  image,
 }: {
   title: string;
   meta: string;
-  image: string;
 }) =>
   [
     // ACCOUNT PREFIX
@@ -140,7 +151,7 @@ export const createOgImage = ({
 
     // PROFILE IMAGE
     // dynamically fetched from my twitter profile
-    `l_fetch:${image}`,
+    `l_fetch:${urlToBase64(profile)}`,
     // Transformations
     `c_thumb,g_face,r_max,w_380,h_380,q_100`,
     // Positioning
@@ -152,3 +163,67 @@ export const createOgImage = ({
 
 // double escape for commas and slashes
 const e = (str: string) => encodeURIComponent(encodeURIComponent(str));
+
+// Check if the window object is defined (i.e., the code is running in a browser).
+export const windowIsDefined = typeof window !== 'undefined';
+
+type URLPathType = string | `/${string}` | '#';
+/**
+ * Constructs a domain URL with an optional path.
+ * @param {URLPathType} [path] - Optional path to append to the domain URL.
+ * @returns {string} - The constructed domain URL.
+ * @throws {Error} - If the domain is not set or is an empty string.
+ */
+export const domainURL = (path?: URLPathType): string => {
+  const protocol = isProduction ? 'https' : 'http';
+
+  if (!DOMAIN) {
+    throw new Error('Domain is not set or is an empty string');
+  }
+
+  // Ensure path starts with a '/'
+  const formattedPath =
+    path && typeof path === 'string' && !path.startsWith('/')
+      ? `/${path}`
+      : path;
+
+  let url: URL;
+  if (formattedPath) {
+    url = new URL(`${protocol}://${DOMAIN}${formattedPath}`);
+  } else {
+    url = new URL(`${protocol}://${DOMAIN}`);
+  }
+
+  return url.toString();
+};
+
+/**
+ * Truncates a string to a specified length, appending "..." if truncated.
+ * @param {string} str - The string to be truncated.
+ * @param {number} num - The maximum length of the truncated string.
+ * @returns {string} - The truncated string with "..." appended if necessary.
+ */
+export const truncate = (str: string, num: number) => {
+  if (!str) return '';
+  if (str.length <= num) {
+    return str;
+  }
+  return str.slice(0, num).trimEnd() + '...';
+};
+
+export const isContentNew = (contentDateISO: string): boolean => {
+  // Convert the ISO date string to a Date object
+  const contentDate = new Date(contentDateISO);
+
+  // Get the current date and time
+  const currentDate = new Date();
+
+  // Calculate the difference in milliseconds using getTime()
+  const diffInMilliseconds = currentDate.getTime() - contentDate.getTime();
+
+  // Convert milliseconds to days
+  const diffInDays = diffInMilliseconds / (1000 * 60 * 60 * 24);
+
+  // Return true if the content is within 7 days, otherwise false
+  return diffInDays <= 7;
+};

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from '../ui/button';
-import { cn } from '@/lib/utils/helpers';
+import { cn, domainURL } from '@/lib/utils/helpers';
 import { FolderKanban, House, PenLine, File, Package2 } from 'lucide-react';
 
 const navItems = {
@@ -50,7 +50,7 @@ const Navbar = ({ className }: Props) => {
               return (
                 <Link
                   key={path}
-                  href={path}
+                  href={domainURL(path)}
                   className='items-center transition-all hover:text-lime-700 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2'
                 >
                   <item.icon className='w-4 h-4 mr-2' />
@@ -64,7 +64,7 @@ const Navbar = ({ className }: Props) => {
               return (
                 <Link
                   key={path}
-                  href={path}
+                  href={domainURL(path)}
                   className='items-center transition-all hover:text-lime-700 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2'
                 >
                   <item.icon className='w-4 h-4 mr-2' />

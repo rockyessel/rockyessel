@@ -12,7 +12,14 @@ import {
 } from '@/lib/utils/constants';
 import DashboardProjectCard from '@/components/common/project-card-dashboard';
 
-const Home = () => {
+import { getPageSEO } from '@/lib/actions/helpers';
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('home');
+}
+
+const Home = async () => {
   return (
     <AsideContentLayout>
       <section className='w-full'>
@@ -35,7 +42,9 @@ const Home = () => {
               <span className='text-gray-400 mr-2 text-sm'>{`What's Happening`}</span>
               <div className='flex items-center'>
                 <span className='text-gray-400 mr-1 text-sm'>Launched</span>
-                <span className='text-blue-400 text-sm'>Focus Amplified ↗</span>
+                <span className='text-blue-400 text-sm'>
+                  Focus Amplified ↗
+                </span>
               </div>
             </div>
           </div>

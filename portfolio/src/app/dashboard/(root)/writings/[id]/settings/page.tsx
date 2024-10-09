@@ -6,15 +6,16 @@ import WritingSettingsComments from '@/components/dashboard/writings/settings/co
 import WritingSettingsAside from '@/components/dashboard/writings/common/writing-settings-aside';
 import { getPostById } from '@/lib/actions/convex_/posts';
 import { notFound } from 'next/navigation';
+import { getPostDraftById } from '@/lib/actions/convex_/post-drafts';
 
 interface Props {
   params: { id: string };
 }
 
 const WritingSettingsPage = async ({ params }: Props) => {
-  const post = await getPostById(params.id);
+  const draft = await getPostDraftById(params.id);
 
-  if (!post) return notFound();
+  if (!draft) return notFound();
 
   return (
     <DashboardSidebarLayout allowNavbar>
@@ -23,18 +24,13 @@ const WritingSettingsPage = async ({ params }: Props) => {
         className='max-w-[1400px] mx-auto w-full flex items-start'
       >
         <section className='flex items-start gap-5'>
-          <WritingSettingsAside post={post} />
+          <WritingSettingsAside draft={draft} />
           <div>
-            <div className='sticky top-0 bg-neutral-900 w-full border-b p-2 text-gray-400 border-zinc-700/40 inline-flex items-center justify-between'>
-              <p className='text-lg font-medium text-gray-300'>
-                Article Settings
-              </p>
-            </div>
             <TabsContent value='general'>
-              <WritingSettingsGeneral post={post} />
+              <WritingSettingsGeneral draft={draft} />
             </TabsContent>
             <TabsContent value='seo'>
-              <WritingSettingsSEO />
+              <WritingSettingsSEO draft={draft} />
             </TabsContent>
             <TabsContent value='comments'>
               <WritingSettingsComments />

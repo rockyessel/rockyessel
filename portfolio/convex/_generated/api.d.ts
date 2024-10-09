@@ -15,7 +15,8 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
-import type * as core_posts_index from "../core/posts/index.js";
+import type * as core_posts_draft from "../core/posts/draft.js";
+import type * as core_posts_main from "../core/posts/main.js";
 import type * as myFunctions from "../myFunctions.js";
 import type * as types_index from "../types/index.js";
 
@@ -28,7 +29,8 @@ import type * as types_index from "../types/index.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
-  "core/posts/index": typeof core_posts_index;
+  "core/posts/draft": typeof core_posts_draft;
+  "core/posts/main": typeof core_posts_main;
   myFunctions: typeof myFunctions;
   "types/index": typeof types_index;
 }>;

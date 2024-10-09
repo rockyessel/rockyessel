@@ -1,17 +1,11 @@
-'use client'
+'use client';
 
-import { ParagraphType, RenderProps } from "@/components/editor/types"
-
-
-
+import { ParagraphType, RenderProps } from '@/components/editor/types';
 
 const HtmlPElementRender = (props: RenderProps<ParagraphType>) => {
+  const { attributes, children, element } = props;
 
-    const {attributes,children,element} = props
+  return <p>{children}</p>;
+};
 
-  return (
-    <p>{children}</p>
-  )
-}
-
-export default HtmlPElementRender
+export default HtmlPElementRender;

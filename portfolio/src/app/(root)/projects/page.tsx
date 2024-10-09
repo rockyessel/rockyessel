@@ -2,6 +2,17 @@ import AsideContentLayout from '@/components/layout/aside-content';
 import ProjectCard from '@/components/project/card';
 import { Project } from '@/types';
 
+
+
+import { getPageSEO } from '@/lib/actions/helpers';
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('projects');
+}
+
+
+
 const projects: Project[] = [
   {
     title: 'Symbion: Decentralized Blog CMS',

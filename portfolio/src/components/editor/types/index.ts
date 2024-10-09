@@ -331,3 +331,13 @@ export interface IPanelMarks {
 export type HeadingIconType = ForwardRefExoticComponent<
   Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
 >;
+
+export type TOCHeaderType = {
+  text: string;
+  children: TOCHeaderType[];
+};
+
+export type StackItemType = {
+  level: number;
+  header: TOCHeaderType;
+};

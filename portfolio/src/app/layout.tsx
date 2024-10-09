@@ -5,6 +5,7 @@ import { Outfit } from 'next/font/google';
 import Navbar from '@/components/common/navbar';
 import TurbulenceNoise from '@/components/common/turbulence-noise';
 import { Toaster } from '@/components/ui/toaster';
+import { Toaster as SonnerToaster } from 'sonner';
 
 const outFit = Outfit({ subsets: ['latin'] });
 
@@ -27,9 +28,9 @@ export default function RootLayout({
         )}
       >
         <TurbulenceNoise />
-         <Toaster  />
-          {children}
-       
+        <Toaster />
+        <SonnerToaster position='bottom-right' richColors />
+        {children}
       </body>
     </html>
   );

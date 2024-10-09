@@ -1,62 +1,98 @@
-"use client";
+'use client';
 
-import { RenderElementProps } from "slate-react";
-import HTMLHeadingsElementsRender from "./headings";
+import { DefaultElement, RenderElementProps } from 'slate-react';
+import HTMLHeadingsElementsRender from './headings';
+import { Fragment } from 'react';
 
 const RenderHtmlElements = (props: RenderElementProps) => {
-  const { children, element } = props;
+  const { children, element, attributes } = props;
 
   switch (element.type) {
-    case "paragraph":
-      return <p>{children}</p>;
-    case "heading-one":
-    case "heading-two":
-    case "heading-three":
-    case "heading-four":
-    case "heading-five":
-    case "heading-six":
+    case 'heading-one':
+    case 'heading-two':
+    case 'heading-three':
+    case 'heading-four':
+    case 'heading-five':
+    case 'heading-six':
       return <HTMLHeadingsElementsRender type={element.type} props={props} />;
-    case "image":
+
+    case 'paragraph':
+      return <p>{children}</p>;
+
+    case 'image':
       return (
-        <div>
+        <Fragment>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            {...attributes}
             width={element.props.width}
             height={element.props.height}
             src={element.props.src}
             alt={element.props.alt}
           />
-        </div>
+          {children}
+        </Fragment>
       );
-    case "separator":
-      return <hr />;
-    case "block-quote":
-      return <blockquote>{children}</blockquote>;
-    case "check-list":
+    case 'separator':
+      return <hr {...attributes} />;
+    case 'block-quote':
+      return <blockquote {...attributes}>{children}</blockquote>;
+    case 'check-list':
       return (
-        <div>
-          <input type="checkbox" checked={element.checked} readOnly={true} />
+        <div {...attributes}>
+          <input type='checkbox' checked={element.checked} readOnly={true} />
           {children}
         </div>
       );
-    case "bulleted-lists":
-      return <ul style={{ textAlign: element.align }}>{children}</ul>;
-    case "numbered-lists":
-      return <ol style={{ textAlign: element.align }}>{children}</ol>;
-    case "code-block":
+    case 'bulleted-lists':
       return (
-        <pre className="w-full bg-zinc-500">
+        <ul {...attributes} style={{ textAlign: element.align }}>
+          {children}
+        </ul>
+      );
+    case 'numbered-lists':
+      return (
+        <ol {...attributes} style={{ textAlign: element.align }}>
+          {children}
+        </ol>
+      );
+    case 'code-block':
+      return (
+        <pre {...attributes} className='w-full bg-zinc-500'>
           <code>{children}</code>
         </pre>
       );
-    case "separator":
-      return <hr />;
-    case "column-item":
-      return <p>{children}</p>;
-    case "column-layout":
-      return <p>{children}</p>;
+    case 'link':
+      return (
+        <a
+          className='text-lime-500 underline'
+          {...attributes}
+          href={element.props.href}
+          target={element.props.target}
+          rel={element.props.rel}
+        >
+          {children}
+        </a>
+      );
+
+    case 'list':
+      return <li {...attributes}>{children}</li>;
+    case 'table':
+      return <table {...attributes}>{children}</table>;
+    case 'table-row':
+      return <tr {...attributes}>{children}</tr>;
+    case 'table-cell':
+      return <td {...attributes}>{children}</td>;
+    case 'table-header':
+      return <th {...attributes}>{children}</th>;
+    case 'table-body':
+      return <tbody {...attributes}>{children}</tbody>;
+    // case 'column-item':
+    //   return <p>{children}</p>;
+    // case 'column-layout':
+    //   return <p>{children}</p>;
     default:
-      return <p>{children}</p>;
+      <DefaultElement {...props} />;
   }
 };
 

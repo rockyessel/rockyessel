@@ -11,7 +11,7 @@ import HtmlPreCodeElement from './pre';
 import { HeadingTypes } from '../../../types';
 import HTMLHeadingsElements from './headings';
 import HtmlChecklistElement from './checklist';
-import { RenderElementProps } from 'slate-react';
+import { DefaultElement, RenderElementProps } from 'slate-react';
 import { createSlug } from '@/lib/utils/helpers';
 import HtmlBlockQuoteElement from './blockquote';
 import HtmlChecklistContainerElement from './checklist-container';
@@ -73,9 +73,12 @@ const EditorHtmlElements = (props: RenderElementProps) => {
     case 'column-layout':
       const columnLayoutProps = { element, children, attributes };
       return <p {...attributes}>{children}</p>;
-    default:
+    case 'paragraph':
       const pProps = { element, children, attributes };
       return <HtmlPElement {...pProps} />;
+
+    default:
+      <DefaultElement {...props} />;
   }
 };
 

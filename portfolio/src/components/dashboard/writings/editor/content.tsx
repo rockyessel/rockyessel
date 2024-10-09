@@ -2,30 +2,33 @@
 
 import { Descendant } from 'slate';
 import { cn } from '@/lib/utils/helpers';
-import { PostKeyType, PostType } from '@/types';
+import { PostDraftKeyType, PostDraftType } from '@/types';
 import { TextEditor } from '@/components/editor';
 import EditableTitle from '@/components/common/editable-title';
 
 interface Props {
-  post: PostType;
-  updatePost: <K extends PostKeyType>(key: K, values: PostType[K]) => void;
+  draft: PostDraftType;
+  updateDraft: <K extends PostDraftKeyType>(
+    key: K,
+    values: PostDraftType[K]
+  ) => void;
   visible: boolean;
 }
 
 const WritingContent = ({ ...props }: Props) => {
-  const { post, updatePost, visible } = props;
+  const { draft, updateDraft, visible } = props;
 
   const onChange = (value: Descendant[]) => {
-    updatePost('content', JSON.stringify(value));
+    updateDraft('content', JSON.stringify(value));
   };
 
   return (
     <div>
       <EditableTitle
         className='text-3xl'
-        defaultValue={post?.title ?? ''}
+        defaultValue={draft?.title ?? ''}
         onChange={(value) => {
-          updatePost('title', value);
+          updateDraft('title', value);
         }}
         placeholder='Click to add a title'
       />
@@ -34,7 +37,7 @@ const WritingContent = ({ ...props }: Props) => {
         className='text-lg'
         locale={'en'}
         onChange={onChange}
-        content={post?.content}
+        content={draft?.content}
         toolbar={{
           className: cn(
             visible ? 'top-16' : 'top-0',

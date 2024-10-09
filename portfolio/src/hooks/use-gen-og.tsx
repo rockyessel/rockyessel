@@ -27,18 +27,17 @@ export const useGenOgImage = ({ title, meta, image }: Props = {}) => {
       ? meta.join(' · ')
       : ['rockyessel.me', '4 Jul', 'quantum', 'robotics'].join(' · ');
 
-  const ogImageMemo = useMemo(async () => {
-    const safe = await urlToBase64(imageURL);
+  const ogImageMemo = useMemo(() => {
     return createOgImage({
       title: ogTitle,
       meta: ogMeta,
-      image: toSafeBase64Url(safe),
+      image: imageURL,
     });
   }, [imageURL, ogMeta, ogTitle]);
 
   useEffect(() => {
-    const fetchOgImage = async () => {
-      const newOgImage = await ogImageMemo;
+    const fetchOgImage = () => {
+      const newOgImage = ogImageMemo;
       setOgImage(newOgImage);
     };
 

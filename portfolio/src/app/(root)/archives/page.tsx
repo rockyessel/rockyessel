@@ -1,7 +1,13 @@
 import Component from '@/components/common/archives-table';
 import AsideContentLayout from '@/components/layout/aside-content';
+import { getPageSEO } from '@/lib/actions/helpers';
+import { Metadata } from 'next';
 
-const ArchivesPage = () => {
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('archives');
+}
+
+const ArchivesPage = async () => {
   return (
     <AsideContentLayout>
       <Component />

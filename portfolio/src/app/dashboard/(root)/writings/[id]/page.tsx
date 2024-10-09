@@ -1,5 +1,5 @@
 import WritingEditorEntry from '@/components/dashboard/writings/editor';
-import { getPostById } from '@/lib/actions/convex_/posts';
+import { getPostDraftById } from '@/lib/actions/convex_/post-drafts';
 import { notFound } from 'next/navigation';
 
 interface Props {
@@ -7,11 +7,11 @@ interface Props {
 }
 
 const WritingPage = async ({ params }: Props) => {
-  const post = await getPostById(params.id);
+  const draft = await getPostDraftById(params.id);
 
-  if (!post) return notFound();
+  if (!draft) return notFound();
 
-  return <WritingEditorEntry post={post} />;
+  return <WritingEditorEntry draft={draft} />;
 };
 
 export default WritingPage;

@@ -3,29 +3,29 @@
 import React, { useTransition } from 'react';
 import { Button } from '../ui/button';
 import { Plus } from 'lucide-react';
-import { createPost } from '@/lib/actions/convex_/posts';
+import { createPostDraft } from '@/lib/actions/convex_/post-drafts';
 import { useRouter } from 'next/navigation';
 
-const CreatePost = () => {
-  const [isPending, startTransition] = useTransition();
+const CreatePostDraft = () => {
+  const [isDrafting, startDraftCreation] = useTransition();
   const { replace } = useRouter();
 
   const handleCreatePost = () => {
-    startTransition(async () => {
-      const postId = await createPost();
-      if (postId) {
-        replace(`/dashboard/writings/${postId}`);
+    startDraftCreation(async () => {
+      const draftId = await createPostDraft();
+      if (draftId) {
+        replace(`/dashboard/writings/${draftId}`);
       }
     });
   };
 
   return (
     <Button
-      disabled={isPending}
+      disabled={isDrafting}
       onClick={handleCreatePost}
       className='flex items-center'
     >
-      {isPending ? (
+      {isDrafting ? (
         <span>Loading...</span>
       ) : (
         <span className='inline-flex items-center'>
@@ -37,4 +37,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default CreatePostDraft;

@@ -4,30 +4,37 @@ import isEqual from 'lodash/isEqual';
 import WritingHeader from './header';
 import WritingContent from './content';
 import WritingFooterPage from './footer';
-import { PostKeyType, PostType } from '@/types';
-import { updateProduct } from '@/lib/actions/convex_/posts';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { PostDraftKeyType, PostDraftType } from '@/types';
+import {
+  publishDraft,
+  updatePostDraft,
+} from '@/lib/actions/convex_/post-drafts';
+import { useCallback, useEffect, useRef, useState, useTransition } from 'react';
+import { getPostById } from '@/lib/actions/convex_/posts';
+import { toast } from 'sonner';
+import { domainURL } from '@/lib/utils/helpers';
 
 interface Props {
-  post: PostType;
+  draft: PostDraftType;
 }
 
-const WritingEditorEntry = ({ post }: Props) => {
-  const [editablePost, setEditablePost] = useState(post);
+const WritingEditorEntry = ({ draft }: Props) => {
+  const [editablePostDraft, setEditablePostDraft] = useState(draft);
   const [isSaving, setIsSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [visible, setVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [isPublishing, startPublishing] = useTransition();
 
-  console.log('editablePost: ', editablePost);
-  const lastSavedPost = useRef(post);
+  console.log('editablePostDraft: ', editablePostDraft);
+  const lastSavedPost = useRef(draft);
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  console.log('editablePost: ', editablePost);
+  console.log('editablePostDraft: ', editablePostDraft);
 
-  const updatePost = useCallback(
-    <K extends PostKeyType>(key: K, values: PostType[K]) => {
-      setEditablePost((p) => {
+  const updateDraft = useCallback(
+    <K extends PostDraftKeyType>(key: K, values: PostDraftType[K]) => {
+      setEditablePostDraft((p) => {
         const updatedPost = { ...p, [key]: values };
         scheduleSave(updatedPost);
         return updatedPost;
@@ -36,7 +43,7 @@ const WritingEditorEntry = ({ post }: Props) => {
     []
   );
 
-  const scheduleSave = useCallback((updatedPost: PostType) => {
+  const scheduleSave = useCallback((updatedPost: PostDraftType) => {
     if (saveTimeoutRef.current) {
       clearTimeout(saveTimeoutRef.current);
     }
@@ -49,17 +56,17 @@ const WritingEditorEntry = ({ post }: Props) => {
   }, []);
 
   const handleAutoSave = useCallback(
-    async (postToSave: PostType) => {
+    async (postToSave: PostDraftType) => {
       if (isSaving) return;
 
       setIsSaving(true);
       try {
-        await updateProduct(postToSave);
+        await updatePostDraft(postToSave);
         lastSavedPost.current = postToSave;
         setSaved(true);
         setTimeout(() => setSaved(false), 2000);
       } catch (error) {
-        console.error('Failed to save post:', error);
+        console.error('Failed to save draft:', error);
       } finally {
         setIsSaving(false);
       }
@@ -88,16 +95,21 @@ const WritingEditorEntry = ({ post }: Props) => {
 
   return (
     <section className='relative w-full h-full mx-auto max-w-5xl'>
-      <WritingHeader visible={visible} post={editablePost} />
+      <WritingHeader
+        visible={visible}
+        draft={editablePostDraft}
+        isPublishing={isPublishing}
+        startPublishing={startPublishing}
+      />
       <WritingContent
         visible={visible}
-        updatePost={updatePost}
-        post={editablePost}
+        updateDraft={updateDraft}
+        draft={editablePostDraft}
       />
       <WritingFooterPage
         isSaving={isSaving}
         saved={saved}
-        post={editablePost}
+        draft={editablePostDraft}
       />
     </section>
   );

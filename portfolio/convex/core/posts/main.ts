@@ -2,19 +2,29 @@ import { v } from 'convex/values';
 import { mutation, query } from '../../_generated/server';
 import { PostSchema } from '../../types';
 
-export const createProduct = mutation({
+export const createPost = mutation({
   args: { ...PostSchema },
   handler: async (ctx, args) => {
     return await ctx.db.insert('posts', { ...args });
   },
 });
 
-export const updateProduct = mutation({
+export const updatePost = mutation({
   args: { _id: v.id('posts'), ...PostSchema },
   handler: async (ctx, args) => {
     const { _id, ...rest } = args;
     console.log(await ctx.db.get(_id));
     await ctx.db.patch(_id, { ...rest });
+
+    return _id;
+  },
+});
+
+export const publishPost = mutation({
+  args: { _id: v.id('posts'), ...PostSchema },
+  handler: async (ctx, args) => {
+    const { _id, ...rest } = args;
+    await ctx.db.patch(_id, { ...rest, isPublished: true });
 
     return _id;
   },
@@ -53,7 +63,7 @@ export const getPostBySlug = query({
   },
 });
 
-export const getProductById = query({
+export const getPostById = query({
   args: { postId: v.string() },
   handler: async (ctx, { postId }) => {
     const post = await ctx.db
