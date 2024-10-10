@@ -121,7 +121,7 @@ export const toSafeBase64Url = (base64: string): string => {
   return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
 };
 
-const profile = `https://avatars.githubusercontent.com/u/97303710?s=400&u=bf45658532dceeaa02804dcb458f09189dbe6e77&v=4`;
+export const profile = `https://avatars.githubusercontent.com/u/97303710?s=400&u=bf45658532dceeaa02804dcb458f09189dbe6e77&v=4`;
 
 export const createOgImage = ({
   title,
@@ -226,4 +226,19 @@ export const isContentNew = (contentDateISO: string): boolean => {
 
   // Return true if the content is within 7 days, otherwise false
   return diffInDays <= 7;
+};
+
+// Function to calculate reading time based on total word count
+export const calculateReadTime = (wordCount: number): string => {
+  const averageWordsPerMinute = 150; // Updated average reading speed
+  const minutes = wordCount / averageWordsPerMinute;
+  const minutesRounded = Math.floor(minutes); // Rounds down to the nearest whole minute
+  // const seconds = Math.round((minutes - minutesRounded) * 60); // Calculate remaining seconds
+
+  // Build the time string with minutes and seconds
+  let timeString = `${minutesRounded > 0 ? `${minutesRounded} minute${minutesRounded > 1 ? 's' : ''}` : ''}`;
+  // if (seconds > 0) timeString += `${minutesRounded > 0 ? " and " : ""}${seconds} second${seconds > 1 ? "s" : ""}`;
+
+  // Default to "less than a minute" if no time string is constructed
+  return timeString || 'less than a minute';
 };

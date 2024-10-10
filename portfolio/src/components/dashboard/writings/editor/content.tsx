@@ -19,7 +19,7 @@ const WritingContent = ({ ...props }: Props) => {
   const { draft, updateDraft, visible } = props;
 
   const onChange = (value: Descendant[]) => {
-    updateDraft('content', JSON.stringify(value));
+    updateDraft('content', value);
   };
 
   return (

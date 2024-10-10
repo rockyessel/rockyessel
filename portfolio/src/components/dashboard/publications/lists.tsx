@@ -3,69 +3,74 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
-import { IPublication } from '@/types';
+import { PublicationType } from '@/types';
 import { Plus, Search } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import AddEditPublicationDialog from './publication-dialog';
 import PublicationCard from './card';
+import {
+  createPublication,
+  updatePublication,
+} from '@/lib/actions/convex_/publications';
 
 interface Props {
-  publications: IPublication[];
+  publications: PublicationType[];
 }
 
 const PublicationLists = ({ publications }: Props) => {
-  console.log('publications: ', publications);
-  const [publicationLists, setPublicationLists] = useState(publications);
   const [searchTerm, setSearchTerm] = useState('');
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [editingPublication, setEditingPublication] = useState<IPublication>();
+  const [editingPublication, setEditingPublication] =
+    useState<PublicationType>();
 
-  console.log('editingPublication: ', editingPublication);
+  const [isCreatingPub, startCreatingPub] = useTransition();
+  const [isUpdatingPub, startUpdatingPub] = useTransition();
 
-  const filteredPublications = publicationLists.filter(
+  const filteredPublications = publications.filter(
     (pub) =>
-      pub.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      pub.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      pub.keywords.some((keyword) =>
-        keyword.toLowerCase().includes(searchTerm.toLowerCase())
+      pub?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      pub?.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      pub?.keywords?.some((keyword) =>
+        keyword?.toLowerCase().includes(searchTerm.toLowerCase())
       )
   );
 
-  const handleEdit = (publication: IPublication) => {
+  const handleEdit = (publication: PublicationType) => {
     setEditingPublication(publication);
     setDialogOpen(true);
   };
 
   const handleDelete = (id: string) => {
-    setPublicationLists((prev) => prev.filter((pub) => pub.id !== id));
     toast({
-      title: 'IPublication Deleted',
+      title: 'PublicationType Deleted',
       description: 'The publication has been successfully deleted.',
     });
   };
 
-  const handleSave = (publicationData: Omit<IPublication, 'id'>) => {
+  const handleSave = (publicationData: PublicationType) => {
     if (editingPublication) {
-      setPublicationLists((prev) =>
-        prev.map((pub) =>
-          pub.id === editingPublication.id
-            ? { ...pub, ...publicationData }
-            : pub
-        )
-      );
-      toast({
-        title: 'IPublication Updated',
-        description: 'The publication has been successfully updated.',
+      startUpdatingPub(async () => {
+        const publication = await updatePublication(editingPublication);
+        if (publication) {
+          toast({
+            title: 'PublicationType Updated',
+            description: 'The publication has been successfully updated.',
+          });
+
+          return;
+        }
       });
     } else {
-      const newPublication = {
-        ...publicationData,
-        id: Date.now().toString(), // Simple ID generation
-      };
-      setPublicationLists((prev) => [...prev, newPublication]);
-      toast({
-        title: 'IPublication Added',
-        description: 'The new publication has been successfully added.',
+      const newPublication = { ...publicationData };
+      startCreatingPub(async () => {
+        const publication = await createPublication(newPublication);
+        if (publication) {
+          toast({
+            title: 'PublicationType Added',
+            description: 'The new publication has been successfully added.',
+          });
+          return;
+        }
       });
     }
   };
@@ -93,9 +98,9 @@ const PublicationLists = ({ publications }: Props) => {
         <p className='text-center text-gray-500'>No publications found.</p>
       ) : (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-          {filteredPublications.map((publication) => (
+          {filteredPublications.map((publication, index) => (
             <PublicationCard
-              key={publication.id}
+              key={index}
               publication={publication}
               onEdit={handleEdit}
               onDelete={handleDelete}

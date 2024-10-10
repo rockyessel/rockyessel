@@ -147,12 +147,8 @@ export const descendant = (
   return value;
 };
 
-export const descendantToText = (fragments: Descendant[] | string) => {
+export const descendantToText = (fragments: Descendant[]) => {
   let text = '';
-
-  if (typeof fragments === 'string') {
-    fragments = descendant(fragments);
-  }
 
   const extractTextFromChildren = (children: Text[]) => {
     return children
@@ -288,8 +284,7 @@ export const generateTOC = (descendants: Descendant[]) => {
     }
   }
 
-  console.log('descendant(descendants) ', descendant(descendants));
-  descendant(descendants).forEach(processNode);
+  descendants.forEach(processNode);
 
   return toc;
 };
@@ -317,48 +312,3 @@ export const countWordsInStructure = (structure: any): number => {
 
   return totalWords;
 };
-
-// Generate the TOC based on the structure of headers
-// export const generateTOC = (descendants: Descendant[] | string) => {
-//   const toc: TOCHeaderType[] = [];
-//   const stack: StackItemType[] = [];
-
-//   console.log({ toc, stack });
-//   console.log('descendant(descendants): ', descendant(descendants));
-
-//   descendant(descendants).forEach((node) => {
-//     // Check if node is an ElementNodeType and its type starts with 'heading-'
-//     if (isElementNode(node)) {
-//       const headerLevel = parseInt(node.type.split('-')[1]);
-
-//       // Safely extract header text by checking if the first child is a `nodeText`
-//       const headerText = isNodeText(node.children[0])
-//         ? node.children[0].text
-//         : 'Untitled';
-
-//       // Create a new header item
-//       const newHeader: TOCHeaderType = {
-//         text: headerText,
-//         children: [],
-//       };
-
-//       // Find the correct level in the stack
-//       while (stack.length && stack[stack.length - 1].level >= headerLevel) {
-//         stack.pop();
-//       }
-
-//       if (stack.length === 0) {
-//         // If stack is empty, it's a top-level header
-//         toc.push(newHeader);
-//       } else {
-//         // If stack has items, add this header to the last header in the stack
-//         stack[stack.length - 1].header.children.push(newHeader);
-//       }
-
-//       // Push the new header to the stack
-//       stack.push({ level: headerLevel, header: newHeader });
-//     }
-//   });
-
-//   return toc;
-// };

@@ -65,5 +65,12 @@ export type PostDraftKeyType = keyof PostDraftType;
 export type PostDraftValueType = PostDraftType[PostDraftKeyType];
 
 
+export type FileType = Doc<'files'>;
+
+export type PublicationType = Doc<'publications'>;
+export type PubKeyType = keyof PublicationType;
+export type PubValueType = {[K in PubKeyType]: PublicationType[K]};
+
+
 
 export type CategoryKeysType = keyof typeof CATEGORIES;

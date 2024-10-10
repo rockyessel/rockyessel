@@ -39,11 +39,12 @@ const HTMLHeadingsElements = ({ type, props }: Props) => {
       {...attributes}
       onMouseEnter={() => setShowAnchor(true)}
       onMouseLeave={() => setShowAnchor(false)}
+      className='relative'
     >
       {children}
       {headingId && showAnchor && (
         <a
-        contentEditable={false}
+          contentEditable={false}
           href={`#${headingId}`}
           className='text-gray-400 ml-5 text-sm'
           title='heading-anchor'

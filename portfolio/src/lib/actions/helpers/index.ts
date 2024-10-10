@@ -1,5 +1,5 @@
 import { authOptions } from '@/lib/auth/options';
-import { createOgImage, domainURL } from '@/lib/utils/helpers';
+import { createOgImage, domainURL, profile } from '@/lib/utils/helpers';
 import { PostType } from '@/types';
 import { Metadata } from 'next';
 import { getServerSession, Session } from 'next-auth';
@@ -36,7 +36,7 @@ export const postSEO = async (post: PostType): Promise<Metadata> => {
       siteName: 'ROCKYESSEL',
       images: [
         {
-          url: '/default-cover.jpg',
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: post?.seoTitle || post?.title,
@@ -120,10 +120,10 @@ export const pageSEO: PageSEO = {
     openGraphDescription: 'Discover groundbreaking projects and insights in robotics, quantum computing, blockchain, and web2 technologies by Rocky Essel.',
     canonicalUrl: `${baseUrl}`,
     twitterHandle: '@rockyessel',
-    imageUrl: `${baseUrl}/images/rocky-essel-profile.jpg`,
+    imageUrl: profile,
     author: {
       name: 'Rocky Essel',
-      url: 'https://rockyessel.com/about',
+      url: 'https://rockyessel.me/about',
     },
   },
   writings: {
@@ -137,7 +137,7 @@ export const pageSEO: PageSEO = {
     imageUrl: `${baseUrl}/images/writings-banner.jpg`,
     author: {
       name: 'Rocky Essel',
-      url: 'https://rockyessel.com/about',
+      url: 'https://rockyessel.me/about',
     },
   },
   projects: {
@@ -151,7 +151,7 @@ export const pageSEO: PageSEO = {
     imageUrl: `${baseUrl}/images/projects-showcase.jpg`,
     author: {
       name: 'Rocky Essel',
-      url: 'https://rockyessel.com/about',
+      url: 'https://rockyessel.me/about',
     },
   },
   resume: {
@@ -165,7 +165,7 @@ export const pageSEO: PageSEO = {
     imageUrl: `${baseUrl}/images/rocky-essel-professional.jpg`,
     author: {
       name: 'Rocky Essel',
-      url: 'https://rockyessel.com/about',
+      url: 'https://rockyessel.me/about',
     },
   },
   archives: {
@@ -179,7 +179,7 @@ export const pageSEO: PageSEO = {
     imageUrl: `${baseUrl}/images/archives-banner.jpg`,
     author: {
       name: 'Rocky Essel',
-      url: 'https://rockyessel.com/about',
+      url: 'https://rockyessel.me/about',
     },
   },
   links: {
@@ -193,7 +193,7 @@ export const pageSEO: PageSEO = {
     imageUrl: `${baseUrl}/images/resources-collection.jpg`,
     author: {
       name: 'Rocky Essel',
-      url: 'https://rockyessel.com/about',
+      url: 'https://rockyessel.me/about',
     },
   },
    contact: {
@@ -207,7 +207,7 @@ export const pageSEO: PageSEO = {
     imageUrl: `${baseUrl}/images/contact-banner.jpg`,
     author: {
       name: 'Rocky Essel',
-      url: 'https://rockyessel.com/about',
+      url: 'https://rockyessel.me/about',
     },
   },
 };

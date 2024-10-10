@@ -12,7 +12,7 @@ export const PostSchema = {
   category: v.string(),
   subCategory: v.string(),
   description: v.string(),
-  content: v.string(),
+  content: v.array(v.any()),
   tags: v.array(v.string()),
 
   // OPtional
@@ -36,7 +36,7 @@ export const PostDraftSchema = {
   isFeatured: v.optional(v.boolean()),
   isPublished: v.optional(v.boolean()),
   image: v.optional(v.string()),
-  content: v.optional(v.string()),
+  content: v.optional(v.array(v.any())),
   tags: v.optional(v.array(v.string())),
   seoTitle: v.optional(v.string()),
   description: v.optional(v.string()),
@@ -49,4 +49,20 @@ export const PostDraftSchema = {
   subCategory: v.optional(v.string()),
   rePublishedOn: v.optional(v.array(v.string())),
   postId: v.optional(v.id('posts')),
+};
+
+export const FileSchema = {
+  postId: v.optional(v.id('posts_draft')),
+  storageId: v.id('_storage'),
+  mimeType: v.string(),
+  fileUrl: v.optional(v.string()),
+};
+
+export const PublicationSchema = {
+  name: v.optional(v.string()),
+  slug: v.optional(v.string()),
+  url: v.string(),
+  logo: v.optional(v.string()),
+  description: v.optional(v.string()),
+  keywords: v.optional(v.array(v.string())),
 };

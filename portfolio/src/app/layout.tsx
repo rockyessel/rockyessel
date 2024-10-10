@@ -2,10 +2,11 @@ import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { cn } from '@/lib/utils/helpers';
 import { Outfit } from 'next/font/google';
-import Navbar from '@/components/common/navbar';
 import TurbulenceNoise from '@/components/common/turbulence-noise';
 import { Toaster } from '@/components/ui/toaster';
 import { Toaster as SonnerToaster } from 'sonner';
+import { NavbarProgressProvider } from '@/lib/providers/loader';
+import { NextAuthProvider } from '@/lib/providers/next-auth';
 
 const outFit = Outfit({ subsets: ['latin'] });
 
@@ -27,10 +28,13 @@ export default function RootLayout({
           'w-full h-full text-zinc-300 bg-neutral-900'
         )}
       >
-        <TurbulenceNoise />
-        <Toaster />
-        <SonnerToaster position='bottom-right' richColors />
-        {children}
+        <NextAuthProvider>
+          <TurbulenceNoise />
+          <Toaster />
+          <SonnerToaster position='bottom-right' richColors />
+          {children}
+          <NavbarProgressProvider />
+        </NextAuthProvider>
       </body>
     </html>
   );

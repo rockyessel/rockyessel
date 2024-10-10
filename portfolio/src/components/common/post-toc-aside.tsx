@@ -4,14 +4,15 @@ import { cn, createSlug } from '@/lib/utils/helpers';
 import { BookCheck, ChevronDown, ChevronRight } from 'lucide-react';
 import { generateTOC } from '../editor/lib/helpers';
 import { useState } from 'react';
+import { Descendant } from 'slate';
 
 interface Props {
   className?: string;
-  content: string;
+  content: Descendant[];
 }
 
 const PostTOCAside = ({ className, content }: Props) => {
-  const toc = generateTOC(JSON.parse(content));
+  const toc = generateTOC(content);
 
   return (
     <div className={cn(className, 'max-w-[16rem] w-full sticky top-16')}>

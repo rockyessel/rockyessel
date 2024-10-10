@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { IPublication } from '@/types';
+import { PublicationType } from '@/types';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Globe, Edit, Trash2 } from 'lucide-react';
@@ -17,8 +17,8 @@ import {
 import AddEditPublicationDialog from './publication-dialog';
 
 interface Props {
-  publication: IPublication;
-  onEdit: (publication: IPublication) => void;
+  publication: PublicationType;
+  onEdit: (publication: PublicationType) => void;
   onDelete: (id: string) => void;
 }
 
@@ -48,10 +48,7 @@ const PublicationCard = ({ ...props }: Props) => {
           </div>
 
           <div className='flex items-center justify-center'>
-            <AddEditPublicationDialog
-              publication={publication}
-              onSave={() => {}}
-            />
+            <AddEditPublicationDialog publication={publication} />
 
             {isHovered && (
               <Button

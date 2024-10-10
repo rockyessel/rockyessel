@@ -13,7 +13,7 @@ interface Props {
   readOnly?: boolean;
   onChange?: (value: Descendant[]) => void;
   className?: string;
-  content?: Descendant[] | string;
+  content?: Descendant[];
   toolbar?: {
     className?: string;
   } & HTMLDivProps;
@@ -43,9 +43,11 @@ export const TextEditor = ({ content, className, ...props }: Props) => {
   // );
 
   // return {Render, Editor}
-
+  // TODO: some elements are returning a undefined which conflicts with the props above
+  // TODO: fix later
   return readOnly ? (
     <SymbionEditorRender
+      // @ts-ignore
       rHtml={rHtml}
       className={className}
       content={content}
@@ -55,6 +57,7 @@ export const TextEditor = ({ content, className, ...props }: Props) => {
       locale={locale}
       onChange={onChange}
       content={content}
+      // @ts-ignore
       eHtml={eHtml}
       className={className}
       toolbar={toolbar}

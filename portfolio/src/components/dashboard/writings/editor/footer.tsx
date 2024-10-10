@@ -1,12 +1,15 @@
 'use client';
 
 import { PostDraftType } from '@/types';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import { Badge } from '@/components/ui/badge';
 import {
   countWordsInStructure,
   descendant,
 } from '@/components/editor/lib/helpers';
+import { updatePostDraft } from '@/lib/actions/convex_/post-drafts';
+import { toast } from 'sonner';
+import { cn } from '@/lib/utils/helpers';
 
 interface Props {
   draft: PostDraftType;
@@ -15,9 +18,21 @@ interface Props {
 }
 
 const WritingFooterPage = ({ draft, saved, isSaving }: Props) => {
+  const [isHardSaving, startHardSaving] = useTransition();
+  const [isHovered, setIsHovered] = useState(false);
+
   const [isOnline, setIsOnline] = useState(
     typeof navigator !== 'undefined' ? navigator.onLine : true
   );
+
+  const handleHardSave = () => {
+    startHardSaving(async () => {
+      const draftId = await updatePostDraft(draft);
+      if (draftId) {
+        toast.success('Changes were saved successfully.');
+      }
+    });
+  };
 
   console.log({ saved, isSaving });
 
@@ -40,7 +55,7 @@ const WritingFooterPage = ({ draft, saved, isSaving }: Props) => {
     return 'Waiting for changes';
   };
 
-  const wordCount = countWordsInStructure(descendant(draft?.content));
+  const wordCount = countWordsInStructure(draft?.content);
 
   const getConnectionStatus = () => {
     return isOnline ? 'Online' : 'Offline';
@@ -57,16 +72,35 @@ const WritingFooterPage = ({ draft, saved, isSaving }: Props) => {
           <span className='animate-pulse'>•</span>
         </Badge>
         <span className='text-gray-500'>{' • '}</span>
-        <Badge variant={isSaving ? 'default' : saved ? 'secondary' : 'outline'}>
-          {getSaveStatus()}
-        </Badge>
+        {isHovered ? (
+          <Badge
+            onMouseLeave={() => setIsHovered(false)}
+            className='cursor-pointer'
+            onClick={handleHardSave}
+          >
+            <span className={cn(isHardSaving && 'animate-pulse')}>
+              {isHardSaving ? '•••' : 'Save changes'}
+            </span>
+          </Badge>
+        ) : (
+          <Badge
+            onMouseEnter={() => setIsHovered(true)}
+            variant={isSaving ? 'default' : saved ? 'secondary' : 'outline'}
+          >
+            {getSaveStatus()}
+          </Badge>
+        )}
+
+        {isHardSaving && (
+          <span className='text-sm animate-pulse text-gray-400'>Saving...</span>
+        )}
       </div>
 
       <div className='flex items-center gap-2'>
         <p className='text-sm'>
-          <span className='text-lime-600'>{wordCount}</span> Written
+          <span className='text-lime-600'>{wordCount - 2}</span> Written
         </p>
-        <Badge>Cover Image generated</Badge>
+        <Badge>Cover generated</Badge>
       </div>
     </div>
   );

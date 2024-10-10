@@ -18,7 +18,7 @@ interface Props {
     elements: (props: RenderElementProps) => JSX.Element;
   };
   className?: string;
-  content?: Descendant[]|string;
+  content?: Descendant[];
 }
 
 const SymbionEditorRender = ({ rHtml, className, content }: Props) => {
@@ -29,7 +29,7 @@ const SymbionEditorRender = ({ rHtml, className, content }: Props) => {
   ];
 
   return (
-    <Slate editor={editor} initialValue={descendant(initialValue)}>
+    <Slate editor={editor} initialValue={initialValue}>
       <Editable
         id='symbion-editor'
         readOnly={true}

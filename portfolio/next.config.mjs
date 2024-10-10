@@ -23,6 +23,7 @@ const nextConfig = {
       { hostname: 'symbion.com' },
       { hostname: 'symbionapi.vercel.app' },
       { hostname: 'res.cloudinary.com' },
+      { hostname: 'descriptive-ostrich-350.convex.cloud' },
     ],
   },
 };

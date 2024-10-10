@@ -26,7 +26,7 @@ interface Props {
   locale: Locale;
   className?: string;
   onChange?: (value: Descendant[]) => void;
-  content?: Descendant[]|string;
+  content?: Descendant[];
   toolbar?: {
     className?: string;
   } & HTMLDivProps;
@@ -114,7 +114,7 @@ const SymbionTextEditor = ({ eHtml, className, ...props }: Props) => {
     <Slate
       editor={editor}
       onValueChange={onValueChange}
-      initialValue={descendant(initialValue)}
+      initialValue={(initialValue)}
     >
       <EditorProvider>
         <div className='relative'>

@@ -1,6 +1,7 @@
 import { v } from 'convex/values';
 import { mutation, query } from '../../_generated/server';
 import { PostDraftSchema } from '../../types';
+import { createSlug } from '../../../src/lib/utils/helpers';
 
 export const createPostDraft = mutation({
   args: { ...PostDraftSchema },
@@ -13,6 +14,10 @@ export const updatePostDraft = mutation({
   args: { _id: v.id('posts_draft'), ...PostDraftSchema },
   handler: async (ctx, args) => {
     const { _id, ...rest } = args;
+
+    if (rest.slug === 'untitled' || '' || undefined) {
+      rest.slug = createSlug(rest.title);
+    }
     await ctx.db.patch(_id, { ...rest });
     return _id;
   },

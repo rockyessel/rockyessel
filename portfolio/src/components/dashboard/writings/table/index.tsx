@@ -14,6 +14,8 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Search, Edit, Trash2, Eye, ThumbsUp } from 'lucide-react';
 import { PostDraftType } from '@/types';
+import { useRouter } from 'next/navigation';
+import { domainURL } from '@/lib/utils/helpers';
 
 interface Props {
   drafts: PostDraftType[];
@@ -21,6 +23,8 @@ interface Props {
 
 const WritingTable = ({ drafts }: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
+
+  const { push } = useRouter();
 
   const filteredPosts = drafts.filter(
     (draft) =>
@@ -83,7 +87,13 @@ const WritingTable = ({ drafts }: Props) => {
               <TableCell>{draft?.createdAt}</TableCell>
               <TableCell>
                 <div className='flex space-x-2'>
-                  <Button variant='outline' size='sm'>
+                  <Button
+                    onClick={() =>
+                      push(domainURL(`/dashboard/writings/${draft?._id}`))
+                    }
+                    variant='outline'
+                    size='sm'
+                  >
                     <Edit className='w-4 h-4' />
                   </Button>
                   <Button variant='destructive' size='sm'>

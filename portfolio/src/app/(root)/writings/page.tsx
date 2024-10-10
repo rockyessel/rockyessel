@@ -1,6 +1,11 @@
 import AsideContentLayout from '@/components/layout/aside-content';
 import { getPublishedPosts } from '@/lib/actions/convex_/posts';
-import { domainURL, isContentNew, truncate } from '@/lib/utils/helpers';
+import {
+  calculateReadTime,
+  domainURL,
+  isContentNew,
+  truncate,
+} from '@/lib/utils/helpers';
 import {
   ThumbsUp,
   Eye,
@@ -14,17 +19,13 @@ import {
 import moment from 'moment';
 import Link from 'next/link';
 
-
-
 import { getPageSEO } from '@/lib/actions/helpers';
 import { Metadata } from 'next';
+import { countWordsInStructure } from '@/components/editor/lib/helpers';
 
 export async function generateMetadata(): Promise<Metadata> {
   return await getPageSEO('writings');
 }
-
-
-
 
 const WritingsPage = async () => {
   const posts = await getPublishedPosts();
@@ -88,17 +89,7 @@ const WritingsPage = async () => {
                   165
                 )}
               </p>
-              {/* <div className='flex items-center mb-4'>
-                <div className='w-10 h-10 rounded-full bg-gray-600 mr-3 flex items-center justify-center text-lg font-bold'>
-                  JD
-                </div>
-                <div>
-                  <p className='font-semibold text-blue-400'>John Doe</p>
-                  <p className='text-xs text-gray-400'>
-                    Senior Developer @ TechCo
-                  </p>
-                </div>
-              </div> */}
+
               <div className='flex items-center flex-wrap gap-2 mb-4'>
                 <Tag size={14} className='text-blue-400' />
                 {post?.tags?.slice(0, 3)?.map((tag, index) => (
@@ -125,7 +116,10 @@ const WritingsPage = async () => {
                     <span>Share</span>
                   </button>
                 </div>
-                <span className='text-gray-400 text-sm'>5 min read</span>
+                <span className='text-gray-400 text-sm'>
+                  {/* {calculateReadTime} min read */}
+                  {calculateReadTime(countWordsInStructure(post?.content))}
+                </span>
               </div>
               <div className='mt-4 pt-4 border-t border-gray-700'>
                 <div className='flex items-center justify-between'>

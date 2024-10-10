@@ -15,8 +15,11 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as configs_https from "../configs/https.js";
 import type * as core_posts_draft from "../core/posts/draft.js";
 import type * as core_posts_main from "../core/posts/main.js";
+import type * as core_publications_index from "../core/publications/index.js";
+import type * as core_storage_file from "../core/storage/file.js";
 import type * as myFunctions from "../myFunctions.js";
 import type * as types_index from "../types/index.js";
 
@@ -29,8 +32,11 @@ import type * as types_index from "../types/index.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  "configs/https": typeof configs_https;
   "core/posts/draft": typeof core_posts_draft;
   "core/posts/main": typeof core_posts_main;
+  "core/publications/index": typeof core_publications_index;
+  "core/storage/file": typeof core_storage_file;
   myFunctions: typeof myFunctions;
   "types/index": typeof types_index;
 }>;

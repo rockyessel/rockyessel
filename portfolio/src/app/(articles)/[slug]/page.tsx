@@ -1,8 +1,11 @@
 import ScriptJsonLDArticle from '@/components/common/json-ld-article';
-import { descendantToText } from '@/components/editor/lib/helpers';
+import {
+  countWordsInStructure,
+  descendantToText,
+} from '@/components/editor/lib/helpers';
 import PostDetailsLayout from '@/components/layout/post-details-layout';
 import { getPostBySlug } from '@/lib/actions/convex_/posts';
-import { createOgImage } from '@/lib/utils/helpers';
+import { calculateReadTime, createOgImage } from '@/lib/utils/helpers';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Fragment } from 'react';
@@ -99,11 +102,14 @@ const ArticleDynamicPage = async ({ params }: Props) => {
                 </Badge>
                 <span className='text-sm text-gray-400 flex items-center'>
                   <Calendar className='w-4 h-4 mr-1' />
-                  {moment(post?.publishedAt || post?.createdAt).format('MMM Do YYYY')}
+                  {moment(post?.publishedAt || post?.createdAt).format(
+                    'MMM Do YYYY'
+                  )}
                 </span>
                 <span className='text-sm text-gray-400 flex items-center'>
                   <Clock className='w-4 h-4 mr-1' />
-                  15 min read
+                  {/* 15 min read */}
+                  {calculateReadTime(countWordsInStructure(post?.content))}
                 </span>
                 <span className='text-sm text-gray-400 flex items-center'>
                   <Eye className='w-4 h-4 mr-1' />

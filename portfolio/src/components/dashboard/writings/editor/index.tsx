@@ -12,7 +12,7 @@ import {
 import { useCallback, useEffect, useRef, useState, useTransition } from 'react';
 import { getPostById } from '@/lib/actions/convex_/posts';
 import { toast } from 'sonner';
-import { domainURL } from '@/lib/utils/helpers';
+import { createSlug, domainURL } from '@/lib/utils/helpers';
 
 interface Props {
   draft: PostDraftType;
