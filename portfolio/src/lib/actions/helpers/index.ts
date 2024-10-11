@@ -1,6 +1,6 @@
 import { authOptions } from '@/lib/auth/options';
 import { createOgImage, domainURL, profile } from '@/lib/utils/helpers';
-import { PostType } from '@/types';
+import { IPageJsonLd, PostType } from '@/types';
 import { Metadata } from 'next';
 import { getServerSession, Session } from 'next-auth';
 
@@ -44,16 +44,16 @@ export const postSEO = async (post: PostType): Promise<Metadata> => {
       ],
     },
     bookmarks: [], // You can add relevant links for bookmarking
-
     category: post?.category || 'Technology', // Default category if none is provided
     classification: 'Blog Post', // Type of content
     publisher: 'Rocky Essel',
     verification: {
-      google: 'google',
+      google: '4mpTgUJCrHY_8cR7Qe-t70YpmGldJHhIQBs2LNkEj1I',
       yandex: 'yandex',
       yahoo: 'yahoo',
       other: {
         me: ['my-email', 'my-link'],
+        'msvalidate.01': '06D1B9DE35AD038FB36247A657FE080E',
       },
     },
     creator: 'Rocky Essel',
@@ -87,7 +87,6 @@ export const postSEO = async (post: PostType): Promise<Metadata> => {
   };
 };
 
-
 interface SEODetails {
   title: string;
   description: string;
@@ -113,11 +112,14 @@ const baseUrl = domainURL();
 
 export const pageSEO: PageSEO = {
   home: {
-    title: 'Rocky Essel | Innovator in Robotics, Quantum Computing, Blockchain, and Web2',
+    title:
+      'Rocky Essel | Innovator in Robotics, Quantum Computing, Blockchain, and Web2',
     description: `Welcome to Rocky Essel's platform showcasing cutting-edge work in robotics, quantum computing, blockchain, and web2 technologies. Explore projects, writings, and resources at the intersection of these transformative fields.`,
-    keywords: 'Rocky Essel, Robotics, Quantum Computing, Blockchain, Web2, Innovation, Technology Integration, AI, Machine Learning',
+    keywords:
+      'Rocky Essel, Robotics, Quantum Computing, Blockchain, Web2, Innovation, Technology Integration, AI, Machine Learning',
     openGraphTitle: 'Rocky Essel | Pioneering the Future of Tech',
-    openGraphDescription: 'Discover groundbreaking projects and insights in robotics, quantum computing, blockchain, and web2 technologies by Rocky Essel.',
+    openGraphDescription:
+      'Discover groundbreaking projects and insights in robotics, quantum computing, blockchain, and web2 technologies by Rocky Essel.',
     canonicalUrl: `${baseUrl}`,
     twitterHandle: '@rockyessel',
     imageUrl: profile,
@@ -127,11 +129,14 @@ export const pageSEO: PageSEO = {
     },
   },
   writings: {
-    title: 'Tech Insights: Robotics, Quantum Computing, Blockchain, and Web2 | Rocky Essel',
+    title:
+      'Tech Insights: Robotics, Quantum Computing, Blockchain, and Web2 | Rocky Essel',
     description: `Explore Rocky Essel's in-depth writings on the convergence of robotics, quantum computing, blockchain, and web2 technologies. Gain insights into the future of tech innovation.`,
-    keywords: 'Robotics Research, Quantum Computing Advancements, Blockchain Applications, Web2 Integration, AI in Robotics, Quantum Blockchain, Tech Convergence',
+    keywords:
+      'Robotics Research, Quantum Computing Advancements, Blockchain Applications, Web2 Integration, AI in Robotics, Quantum Blockchain, Tech Convergence',
     openGraphTitle: `Cutting-edge Tech Insights | Rocky Essel's Writings`,
-    openGraphDescription: 'Dive into articles exploring the latest developments in robotics, quantum computing, blockchain, and their integration with web2 technologies.',
+    openGraphDescription:
+      'Dive into articles exploring the latest developments in robotics, quantum computing, blockchain, and their integration with web2 technologies.',
     canonicalUrl: `${baseUrl}/writings`,
     twitterHandle: '@rockyessel',
     imageUrl: `${baseUrl}/images/writings-banner.jpg`,
@@ -141,11 +146,14 @@ export const pageSEO: PageSEO = {
     },
   },
   projects: {
-    title: 'Innovative Projects in Robotics, Quantum Computing, Blockchain, and Web2 | Rocky Essel',
+    title:
+      'Innovative Projects in Robotics, Quantum Computing, Blockchain, and Web2 | Rocky Essel',
     description: `Discover Rocky Essel's groundbreaking projects combining robotics, quantum computing, blockchain, and web2 technologies. Explore the future of integrated tech solutions.`,
-    keywords: 'Robotics Projects, Quantum Computing Applications, Blockchain Solutions, Web2 Integration, AI-powered Robots, Quantum Cryptography, Decentralized Web Apps',
+    keywords:
+      'Robotics Projects, Quantum Computing Applications, Blockchain Solutions, Web2 Integration, AI-powered Robots, Quantum Cryptography, Decentralized Web Apps',
     openGraphTitle: 'Futuristic Tech Projects by Rocky Essel',
-    openGraphDescription: 'Explore a portfolio of innovative projects pushing the boundaries of robotics, quantum computing, blockchain, and web2 integration.',
+    openGraphDescription:
+      'Explore a portfolio of innovative projects pushing the boundaries of robotics, quantum computing, blockchain, and web2 integration.',
     canonicalUrl: `${baseUrl}/projects`,
     twitterHandle: '@rockyessel',
     imageUrl: `${baseUrl}/images/projects-showcase.jpg`,
@@ -155,11 +163,15 @@ export const pageSEO: PageSEO = {
     },
   },
   resume: {
-    title: 'Rocky Essel | Innovator in Robotics, Quantum Computing, Blockchain, and Web2',
-    description: 'View the professional resume of Rocky Essel, showcasing expertise in robotics, quantum computing, blockchain development, and web2 technologies integration.',
-    keywords: 'Rocky Essel Resume, Robotics Engineer, Quantum Computing Specialist, Blockchain Developer, Web2 Expert, AI Researcher, Tech Innovator',
+    title:
+      'Rocky Essel | Innovator in Robotics, Quantum Computing, Blockchain, and Web2',
+    description:
+      'View the professional resume of Rocky Essel, showcasing expertise in robotics, quantum computing, blockchain development, and web2 technologies integration.',
+    keywords:
+      'Rocky Essel Resume, Robotics Engineer, Quantum Computing Specialist, Blockchain Developer, Web2 Expert, AI Researcher, Tech Innovator',
     openGraphTitle: 'Rocky Essel - Multidisciplinary Tech Professional',
-    openGraphDescription: 'Explore the career highlights, technical skills, and project accomplishments of Rocky Essel across robotics, quantum computing, blockchain, and web2 domains.',
+    openGraphDescription:
+      'Explore the career highlights, technical skills, and project accomplishments of Rocky Essel across robotics, quantum computing, blockchain, and web2 domains.',
     canonicalUrl: `${baseUrl}/resume`,
     twitterHandle: '@rockyessel',
     imageUrl: `${baseUrl}/images/rocky-essel-professional.jpg`,
@@ -169,11 +181,14 @@ export const pageSEO: PageSEO = {
     },
   },
   archives: {
-    title: 'Tech Evolution Archives: Robotics, Quantum Computing, Blockchain, and Web2 | Rocky Essel',
+    title:
+      'Tech Evolution Archives: Robotics, Quantum Computing, Blockchain, and Web2 | Rocky Essel',
     description: `Access a comprehensive archive of Rocky Essel's writings on the evolution of robotics, quantum computing, blockchain, and their integration with web2 technologies.`,
-    keywords: 'Robotics History, Quantum Computing Evolution, Blockchain Advancements, Web2 Transformation, Tech Convergence Chronicles, AI Development',
+    keywords:
+      'Robotics History, Quantum Computing Evolution, Blockchain Advancements, Web2 Transformation, Tech Convergence Chronicles, AI Development',
     openGraphTitle: 'Tech Evolution Archives by Rocky Essel',
-    openGraphDescription: 'Dive into a treasure trove of historical insights and future predictions in robotics, quantum computing, blockchain, and web2 technologies.',
+    openGraphDescription:
+      'Dive into a treasure trove of historical insights and future predictions in robotics, quantum computing, blockchain, and web2 technologies.',
     canonicalUrl: `${baseUrl}/archives`,
     twitterHandle: '@rockyessel',
     imageUrl: `${baseUrl}/images/archives-banner.jpg`,
@@ -183,11 +198,15 @@ export const pageSEO: PageSEO = {
     },
   },
   links: {
-    title: 'Essential Resources: Robotics, Quantum Computing, Blockchain, and Web2 | Rocky Essel',
-    description: 'Discover a curated collection of high-quality resources on robotics, quantum computing, blockchain innovations, and web2 technologies integration.',
-    keywords: 'Robotics Resources, Quantum Computing Tools, Blockchain Development, Web2 Integration, AI Libraries, Quantum Algorithms, Decentralized Protocols',
+    title:
+      'Essential Resources: Robotics, Quantum Computing, Blockchain, and Web2 | Rocky Essel',
+    description:
+      'Discover a curated collection of high-quality resources on robotics, quantum computing, blockchain innovations, and web2 technologies integration.',
+    keywords:
+      'Robotics Resources, Quantum Computing Tools, Blockchain Development, Web2 Integration, AI Libraries, Quantum Algorithms, Decentralized Protocols',
     openGraphTitle: 'Curated Tech Resources by Rocky Essel',
-    openGraphDescription: 'Access a carefully selected list of valuable resources, tools, and references for innovators in robotics, quantum computing, blockchain, and web2 technologies.',
+    openGraphDescription:
+      'Access a carefully selected list of valuable resources, tools, and references for innovators in robotics, quantum computing, blockchain, and web2 technologies.',
     canonicalUrl: `${baseUrl}/links`,
     twitterHandle: '@rockyessel',
     imageUrl: `${baseUrl}/images/resources-collection.jpg`,
@@ -196,12 +215,15 @@ export const pageSEO: PageSEO = {
       url: 'https://rockyessel.me/about',
     },
   },
-   contact: {
-    title: 'Contact Rocky Essel | Innovator in Robotics, Quantum Computing, Blockchain, and Web2',
+  contact: {
+    title:
+      'Contact Rocky Essel | Innovator in Robotics, Quantum Computing, Blockchain, and Web2',
     description: `Get in touch with Rocky Essel to discuss collaborations in robotics, quantum computing, blockchain, and web2 technologies. Whether you're interested in consulting or exploring innovative solutions, connect here.`,
-    keywords: 'Contact Rocky Essel, Robotics Expert, Quantum Computing Consultant, Blockchain Developer, Web2 Integration, Collaboration, Technology Consultant',
+    keywords:
+      'Contact Rocky Essel, Robotics Expert, Quantum Computing Consultant, Blockchain Developer, Web2 Integration, Collaboration, Technology Consultant',
     openGraphTitle: 'Contact Rocky Essel | Innovator in Tech',
-    openGraphDescription: 'Reach out to Rocky Essel for inquiries, collaborations, and consulting in robotics, quantum computing, blockchain, and web2 technologies.',
+    openGraphDescription:
+      'Reach out to Rocky Essel for inquiries, collaborations, and consulting in robotics, quantum computing, blockchain, and web2 technologies.',
     canonicalUrl: `${baseUrl}/contact`,
     twitterHandle: '@rockyessel',
     imageUrl: `${baseUrl}/images/contact-banner.jpg`,
@@ -218,7 +240,6 @@ export const getPageSEO = async (page: string): Promise<Metadata> => {
   if (!seoDetails) {
     throw new Error(`SEO details not found for page: ${page}`);
   }
-
 
   return {
     title: seoDetails.title,
@@ -271,9 +292,9 @@ export const getPageSEO = async (page: string): Promise<Metadata> => {
       yahoo: 'your-bing-verification-code',
       me: '',
       other: {
-        email:'rockyessel76@gmail.com',
-        phone:'+233 54 681 3132'
-      }
+        email: 'rockyessel76@gmail.com',
+        phone: '+233 54 681 3132',
+      },
     },
     viewport: {
       width: 'device-width',
@@ -290,9 +311,8 @@ export const getPageSEO = async (page: string): Promise<Metadata> => {
   };
 };
 
-
 export const getJsonLd = (seoDetails: SEODetails, page: string) => {
-  const baseJsonLd = {
+  const baseJsonLd: IPageJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `${seoDetails.canonicalUrl}#webpage`,
@@ -305,7 +325,8 @@ export const getJsonLd = (seoDetails: SEODetails, page: string) => {
       '@id': `${baseUrl}#website`,
       url: baseUrl,
       name: 'Rocky Essel | Tech Innovator',
-      description: 'Exploring the frontiers of Robotics, Quantum Computing, Blockchain, Web2, and Web3',
+      description:
+        'Exploring the frontiers of Robotics, Quantum Computing, Blockchain, Web2, and Web3',
       publisher: {
         '@type': 'Person',
         name: 'Rocky Essel',
@@ -330,7 +351,8 @@ export const getJsonLd = (seoDetails: SEODetails, page: string) => {
       '@id': `${baseUrl}/about#author`,
       name: seoDetails.author.name,
       url: seoDetails.author.url,
-      description: 'Tech innovator specializing in Robotics, Quantum Computing, Blockchain, Web2, and Web3 technologies',
+      description:
+        'Tech innovator specializing in Robotics, Quantum Computing, Blockchain, Web2, and Web3 technologies',
       sameAs: [
         'https://twitter.com/rockyessel',
         'https://github.com/rockyessel',
@@ -341,31 +363,36 @@ export const getJsonLd = (seoDetails: SEODetails, page: string) => {
       {
         '@type': 'Thing',
         name: 'Robotics',
-        description: 'Exploring advanced robotics technologies and their applications',
+        description:
+          'Exploring advanced robotics technologies and their applications',
         url: `${baseUrl}/topics/robotics`,
       },
       {
         '@type': 'Thing',
         name: 'Quantum Computing',
-        description: 'Investigating quantum computing algorithms and their potential impact',
+        description:
+          'Investigating quantum computing algorithms and their potential impact',
         url: `${baseUrl}/topics/quantum-computing`,
       },
       {
         '@type': 'Thing',
         name: 'Blockchain',
-        description: 'Developing innovative blockchain solutions and decentralized applications',
+        description:
+          'Developing innovative blockchain solutions and decentralized applications',
         url: `${baseUrl}/topics/blockchain`,
       },
       {
         '@type': 'Thing',
         name: 'Web2',
-        description: 'Integrating traditional web technologies with emerging tech',
+        description:
+          'Integrating traditional web technologies with emerging tech',
         url: `${baseUrl}/topics/web2`,
       },
       {
         '@type': 'Thing',
         name: 'Web3',
-        description: 'Building the decentralized web and exploring its possibilities',
+        description:
+          'Building the decentralized web and exploring its possibilities',
         url: `${baseUrl}/topics/web3`,
       },
     ],
@@ -386,6 +413,10 @@ export const getJsonLd = (seoDetails: SEODetails, page: string) => {
         url: `${baseUrl}/topics/defi`,
       },
     ],
+    baseJsonLd: {
+      '@type': 'ItemList',
+      itemListElement: [],
+    },
   };
 
   // Add page-specific JSON-LD properties
@@ -423,6 +454,7 @@ export const getJsonLd = (seoDetails: SEODetails, page: string) => {
         itemListElement: [
           // You would dynamically generate these based on your actual blog posts
           {
+            name: 'Latest Quantum Blockchain Articles',
             '@type': 'BlogPosting',
             position: 1,
             headline: 'The Future of Quantum Blockchain',
@@ -437,7 +469,7 @@ export const getJsonLd = (seoDetails: SEODetails, page: string) => {
       baseJsonLd.mainEntity = {
         '@type': 'ItemList',
         itemListElement: [
-          // You would dynamically generate these based on your actual projects
+          //TODO: Would dynamically generate these based actual projects
           {
             '@type': 'SoftwareApplication',
             position: 1,
@@ -445,7 +477,6 @@ export const getJsonLd = (seoDetails: SEODetails, page: string) => {
             applicationCategory: 'Robotics Software',
             url: `${baseUrl}/projects/quantumbot`,
           },
-          // Add more projects here
         ],
       };
       break;
@@ -456,21 +487,16 @@ export const getJsonLd = (seoDetails: SEODetails, page: string) => {
         '@id': `${baseUrl}/about#author`,
         name: seoDetails.author.name,
         url: seoDetails.author.url,
-        jobTitle: 'Tech Innovator and Researcher',
-        worksFor: {
-          '@type': 'Organization',
-          name: 'Tech Innovation Labs',
-          url: 'https://techinnovationlabs.com',
-        },
-        alumniOf: {
-          '@type': 'EducationalOrganization',
-          name: 'Massachusetts Institute of Technology',
-          url: 'https://www.mit.edu',
-        },
-        knowsAbout: ['Robotics', 'Quantum Computing', 'Blockchain', 'Web2', 'Web3'],
+        knowsAbout: [
+          'Robotics',
+          'Quantum Computing',
+          'Blockchain',
+          'Web2',
+          'Web3',
+        ],
       };
       break;
-    // Add cases for 'archives' and 'links' if needed
+    //TODO: Add cases for 'archives' and 'links'
   }
 
   return baseJsonLd;

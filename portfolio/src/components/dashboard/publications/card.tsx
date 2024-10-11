@@ -40,8 +40,8 @@ const PublicationCard = ({ ...props }: Props) => {
         <div className='flex items-center justify-between'>
           <div className='w-10 h-10 relative rounded-t-lg overflow-hidden'>
             <Image
-              src={publication.logo || '/placeholder.svg'}
-              alt={`${publication.name} cover`}
+              src={publication?.logo || '/placeholder.svg'}
+              alt={`${publication?.name} cover`}
               layout='fill'
               objectFit='cover'
             />
@@ -54,7 +54,7 @@ const PublicationCard = ({ ...props }: Props) => {
               <Button
                 variant='outline'
                 size='sm'
-                onClick={() => onDelete(publication.id)}
+                onClick={() => onDelete(publication?._id)}
               >
                 <Trash2 className='w-4 h-4' />
                 <span className='sr-only'>Delete</span>
@@ -63,27 +63,27 @@ const PublicationCard = ({ ...props }: Props) => {
           </div>
         </div>
 
-        <CardTitle className='px-2 text-xl mt-4'>{publication.name}</CardTitle>
+        <CardTitle className='px-2 text-xl mt-4'>{publication?.name}</CardTitle>
         <CardDescription className='px-2 flex items-center mt-1'>
           <Globe className='w-4 h-4 mr-1' />
           <a
-            href={`https://${publication.url}`}
+            href={`https://${publication?.url}`}
             target='_blank'
             rel='noopener noreferrer'
             className='text-blue-500 hover:underline'
           >
-            {publication.url}
+            {publication?.url}
           </a>
         </CardDescription>
       </CardHeader>
 
       <CardContent className='p-0 m-0'>
         <p className='text-sm text-gray-600 mb-4 line-clamp-2'>
-          {publication.description}
+          {publication?.description}
         </p>
         <ScrollArea className='h-12'>
           <div className='flex flex-wrap gap-2'>
-            {publication.keywords.map((keyword, index) => (
+            {publication?.keywords?.map((keyword, index) => (
               <Badge key={index} variant='secondary'>
                 {keyword}
               </Badge>

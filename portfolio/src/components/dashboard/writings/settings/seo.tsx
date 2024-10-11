@@ -1,26 +1,19 @@
 'use client';
 
+import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
+import { domainURL } from '@/lib/utils/helpers';
+import { PlusCircle, Trash2 } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import InfoHoverCard from '@/components/common/info-card';
-import ValueSelector from '@/components/common/value-selector';
-import { useGenOgImage } from '@/hooks/use-gen-og';
 import { PostDraftKeyType, PostDraftType } from '@/types';
 import { ChangeEvent, useState, useTransition } from 'react';
-import { updatePost } from '@/lib/actions/convex_/posts';
-import { toast } from 'sonner';
-import { Button } from '@/components/ui/button';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Switch } from '@/components/ui/switch';
-import { PlusCircle, Trash2 } from 'lucide-react';
-import { createSlug, domainURL } from '@/lib/utils/helpers';
+import ValueSelector from '@/components/common/value-selector';
+import { updatePostDraft } from '@/lib/actions/convex_/post-drafts';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface Props {
   draft: PostDraftType;
@@ -34,8 +27,8 @@ const WritingSettingsSEO = ({ draft }: Props) => {
 
   const handleSave = () => {
     startStarting(async () => {
-      const draftId = await updatePost(editablePostDraft);
-      if (postId) {
+      const draftId = await updatePostDraft(editablePostDraft);
+      if (draftId) {
         toast.success('Draft changes saved.');
       }
     });
@@ -82,7 +75,7 @@ const WritingSettingsSEO = ({ draft }: Props) => {
     publishDate: '',
     modifiedDate: '',
   });
-
+  // @ts-ignore
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setSeoData((prev) => ({ ...prev, [name]: value }));
@@ -93,8 +86,11 @@ const WritingSettingsSEO = ({ draft }: Props) => {
   };
 
   const handleCanonicalUrlAdd = () => {
+    // @ts-ignore
     setSeoData((prev) => ({
+      // @ts-ignore
       ...prev,
+      // @ts-ignore
       canonicalUrls: [...prev.canonicalUrls, ''],
     }));
   };
@@ -102,6 +98,7 @@ const WritingSettingsSEO = ({ draft }: Props) => {
   const handleCanonicalUrlChange = (index: number, value: string) => {
     setSeoData((prev) => {
       const newUrls = [...prev.canonicalUrls];
+      // @ts-ignore
       newUrls[index] = value;
       return { ...prev, canonicalUrls: newUrls };
     });

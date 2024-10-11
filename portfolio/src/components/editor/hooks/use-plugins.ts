@@ -15,8 +15,7 @@ import { withChecklist } from '../plugins/with-check-list';
 import { withCodeBlock } from '../plugins/with-code-block';
 import { withSeparator } from '../plugins/with-separator';
 import { withStartPoint } from '../plugins/with-start-point';
-import { withPlainTextPaste } from '../plugins/with-plain-text-Paste';
-
+import { withPlainTextPaste } from '../plugins/with-plain-text-paste';
 
 export const usePlugins = () => {
   const editor = useMemo(

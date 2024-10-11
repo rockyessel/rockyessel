@@ -7,6 +7,7 @@ import { Github, Linkedin, Twitter, Youtube, Facebook, Instagram, Globe, BookOpe
 
 import { getPageSEO } from '@/lib/actions/helpers';
 import { Metadata } from 'next';
+import Image from 'next/image';
 
 export async function generateMetadata(): Promise<Metadata> {
   return await getPageSEO('links');
@@ -21,7 +22,8 @@ const LinksPage = () => {
       <Card className='bg-zinc-800/50 text-gray-300 w-full max-w-md'>
         <CardContent className='p-6 space-y-6'>
           <div className='text-center space-y-2'>
-            <img
+            <Image
+              
               src='/placeholder.svg?height=100&width=100'
               alt='Profile'
               className='w-24 h-24 rounded-full mx-auto'

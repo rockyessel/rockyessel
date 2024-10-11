@@ -236,19 +236,21 @@ export const NODE_TYPE_MAPPING: Record<ElementTypes, {nodeType:ElementNodeTypes;
   "heading-six": { nodeType: "block", defaultChildren: [{ text: "" }] },
   "block-quote": { nodeType: "block", defaultChildren: [{ text: "" }] },
   "check-list": { nodeType: "block", defaultChildren: [{ text: "" }] },
-  "check-list-container": { nodeType: "block", defaultChildren: [] },
-  "bulleted-lists": { nodeType: "block", defaultChildren: [] },
-  "numbered-lists": { nodeType: "block", defaultChildren: [] },
+  "check-list-container": { nodeType: "block", defaultChildren: [{ text: "" }] },
+  "bulleted-lists": { nodeType: "block", defaultChildren: [{ text: "" }] },
+  "numbered-lists": { nodeType: "block", defaultChildren: [{ text: "" }] },
   "list": { nodeType: "block", defaultChildren: [{ text: "" }] },
-  // "table": { nodeType: "block", defaultChildren: [] },
-  // "table-row": { nodeType: "block", defaultChildren: [] },
-  // "table-cell": { nodeType: "block", defaultChildren: [{ text: "" }] },
-  "image": { nodeType: "void", defaultChildren: [] },
-  "separator": { nodeType: "void", defaultChildren: [] },
+  "image": { nodeType: "void", defaultChildren: [{ text: "" }] },
+  "separator": { nodeType: "void", defaultChildren: [{ text: "" }] },
   "code-block": { nodeType: "block", defaultChildren: [{ text: "" }] },
-  "link": { nodeType: "inline", defaultChildren: []},
-  "column-item": { nodeType: "block", defaultChildren: []},
-  "column-layout": { nodeType: "block", defaultChildren: []}
+  "link": { nodeType: "inline", defaultChildren: [{ text: "" }] },
+  "column-item": { nodeType: "block", defaultChildren: [{ text: "" }] },
+  "column-layout": { nodeType: "block", defaultChildren: [{ text: "" }] },
+  "table": { nodeType: "block", defaultChildren: [{ text: "" }] },
+  "table-row": { nodeType: "block", defaultChildren: [{ text: "" }] },
+  "table-cell": { nodeType: "block", defaultChildren: [{ text: "" }] },
+  "table-header": { nodeType: "block", defaultChildren: [{ text: "" }] },
+  "table-body": { nodeType: "block", defaultChildren: [{ text: "" }] }
 };
 
 // const MARKDOWN_SHORTCUTS: Record<string, ElementNodeTypes> = {

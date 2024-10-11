@@ -34,7 +34,7 @@ const ScriptJsonLDArticle = ({
   keywords,
   comment,
 }: Props) => {
-  const userProfiles = [
+  const USER_PROFILES = [
     'https://x.com/rockyessel',
     'https://dev.to/rockyessel',
     'https://github.com/rockyessel',
@@ -97,7 +97,7 @@ const ScriptJsonLDArticle = ({
       name: 'Rocky Essel',
       url: `${domainURL()}`,
       image: 'https://avatars.githubusercontent.com/u/97303710?v=4',
-      sameAs: [...userProfiles],
+      sameAs: [...USER_PROFILES],
     },
     publisher: {
       '@type': 'Organization',
@@ -143,12 +143,12 @@ const ScriptJsonLDArticle = ({
     },
     comment: {
       '@type': 'Comment',
-      text: comment.content,
+      text: comment?.content,
       author: {
         '@type': 'Person',
-        name: comment.name,
+        name: comment?.name,
       },
-      datePublished: comment.updatedAt,
+      datePublished: comment?.updatedAt,
     },
     commentCount: 15,
     potentialAction: {

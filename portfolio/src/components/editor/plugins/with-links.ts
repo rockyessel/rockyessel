@@ -1,8 +1,6 @@
-import { Editor, Transforms, Range, Element, Node, BaseEditor } from "slate";
-import { ReactEditor } from "slate-react";
-import { isHotkey } from "is-hotkey";
-import { LinkNode, ParagraphNode } from "../nodes";
 import { isValidURL } from "../lib/helpers";
+import { LinkNode, ParagraphNode } from "../nodes";
+import { Editor, Transforms, Range, Element } from "slate";
 
 const isLinkActive = (editor: Editor) => {
   const [link] = Editor.nodes(editor, {

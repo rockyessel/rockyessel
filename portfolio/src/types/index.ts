@@ -64,13 +64,90 @@ export type PostDraftType = Doc<'posts_draft'>;
 export type PostDraftKeyType = keyof PostDraftType;
 export type PostDraftValueType = PostDraftType[PostDraftKeyType];
 
-
 export type FileType = Doc<'files'>;
 
 export type PublicationType = Doc<'publications'>;
 export type PubKeyType = keyof PublicationType;
-export type PubValueType = {[K in PubKeyType]: PublicationType[K]};
-
-
+export type PubValueType = { [K in PubKeyType]: PublicationType[K] };
 
 export type CategoryKeysType = keyof typeof CATEGORIES;
+
+export interface IPageJsonLd {
+  baseJsonLd: {
+    '@type': string;
+    itemListElement: {
+      '@type': string;
+      position: number;
+      name: string;
+      applicationCategory: string;
+      url: string;
+    }[];
+  };
+  '@context': string;
+  '@type': string | string[];
+  '@id': string;
+  url: string;
+  name: string;
+  description: string;
+  inLanguage: string;
+  isPartOf: {
+    '@type': string;
+    '@id': string;
+    url: string;
+    name: string;
+    description: string;
+    publisher: {
+      '@type': string;
+      name: string;
+      url: string;
+    };
+  };
+  image?: {
+    '@type': string;
+    '@id': string;
+    url: string;
+    width: number;
+    height: number;
+    caption: string;
+  };
+  primaryImageOfPage?: {
+    '@id': string;
+  };
+  datePublished?: string;
+  dateModified?: string;
+  author?: {
+    '@type': string;
+    '@id': string;
+    name: string;
+    url: string;
+    description: string;
+    sameAs: string[];
+  };
+  about?: Array<{
+    '@type': string;
+    name: string;
+    description: string;
+    url: string;
+  }>;
+  mentions?: Array<{
+    '@type': string;
+    name: string;
+    url: string;
+  }>;
+  mainEntity?: {
+    '@type': string;
+    '@id'?: string;
+    name?: string;
+    url?: string;
+    knowsAbout?: string[];
+
+    itemListElement?: Array<{
+      '@type': string;
+      position: number;
+      name: string;
+      headline?: string;
+      applicationCategory?: string;
+      url: string;
+    }>;
+  };
+}

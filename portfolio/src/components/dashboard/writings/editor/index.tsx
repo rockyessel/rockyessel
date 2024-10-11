@@ -32,29 +32,6 @@ const WritingEditorEntry = ({ draft }: Props) => {
 
   console.log('editablePostDraft: ', editablePostDraft);
 
-  const updateDraft = useCallback(
-    <K extends PostDraftKeyType>(key: K, values: PostDraftType[K]) => {
-      setEditablePostDraft((p) => {
-        const updatedPost = { ...p, [key]: values };
-        scheduleSave(updatedPost);
-        return updatedPost;
-      });
-    },
-    []
-  );
-
-  const scheduleSave = useCallback((updatedPost: PostDraftType) => {
-    if (saveTimeoutRef.current) {
-      clearTimeout(saveTimeoutRef.current);
-    }
-
-    saveTimeoutRef.current = setTimeout(() => {
-      if (!isEqual(updatedPost, lastSavedPost.current)) {
-        handleAutoSave(updatedPost);
-      }
-    }, 5000);
-  }, []);
-
   const handleAutoSave = useCallback(
     async (postToSave: PostDraftType) => {
       if (isSaving) return;
@@ -72,6 +49,32 @@ const WritingEditorEntry = ({ draft }: Props) => {
       }
     },
     [isSaving]
+  );
+
+  const scheduleSave = useCallback(
+    (updatedPost: PostDraftType) => {
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current);
+      }
+
+      saveTimeoutRef.current = setTimeout(() => {
+        if (!isEqual(updatedPost, lastSavedPost.current)) {
+          handleAutoSave(updatedPost);
+        }
+      }, 5000);
+    },
+    [handleAutoSave]
+  );
+
+  const updateDraft = useCallback(
+    <K extends PostDraftKeyType>(key: K, values: PostDraftType[K]) => {
+      setEditablePostDraft((p) => {
+        const updatedPost = { ...p, [key]: values };
+        scheduleSave(updatedPost);
+        return updatedPost;
+      });
+    },
+    [scheduleSave]
   );
 
   useEffect(() => {

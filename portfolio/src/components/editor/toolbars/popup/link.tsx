@@ -200,11 +200,7 @@ const LinkPopupPanel = forwardRef<HTMLDivElement, Props>((props, ref) => {
           <div className='flex items-center justify-between'>
             <div className='text-gray-400 font-thin text-[0.3rem] flex items-center space-x-2'>
               <Label htmlFor='more-options'>More options</Label>
-              <Switch
-                id='more-options'
-                rootStyle='h-3 w-8'
-                thumbStyle='w-2 h-2'
-              />
+              <Switch id='more-options' />
             </div>
 
             <div className='flex items-center gap-0.5'>

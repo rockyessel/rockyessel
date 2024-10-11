@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Github, ExternalLink, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Project } from '@/types';
+import Image from 'next/image';
 
 interface Props {
   project: Project;
@@ -32,7 +33,7 @@ const ProjectCard = ({ project }: Props) => {
         <div className='flex'>
           {project.images.map((image, index) => (
             <div key={index} className='flex-[0_0_100%]'>
-              <img
+              <Image
                 src={image}
                 alt={`${project.title} screenshot ${index + 1}`}
                 className='w-full h-48 object-cover'
