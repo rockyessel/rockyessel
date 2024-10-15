@@ -65,6 +65,7 @@ export const GET = async (request: Request) => {
     return new Response(
       JSON.stringify({
         success: false,
+        // @ts-ignore
         error: error.message,
       }),
       {
