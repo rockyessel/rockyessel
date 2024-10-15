@@ -2,7 +2,7 @@ import chromium from '@sparticuz/chromium-min';
 import puppeteer from 'puppeteer-core';
 
 const localExcuPath = process.env.CHROME_EXECUTABLE_PATH_DEV;
-const prodlExcuPath = process.env.CHROME_EXECUTABLE_PATH_PROD;
+const prodExcuPath = process.env.CHROME_EXECUTABLE_PATH_PROD;
 
 const isLocal = !!localExcuPath;
 
@@ -14,7 +14,7 @@ export const GET = async (request: Request) => {
   try {
     const cpath = isLocal
       ? localExcuPath
-      : await chromium.executablePath(prodlExcuPath);
+      : await chromium.executablePath(prodExcuPath);
 
     const browser = await puppeteer.launch({
       args: isLocal ? puppeteer.defaultArgs() : chromium.args,
