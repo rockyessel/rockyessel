@@ -98,14 +98,6 @@ export const blockchainNetworks = [
     name: 'Vara Network',
     icon: <VaraNetworkSVG className='w-4 h-4' strokeWidth={2.25} />,
   },
-  {
-    name: 'Aptos Network',
-    icon: <AptosNetworkSVG className='w-4 h-4' strokeWidth={2.25} />,
-  },
-  {
-    name: 'Move',
-    icon: <AptosNetworkSVG className='w-4 h-4' strokeWidth={2.25} />,
-  },
 ];
 
 export const OtherTools = [

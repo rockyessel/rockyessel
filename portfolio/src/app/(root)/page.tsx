@@ -21,8 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const Home = async () => {
   return (
-    <AsideContentLayout>
-      <section className='w-full'>
+    <AsideContentLayout className=''>
+      <section className='w-full mx-20'>
         <div>
           <div className='flex items-center justify-between mb-6'>
             {/* <div>
@@ -182,6 +182,34 @@ const Home = async () => {
               ))}
             </div>
           </section>
+
+
+          
+
+          {/* Writing Platform Section */}
+          <section className='mb-8'>
+            <h2 className='text-xl font-semibold'>Writing Platform</h2>
+            <div className='grid grid-cols-2 gap-6 mt-4'>
+              {Array.from({ length: 2 }).map((_, index) => (
+                <DashboardProjectCard
+                  key={index}
+                  title='RE Portfolio Web App'
+                  description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit temporibus repellendus impedit, non tempora dicta, sequi delectus possimus obcaecati aspernatur praesentium, magnam fuga animi provident dignissimos commodi molestias quam ipsum?'
+                  category='Pinned'
+                  priority='Medium'
+                  assignees={[
+                    { name: 'John Doe', image: '/path/to/image1.jpg' },
+                    { name: 'Jane Smith', image: '/path/to/image2.jpg' },
+                  ]}
+                  comments={23}
+                  attachments={12}
+                />
+              ))}
+            </div>
+          </section>
+
+
+
         </div>
       </section>
     </AsideContentLayout>
