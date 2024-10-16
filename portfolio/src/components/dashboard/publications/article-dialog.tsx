@@ -38,7 +38,6 @@ export const ArticleDialog = ({ article, pubUrl, pubId }: Props) => {
 
     startScraping(async () => {
       try {
-        // Extract the host from pubUrl and formUrl using the URL constructor
         const pubUrlHost = new URL(pubUrl).host;
         const formUrlHost = new URL(formUrl).host;
 
@@ -48,7 +47,7 @@ export const ArticleDialog = ({ article, pubUrl, pubId }: Props) => {
             <p className='inline-flex flex-col gap-0.5'>
               <span className='font-bold'>Invalid URL</span>
               <span>
-                The URL provided does not match the publication's domain.
+                {`The URL provided does not match the publication's domain.`}
               </span>
             </p>
           );

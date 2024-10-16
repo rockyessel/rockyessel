@@ -277,9 +277,6 @@ export const getPageSEO = async (page: string): Promise<Metadata> => {
     alternates: {
       canonical: seoDetails.canonicalUrl,
     },
-    other: {
-      'google-site-verification': 'your-google-site-verification-code',
-    },
     robots: {
       index: true,
       follow: true,
@@ -292,7 +289,7 @@ export const getPageSEO = async (page: string): Promise<Metadata> => {
       },
     },
     verification: {
-      google: 'your-google-site-verification-code',
+      google: '4mpTgUJCrHY_8cR7Qe-t70YpmGldJHhIQBs2LNkEj1I',
       yandex: 'your-yandex-verification-code',
       yahoo: 'your-bing-verification-code',
       me: '',

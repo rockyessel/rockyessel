@@ -51,7 +51,14 @@ const DateTimePicker = (props: Props) => {
 
   // Initialize date and time based on initialDate or default to current date/time
   const [date, setDate] = useState<Date | undefined>(initialDate || undefined);
-  const [time, setTime] = useState({hours: initialDate ? initialDate.getUTCHours().toString().padStart(2, '0') : '00', minutes: initialDate ? initialDate.getUTCMinutes().toString().padStart(2, '0') : '00' });
+  const [time, setTime] = useState({
+    hours: initialDate
+      ? initialDate.getUTCHours().toString().padStart(2, '0')
+      : '00',
+    minutes: initialDate
+      ? initialDate.getUTCMinutes().toString().padStart(2, '0')
+      : '00',
+  });
 
   const hours = Array.from({ length: 24 }, (_, i) =>
     i.toString().padStart(2, '0')
@@ -187,7 +194,8 @@ const DateTimePicker = (props: Props) => {
           selected={date}
           onSelect={handleDateSelect}
           disabled={disabled || disabledDates}
-          initialFocus={initialFocus}
+          // @ts-ignore
+          initialFocus={initialFocus || false}
         />
         <div className='border-t border-zinc-700/40 p-3 flex justify-between items-center'>
           <div className='flex space-x-2'>
