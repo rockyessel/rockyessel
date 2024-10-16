@@ -32,23 +32,25 @@ const generateSitemapXml = ({ host }: SitemapProps) => {
         >
   ${PAGES.map(({ path, title }) => {
     const pageSeo = pageSEO[title.toLowerCase()];
+
+    const keywords = pageSeo.keywords
+      ?.split(',')
+      .map((keyword) => keyword.trim());
+
     const image = createOgImagePage({
       title: `${title} Page`,
-      meta: [
-        ...pageSeo?.keywords,
-        'rockyesse',
-        'web3',
-        'quantum-computing',
-      ].join(' • '),
+      meta: keywords.join(' • ') || pageSeo?.description,
     });
+
+    // console.log({ image });
+
+    // console.log({ meta: keywords.join(' • ') });
     return `
   <url>
     <loc>${host}${path}</loc>
     <lastmod>${generateRandomPreviousDay()}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1</priority>
-    <meta name="title" content="${pageSeo?.title ?? title}" />
-    <meta name="description" content="${pageSeo?.description}" />
     <image:image>
       <image:loc>${image}</image:loc>
       <image:title>${title}</image:title>
