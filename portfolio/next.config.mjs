@@ -24,6 +24,12 @@ const nextConfig = {
       { hostname: 'symbionapi.vercel.app' },
       { hostname: 'res.cloudinary.com' },
       { hostname: 'descriptive-ostrich-350.convex.cloud' },
+      { hostname: 'rockyessel.me' },
+      { hostname: 'hackernoon.com' },
+      { hostname: 'media.dev.to' },
+      { hostname: 'freecodecamp.org' },
+      { hostname: 'cdn.hashnode.com' },
+      { hostname: 'hackernoon.imgix.net' },
     ],
   },
 };

@@ -1,42 +1,69 @@
+import { pageSEO } from '@/lib/actions/helpers';
+import {
+  createOgImagePage,
+  domainURL,
+  generateRandomPreviousDay,
+} from '@/lib/utils/helpers';
 import { NextResponse } from 'next/server';
 
-function generateSitemapXml(host: string, urls: string[]) {
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${urls
-    .map(
-      (url) => `
-  <url>
-    <loc>https://${host}${url}</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  `
-    )
-    .join('')}
-</urlset>`;
+const PAGES = [
+  { title: 'Home', path: '/' },
+  { title: 'About', path: '/about' },
+  { title: 'Links', path: '/links' },
+  { title: 'Contact', path: '/contact' },
+  { title: 'Projects', path: '/projects' },
+  { title: 'Writings', path: '/writings' },
+  { title: 'Archives', path: '/archives' },
+  { title: 'Resume', path: '/resume' },
+  { title: 'Newsletters', path: '/newsletters' },
+];
+
+// https://developers.google.com/search/docs/crawling-indexing/sitemaps/combine-sitemap-extensions
+
+interface SitemapProps {
+  host: string;
 }
 
-export async function GET(request: Request) {
-  const host = request.headers.get('host');
+const generateSitemapXml = ({ host }: SitemapProps) => {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        >
+  ${PAGES.map(({ path, title }) => {
+    const pageSeo = pageSEO[title.toLowerCase()];
 
-  // Define your URLs here. In a real application, you might fetch these from a database or API
-  let urls = ['/'];
+    console.log({ pageSeo });
 
-  if (host?.startsWith('blog.')) {
-    urls = urls.concat(['/posts', '/about', '/contact']);
-  } else if (host?.startsWith('shop.')) {
-    urls = urls.concat(['/products', '/categories', '/cart']);
-  }
+    const image = createOgImagePage({
+      title,
+      meta: [...pageSeo?.keywords?.slice(0, 3)].join(' • '),
+    });
 
-  // You might want to add dynamic URLs here, e.g., from a database
-  // const dynamicUrls = await fetchDynamicUrlsFromDatabase();
-  // urls = urls.concat(dynamicUrls);
+    console.log({ image });
 
-  const sitemap = generateSitemapXml(host!, urls);
+    return `
+  <url>
+    <loc>https://${host}${path}</loc>
+    <lastmod>${generateRandomPreviousDay()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1</priority>
+    <meta name="title" content="${pageSeo?.title ?? title}" />
+    <meta name="description" content="${pageSeo?.description}" />
+    <image:image>
+      <image:loc>${image}</image:loc>
+      <image:title>${title}</image:title>
+    </image:image>
+  </url>
+  `;
+  }).join('')}
+</urlset>`;
+};
+
+export const GET = async (_request: Request) => {
+  const sitemap = generateSitemapXml({ host: domainURL() });
 
   return new NextResponse(sitemap, {
     headers: { 'Content-Type': 'application/xml' },
   });
-}
+};

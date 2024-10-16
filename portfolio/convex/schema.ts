@@ -13,6 +13,7 @@ export default defineSchema(
     posts_draft: defineTable({ ...PostDraftSchema }),
     files: defineTable({ ...FileSchema }),
     publications: defineTable({ ...PublicationSchema }),
+    pub_articles: defineTable({ ...PublicationSchema }),
   },
   // If you ever get an error about schema mismatch
   // between your data and your schema, and you cannot

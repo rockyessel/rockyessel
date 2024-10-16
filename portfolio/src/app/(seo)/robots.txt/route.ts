@@ -1,36 +1,18 @@
-import { NextResponse } from "next/server";
+import { domainURL } from '@/lib/utils/helpers';
+import { NextResponse } from 'next/server';
 
-export async function GET(request: Request) {
-  // Get the host from the request
-  const host = request.headers.get("host");
+export const GET = async (_request: Request) => {
+  let robotsTxt = `  
+Sitemap: ${domainURL(`/sitemap.xml`)}
+Sitemap: ${domainURL(`/postsitemap.xml`)}
 
-  // Generate robots.txt content based on the subdomain
-  let robotsTxt = "";
-
-  if (host?.startsWith("blog.")) {
-    robotsTxt = `
 User-agent: *
 Allow: /
-Disallow: /admin/
-
-Sitemap: https://${host}/sitemap.xml
+Disallow: /api/
+Disallow: /dashboard/
 `;
-  } else if (host?.startsWith("admin.")) {
-    robotsTxt = `
-User-agent: *
-Disallow: /
-`;
-  } else {
-    robotsTxt = `
-User-agent: *
-Allow: /
 
-Sitemap: https://${host}/sitemap.xml
-`;
-  }
-
-  // Return the robots.txt content
   return new NextResponse(robotsTxt, {
-    headers: { "Content-Type": "text/plain" },
+    headers: { 'Content-Type': 'text/plain' },
   });
-}
+};

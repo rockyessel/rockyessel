@@ -14,69 +14,63 @@ import {
 } from '@/components/ui/table';
 import { Plus, Search, Trash2, ExternalLink } from 'lucide-react';
 import { ArticleDialog } from './article-dialog';
-import { IPublicationArticle } from '@/types';
+import { ArticleType, IPublicationArticle, PublicationType } from '@/types';
 
-const PublicationArticleTable = ({
-  publication: initialPublication,
-}: {
-  publication: any;
-}) => {
-  const [publication, setPublication] = useState(initialPublication);
+interface Props {
+  publication: PublicationType;
+  articles: ArticleType[];
+}
+
+const PublicationArticleTable = ({ articles, publication }: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [editingArticle, setEditingArticle] = useState<
-    IPublicationArticle | undefined
-  >(undefined);
-  // @ts-ignore
-  const filteredArticles = publication.articles.filter(
-    // @ts-ignore
+
+  const filteredArticles = articles?.filter(
     (article) =>
-      article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      article.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      // @ts-ignore
-      article.tags.some((tag) =>
+      article?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article?.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article?.keywords?.some((tag) =>
         tag.toLowerCase().includes(searchTerm.toLowerCase())
       )
   );
 
-  const handleEdit = (article: IPublicationArticle) => {
-    setEditingArticle(article);
-    setDialogOpen(true);
-  };
+  // const handleEdit = (article: IPublicationArticle) => {
+  //   setEditingArticle(article);
+  //   setDialogOpen(true);
+  // };
 
-  const handleDelete = (id: string) => {
-    // @ts-ignore
-    setPublication((prev) => ({
-      ...prev,
-      // @ts-ignore
-      articles: prev.articles.filter((article) => article.id !== id),
-    }));
-  };
+  // const handleDelete = (id: string) => {
+  //   // @ts-ignore
+  //   setEditablePub((prev) => ({
+  //     ...prev,
+  //     // @ts-ignore
+  //     articles: prev.articles.filter((article) => article.id !== id),
+  //   }));
+  // };
 
-  const handleSave = (articleData: Omit<IPublicationArticle, 'id'>) => {
-    if (editingArticle) {
-      // @ts-ignore
-      setPublication((prev) => ({
-        ...prev,
-        // @ts-ignore
-        articles: prev.articles.map((article) =>
-          article.id === editingArticle.id
-            ? { ...article, ...articleData }
-            : article
-        ),
-      }));
-    } else {
-      const newArticle = {
-        ...articleData,
-        id: Date.now().toString(), // Simple ID generation
-      };
-      // @ts-ignore
-      setPublication((prev) => ({
-        ...prev,
-        articles: [...prev.articles, newArticle],
-      }));
-    }
-  };
+  // const handleSave = (articleData: Omit<IPublicationArticle, 'id'>) => {
+  //   if (editingArticle) {
+  //     // @ts-ignore
+  //     setEditablePub((prev) => ({
+  //       ...prev,
+  //       // @ts-ignore
+  //       articles: prev.articles.map((article) =>
+  //         article.id === editingArticle.id
+  //           ? { ...article, ...articleData }
+  //           : article
+  //       ),
+  //     }));
+  //   } else {
+  //     const newArticle = {
+  //       ...articleData,
+  //       id: Date.now().toString(), // Simple ID generation
+  //     };
+  //     // @ts-ignore
+  //     setEditablePub((prev) => ({
+  //       ...prev,
+  //       articles: [...prev.articles, newArticle],
+  //     }));
+  //   }
+  // };
 
   return (
     <div className='container mx-auto p-4'>
@@ -96,13 +90,8 @@ const PublicationArticleTable = ({
 
       <div className='flex justify-between items-center mb-6'>
         <h2 className='text-2xl font-semibold'>Articles</h2>
-        <Button
-          onClick={() => setDialogOpen(true)}
-          className='flex items-center'
-        >
-          <Plus className='w-4 h-4 mr-2' />
-          Add IPublicationArticle
-        </Button>
+
+        <ArticleDialog pubId={publication?._id} pubUrl={publication?.url} />
       </div>
 
       <div className='relative mb-6'>
@@ -130,12 +119,12 @@ const PublicationArticleTable = ({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filteredArticles.map((article: any) => (
-              <TableRow key={article.id}>
+            {filteredArticles?.map((article) => (
+              <TableRow key={article._id}>
                 <TableCell>{article.title}</TableCell>
                 <TableCell>
                   <a
-                    href={article.url}
+                    href={`${article?.url}/?ref=rockyessel.me`}
                     target='_blank'
                     rel='noopener noreferrer'
                     className='text-blue-500 hover:underline flex items-center'
@@ -147,14 +136,10 @@ const PublicationArticleTable = ({
                 <TableCell className='max-w-xs truncate'>
                   {article.description}
                 </TableCell>
-                <TableCell>{article.tags.join(', ')}</TableCell>
+                <TableCell>{article?.keywords?.join(', ')}</TableCell>
                 <TableCell>
                   <div className='flex space-x-2'>
-                    <Button
-                      variant='destructive'
-                      size='sm'
-                      onClick={() => handleDelete(article.id)}
-                    >
+                    <Button variant='destructive' size='sm'>
                       <Trash2 className='w-4 h-4' />
                     </Button>
                   </div>
@@ -164,16 +149,6 @@ const PublicationArticleTable = ({
           </TableBody>
         </Table>
       )}
-
-      <ArticleDialog
-        isOpen={dialogOpen}
-        onClose={() => {
-          setDialogOpen(false);
-          setEditingArticle(undefined);
-        }}
-        article={editingArticle}
-        onSave={handleSave}
-      />
     </div>
   );
 };

@@ -1,39 +1,29 @@
 import PublicationArticleTable from '@/components/dashboard/publications/table';
 import DashboardSidebarLayout from '@/components/layout/sidebar-dashboard';
 import React from 'react';
+import { Id } from '../../../../../../convex/_generated/dataModel';
+import {
+  getArticleByPubId,
+  getPublicationById,
+} from '@/lib/actions/convex_/publications';
+import { notFound } from 'next/navigation';
 
-const PublicationIdPage = () => {
+interface Props {
+  params: { id: Id<'publications'> };
+}
+
+const PublicationIdPage = async ({ params }: Props) => {
+  const publication = await getPublicationById(params.id);
+
+  if (!publication) return notFound();
+
+  const articles = (await getArticleByPubId(publication._id)) || [];
+
   return (
     <DashboardSidebarLayout allowNavbar>
-      <PublicationArticleTable
-        publication={examplePublication} />
+      <PublicationArticleTable publication={publication} articles={articles} />
     </DashboardSidebarLayout>
   );
 };
 
 export default PublicationIdPage;
-
-const examplePublication:any = {
-  id: '1',
-  name: 'Tech Insights',
-  description: 'Latest news and analysis in the world of technology.',
-  logo: '/placeholder.svg',
-  articles: [
-    {
-      id: '1',
-      title: 'The Future of AI',
-      url: 'https://techinsights.com/future-of-ai',
-      description: 'Exploring the potential impacts of artificial intelligence on various industries.',
-      coverImage: '/placeholder.svg',
-      tags: ['AI', 'Technology', 'Future']
-    },
-    {
-      id: '2',
-      title: '5G Revolution',
-      url: 'https://techinsights.com/5g-revolution',
-      description: 'How 5G is changing the landscape of mobile communications and beyond.',
-      coverImage: '/placeholder.svg',
-      tags: ['5G', 'Mobile', 'Communications']
-    },
-  ]
-}

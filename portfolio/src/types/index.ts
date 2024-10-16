@@ -1,5 +1,5 @@
 import { HTMLProps } from 'react';
-import { Doc } from '../../convex/_generated/dataModel';
+import { Doc, Id } from '../../convex/_generated/dataModel';
 import { CATEGORIES } from '@/lib/utils/constants';
 
 export interface Project {
@@ -66,9 +66,25 @@ export type PostDraftValueType = PostDraftType[PostDraftKeyType];
 
 export type FileType = Doc<'files'>;
 
+export type PubArticleType = {
+  _id: Id<'publications'>;
+  _creationTime: number;
+  title?: string | undefined;
+  slug?: string | undefined;
+  description?: string | undefined;
+  name?: string | undefined;
+  pubId?: Id<'publications'> | undefined;
+  logo?: string | undefined;
+  keywords?: string[] | undefined;
+  url: string;
+  articles: ArticleType[];
+}[];
+
 export type PublicationType = Doc<'publications'>;
 export type PubKeyType = keyof PublicationType;
 export type PubValueType = { [K in PubKeyType]: PublicationType[K] };
+
+export type ArticleType = Doc<'pub_articles'>;
 
 export type CategoryKeysType = keyof typeof CATEGORIES;
 

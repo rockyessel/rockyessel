@@ -1,6 +1,7 @@
 import Component from '@/components/common/archives-table';
+import JsonLDPage from '@/components/common/json-ld-page';
 import AsideContentLayout from '@/components/layout/aside-content';
-import { getPageSEO } from '@/lib/actions/helpers';
+import { getJsonLd, getPageSEO, pageSEO } from '@/lib/actions/helpers';
 import { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -8,8 +9,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const ArchivesPage = async () => {
+  const seoDetails = pageSEO['projects'];
+  const jsonLd = getJsonLd(seoDetails, 'projects');
+
   return (
     <AsideContentLayout>
+      <JsonLDPage jsonLd={jsonLd} />
       <Component />
     </AsideContentLayout>
   );

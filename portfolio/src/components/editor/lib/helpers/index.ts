@@ -120,6 +120,15 @@ export const isValidURL = (str: string): boolean => {
   return !!pattern.test(str);
 };
 
+export const isWeakValidURL = (str: string): boolean => {
+  try {
+    const url = new URL(str);
+    return url.protocol === 'http:' || url.protocol === 'https:';
+  } catch (e) {
+    return false;
+  }
+};
+
 export const isElementNode = (node: Descendant): node is ElementNodeType => {
   return Element.isElement(node);
 };

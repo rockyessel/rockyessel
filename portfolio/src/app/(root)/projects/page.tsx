@@ -2,16 +2,13 @@ import AsideContentLayout from '@/components/layout/aside-content';
 import ProjectCard from '@/components/project/card';
 import { Project } from '@/types';
 
-
-
-import { getPageSEO } from '@/lib/actions/helpers';
+import { getJsonLd, getPageSEO, pageSEO } from '@/lib/actions/helpers';
 import { Metadata } from 'next';
+import JsonLDPage from '@/components/common/json-ld-page';
 
 export async function generateMetadata(): Promise<Metadata> {
   return await getPageSEO('projects');
 }
-
-
 
 const projects: Project[] = [
   {
@@ -45,9 +42,12 @@ const projects: Project[] = [
   },
 ];
 
-const ProjectPage = () => {
+const ProjectPage = async () => {
+  const seoDetails = pageSEO['projects'];
+  const jsonLd = getJsonLd(seoDetails, 'projects');
   return (
     <AsideContentLayout>
+      <JsonLDPage jsonLd={jsonLd} />
       <div>
         <h1 className='text-4xl font-bold mb-8 text-center'>Pinned Projects</h1>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>

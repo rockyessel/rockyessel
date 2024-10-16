@@ -1,38 +1,36 @@
-import { NextResponse } from "next/server";
+import { getPublishedPosts } from '@/lib/actions/convex_/posts';
+import { domainURL, generateRandomPreviousDay } from '@/lib/utils/helpers';
+import { PostType } from '@/types';
+import { NextResponse } from 'next/server';
 
-// Define types for the RSS feed items
-interface RssItem {
-  title: string;
-  link: string;
-  description: string;
-  pubDate: string;
-}
-
-function generateRssFeed(host: string | null, items: RssItem[]): string {
+function generateRssFeed(host: string | null, items: PostType[]): string {
   const feedUrl = `https://${host}/rss.xml`;
-  const siteUrl = `https://${host}`;
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My Amazing Blog</title>
-    <link>${siteUrl}</link>
-    <description>The latest content from My Amazing Blog</description>
+    <title>RSS Feeds| Latest Content from Rocky Essel</title>
+    <link>${domainURL()}</link>
+    <description>The latest content from Rocky Essel</description>
     <language>en-us</language>
+    <pubDate>${generateRandomPreviousDay()}</pubDate>
+    <lastBuildDate>${generateRandomPreviousDay()}</lastBuildDate>
     <atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />
     ${items
       .map(
         (item) => `
     <item>
       <title>${escapeXml(item.title)}</title>
-      <link>${siteUrl}${item.link}</link>
-      <guid isPermaLink="true">${siteUrl}${item.link}</guid>
+      <link>${domainURL(`/${item.slug}`)}</link>
+      <guid isPermaLink="true">${domainURL(`/${item.slug}`)}</guid>
       <description>${escapeXml(item.description)}</description>
-      <pubDate>${new Date(item.pubDate).toUTCString()}</pubDate>
+      <pubDate>${item.publishedAt}</pubDate>
+      <dc:creator>${escapeXml('Rocky Essel')}</dc:creator>
+      <category>${escapeXml(item.category || 'General')}</category>
     </item>
     `
       )
-      .join("")}
+      .join('')}
   </channel>
 </rss>`;
 }
@@ -40,45 +38,28 @@ function generateRssFeed(host: string | null, items: RssItem[]): string {
 function escapeXml(unsafe: string): string {
   return unsafe.replace(/[<>&'"]/g, function (c: string) {
     switch (c) {
-      case "<":
-        return "&lt;";
-      case ">":
-        return "&gt;";
-      case "&":
-        return "&amp;";
+      case '<':
+        return '&lt;';
+      case '>':
+        return '&gt;';
+      case '&':
+        return '&amp;';
       case "'":
-        return "&apos;";
+        return '&apos;';
       case '"':
-        return "&quot;";
+        return '&quot;';
       default:
         return c; // Ensure that a valid string is always returned
     }
   });
 }
 
-export async function GET(request: Request): Promise<NextResponse> {
-  const host = request.headers.get("host");
+export async function GET(_request: Request): Promise<NextResponse> {
+  const posts = await getPublishedPosts();
 
-  // In a real application, you would fetch these items from a database or API
-  const items: RssItem[] = [
-    {
-      title: "First Blog Post",
-      link: "/blog/first-post",
-      description: "This is my first blog post.",
-      pubDate: "2024-09-29T12:00:00Z",
-    },
-    {
-      title: "Second Blog Post",
-      link: "/blog/second-post",
-      description: "This is my second blog post.",
-      pubDate: "2024-09-30T12:00:00Z",
-    },
-    // Add more items as needed
-  ];
-
-  const rss = generateRssFeed(host, items);
+  const rss = generateRssFeed(domainURL(), posts);
 
   return new NextResponse(rss, {
-    headers: { "Content-Type": "application/rss+xml; charset=utf-8" },
+    headers: { 'Content-Type': 'application/rss+xml; charset=utf-8' },
   });
 }

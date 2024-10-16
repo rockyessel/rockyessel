@@ -72,7 +72,7 @@ const DashboardProjectCard = ({
           </div>
 
           <Avatar className='w-8 h-8 border-2 border-zinc-700/40'>
-            <AvatarImage src={'/symbion.png'} alt={'Symbion'} />
+            <AvatarImage src={'/icons/icon-3000x3000.svg'} alt={'Symbion'} />
             <AvatarFallback>{'SM'}</AvatarFallback>
           </Avatar>
         </div>

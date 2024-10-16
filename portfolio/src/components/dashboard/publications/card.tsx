@@ -15,6 +15,8 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import AddEditPublicationDialog from './publication-dialog';
+import Link from 'next/link';
+import { domainURL } from '@/lib/utils/helpers';
 
 interface Props {
   publication: PublicationType;
@@ -28,53 +30,65 @@ const PublicationCard = ({ ...props }: Props) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   console.log('publication-card: ', publication);
 
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <Card
-      className='w-full transition-all duration-300 ease-in-out transform px-2 py-0 my-0'
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <CardHeader className='relative pb-0'>
+    <Card className='w-full transition-all duration-300 ease-in-out transform px-2 py-0 my-0'>
+      <CardHeader className='relative m-0 p-0 py-3'>
         <div className='flex items-center justify-between'>
-          <div className='w-10 h-10 relative rounded-t-lg overflow-hidden'>
-            <Image
-              src={publication?.logo || '/placeholder.svg'}
-              alt={`${publication?.name} cover`}
-              layout='fill'
-              objectFit='cover'
-            />
+          <div className='rounded-t-lg overflow-hidden'>
+            <div>
+              <CardTitle className='flex items-center text-xl px-0'>
+                <div>
+                  {publication.logo ? (
+                    <Image
+                      src={publication?.logo}
+                      alt={`${publication?.name} cover`}
+                      width={50}
+                      height={50}
+                      className='w-[16px] h-[16px] mr-2 rounded-sm'
+                    />
+                  ) : (
+                    'No image'
+                  )}
+                </div>
+                {publication?.name}
+              </CardTitle>
+              <span className='inline-flex items-center'>
+                <Globe className='w-4 h-4 mr-2 text-gray-300' />
+                <a
+                  href={`{publication?.url}`}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='text-blue-500 hover:underline'
+                >
+                  {publication?.url}
+                </a>
+              </span>
+            </div>
           </div>
 
           <div className='flex items-center justify-center'>
             <AddEditPublicationDialog publication={publication} />
 
-            {isHovered && (
-              <Button
-                variant='outline'
-                size='sm'
-                onClick={() => onDelete(publication?._id)}
-              >
-                <Trash2 className='w-4 h-4' />
-                <span className='sr-only'>Delete</span>
-              </Button>
-            )}
+            <Button
+              variant='outline'
+              size='sm'
+              onClick={() => onDelete(publication?._id)}
+            >
+              <Trash2 className='w-4 h-4' />
+              <span className='sr-only'>Delete</span>
+            </Button>
+
+            <Link
+              href={domainURL(`/dashboard/publications/${publication?._id}`)}
+              className='text-gray-300 inline-flex items-center gap-2'
+            >
+              <Trash2 className='w-4 h-4' />
+              <span className=''>Add Articles</span>
+            </Link>
           </div>
         </div>
 
-        <CardTitle className='px-2 text-xl mt-4'>{publication?.name}</CardTitle>
-        <CardDescription className='px-2 flex items-center mt-1'>
-          <Globe className='w-4 h-4 mr-1' />
-          <a
-            href={`https://${publication?.url}`}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='text-blue-500 hover:underline'
-          >
-            {publication?.url}
-          </a>
-        </CardDescription>
+        <CardDescription className='px-2 flex items-center mt-1'></CardDescription>
       </CardHeader>
 
       <CardContent className='p-0 m-0'>

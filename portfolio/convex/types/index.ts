@@ -60,6 +60,8 @@ export const FileSchema = {
 
 export const PublicationSchema = {
   name: v.optional(v.string()),
+  title: v.optional(v.string()),
+  pubId: v.optional(v.id('publications')),
   slug: v.optional(v.string()),
   url: v.string(),
   logo: v.optional(v.string()),

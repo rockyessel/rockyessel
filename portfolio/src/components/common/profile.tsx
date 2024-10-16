@@ -3,7 +3,7 @@
 import { GithubSVG, HackerNoon, LinkedIn, X } from '@/assets';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils/helpers';
+import { cn, profile } from '@/lib/utils/helpers';
 import {
   MapPin,
   Mail,
@@ -42,7 +42,7 @@ const Profile = ({ className }: Props) => {
         <div className='space-y-2'>
           <div className='w-full flex items-center justify-center'>
             <Avatar className='w-24 h-24'>
-              <AvatarImage src='/97303710.jpg' />
+              <AvatarImage src={profile} />
               <AvatarFallback>RE</AvatarFallback>
             </Avatar>
           </div>

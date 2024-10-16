@@ -1,20 +1,35 @@
+import { isValidURL, isWeakValidURL } from '@/components/editor/lib/helpers';
+import { createSlug } from '@/lib/utils/helpers';
 import chromium from '@sparticuz/chromium-min';
-import puppeteer from 'puppeteer-core';
+import puppeteer, { Page } from 'puppeteer-core';
 
 const localExcuPath = process.env.CHROME_EXECUTABLE_PATH_DEV;
-const prodExcuPath = process.env.CHROME_EXECUTABLE_PATH_PROD;
+const prodlExcuPath = process.env.CHROME_EXECUTABLE_PATH_PROD;
 
 const isLocal = !!localExcuPath;
 
 export const maxDuration = 20;
 
-export const GET = async (request: Request) => {
-  const siteUrl = 'https://rockyessel.me';
+// Helper function to get meta content or return null if not found
+const getMetaContent = async (page: Page, selector: string) => {
+  try {
+    return await page.$eval(selector, (element) =>
+      element.getAttribute('content')
+    );
+  } catch (error) {
+    return null; // Return null if the selector fails (element not found)
+  }
+};
 
+export const POST = async (request: Request) => {
+  const body = await request.json();
+  const siteUrl = body.siteUrl;
+
+  const parseUrl = siteUrl.replace(/\/+$/, '');
   try {
     const cpath = isLocal
       ? localExcuPath
-      : await chromium.executablePath(prodExcuPath);
+      : await chromium.executablePath(prodlExcuPath);
 
     const browser = await puppeteer.launch({
       args: isLocal ? puppeteer.defaultArgs() : chromium.args,
@@ -29,31 +44,65 @@ export const GET = async (request: Request) => {
     // Get the page title
     const pageTitle = await page.title();
 
-    // Get meta description
-    const metaDescription = await page.$eval(
-      'meta[name="description"]',
-      (element) => element.getAttribute('content')
-    );
+    /// Fetch description and keywords
+    const metaDescription =
+      (await getMetaContent(page, 'meta[name="description"]')) ||
+      (await getMetaContent(page, 'meta[property="og:description"]')) ||
+      'No description found'; // Fallback if neither exists
 
-    // Get meta keywords
-    const metaKeywords = await page.$eval('meta[name="keywords"]', (element) =>
-      element.getAttribute('content')
-    );
+    const metaKeywords =
+      (await getMetaContent(page, 'meta[name="keywords"]')) ||
+      (await getMetaContent(page, 'meta[property="og:keywords"]')) ||
+      'No keywords found'; // Fallback if neither exists
 
-    // Get favicon
-    const favicon = await page.$eval('link[rel="icon"]', (element) =>
-      element.getAttribute('href')
-    );
+    // Get favicon (logo)
+    let logo = await page
+      .$eval('link[rel="icon"], link[rel="shortcut icon"]', (element) =>
+        element.getAttribute('href')
+      )
+      .catch(() => null);
+
+    // Check if the logo is a valid URL, otherwise, append the site URL
+    if (logo && !isWeakValidURL(logo)) {
+      logo = parseUrl + logo;
+    }
+
+    // Try to get site name (og:site_name or application-name)
+    let siteName = await page
+      .$eval(
+        'meta[property="og:site_name"], meta[name="application-name"]',
+        (element) => element.getAttribute('content')
+      )
+      .catch(() => null); // If not found, return null
+
+    // If siteName is undefined, extract from the URL
+    if (!siteName) {
+      const parsedUrl = new URL(siteUrl);
+      // Remove the extension and capitalize the first letter
+      const hostnameWithoutExtension = parsedUrl.hostname.split('.')[0];
+      siteName =
+        hostnameWithoutExtension.charAt(0).toUpperCase() +
+        hostnameWithoutExtension.slice(1);
+    }
 
     await browser.close();
 
+    const keywords =
+      metaKeywords?.split(',')?.map((keyword) => {
+        const slugKeyword = createSlug(keyword);
+
+        return slugKeyword;
+      }) || [];
+
     return new Response(
       JSON.stringify({
-        success: true,
+        url: parseUrl,
+        keywords,
+        name: siteName,
         title: pageTitle,
+        logo: logo,
+        slug: createSlug(siteName),
         description: metaDescription,
-        keywords: metaKeywords,
-        favicon: favicon,
       }),
       {
         status: 200,

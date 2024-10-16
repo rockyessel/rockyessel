@@ -1,27 +1,13 @@
-import AsideContentLayout from '@/components/layout/aside-content';
-import { getPublishedPosts } from '@/lib/actions/convex_/posts';
-import {
-  calculateReadTime,
-  domainURL,
-  isContentNew,
-  truncate,
-} from '@/lib/utils/helpers';
-import {
-  ThumbsUp,
-  Eye,
-  MessageSquare,
-  Bookmark,
-  Share2,
-  Clock,
-  Tag,
-  SquareLibrary,
-} from 'lucide-react';
 import moment from 'moment';
 import Link from 'next/link';
-
-import { getPageSEO } from '@/lib/actions/helpers';
 import { Metadata } from 'next';
+import JsonLDPage from '@/components/common/json-ld-page';
+import { getPublishedPosts } from '@/lib/actions/convex_/posts';
+import AsideContentLayout from '@/components/layout/aside-content';
+import { getJsonLd, getPageSEO, pageSEO } from '@/lib/actions/helpers';
 import { countWordsInStructure } from '@/components/editor/lib/helpers';
+import { calculateReadTime, domainURL, isContentNew, truncate } from '@/lib/utils/helpers';
+import { ThumbsUp, Eye, MessageSquare, Bookmark, Share2, Clock, Tag, SquareLibrary } from 'lucide-react';
 
 export async function generateMetadata(): Promise<Metadata> {
   return await getPageSEO('writings');
@@ -30,10 +16,12 @@ export async function generateMetadata(): Promise<Metadata> {
 const WritingsPage = async () => {
   const posts = await getPublishedPosts();
 
-  // const isPostContentNew = isContentNew(post?.publishedAt);
+  const seoDetails = pageSEO['writings'];
+  const jsonLd = getJsonLd(seoDetails, 'writings');
 
   return (
     <AsideContentLayout isWriting>
+      <JsonLDPage jsonLd={jsonLd} />;
       <div className='w-full'>
         {/* <div className='flex flex-col gap-2 sticky top-12 bg-neutral-900' /> */}
 

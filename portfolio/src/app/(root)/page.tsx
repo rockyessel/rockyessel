@@ -1,7 +1,12 @@
-import Image from 'next/image';
-import AsideContentLayout from '@/components/layout/aside-content';
+import { Metadata } from 'next';
 import { Search } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import JsonLDPage from '@/components/common/json-ld-page';
+import WritingPlaform from '@/components/common/writing-plaform';
+import AsideContentLayout from '@/components/layout/aside-content';
+import { getPubsNArticles } from '@/lib/actions/convex_/publications';
+import { getJsonLd, getPageSEO, pageSEO } from '@/lib/actions/helpers';
+import DashboardProjectCard from '@/components/common/project-card-dashboard';
 import {
   AITools,
   blockchainNetworks,
@@ -10,18 +15,22 @@ import {
   languages,
   OtherTools,
 } from '@/lib/utils/constants';
-import DashboardProjectCard from '@/components/common/project-card-dashboard';
-
-import { getPageSEO } from '@/lib/actions/helpers';
-import { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {
   return await getPageSEO('home');
 }
 
 const Home = async () => {
+  const pubs = await getPubsNArticles();
+
+  const seoDetails = pageSEO['projects'];
+  const jsonLd = getJsonLd(seoDetails, 'projects');
+
   return (
     <AsideContentLayout className=''>
+      <JsonLDPage jsonLd={jsonLd} />
+
+      <a href='web+rockyessel://rocky-essel-resume'>Resume</a>
       <section className='w-full mx-20'>
         <div>
           <div className='flex items-center justify-between mb-6'>
@@ -42,9 +51,7 @@ const Home = async () => {
               <span className='text-gray-400 mr-2 text-sm'>{`What's Happening`}</span>
               <div className='flex items-center'>
                 <span className='text-gray-400 mr-1 text-sm'>Launched</span>
-                <span className='text-blue-400 text-sm'>
-                  Focus Amplified ↗
-                </span>
+                <span className='text-blue-400 text-sm'>Symbion ↗</span>
               </div>
             </div>
           </div>
@@ -53,8 +60,7 @@ const Home = async () => {
           <section className='mb-8 flex flex-col gap-2'>
             <h2 className='text-4xl font-semibold'>
               I am dedicated to learning and growing in the fields of electrical
-              engineering, blockchain technology, robotics and quantum
-              computing.
+              engineering, blockchain technology, and quantum computing.
             </h2>
 
             <Separator className='mt-4' />
@@ -183,33 +189,8 @@ const Home = async () => {
             </div>
           </section>
 
-
-          
-
           {/* Writing Platform Section */}
-          <section className='mb-8'>
-            <h2 className='text-xl font-semibold'>Writing Platform</h2>
-            <div className='grid grid-cols-2 gap-6 mt-4'>
-              {Array.from({ length: 2 }).map((_, index) => (
-                <DashboardProjectCard
-                  key={index}
-                  title='RE Portfolio Web App'
-                  description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit temporibus repellendus impedit, non tempora dicta, sequi delectus possimus obcaecati aspernatur praesentium, magnam fuga animi provident dignissimos commodi molestias quam ipsum?'
-                  category='Pinned'
-                  priority='Medium'
-                  assignees={[
-                    { name: 'John Doe', image: '/path/to/image1.jpg' },
-                    { name: 'Jane Smith', image: '/path/to/image2.jpg' },
-                  ]}
-                  comments={23}
-                  attachments={12}
-                />
-              ))}
-            </div>
-          </section>
-
-
-
+          {pubs.length === 0 ? null : <WritingPlaform pubs={pubs} />}
         </div>
       </section>
     </AsideContentLayout>

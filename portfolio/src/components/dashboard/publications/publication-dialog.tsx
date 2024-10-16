@@ -22,6 +22,10 @@ import {
   updatePublication,
 } from '@/lib/actions/convex_/publications';
 import { toast } from 'sonner';
+import Image from 'next/image';
+import { domainURL } from '@/lib/utils/helpers';
+import axios from 'axios';
+import { Textarea } from '@/components/ui/textarea';
 
 interface Props {
   publication?: PublicationType;
@@ -35,9 +39,12 @@ const AddEditPublicationDialog = ({ ...props }: Props) => {
     publication
   );
   const { file, handleFileSelection, isUploading } = useFileUpload();
+  const [isError, setIsError] = useState(false);
 
   const [isCreatingPub, startCreatingPub] = useTransition();
   const [isUpdatingPub, startUpdatingPub] = useTransition();
+
+  const isShown = publication ? true : false || isError;
 
   console.log('file: ', file);
   console.log('editablePub: ', editablePub);
@@ -90,15 +97,31 @@ const AddEditPublicationDialog = ({ ...props }: Props) => {
     // new
     if (!publication && editablePub) {
       startCreatingPub(async () => {
-        const publication_ = await createPublication(editablePub);
-        if (publication_) {
-          toast.success(
-            <p className='inline-flex flex-col gap-0.5'>
-              <span className='font-bold'>Publication Added</span>
-              <span>The new publication has been successfully added.</span>
-            </p>
-          );
+        if (!editablePub.url) {
+          toast.error('No LINK provided');
           return;
+        }
+
+        try {
+          const { data: urlData } = await axios.post(domainURL('/api/pub'), {
+            siteUrl: editablePub.url,
+          });
+
+          console.log({ urlData });
+
+          const publication_ = await createPublication(urlData);
+          if (publication_) {
+            toast.success(
+              <p className='inline-flex flex-col gap-0.5'>
+                <span className='font-bold'>Publication Added</span>
+                <span>The new publication has been successfully added.</span>
+              </p>
+            );
+            return;
+          }
+        } catch (error) {
+          console.error('error: ', error);
+          setIsError(true);
         }
       });
     }
@@ -108,7 +131,7 @@ const AddEditPublicationDialog = ({ ...props }: Props) => {
     <Dialog>
       <DialogTrigger>
         {publication ? (
-          <span className='mr-2'>
+          <span className='mr-2 text-gray-300 inline-flex items-center'>
             <Edit className='w-4 h-4 mr-2' />
             Edit
           </span>
@@ -131,6 +154,26 @@ const AddEditPublicationDialog = ({ ...props }: Props) => {
               : 'Enter the details of your new publication here.'}
           </DialogDescription>
         </DialogHeader>
+
+        {publication && (
+          <div className='flex items-center mb-3 last:mb-0'>
+            <div className='flex-shrink-0 mr-2'>
+              {publication.logo ? (
+                <Image
+                  src={publication.logo}
+                  alt={`${publication.name} logo`}
+                  width={40}
+                  height={40}
+                  className='rounded-full w-5 h-5'
+                />
+              ) : (
+                'No Image'
+              )}
+            </div>
+            <p className='text-lg font-semibold'>{publication.name}</p>
+          </div>
+        )}
+
         <form
           onSubmit={handleSubmit}
           className='bg-transparent w-full space-y-6'
@@ -148,45 +191,72 @@ const AddEditPublicationDialog = ({ ...props }: Props) => {
             />
           </div>
 
-          <div className='flex items-center space-x-2'>
-            <Switch
-              id='advanced-mode'
-              checked={showAdvanced}
-              onCheckedChange={setShowAdvanced}
-            />
-            <Label htmlFor='advanced-mode'>Show advanced options</Label>
-          </div>
+          {isShown && (
+            <div>
+              {isError && (
+                <p className='w-full text-rose-600 underline'>
+                  Failed to get information. Either refresh the page and fill it
+                  manually below.
+                </p>
+              )}
 
-          {showAdvanced && (
-            <Fragment>
-              <div className='space-y-2'>
-                <Label>Logo</Label>
-                {editablePub?.logo ? (
-                  <>Image here</>
-                ) : (
-                  <div className='mt-2'>
-                    <Input
-                      id='logo-file-input'
-                      type='file'
-                      accept='image/*'
-                      onChange={handleFileSelection}
+              <div className='flex items-center space-x-2'>
+                <Switch
+                  id='advanced-mode'
+                  checked={showAdvanced}
+                  onCheckedChange={setShowAdvanced}
+                />
+                <Label htmlFor='advanced-mode'>Show advanced options</Label>
+              </div>
+
+              {showAdvanced && (
+                <Fragment>
+                  <div className='space-y-2'>
+                    <Label>{publication ? 'Change logo' : 'Logo'}</Label>
+                    {editablePub?.logo ? (
+                      <>Image here</>
+                    ) : (
+                      <div className='mt-2'>
+                        <Input
+                          disabled={!publication}
+                          id='logo-file-input'
+                          type='file'
+                          accept='image/*'
+                          onChange={handleFileSelection}
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  <div className='space-y-2'>
+                    <Label htmlFor='url'>Description</Label>
+                    <Textarea
+                      id='description'
+                      name='description'
+                      placeholder={
+                        publication
+                          ? `${publication.name} desription...`
+                          : 'Enter a description'
+                      }
+                      value={editablePub?.description}
+                      onChange={handleInputChange}
+                      required
                     />
                   </div>
-                )}
-              </div>
 
-              <div className='space-y-2'>
-                <Label htmlFor='keywords'>Keywords</Label>
-                <ValueSelector<string>
-                  limit={8}
-                  initialValues={editablePub?.keywords}
-                  placeholder='Enter keywords...'
-                  onChange={(keywords) => updatePub('keywords', keywords)}
-                />
-              </div>
-            </Fragment>
+                  <div className='space-y-2'>
+                    <Label htmlFor='keywords'>Keywords</Label>
+                    <ValueSelector<string>
+                      limit={8}
+                      initialValues={editablePub?.keywords}
+                      placeholder='Enter keywords...'
+                      onChange={(keywords) => updatePub('keywords', keywords)}
+                    />
+                  </div>
+                </Fragment>
+              )}
+            </div>
           )}
-
           <Button type='submit'>
             {publication ? 'Update publication.' : 'Add Publication.'}
           </Button>

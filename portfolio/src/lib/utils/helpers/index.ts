@@ -161,6 +161,38 @@ export const createOgImage = ({
     `qcpioymg5esflgrmn4tc.png`,
   ].join('/');
 
+export const createOgImagePage = ({ title, meta }: { title: string; meta: string }) =>
+  [
+    // ACCOUNT PREFIX
+    // Add your own Cloudinary account ID.
+    `https://res.cloudinary.com/djkbznbcp/image/upload`,
+    // Composed Image Transformations
+    `w_1600,h_836,q_100`,
+
+    // TITLE
+    // Karla google font in light rose
+    `l_text:Karla_72_bold:${e(title)},co_rgb:ffe4e6,c_fit,w_1400,h_240`,
+    // Positioning
+    `fl_layer_apply,g_south_west,x_100,y_180`,
+
+    // META
+    // Karla, but smaller
+    `l_text:Karla_48:${e(meta)},co_rgb:ffe4e680,c_fit,w_1400`,
+    // Positioning
+    `fl_layer_apply,g_south_west,x_100,y_100`,
+
+    // PROFILE IMAGE
+    // dynamically fetched from my twitter profile
+    `l_fetch:${urlToBase64(domainURL('/assets/logo-re.svg'))}`,
+    // Transformations
+    `c_thumb,g_face,r_max,w_380,h_380,q_100`,
+    // Positioning
+    `fl_layer_apply,w_140,g_north_west,x_100,y_100`,
+
+    // BG
+    `qcpioymg5esflgrmn4tc.png`,
+  ].join('/');
+
 // double escape for commas and slashes
 const e = (str: string) => encodeURIComponent(encodeURIComponent(str));
 
@@ -241,4 +273,19 @@ export const calculateReadTime = (wordCount: number): string => {
 
   // Default to "less than a minute" if no time string is constructed
   return timeString || 'less than a minute';
+};
+
+const getRandomInt = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+export const generateRandomPreviousDay = () => {
+  const today = new Date();
+
+  // Generate a random number of days between 1 and 5
+  const randomDaysAgo = getRandomInt(1, 3);
+  const pastDate = new Date(today);
+  pastDate.setDate(today.getDate() - randomDaysAgo); // Move to a random number of days ago
+
+  return pastDate.toISOString(); // Return the generated date as a string
 };
