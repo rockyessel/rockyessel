@@ -1,4 +1,5 @@
 import { authOptions } from '@/lib/auth/options';
+import { WEB_MASTER_API_KEY } from '@/lib/config/env';
 import { createOgImage, domainURL, profile } from '@/lib/utils/helpers';
 import { IPageJsonLd, PostType } from '@/types';
 import { Metadata } from 'next';
@@ -292,7 +293,7 @@ export const getPageSEO = async (page: string): Promise<Metadata> => {
     },
     verification: {
       google: '4mpTgUJCrHY_8cR7Qe-t70YpmGldJHhIQBs2LNkEj1I',
-      yandex: 'your-yandex-verification-code',
+      yandex: 'e685e318a7ebab69',
       yahoo: 'your-bing-verification-code',
       me: '',
       other: {
@@ -499,3 +500,38 @@ export const getJsonLd = (seoDetails: SEODetails, page: string) => {
 
   return baseJsonLd;
 };
+
+export const submitUrlToBing = async (url: string) => {
+  const apiKey = WEB_MASTER_API_KEY;
+  const siteUrl = domainURL();
+
+  const requestBody = {
+    siteUrl: siteUrl,
+    urlList: [url],
+  };
+
+  const response = await fetch(
+    `https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlbatch?apikey=${apiKey}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
+    }
+  );
+
+  if (response.ok) {
+    console.log('URLs successfully submitted to Bing!');
+    return true;
+  } else {
+    console.error('Failed to submit URLs to Bing:', response.statusText);
+    return false;
+  }
+};
+
+// Example usage: After publishing an article
+const newArticleUrls = [
+  'http://yoursite.com/new-article-1',
+  'http://yoursite.com/new-article-2',
+];
