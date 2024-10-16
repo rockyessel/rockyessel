@@ -29,8 +29,6 @@ const Home = async () => {
   return (
     <AsideContentLayout className=''>
       <JsonLDPage jsonLd={jsonLd} />
-
-      <a href='web+rockyessel://rocky-essel-resume'>Resume</a>
       <section className='w-full mx-20'>
         <div>
           <div className='flex items-center justify-between mb-6'>

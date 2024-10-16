@@ -273,6 +273,8 @@ export const getPageSEO = async (page: string): Promise<Metadata> => {
       description: seoDetails.openGraphDescription,
       creator: seoDetails.twitterHandle,
       images: [seoDetails.imageUrl],
+      // @ts-ignore
+      domain: domainURL(),
     },
     alternates: {
       canonical: seoDetails.canonicalUrl,

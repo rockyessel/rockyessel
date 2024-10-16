@@ -14,7 +14,6 @@ interface SitemapProps {
 
 const generateSitemapXml = async ({ host }: SitemapProps) => {
   const posts = await getPublishedPosts();
-
   return `<?xml version="1.0" encoding="UTF-8"?><urlset
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
@@ -22,20 +21,15 @@ const generateSitemapXml = async ({ host }: SitemapProps) => {
         >
   ${posts
     ?.map((post) => {
-      console.log({ post });
-
       const image = createOgImage({
         title: post.title,
         meta: [...post?.tags?.slice(0, 3)].join(' • '),
       });
-
-      console.log({ image });
-
       return `
   <url>
-    <loc>https://${host}${post?.slug}</loc>
+    <loc>${host}${post?.slug}</loc>
     <lastmod>${post?.updatedAt || generateRandomPreviousDay()}</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <meta name="title" content="${post?.title}" />
     <meta name="description" content="${post?.description}" />

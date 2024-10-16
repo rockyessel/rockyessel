@@ -7,15 +7,15 @@ import {
 import { NextResponse } from 'next/server';
 
 const PAGES = [
-  { title: 'Home', path: '/' },
-  { title: 'About', path: '/about' },
-  { title: 'Links', path: '/links' },
-  { title: 'Contact', path: '/contact' },
-  { title: 'Projects', path: '/projects' },
-  { title: 'Writings', path: '/writings' },
-  { title: 'Archives', path: '/archives' },
-  { title: 'Resume', path: '/resume' },
-  { title: 'Newsletters', path: '/newsletters' },
+  { title: 'Home', path: '' },
+  { title: 'About', path: 'about' },
+  { title: 'Links', path: 'links' },
+  { title: 'Contact', path: 'contact' },
+  { title: 'Projects', path: 'projects' },
+  { title: 'Writings', path: 'writings' },
+  { title: 'Archives', path: 'archives' },
+  { title: 'Resume', path: 'resume' },
+  { title: 'Newsletters', path: 'newsletters' },
 ];
 
 // https://developers.google.com/search/docs/crawling-indexing/sitemaps/combine-sitemap-extensions
@@ -32,19 +32,18 @@ const generateSitemapXml = ({ host }: SitemapProps) => {
         >
   ${PAGES.map(({ path, title }) => {
     const pageSeo = pageSEO[title.toLowerCase()];
-
-    console.log({ pageSeo });
-
     const image = createOgImagePage({
-      title,
-      meta: [...pageSeo?.keywords?.slice(0, 3)].join(' • '),
+      title: `${title} Page`,
+      meta: [
+        ...pageSeo?.keywords,
+        'rockyesse',
+        'web3',
+        'quantum-computing',
+      ].join(' • '),
     });
-
-    console.log({ image });
-
     return `
   <url>
-    <loc>https://${host}${path}</loc>
+    <loc>${host}${path}</loc>
     <lastmod>${generateRandomPreviousDay()}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1</priority>
