@@ -5,7 +5,11 @@ import { PostSchema } from '../../types';
 export const createPost = mutation({
   args: { ...PostSchema },
   handler: async (ctx, args) => {
-    return await ctx.db.insert('posts', { ...args });
+    return await ctx.db.insert('posts', {
+      ...args,
+      publishedAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    });
   },
 });
 
@@ -14,7 +18,7 @@ export const updatePost = mutation({
   handler: async (ctx, args) => {
     const { _id, ...rest } = args;
     console.log(await ctx.db.get(_id));
-    await ctx.db.patch(_id, { ...rest });
+    await ctx.db.patch(_id, { ...rest, updatedAt: new Date().toISOString() });
 
     return _id;
   },

@@ -2,7 +2,7 @@
 
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useGenOgImage } from '@/hooks/use-gen-og';
-import { createOgImage } from '@/lib/utils/helpers';
+import { createOgImage, truncate } from '@/lib/utils/helpers';
 import { PostDraftType } from '@/types';
 import Image from 'next/image';
 
@@ -32,7 +32,9 @@ const WritingSettingsAside = ({ draft }: Props) => {
 
         <div className='flex flex-col gap-2'>
           <p className='text-lg font-semibold'>{draft?.title}</p>
-          <p className='text-gray-400'>{draft?.description}</p>
+          <p className='text-gray-400'>
+            {truncate(draft?.description || '', 160)}
+          </p>
         </div>
       </div>
 

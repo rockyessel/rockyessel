@@ -240,6 +240,46 @@ export const pageSEO: PageSEO = {
   },
 };
 
+interface IGetDashboardPageBasicSEO {
+  title: string;
+  description: string;
+  keywords: string[];
+}
+
+export const getDashboardPageBasicSEO = async (
+  props: IGetDashboardPageBasicSEO
+): Promise<Metadata> => {
+  const { description, keywords, title } = props;
+
+  return {
+    title: `${title} | Dashboard`,
+    description: description,
+    keywords: keywords,
+    robots: {
+      index: false,
+      follow: false,
+      googleBot: {
+        index: false,
+        follow: false,
+      },
+    },
+    verification: {
+      google: '4mpTgUJCrHY_8cR7Qe-t70YpmGldJHhIQBs2LNkEj1I',
+      yandex: 'e685e318a7ebab69',
+      other: {
+        email: 'rockyessel76@gmail.com',
+        phone: '+233 54 681 3132',
+      },
+    },
+    icons: {
+      icon: '/favicon.ico',
+      apple: '/apple-touch-icon.png',
+    },
+    metadataBase: new URL(baseUrl),
+    manifest: '/site.webmanifest',
+  };
+};
+
 export const getPageSEO = async (page: string): Promise<Metadata> => {
   const seoDetails = pageSEO[page];
 
