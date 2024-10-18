@@ -2,6 +2,7 @@ import { v } from 'convex/values';
 import { mutation, query } from '../../_generated/server';
 import { PostDraftSchema } from '../../types';
 import { createSlug } from '../../../src/lib/utils/helpers';
+import { createPost, updatePost } from './main';
 
 export const createPostDraft = mutation({
   args: { ...PostDraftSchema },
@@ -18,7 +19,7 @@ export const updatePostDraft = mutation({
     if (rest.slug === 'untitled' || '' || undefined) {
       rest.slug = createSlug(rest.title);
     }
-    await ctx.db.patch(_id, { ...rest });
+    await ctx.db.patch(_id, { ...rest, updatedAt: new Date().toISOString() });
     return _id;
   },
 });
@@ -62,12 +63,13 @@ export const publishDraftPost = mutation({
     // updating
     if (postId) {
       // @ts-ignore
-      await ctx.db.patch(postId, { ...rest, isPublished: true });
-      return postId;
+      const updatedPostId = await updatePost(ctx, { ...rest });
+
+      return postId === updatedPostId ? updatedPostId : null;
     }
 
     // @ts-ignore
-    const newPostId = await ctx.db.insert('posts', {
+    const createdPostId = await createPost(ctx, {
       ...rest,
       isPublished: true,
       isFeatured: false,
@@ -75,10 +77,11 @@ export const publishDraftPost = mutation({
 
     await ctx.db.patch(draftId, {
       ...rest,
-      isPublished: false,
-      postId: newPostId,
+      publishedAt: new Date().toISOString(),
+      isPublished: true,
+      postId: createdPostId,
     });
 
-    return newPostId;
+    return createdPostId;
   },
 });
