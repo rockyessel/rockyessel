@@ -126,7 +126,7 @@ const ArticleDynamicPage = async ({ params }: Props) => {
               </div>
             </div>
             <Separator className='my-2' />
-            <h1 className='text-4xl font-bold mb-6 leading-tight'>
+            <h1 className='article-header text-4xl font-bold mb-6 leading-tight'>
               {post?.title}
             </h1>
             <Separator className='my-2' />
@@ -153,7 +153,8 @@ const ArticleDynamicPage = async ({ params }: Props) => {
             <Separator className='w-full my-2' />
           </header>
           {/* <img src={ogImage} alt='' /> */}
-          <article>
+          <article className='article-section'>
+            <div className='sr-only article-summary'>{post?.description}</div>
             <RenderEditor readOnly content={post?.content} />
           </article>
 

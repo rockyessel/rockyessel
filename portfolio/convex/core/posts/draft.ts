@@ -58,14 +58,14 @@ export const publishDraftPost = mutation({
 
     if (!draft) return null;
 
-    const { postId, _creationTime, _id, ...rest } = draft;
+    const { _creationTime, _id, publishedAt, updatedAt, ...rest } = draft;
 
     // updating
-    if (postId) {
+    if (rest.postId) {
       // @ts-ignore
       const updatedPostId = await updatePost(ctx, { ...rest });
 
-      return postId === updatedPostId ? updatedPostId : null;
+      return rest.postId === updatedPostId ? updatedPostId : null;
     }
 
     // @ts-ignore
