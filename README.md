@@ -48,11 +48,6 @@
 [![Yarn Badge](https://img.shields.io/badge/yarn-0078D6?style=for-the-badge&logo=yarn&logoColor=white)](https://github.com/rockyessel)
 [![Vs Code Badge](https://img.shields.io/badge/Visual_Studio_Code-0078D6?style=for-the-badge&logo=visualstudiocode&logoColor=white)](https://github.com/rockyessel)
 
-## 🛠️ Projects
-
-- [**Learn, Build & Deploy Vara Network **]([https://github.com/rockyessel/web3-docs](https://www.freecodecamp.org/news/build-and-deploy-smart-contract-rust-gear-protocol/)) – Comprehensive guides and tutorials on Web3 and blockchain technologies.
-
-
 <br/>
 
 ## 📊 My GitHub Stats
