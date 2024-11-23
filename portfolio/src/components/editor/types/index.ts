@@ -68,12 +68,14 @@ export type ElementNodeType =
   | ColumnLayoutType
   | BulletedListsType
   | NumberedListsType
-  | HeadingsType;
+  | HeadingsType
+  | KaTeXBlockType
+  | KaTeXInlineType;
 
 export type ElementTypes = ElementNodeType['type'];
 export type ElementNodeTypes = ElementNodeType['nodeType'];
 
-export type ChildNode = NodeText | LinkType;
+export type ChildNode = NodeText | LinkType | KaTeXInlineType;
 
 export type NodeText = {
   text: string;
@@ -90,6 +92,20 @@ export type NodeText = {
 export type LeafTypes = keyof NodeText;
 
 export type Alignment = 'left' | 'center' | 'right' | 'justify';
+
+export type KaTeXBlockType = {
+  nodeType: 'void';
+  type: 'katex-block';
+  expression: string;
+  children: Text[];
+};
+
+export type KaTeXInlineType = {
+  nodeType: 'void';
+  type: 'katex-inline';
+  expression: string;
+  children: Text[];
+};
 
 export type TableType = {
   nodeType: 'block';

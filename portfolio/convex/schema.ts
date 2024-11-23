@@ -1,7 +1,7 @@
 import { defineSchema, defineTable } from 'convex/server';
-import { v } from 'convex/values';
 import {
   FileSchema,
+  newsletterSchema,
   PostDraftSchema,
   PostSchema,
   PublicationSchema,
@@ -14,6 +14,7 @@ export default defineSchema(
     files: defineTable({ ...FileSchema }),
     publications: defineTable({ ...PublicationSchema }),
     pub_articles: defineTable({ ...PublicationSchema }),
+    newsletters: defineTable({ ...newsletterSchema }),
   },
   // If you ever get an error about schema mismatch
   // between your data and your schema, and you cannot

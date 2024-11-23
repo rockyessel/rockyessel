@@ -3,7 +3,14 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
-import { Github, ExternalLink, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  Github,
+  ExternalLink,
+  ChevronDown,
+  ChevronUp,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 import { Project } from '@/types';
 import Image from 'next/image';
 
@@ -31,27 +38,28 @@ const ProjectCard = ({ project }: Props) => {
     >
       <div className='overflow-hidden' ref={emblaRef}>
         <div className='flex'>
-          {project.images.map((image, index) => (
+          {/* {project.images.map((image, index) => (
             <div key={index} className='flex-[0_0_100%]'>
+              {image}
               <Image
                 src={image}
                 alt={`${project.title} screenshot ${index + 1}`}
                 className='w-full h-48 object-cover'
               />
             </div>
-          ))}
-          <div className='flex-[0_0_100%]'>
+          ))} */}
+          {/* <div className='flex-[0_0_100%]'>
             <video className='w-full h-48 object-cover' controls>
               <source src={project.video} type='video/mp4' />
               Your browser does not support the video tag.
             </video>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className='p-4'>
         <div className='flex items-center justify-between'>
           <p className='text-2xl font-bold mb-2'>{project.title}</p>
-          <div className='flex items-center gap-1.5'>
+          <div className='hidden items-center gap-1.5'>
             <button
               onClick={scrollPrev}
               className='bg-black bg-opacity-50 text-white p-2 rounded-full'

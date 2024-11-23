@@ -226,6 +226,7 @@ export const HEADING_EL_MAP: Record<HeadingTypes, ElementType> = {
  * A mapping of node types to their respective properties.
  * @type {Record<string, { nodeType: string; defaultChildren: NodeText[] }>}
  */
+// @ts-ignore
 export const NODE_TYPE_MAPPING: Record<ElementTypes, {nodeType:ElementNodeTypes; defaultChildren:NodeText[]}> = {
   "paragraph": { nodeType: "block", defaultChildren: [{ text: "" }] },
   "heading-one": { nodeType: "block", defaultChildren: [{ text: "" }] },

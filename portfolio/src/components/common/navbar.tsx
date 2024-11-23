@@ -18,10 +18,10 @@ const navItems = {
     name: 'projects',
     icon: FolderKanban,
   },
-  '/resume': {
-    name: 'resume',
-    icon: File,
-  },
+  // '/resume': {
+  //   name: 'resume',
+  //   icon: File,
+  // },
 };
 
 const navItems2 = {
@@ -59,7 +59,7 @@ const Navbar = ({ className }: Props) => {
               );
             })}
           </div>
-          <div className='flex flex-row space-x-0 pr-10'>
+          {/* <div className='flex flex-row space-x-0 pr-10'>
             {Object.entries(navItems2).map(([path, item]) => {
               return (
                 <Link
@@ -72,7 +72,7 @@ const Navbar = ({ className }: Props) => {
                 </Link>
               );
             })}
-          </div>
+          </div> */}
         </nav>
       </section>
     </header>

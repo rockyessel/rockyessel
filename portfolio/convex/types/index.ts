@@ -1,5 +1,8 @@
 import { v } from 'convex/values';
 
+export const newsletterSchema = {
+  email: v.string(),
+};
 export const PostSchema = {
   title: v.string(),
   slug: v.string(),

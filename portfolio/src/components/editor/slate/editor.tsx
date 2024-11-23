@@ -114,7 +114,7 @@ const SymbionTextEditor = ({ eHtml, className, ...props }: Props) => {
     <Slate
       editor={editor}
       onValueChange={onValueChange}
-      initialValue={(initialValue)}
+      initialValue={initialValue}
     >
       <EditorProvider>
         <div className='relative'>

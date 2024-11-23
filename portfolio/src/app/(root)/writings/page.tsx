@@ -6,8 +6,13 @@ import { getPublishedPosts } from '@/lib/actions/convex_/posts';
 import AsideContentLayout from '@/components/layout/aside-content';
 import { getJsonLd, getPageSEO, pageSEO } from '@/lib/actions/helpers';
 import { countWordsInStructure } from '@/components/editor/lib/helpers';
-import { calculateReadTime, domainURL, isContentNew, truncate } from '@/lib/utils/helpers';
-import { ThumbsUp, Eye, MessageSquare, Bookmark, Share2, Clock, Tag, SquareLibrary } from 'lucide-react';
+import {
+  calculateReadTime,
+  domainURL,
+  isContentNew,
+  truncate,
+} from '@/lib/utils/helpers';
+import { Clock, Tag, SquareLibrary } from 'lucide-react';
 
 export async function generateMetadata(): Promise<Metadata> {
   return await getPageSEO('writings');
@@ -20,8 +25,8 @@ const WritingsPage = async () => {
   const jsonLd = getJsonLd(seoDetails, 'writings');
 
   return (
-    <AsideContentLayout isWriting>
-      <JsonLDPage jsonLd={jsonLd} />;
+    <AsideContentLayout>
+      <JsonLDPage jsonLd={jsonLd} />
       <div className='w-full'>
         {/* <div className='flex flex-col gap-2 sticky top-12 bg-neutral-900' /> */}
 
@@ -62,14 +67,14 @@ const WritingsPage = async () => {
                     'MMM Do YYYY'
                   )}
                 </span>
-                <div className='flex items-center mr-4'>
+                {/* <div className='flex items-center mr-4'>
                   <Eye size={14} className='mr-1' />
                   <span>1.2k views</span>
                 </div>
                 <div className='flex items-center'>
                   <ThumbsUp size={14} className='mr-1' />
                   <span>142 likes</span>
-                </div>
+                </div> */}
               </div>
               <p className='text-gray-300 mb-4'>
                 {truncate(
@@ -90,7 +95,7 @@ const WritingsPage = async () => {
                 ))}
               </div>
               <div className='flex justify-between items-center'>
-                <div className='flex space-x-4'>
+                {/* <div className='flex space-x-4'>
                   <button className='flex items-center text-blue-400 hover:text-blue-300 transition-colors duration-200'>
                     <MessageSquare size={18} className='mr-2' />
                     <span>12 comments</span>
@@ -103,7 +108,7 @@ const WritingsPage = async () => {
                     <Share2 size={18} className='mr-2' />
                     <span>Share</span>
                   </button>
-                </div>
+                </div> */}
                 <span className='text-gray-400 text-sm'>
                   {/* {calculateReadTime} min read */}
                   {calculateReadTime(countWordsInStructure(post?.content))}

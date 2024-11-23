@@ -14,9 +14,9 @@ interface Props {
 const AsideContentLayout = ({ children, className, isWriting }: Props) => {
   return (
     <section className={cn(className, 'w-full h-full flex items-start gap-4')}>
-      <Profile />
+      <Profile className='hidden lg:block' />
       {children}
-      {isWriting  && <WritingAside />}
+      {isWriting && <WritingAside />}
     </section>
   );
 };

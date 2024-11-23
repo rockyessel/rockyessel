@@ -8,6 +8,7 @@ import { withHtml } from '../plugins/with-html';
 import { withMarks } from '../plugins/with-marks';
 import { withLists } from '../plugins/with-lists';
 import { withLinks } from '../plugins/with-links';
+// import { withKaTeX } from '../plugins/with-katex';
 import { withBlocks } from '../plugins/with-blocks';
 import { withInLines } from '../plugins/with-inlines';
 import { withLoggings } from '../plugins/with-loggings';

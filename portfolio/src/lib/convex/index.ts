@@ -6,6 +6,7 @@ export const postsMethod = api.core.posts.main;
 export const postDraftsMethod = api.core.posts.draft;
 export const storageMethod = api.core.storage;
 export const publicationsMethod = api.core.publications.index;
+export const newslettersMethod = api.core.newsletter.index;
 
 export const fileUpload = async (file: File) => {
   const uploadURL = await fetchMutation(storageMethod.file.generateUploadUrl);

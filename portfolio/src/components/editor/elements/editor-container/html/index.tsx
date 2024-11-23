@@ -15,6 +15,7 @@ import { DefaultElement, RenderElementProps } from 'slate-react';
 import { createSlug } from '@/lib/utils/helpers';
 import HtmlBlockQuoteElement from './blockquote';
 import HtmlChecklistContainerElement from './checklist-container';
+import HtmlKatexBlockElement from './katex-block';
 
 const EditorHtmlElements = (props: RenderElementProps) => {
   const { attributes, children, element } = props;
@@ -76,6 +77,9 @@ const EditorHtmlElements = (props: RenderElementProps) => {
     case 'paragraph':
       const pProps = { element, children, attributes };
       return <HtmlPElement {...pProps} />;
+    case 'katex-block':
+      const katexBlockProps = { element, children, attributes };
+      return <HtmlKatexBlockElement {...katexBlockProps} />;
 
     default:
       <DefaultElement {...props} />;

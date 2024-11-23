@@ -16,6 +16,7 @@ import {
   LinkType,
   TOCHeaderType,
   StackItemType,
+  KaTeXInlineType,
 } from '../../types';
 
 export const markEvents = (editor: Editor) => {
@@ -139,6 +140,10 @@ export const isNodeText = (node: Descendant): node is NodeText => {
 
 export const isNodeLink = (node: Text): node is LinkType => {
   return isElementNode(node) && node.type === 'link';
+};
+
+export const isNodeKatex = (node: Text): node is KaTeXInlineType => {
+  return isElementNode(node) && node.type === 'katex-inline';
 };
 
 export const descendant = (

@@ -29,81 +29,81 @@ const Home = async () => {
   return (
     <AsideContentLayout className=''>
       <JsonLDPage jsonLd={jsonLd} />
-      <section className='w-full mx-20'>
-        <div>
-          <div className='flex items-center justify-between mb-6'>
-            {/* <div>
-              <h1 className='text-3xl font-bold'>Rocky Essel</h1>
-              <h3 className='text-grey-400 text-lg mt-1'>
-                Owner of{' '}
-                <a
-                  href='http://symbion.site/?ref=esselr.vercel.app'
-                  className='text-lime-600 hover:underline cursor-pointer'
-                >
-                  Symbion
-                </a>
-              </h3>
-            </div> */}
-            <div className='flex items-center bg-gray-900 rounded-full px-3 py-1.5 w-fit'>
-              <Search size={16} className='text-gray-500 mr-2' />
-              <span className='text-gray-400 mr-2 text-sm'>{`What's Happening`}</span>
-              <div className='flex items-center'>
-                <span className='text-gray-400 mr-1 text-sm'>Launched</span>
-                <span className='text-blue-400 text-sm'>Symbion ↗</span>
-              </div>
+      <section className='w-full lg:mx-20'>
+        <div className='flex items-center justify-between mb-6'>
+          <div className='flex items-center bg-gray-900 rounded-full px-3 py-1.5 w-fit'>
+            <Search size={16} className='text-gray-500 mr-2' />
+            <span className='text-gray-400 mr-2 text-sm'>{`What's Happening`}</span>
+            <div className='flex items-center'>
+              <span className='text-gray-400 mr-1 text-sm'>Launched</span>
+              <a
+                target='_blank'
+                href='https://www.linkedin.com/company/co-quantum'
+                className='text-blue-400 text-sm'
+              >
+                Quantum Newsletter ↗
+              </a>
             </div>
           </div>
+        </div>
 
-          {/* About Section */}
-          <section className='mb-8 flex flex-col gap-2'>
-            <h2 className='text-4xl font-semibold'>
-              I am dedicated to learning and growing in the fields of electrical
-              engineering, blockchain technology, and quantum computing.
-            </h2>
+        {/* About Section */}
+        <section className='mb-8 flex flex-col gap-2'>
+          <h2 className='text-4xl font-semibold'>
+            I am dedicated to learning and growing in the fields of software
+            development with a focus on AI, and quantum computing.
+          </h2>
 
-            <Separator className='mt-4' />
-            <h2 className='text-xl font-semibold'>Bio Summary</h2>
-            <p className='text-md'>
-              {`As a curious and enthusiastic individual, I'm passionate about exploring the intersection of robotics and quantum computing. I'm fascinated by the potential of these technologies to transform industries and improve lives. My goal is to develop a strong foundation in these fields and contribute to innovative projects that push the boundaries of what's possible. With a strong work ethic and a willingness to learn, I'm excited to take on new challenges and grow as a professional.`}
-            </p>
-          </section>
-          <Separator className='my-4' />
-          {/* Tools Section */}
-          <section className='mb-8'>
-            <h2 className='text-xl font-semibold'>Tools I Work With</h2>
+          <Separator className='mt-4' />
+          <h2 className='text-xl font-semibold'>Bio Summary</h2>
+          <p className='text-md'>
+            As a curious and enthusiastic individual, I am passionate about
+            exploring the intersection of quantum computing and software
+            development. I am fascinated by the potential of these technologies
+            to transform industries and improve lives. My goal is to develop a
+            strong foundation and experience in these fields and contribute to
+            innovative projects that push the boundaries of what is possible.
+            With a strong work ethic and a willingness to learn, I am excited to
+            take on new challenges and grow as well.
+          </p>
+        </section>
+        <Separator className='my-4' />
+        {/* Tools Section */}
+        <section className='mb-8'>
+          <h2 className='text-xl font-semibold'>Tools I Work With</h2>
 
-            <div className='w-full grid grid-cols-3 gap-4 mt-4'>
-              <div className='flex flex-col gap-2'>
-                <p>Languages</p>
-                <div className='inline-flex flex-wrap gap-2'>
-                  {languages.map((language, index) => (
-                    <div
-                      key={index}
-                      className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
-                    >
-                      {language.icon}
-                      {language.name}
-                    </div>
-                  ))}
-                </div>
+          <div className='w-full grid grid-cols-3 gap-4 mt-4'>
+            <div className='flex flex-col gap-2'>
+              <p>Languages</p>
+              <div className='inline-flex flex-wrap gap-2'>
+                {languages.map((language, index) => (
+                  <div
+                    key={index}
+                    className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
+                  >
+                    {language.icon}
+                    {language.name}
+                  </div>
+                ))}
               </div>
+            </div>
 
-              <div className='flex flex-col gap-2'>
-                <p>Frameworks</p>
-                <div className='inline-flex flex-wrap gap-2'>
-                  {Frameworks.map((Framework, index) => (
-                    <div
-                      key={index}
-                      className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
-                    >
-                      {Framework.icon}
-                      {Framework.name}
-                    </div>
-                  ))}
-                </div>
+            <div className='flex flex-col gap-2'>
+              <p>Frameworks</p>
+              <div className='inline-flex flex-wrap gap-2'>
+                {Frameworks.map((Framework, index) => (
+                  <div
+                    key={index}
+                    className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
+                  >
+                    {Framework.icon}
+                    {Framework.name}
+                  </div>
+                ))}
               </div>
+            </div>
 
-              <div className='flex flex-col gap-2'>
+            {/* <div className='flex flex-col gap-2'>
                 <p>Blockchain</p>
                 <div className='inline-flex flex-wrap gap-2'>
                   {blockchainNetworks.map((blockchainNetwork, index) => (
@@ -116,39 +116,39 @@ const Home = async () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
-              <div className='flex flex-col gap-2'>
-                <p>Databases</p>
-                <div className='inline-flex flex-wrap gap-2'>
-                  {databases.map((database, index) => (
-                    <div
-                      key={index}
-                      className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
-                    >
-                      {database.icon}
-                      {database.name}
-                    </div>
-                  ))}
-                </div>
+            <div className='flex flex-col gap-2'>
+              <p>Databases</p>
+              <div className='inline-flex flex-wrap gap-2'>
+                {databases.map((database, index) => (
+                  <div
+                    key={index}
+                    className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
+                  >
+                    {database.icon}
+                    {database.name}
+                  </div>
+                ))}
               </div>
+            </div>
 
-              <div className='flex flex-col gap-2'>
-                <p>Others</p>
-                <div className='inline-flex flex-wrap gap-2'>
-                  {OtherTools.map((otherTool, index) => (
-                    <div
-                      key={index}
-                      className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
-                    >
-                      {otherTool.icon}
-                      {otherTool.name}
-                    </div>
-                  ))}
-                </div>
+            <div className='flex flex-col gap-2'>
+              <p>Others Tools</p>
+              <div className='inline-flex flex-wrap gap-2'>
+                {OtherTools.map((otherTool, index) => (
+                  <div
+                    key={index}
+                    className='w-fit inline-flex items-center gap-1 bg-zinc-800/50 p-1 border border-zinc-700/40 rounded-md'
+                  >
+                    {otherTool.icon}
+                    {otherTool.name}
+                  </div>
+                ))}
               </div>
+            </div>
 
-              <div className='flex flex-col gap-2'>
+            {/* <div className='flex flex-col gap-2'>
                 <p>AI Tools</p>
                 <div className='inline-flex flex-wrap gap-2'>
                   {AITools.map((aiTool, index) => (
@@ -161,12 +161,12 @@ const Home = async () => {
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-          </section>
+              </div> */}
+          </div>
+        </section>
 
-          {/* Pinned Projects Section */}
-          <section className='mb-8'>
+        {/* Pinned Projects Section */}
+        {/* <section className='mb-8'>
             <h2 className='text-xl font-semibold'>Pinned Projects</h2>
             <div className='grid grid-cols-2 gap-6 mt-4'>
               {Array.from({ length: 2 }).map((_, index) => (
@@ -185,11 +185,10 @@ const Home = async () => {
                 />
               ))}
             </div>
-          </section>
+          </section> */}
 
-          {/* Writing Platform Section */}
-          {pubs.length === 0 ? null : <WritingPlaform pubs={pubs} />}
-        </div>
+        {/* Writing Platform Section */}
+        {/* {pubs.length === 0 ? null : <WritingPlaform pubs={pubs} />} */}
       </section>
     </AsideContentLayout>
   );

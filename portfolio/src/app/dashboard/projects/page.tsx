@@ -2,6 +2,7 @@ import DashboardProjectCard from '@/components/common/project-card-dashboard';
 import DashboardSidebarLayout from '@/components/layout/sidebar-dashboard';
 
 const ProjectsPage = () => {
+
   return (
     <DashboardSidebarLayout allowNavbar>
       <div className='w-full grid grid-cols-3 gap-4'>

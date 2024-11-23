@@ -16,6 +16,13 @@ import {
   VaraNetworkSVG,
   GearProtocolSVG,
   AptosNetworkSVG,
+  SupabaseSVG,
+  GrafbaseSVG,
+  PostgreSQLSVG,
+  VSCodeSVG,
+  TailwindCSSSVG,
+  GitSVG,
+  ChatGPTSVG,
 } from '@/assets';
 
 export const packageManagers = [
@@ -50,11 +57,11 @@ export const databases = [
   },
   {
     name: 'Supabase',
-    icon: <MongoDBSVG className='w-4 h-4' strokeWidth={2.25} />,
+    icon: <SupabaseSVG className='w-4 h-4' strokeWidth={2.25} />,
   },
   {
     name: 'Grafbase',
-    icon: <MongoDBSVG className='w-4 h-4' strokeWidth={2.25} />,
+    icon: <GrafbaseSVG className='w-4 h-4' strokeWidth={2.25} />,
   },
   {
     name: 'Outerbase',
@@ -62,7 +69,7 @@ export const databases = [
   },
   {
     name: 'PostgreSQL',
-    icon: <MongoDBSVG className='w-4 h-4' strokeWidth={2.25} />,
+    icon: <PostgreSQLSVG className='w-4 h-4' strokeWidth={2.25} />,
   },
 ];
 
@@ -106,28 +113,23 @@ export const OtherTools = [
   { name: 'cargo', icon: <CargoSVG className='w-4 h-4' strokeWidth={2.25} /> },
   {
     name: 'VS Code',
-    icon: <ReactJsSVG className='w-4 h-4' strokeWidth={2.25} />,
+    icon: <VSCodeSVG className='w-4 h-4' strokeWidth={2.25} />,
   },
   {
     name: 'TailwindCSS',
-    icon: <ReactJsSVG className='w-4 h-4' strokeWidth={2.25} />,
+    icon: <TailwindCSSSVG className='w-4 h-4' strokeWidth={2.25} />,
   },
   {
-    name: 'ShadCN UI',
-    icon: <ReactJsSVG className='w-4 h-4' strokeWidth={2.25} />,
-  },
-  {
-    name: 'Canva',
-    icon: <ReactJsSVG className='w-4 h-4' strokeWidth={2.25} />,
-  },
-  {
-    name: 'Photoshop',
-    icon: <ReactJsSVG className='w-4 h-4' strokeWidth={2.25} />,
+    name: 'Git',
+    icon: <GitSVG className='w-4 h-4' strokeWidth={2.25} />,
   },
 ];
 
 export const AITools = [
-  { name: 'ChatGPT', icon: <NpmSVG className='w-4 h-4' strokeWidth={2.25} /> },
+  {
+    name: 'ChatGPT',
+    icon: <ChatGPTSVG className='w-4 h-4' strokeWidth={2.25} />,
+  },
   { name: 'Meta AI', icon: <YarnSVG className='w-4 h-4' strokeWidth={2.25} /> },
   {
     name: 'Gemini',
