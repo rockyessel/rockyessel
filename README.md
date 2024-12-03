@@ -51,6 +51,5 @@
 <br/>
 
 ## 📊 My GitHub Stats
-
-[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=rockyessel&theme=highcontrast)](https://github.com/DenverCoder1/github-readme-streak-stats)
+[![GitHub Streak](https://streak-stats.demolab.com/?user=rockyessel&theme=highcontrast)](https://git.io/streak-stats)
 [![GitHub Stats](https://github-readme-stats.vercel.app/api?username=rockyessel&show_icons=true&theme=highcontrast)](https://github.com/anuraghazra/github-readme-stats)
