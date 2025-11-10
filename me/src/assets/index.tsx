@@ -71,8 +71,8 @@ export const TailwindCSSSVG = ({ ...props }: Props) => (
   >
     <defs>
       <linearGradient x1='-2.778%' y1='32%' x2='100%' y2='67.556%' id='a'>
-        <stop stop-color='#2298BD' offset='0%' />
-        <stop stop-color='#0ED7B5' offset='100%' />
+        <stop stopColor='#2298BD' offset='0%' />
+        <stop stopColor='#0ED7B5' offset='100%' />
       </linearGradient>
     </defs>
     <path
@@ -183,8 +183,8 @@ export const SupabaseSVG = ({ ...props }: Props) => (
         gradientUnits='userSpaceOnUse'
         gradientTransform='translate(.986 -.12)scale(.57177)'
       >
-        <stop stop-color='#249361' />
-        <stop offset='1' stop-color='#3ECF8E' />
+        <stop stopColor='#249361' />
+        <stop offset='1' stopColor='#3ECF8E' />
       </linearGradient>
       <linearGradient
         id='b'
@@ -196,7 +196,7 @@ export const SupabaseSVG = ({ ...props }: Props) => (
         gradientTransform='translate(.986 -.12)scale(.57177)'
       >
         <stop />
-        <stop offset='1' stop-opacity='0' />
+        <stop offset='1' stopOpacity='0' />
       </linearGradient>
     </defs>
   </svg>
@@ -989,13 +989,13 @@ export const RustSVG = ({ ...props }: Props) => (
         gradientTransform='matrix(.866 -.5 -.3 -.52 177.106 -689.033)'
         gradientUnits='userSpaceOnUse'
       >
-        <stop offset='0' stop-color='#7d7d7d' />
-        <stop offset='.267' stop-color='#7e7c7a' />
-        <stop offset='.45' stop-color='#817871' />
-        <stop offset='.608' stop-color='#867162' />
-        <stop offset='.753' stop-color='#8d684c' />
-        <stop offset='.886' stop-color='#965c30' />
-        <stop offset='1' stop-color='#a04f12' />
+        <stop offset='0' stopColor='#7d7d7d' />
+        <stop offset='.267' stopColor='#7e7c7a' />
+        <stop offset='.45' stopColor='#817871' />
+        <stop offset='.608' stopColor='#867162' />
+        <stop offset='.753' stopColor='#8d684c' />
+        <stop offset='.886' stopColor='#965c30' />
+        <stop offset='1' stopColor='#a04f12' />
       </radialGradient>
     </defs>
     <path
@@ -1023,8 +1023,8 @@ export const PythonSVG = ({ ...props }: Props) => (
         gradientTransform='matrix(189.38 0 0 189.81 25243.061 38519.17)'
         gradientUnits='userSpaceOnUse'
       >
-        <stop offset='0' stop-color='#387eb8' />
-        <stop offset='1' stop-color='#366994' />
+        <stop offset='0' stopColor='#387eb8' />
+        <stop offset='1' stopColor='#366994' />
       </linearGradient>
       <linearGradient
         id='b'
@@ -1035,8 +1035,8 @@ export const PythonSVG = ({ ...props }: Props) => (
         gradientTransform='matrix(189.38 0 0 189.81 25309.061 38583.42)'
         gradientUnits='userSpaceOnUse'
       >
-        <stop offset='0' stop-color='#ffe052' />
-        <stop offset='1' stop-color='#ffc331' />
+        <stop offset='0' stopColor='#ffe052' />
+        <stop offset='1' stopColor='#ffc331' />
       </linearGradient>
     </defs>
     <path
@@ -1132,15 +1132,15 @@ export const MongoDBSVG = ({ ...props }: Props) => (
         gradientTransform='matrix(-.977 -.323 -.29 .877 -375.944 -928.287)'
         gradientUnits='userSpaceOnUse'
       >
-        <stop offset='.231' stop-color='#999875' />
-        <stop offset='.563' stop-color='#9b9977' />
-        <stop offset='.683' stop-color='#a09f7e' />
-        <stop offset='.768' stop-color='#a9a889' />
-        <stop offset='.837' stop-color='#b7b69a' />
-        <stop offset='.896' stop-color='#c9c7b0' />
-        <stop offset='.948' stop-color='#deddcb' />
-        <stop offset='.994' stop-color='#f8f6eb' />
-        <stop offset='1' stop-color='#fbf9ef' />
+        <stop offset='.231' stopColor='#999875' />
+        <stop offset='.563' stopColor='#9b9977' />
+        <stop offset='.683' stopColor='#a09f7e' />
+        <stop offset='.768' stopColor='#a9a889' />
+        <stop offset='.837' stopColor='#b7b69a' />
+        <stop offset='.896' stopColor='#c9c7b0' />
+        <stop offset='.948' stopColor='#deddcb' />
+        <stop offset='.994' stopColor='#f8f6eb' />
+        <stop offset='1' stopColor='#fbf9ef' />
       </linearGradient>
       <linearGradient
         id='b'
@@ -1151,8 +1151,8 @@ export const MongoDBSVG = ({ ...props }: Props) => (
         gradientTransform='matrix(-.977 -.323 -.29 .877 -375.944 -928.287)'
         gradientUnits='userSpaceOnUse'
       >
-        <stop offset='0' stop-color='#48a547' />
-        <stop offset='1' stop-color='#3f9143' />
+        <stop offset='0' stopColor='#48a547' />
+        <stop offset='1' stopColor='#3f9143' />
       </linearGradient>
       <linearGradient
         id='c'
@@ -1163,10 +1163,10 @@ export const MongoDBSVG = ({ ...props }: Props) => (
         gradientTransform='matrix(-.977 -.323 -.29 .877 -375.944 -928.287)'
         gradientUnits='userSpaceOnUse'
       >
-        <stop offset='0' stop-color='#41a247' />
-        <stop offset='.352' stop-color='#4ba74b' />
-        <stop offset='.956' stop-color='#67b554' />
-        <stop offset='1' stop-color='#69b655' />
+        <stop offset='0' stopColor='#41a247' />
+        <stop offset='.352' stopColor='#4ba74b' />
+        <stop offset='.956' stopColor='#67b554' />
+        <stop offset='1' stopColor='#69b655' />
       </linearGradient>
     </defs>
     <path
